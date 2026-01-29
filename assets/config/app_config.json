@@ -1,0 +1,21 @@
+{
+  "supabase": {
+    "url": "YOUR_SUPABASE_URL",
+    "anonKey": "YOUR_SUPABASE_ANON_KEY"
+  },
+  "storage": {
+    "bucketName": "artworks",
+    "maxImageSizeMB": 5,
+    "compressionQuality": 80,
+    "generateThumbnails": true,
+    "thumbnailSize": 300
+  },
+  "cloudflareR2": {
+    "enabled": false,
+    "accountId": "",
+    "accessKeyId": "",
+    "secretAccessKey": "",
+    "bucketName": "",
+    "publicUrl": ""
+  }
+}

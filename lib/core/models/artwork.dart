@@ -1,0 +1,96 @@
+import 'artwork_image.dart';
+
+class Artwork {
+  final int? id;
+  final String name;
+  final String? description;
+  final int? dateMonth;
+  final int? dateYear;
+  final String dimension;
+  final String medium;
+  final DateTime? createdAt;
+  final List<ArtworkImage> images;
+
+  Artwork({
+    this.id,
+    required this.name,
+    this.description,
+    this.dateMonth,
+    this.dateYear,
+    required this.dimension,
+    required this.medium,
+    this.createdAt,
+    this.images = const [],
+  });
+
+  factory Artwork.fromJson(Map<String, dynamic> json) {
+    return Artwork(
+      id: json['id'],
+      name: json['name'],
+      description: json['description'],
+      dateMonth: json['date_month'],
+      dateYear: json['date_year'],
+      dimension: json['dimension'],
+      medium: json['medium'],
+      createdAt: json['created_at'] != null 
+        ? DateTime.parse(json['created_at']) 
+        : null,
+      images: (json['artwork_images'] as List<dynamic>?)
+        ?.map((e) => ArtworkImage.fromJson(e))
+        .toList() ?? [],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      if (id != null) 'id': id,
+      'name': name,
+      'description': description,
+      'date_month': dateMonth,
+      'date_year': dateYear,
+      'dimension': dimension,
+      'medium': medium,
+    };
+  }
+
+  Artwork copyWith({
+    int? id,
+    String? name,
+    String? description,
+    int? dateMonth,
+    int? dateYear,
+    String? dimension,
+    String? medium,
+    DateTime? createdAt,
+    List<ArtworkImage>? images,
+  }) {
+    return Artwork(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      description: description ?? this.description,
+      dateMonth: dateMonth ?? this.dateMonth,
+      dateYear: dateYear ?? this.dateYear,
+      dimension: dimension ?? this.dimension,
+      medium: medium ?? this.medium,
+      createdAt: createdAt ?? this.createdAt,
+      images: images ?? this.images,
+    );
+  }
+
+  ArtworkImage? get mainImage {
+    try {
+      return images.firstWhere((img) => img.tag == ImageTag.main);
+    } catch (_) {
+      return images.isNotEmpty ? images.first : null;
+    }
+  }
+
+  String get dateDisplay {
+    if (dateMonth != null && dateYear != null) {
+      return '$dateMonth/$dateYear';
+    } else if (dateYear != null) {
+      return '$dateYear';
+    }
+    return '';
+  }
+}
