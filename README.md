@@ -19,7 +19,7 @@ A cross-platform mobile application for visual artists to catalogue and archive 
 - **Search & Filter**: Find artworks by name, medium, year
 - **Sort Options**: Sort by name, date, or creation time
 - **19 Languages**: Full internationalization with system language detection
-- **Cross-Platform**: Works on iOS, Android, and Web
+- **Cross-Platform**: Works on iOS, Android, macOS, Linux, and Windows
 - **Guided Setup Wizard**: No manual configuration needed!
 
 ## Supported Languages
@@ -100,7 +100,9 @@ flutter run
 # Build for release
 flutter build apk      # Android
 flutter build ios      # iOS
-flutter build web      # Web
+flutter build macos    # macOS
+flutter build linux    # Linux
+flutter build windows  # Windows
 ```
 
 ## Project Structure
