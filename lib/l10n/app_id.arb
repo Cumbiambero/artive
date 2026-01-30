@@ -137,5 +137,24 @@
   "setupStartUsing": "Mulai Menggunakan Artive",
   "openInBrowser": "Buka di Browser",
   "couldNotOpenBrowser": "Tidak dapat membuka browser secara otomatis. Silakan salin URL ini dan buka secara manual:",
-  "urlCopied": "URL disalin ke clipboard"
+  "urlCopied": "URL disalin ke clipboard",
+  "backupRestore": "Pencadangan dan pemulihan",
+  "backupRestoreSubtitle": "Ekspor atau impor data Anda",
+  "createBackup": "Buat cadangan",
+  "createBackupDescription": "Ekspor semua karya seni dan gambar Anda ke file ZIP yang dapat Anda simpan atau bagikan.",
+  "restoreBackup": "Pulihkan cadangan",
+  "restoreBackupDescription": "Impor karya seni dan gambar dari file cadangan yang dibuat sebelumnya.",
+  "restoreBackupConfirm": "Bagaimana Anda ingin memulihkan cadangan?",
+  "restoreMerge": "Gabungkan dengan yang ada",
+  "restoreReplace": "Ganti semua",
+  "backupCreated": "Cadangan berhasil dibuat",
+  "restoreComplete": "{count} karya seni dipulihkan",
+  "@restoreComplete": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "backupNote": "Cadangan mencakup semua data karya seni dan gambar. Simpan dengan aman!"
 }

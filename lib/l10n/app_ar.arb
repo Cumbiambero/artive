@@ -137,5 +137,24 @@
   "setupStartUsing": "ابدأ استخدام Artive",
   "openInBrowser": "فتح في المتصفح",
   "couldNotOpenBrowser": "تعذر فتح المتصفح تلقائياً. يرجى نسخ هذا الرابط وفتحه يدوياً:",
-  "urlCopied": "تم نسخ الرابط إلى الحافظة"
+  "urlCopied": "تم نسخ الرابط إلى الحافظة",
+  "backupRestore": "النسخ الاحتياطي والاستعادة",
+  "backupRestoreSubtitle": "تصدير أو استيراد بياناتك",
+  "createBackup": "إنشاء نسخة احتياطية",
+  "createBackupDescription": "قم بتصدير جميع أعمالك الفنية والصور إلى ملف ZIP يمكنك حفظه أو مشاركته.",
+  "restoreBackup": "استعادة النسخة الاحتياطية",
+  "restoreBackupDescription": "قم باستيراد الأعمال الفنية والصور من ملف نسخة احتياطية تم إنشاؤه مسبقًا.",
+  "restoreBackupConfirm": "كيف تريد استعادة النسخة الاحتياطية؟",
+  "restoreMerge": "دمج مع الموجودة",
+  "restoreReplace": "استبدال الكل",
+  "backupCreated": "تم إنشاء النسخة الاحتياطية بنجاح",
+  "restoreComplete": "تم استعادة {count} عمل فني",
+  "@restoreComplete": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "backupNote": "تتضمن النسخ الاحتياطية جميع بيانات الأعمال الفنية والصور. احفظها بأمان!"
 }

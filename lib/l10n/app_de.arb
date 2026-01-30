@@ -137,5 +137,24 @@
   "setupStartUsing": "Artive verwenden",
   "openInBrowser": "Im Browser öffnen",
   "couldNotOpenBrowser": "Browser konnte nicht automatisch geöffnet werden. Bitte kopieren Sie diese URL und öffnen Sie sie manuell:",
-  "urlCopied": "URL in die Zwischenablage kopiert"
+  "urlCopied": "URL in die Zwischenablage kopiert",
+  "backupRestore": "Sicherung und Wiederherstellung",
+  "backupRestoreSubtitle": "Daten exportieren oder importieren",
+  "createBackup": "Sicherung erstellen",
+  "createBackupDescription": "Exportieren Sie alle Ihre Kunstwerke und Bilder in eine ZIP-Datei, die Sie speichern oder teilen können.",
+  "restoreBackup": "Sicherung wiederherstellen",
+  "restoreBackupDescription": "Importieren Sie Kunstwerke und Bilder aus einer zuvor erstellten Sicherungsdatei.",
+  "restoreBackupConfirm": "Wie möchten Sie die Sicherung wiederherstellen?",
+  "restoreMerge": "Mit vorhandenen zusammenführen",
+  "restoreReplace": "Alles ersetzen",
+  "backupCreated": "Sicherung erfolgreich erstellt",
+  "restoreComplete": "{count} Kunstwerke wiederhergestellt",
+  "@restoreComplete": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "backupNote": "Sicherungen enthalten alle Kunstwerk-Daten und Bilder. Bewahren Sie sie sicher auf!"
 }

@@ -137,5 +137,24 @@
   "setupStartUsing": "Begin Artive te Gebruiken",
   "openInBrowser": "Openen in Browser",
   "couldNotOpenBrowser": "Kon browser niet automatisch openen. Kopieer deze URL en open handmatig:",
-  "urlCopied": "URL gekopieerd naar klembord"
+  "urlCopied": "URL gekopieerd naar klembord",
+  "backupRestore": "Backup en herstel",
+  "backupRestoreSubtitle": "Exporteer of importeer je gegevens",
+  "createBackup": "Backup maken",
+  "createBackupDescription": "Exporteer al je kunstwerken en afbeeldingen naar een ZIP-bestand dat je kunt opslaan of delen.",
+  "restoreBackup": "Backup herstellen",
+  "restoreBackupDescription": "Importeer kunstwerken en afbeeldingen uit een eerder gemaakt backupbestand.",
+  "restoreBackupConfirm": "Hoe wil je de backup herstellen?",
+  "restoreMerge": "Samenvoegen met bestaande",
+  "restoreReplace": "Alles vervangen",
+  "backupCreated": "Backup succesvol gemaakt",
+  "restoreComplete": "{count} kunstwerken hersteld",
+  "@restoreComplete": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "backupNote": "Backups bevatten alle kunstwerkgegevens en afbeeldingen. Bewaar ze veilig!"
 }

@@ -137,5 +137,24 @@
   "setupStartUsing": "Zacznij używać Artive",
   "openInBrowser": "Otwórz w przeglądarce",
   "couldNotOpenBrowser": "Nie można automatycznie otworzyć przeglądarki. Skopiuj ten URL i otwórz ręcznie:",
-  "urlCopied": "URL skopiowany do schowka"
-}
+  "urlCopied": "URL skopiowany do schowka",
+  "backupRestore": "Kopia zapasowa i przywracanie",
+  "backupRestoreSubtitle": "Eksportuj lub importuj swoje dane",
+  "createBackup": "Utwórz kopię zapasową",
+  "createBackupDescription": "Wyeksportuj wszystkie swoje prace i obrazy do pliku ZIP, który możesz zapisać lub udostępnić.",
+  "restoreBackup": "Przywróć kopię zapasową",
+  "restoreBackupDescription": "Importuj prace i obrazy z wcześniej utworzonego pliku kopii zapasowej.",
+  "restoreBackupConfirm": "Jak chcesz przywrócić kopię zapasową?",
+  "restoreMerge": "Połącz z istniejącymi",
+  "restoreReplace": "Zastąp wszystko",
+  "backupCreated": "Kopia zapasowa utworzona pomyślnie",
+  "restoreComplete": "Przywrócono {count} prac",
+  "@restoreComplete": {
+      "placeholders": {
+        "count": {
+          "type": "int"
+        }
+      }
+    },
+    "backupNote": "Backups include all artwork data and images. Store them safely!"
+  }

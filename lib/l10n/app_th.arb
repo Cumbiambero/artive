@@ -137,5 +137,24 @@
   "setupStartUsing": "เริ่มใช้ Artive",
   "openInBrowser": "เปิดในเบราว์เซอร์",
   "couldNotOpenBrowser": "ไม่สามารถเปิดเบราว์เซอร์โดยอัตโนมัติ กรุณาคัดลอก URL นี้และเปิดด้วยตนเอง:",
-  "urlCopied": "คัดลอก URL ไปยังคลิปบอร์ดแล้ว"
+  "urlCopied": "คัดลอก URL ไปยังคลิปบอร์ดแล้ว",
+  "backupRestore": "สำรองข้อมูลและกู้คืน",
+  "backupRestoreSubtitle": "ส่งออกหรือนำเข้าข้อมูลของคุณ",
+  "createBackup": "สร้างข้อมูลสำรอง",
+  "createBackupDescription": "ส่งออกผลงานศิลปะและภาพทั้งหมดของคุณเป็นไฟล์ ZIP ที่คุณสามารถบันทึกหรือแชร์ได้",
+  "restoreBackup": "กู้คืนข้อมูลสำรอง",
+  "restoreBackupDescription": "นำเข้าผลงานศิลปะและภาพจากไฟล์สำรองที่สร้างไว้ก่อนหน้านี้",
+  "restoreBackupConfirm": "คุณต้องการกู้คืนข้อมูลสำรองอย่างไร?",
+  "restoreMerge": "ผสานกับข้อมูลที่มีอยู่",
+  "restoreReplace": "แทนที่ทั้งหมด",
+  "backupCreated": "สร้างข้อมูลสำรองสำเร็จ",
+  "restoreComplete": "กู้คืนผลงาน {count} ชิ้น",
+  "@restoreComplete": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "backupNote": "ข้อมูลสำรองรวมข้อมูลผลงานศิลปะและภาพทั้งหมด เก็บรักษาไว้อย่างปลอดภัย!"
 }

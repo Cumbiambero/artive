@@ -137,5 +137,24 @@
   "setupStartUsing": "Bắt đầu sử dụng Artive",
   "openInBrowser": "Mở trong trình duyệt",
   "couldNotOpenBrowser": "Không thể tự động mở trình duyệt. Vui lòng sao chép URL này và mở thủ công:",
-  "urlCopied": "Đã sao chép URL vào clipboard"
+  "urlCopied": "Đã sao chép URL vào clipboard",
+  "backupRestore": "Sao lưu và khôi phục",
+  "backupRestoreSubtitle": "Xuất hoặc nhập dữ liệu của bạn",
+  "createBackup": "Tạo bản sao lưu",
+  "createBackupDescription": "Xuất tất cả tác phẩm và hình ảnh của bạn thành tệp ZIP để lưu hoặc chia sẻ.",
+  "restoreBackup": "Khôi phục bản sao lưu",
+  "restoreBackupDescription": "Nhập tác phẩm và hình ảnh từ tệp sao lưu đã tạo trước đó.",
+  "restoreBackupConfirm": "Bạn muốn khôi phục bản sao lưu như thế nào?",
+  "restoreMerge": "Gộp với dữ liệu hiện tại",
+  "restoreReplace": "Thay thế tất cả",
+  "backupCreated": "Tạo bản sao lưu thành công",
+  "restoreComplete": "Đã khôi phục {count} tác phẩm",
+  "@restoreComplete": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "backupNote": "Bản sao lưu bao gồm tất cả dữ liệu tác phẩm và hình ảnh. Hãy lưu trữ chúng một cách an toàn!"
 }

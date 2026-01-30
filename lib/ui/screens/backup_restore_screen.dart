@@ -1,8 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:share_plus/share_plus.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/services/backup_service.dart';
 import '../../l10n/app_localizations.dart';
@@ -37,6 +35,20 @@ class _BackupRestoreScreenState extends State<BackupRestoreScreen> {
   }
 
   Future<void> _createBackup() async {
+    // Let user choose where to save the backup
+    final fileName = BackupService.getBackupFileName();
+    final outputPath = await FilePicker.platform.saveFile(
+      dialogTitle: 'Save Backup',
+      fileName: fileName,
+      type: FileType.custom,
+      allowedExtensions: ['zip'],
+    );
+
+    if (outputPath == null) {
+      // User cancelled
+      return;
+    }
+
     setState(() {
       _isProcessing = true;
       _status = '';
@@ -45,7 +57,9 @@ class _BackupRestoreScreenState extends State<BackupRestoreScreen> {
     });
 
     try {
-      final backupData = await _backupService.createBackup(
+      // Create backup directly to the chosen file (memory efficient)
+      await _backupService.createBackupToFile(
+        outputPath,
         onProgress: (status, progress) {
           if (mounted) {
             setState(() {
@@ -54,20 +68,6 @@ class _BackupRestoreScreenState extends State<BackupRestoreScreen> {
             });
           }
         },
-      );
-
-      // Save to temp file
-      final tempDir = await getTemporaryDirectory();
-      final fileName = BackupService.getBackupFileName();
-      final file = File('${tempDir.path}/$fileName');
-      await file.writeAsBytes(backupData);
-
-      if (!mounted) return;
-
-      // Share the file
-      await Share.shareXFiles(
-        [XFile(file.path)],
-        subject: 'Artive Backup',
       );
 
       if (mounted) {

@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:archive/archive.dart';
-import 'package:path/path.dart' as path;
+import 'package:archive/archive_io.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../models/models.dart';
 
@@ -12,8 +12,105 @@ class BackupService {
 
   BackupService(this._client, this._bucketName);
 
+  /// Creates a backup archive directly to a file path
+  /// Streams to disk for memory efficiency
+  Future<void> createBackupToFile(
+    String outputPath, {
+    void Function(String status, double progress)? onProgress,
+  }) async {
+    // Ensure path ends with .zip
+    var finalPath = outputPath;
+    if (!finalPath.toLowerCase().endsWith('.zip')) {
+      finalPath = '$finalPath.zip';
+    }
+    
+    onProgress?.call('Loading artworks...', 0.0);
+
+    // Get all artworks with images
+    final response = await _client
+        .from('artworks')
+        .select('*, artwork_images(*)');
+    
+    final artworks = (response as List).map((e) => Artwork.fromJson(e)).toList();
+    
+    // Create manifest with artwork data
+    final manifest = {
+      'version': 1,
+      'created_at': DateTime.now().toIso8601String(),
+      'artworks': artworks.map((a) => _artworkToBackupJson(a)).toList(),
+    };
+    
+    final manifestJson = const JsonEncoder.withIndent('  ').convert(manifest);
+    final manifestBytes = utf8.encode(manifestJson);
+
+    // Create ZIP file encoder (streams to disk)
+    final encoder = ZipFileEncoder();
+    encoder.create(finalPath);
+    
+    // Add manifest
+    encoder.addArchiveFile(ArchiveFile(
+      'manifest.json',
+      manifestBytes.length,
+      manifestBytes,
+    ));
+
+    // Download and add images one by one (memory efficient)
+    int totalImages = artworks.fold(0, (sum, a) => sum + a.images.length);
+    int processedImages = 0;
+
+    for (final artwork in artworks) {
+      for (final image in artwork.images) {
+        try {
+          onProgress?.call(
+            'Processing image ${processedImages + 1}/$totalImages...',
+            0.1 + (processedImages / totalImages) * 0.85,
+          );
+
+          // Download original image
+          final imageBytes = await _client.storage
+              .from(_bucketName)
+              .download(image.storagePath);
+          
+          // Convert Uint8List to List<int> for archive compatibility
+          encoder.addArchiveFile(ArchiveFile(
+            'images/${image.storagePath}',
+            imageBytes.length,
+            imageBytes.toList(),
+          ));
+
+          // Download thumbnail if exists
+          if (image.thumbnailPath != null) {
+            try {
+              final thumbBytes = await _client.storage
+                  .from(_bucketName)
+                  .download(image.thumbnailPath!);
+              
+              encoder.addArchiveFile(ArchiveFile(
+                'images/${image.thumbnailPath}',
+                thumbBytes.length,
+                thumbBytes.toList(),
+              ));
+            } catch (_) {
+              // Thumbnail might not exist, continue
+            }
+          }
+        } catch (e) {
+          // Log error but continue with other images
+          print('Failed to download image ${image.storagePath}: $e');
+        }
+        processedImages++;
+      }
+    }
+
+    onProgress?.call('Finalizing backup...', 0.95);
+    encoder.close();
+
+    onProgress?.call('Backup complete!', 1.0);
+  }
+
   /// Creates a backup archive containing all artworks and images
   /// Returns the backup data as bytes (ZIP file)
+  /// @deprecated Use createBackupToFile for better memory efficiency
   Future<Uint8List> createBackup({
     void Function(String status, double progress)? onProgress,
   }) async {
@@ -36,11 +133,9 @@ class BackupService {
     };
     
     final manifestJson = const JsonEncoder.withIndent('  ').convert(manifest);
-    archive.addFile(ArchiveFile(
-      'manifest.json',
-      manifestJson.length,
-      utf8.encode(manifestJson),
-    ));
+    final manifestBytes = utf8.encode(manifestJson);
+    final manifestFile = ArchiveFile('manifest.json', manifestBytes.length, manifestBytes);
+    archive.addFile(manifestFile);
 
     // Download and add images
     int totalImages = artworks.fold(0, (sum, a) => sum + a.images.length);
@@ -60,7 +155,8 @@ class BackupService {
               .download(image.storagePath);
           
           final imagePath = 'images/${image.storagePath}';
-          archive.addFile(ArchiveFile(imagePath, imageBytes.length, imageBytes));
+          final imageFile = ArchiveFile(imagePath, imageBytes.length, imageBytes.toList());
+          archive.addFile(imageFile);
 
           // Download thumbnail if exists
           if (image.thumbnailPath != null) {
@@ -69,7 +165,8 @@ class BackupService {
                   .from(_bucketName)
                   .download(image.thumbnailPath!);
               final thumbPath = 'images/${image.thumbnailPath}';
-              archive.addFile(ArchiveFile(thumbPath, thumbBytes.length, thumbBytes));
+              final thumbFile = ArchiveFile(thumbPath, thumbBytes.length, thumbBytes.toList());
+              archive.addFile(thumbFile);
             } catch (_) {
               // Thumbnail might not exist, continue
             }

@@ -137,5 +137,24 @@
   "setupStartUsing": "Artiveを使い始める",
   "openInBrowser": "ブラウザで開く",
   "couldNotOpenBrowser": "ブラウザを自動で開けませんでした。このURLをコピーして手動で開いてください：",
-  "urlCopied": "URLをクリップボードにコピーしました"
+  "urlCopied": "URL をクリップボードにコピーしました",
+  "backupRestore": "バックアップと復元",
+  "backupRestoreSubtitle": "データをエクスポートまたはインポート",
+  "createBackup": "バックアップを作成",
+  "createBackupDescription": "すべての作品と画像をZIPファイルにエクスポートして、保存または共有できます。",
+  "restoreBackup": "バックアップを復元",
+  "restoreBackupDescription": "以前に作成したバックアップファイルから作品と画像をインポートします。",
+  "restoreBackupConfirm": "バックアップをどのように復元しますか？",
+  "restoreMerge": "既存のものと統合",
+  "restoreReplace": "すべて置き換え",
+  "backupCreated": "バックアップが正常に作成されました",
+  "restoreComplete": "{count}件の作品を復元しました",
+  "@restoreComplete": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "backupNote": "バックアップにはすべての作品データと画像が含まれます。安全に保管してください！"
 }

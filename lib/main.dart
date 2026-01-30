@@ -205,7 +205,7 @@ class _ArtiveAppState extends State<ArtiveApp> with WidgetsBindingObserver {
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
           ],
-          home: const HomeScreen(),
+          home: HomeScreen(bucketName: config.storage.bucketName),
         ),
       ),
     );

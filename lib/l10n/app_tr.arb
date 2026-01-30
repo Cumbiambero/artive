@@ -137,5 +137,24 @@
   "setupStartUsing": "Artive'i Kullanmaya Başla",
   "openInBrowser": "Tarayıcıda Aç",
   "couldNotOpenBrowser": "Tarayıcı otomatik açılamadı. Lütfen bu URL'yi kopyalayın ve manuel olarak açın:",
-  "urlCopied": "URL panoya kopyalandı"
+  "urlCopied": "URL panoya kopyalandı",
+  "backupRestore": "Yedekleme ve geri yükleme",
+  "backupRestoreSubtitle": "Verilerinizi dışa aktarın veya içe aktarın",
+  "createBackup": "Yedek oluştur",
+  "createBackupDescription": "Tüm eserlerinizi ve görsellerinizi kaydedebileceğiniz veya paylaşabileceğiniz bir ZIP dosyasına aktarın.",
+  "restoreBackup": "Yedeği geri yükle",
+  "restoreBackupDescription": "Daha önce oluşturulmuş bir yedekleme dosyasından eserlerinizi ve görsellerinizi içe aktarın.",
+  "restoreBackupConfirm": "Yedeği nasıl geri yüklemek istersiniz?",
+  "restoreMerge": "Mevcut olanlarla birleştir",
+  "restoreReplace": "Tümünü değiştir",
+  "backupCreated": "Yedek başarıyla oluşturuldu",
+  "restoreComplete": "{count} eser geri yüklendi",
+  "@restoreComplete": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "backupNote": "Yedeklemeler tüm eser verilerini ve görselleri içerir. Güvenli bir şekilde saklayın!"
 }

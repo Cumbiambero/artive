@@ -137,5 +137,24 @@
   "setupStartUsing": "Artive ব্যবহার শুরু করুন",
   "openInBrowser": "ব্রাউজারে খুলুন",
   "couldNotOpenBrowser": "স্বয়ংক্রিয়ভাবে ব্রাউজার খোলা যায়নি। অনুগ্রহ করে এই URL কপি করুন এবং ম্যানুয়ালি খুলুন:",
-  "urlCopied": "URL ক্লিপবোর্ডে কপি হয়েছে"
+  "urlCopied": "URL ক্লিপবোর্ডে কপি হয়েছে",
+  "backupRestore": "ব্যাকআপ এবং পুনরুদ্ধার",
+  "backupRestoreSubtitle": "আপনার ডেটা রপ্তানি করুন বা আমদানি করুন",
+  "createBackup": "ব্যাকআপ তৈরি করুন",
+  "createBackupDescription": "আপনার সমস্ত শিল্পকর্ম এবং ছবিগুলি একটি ZIP ফাইলে রপ্তানি করুন যা আপনি সংরক্ষণ বা শেয়ার করতে পারেন।",
+  "restoreBackup": "ব্যাকআপ পুনরুদ্ধার করুন",
+  "restoreBackupDescription": "পূর্বে তৈরি করা ব্যাকআপ ফাইল থেকে শিল্পকর্ম এবং ছবি আমদানি করুন।",
+  "restoreBackupConfirm": "আপনি কিভাবে ব্যাকআপ পুনরুদ্ধার করতে চান?",
+  "restoreMerge": "বিদ্যমান ডেটার সাথে মিশ্রিত করুন",
+  "restoreReplace": "সব প্রতিস্থাপন করুন",
+  "backupCreated": "ব্যাকআপ সফলভাবে তৈরি হয়েছে",
+  "restoreComplete": "{count}টি শিল্পকর্ম পুনরুদ্ধার করা হয়েছে",
+  "@restoreComplete": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "backupNote": "ব্যাকআপে সমস্ত শিল্পকর্মের ডেটা এবং ছবি অন্তর্ভুক্ত। সেগুলি নিরাপদে সংরক্ষণ করুন!"
 }

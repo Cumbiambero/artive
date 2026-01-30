@@ -9,7 +9,12 @@ import 'settings_screen.dart';
 import 'search_screen.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  final String bucketName;
+  
+  const HomeScreen({
+    super.key,
+    required this.bucketName,
+  });
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -45,10 +50,17 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           IconButton(
             icon: const Icon(Icons.settings),
-            onPressed: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (_) => const SettingsScreen()),
-            ),
+            onPressed: () async {
+              final result = await Navigator.push<bool>(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => SettingsScreen(bucketName: widget.bucketName),
+                ),
+              );
+              if (result == true && mounted) {
+                context.read<ArtworkProvider>().loadArtworks();
+              }
+            },
           ),
         ],
       ),

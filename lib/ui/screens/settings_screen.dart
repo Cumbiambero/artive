@@ -134,4 +134,21 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
     );
   }
+
+  Future<void> _openBackupRestore(BuildContext context) async {
+    final result = await Navigator.push<bool>(
+      context,
+      MaterialPageRoute(
+        builder: (context) => BackupRestoreScreen(
+          bucketName: widget.bucketName,
+        ),
+      ),
+    );
+    
+    // If data was restored, we might want to refresh the parent
+    if (result == true && mounted) {
+      // Pop back to home to refresh
+      Navigator.pop(context, true);
+    }
+  }
 }

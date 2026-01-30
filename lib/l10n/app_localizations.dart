@@ -1,9 +1,83 @@
 import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart' as intl;
 
+import 'app_localizations_ar.dart';
+import 'app_localizations_bn.dart';
+import 'app_localizations_de.dart';
+import 'app_localizations_en.dart';
+import 'app_localizations_es.dart';
+import 'app_localizations_fr.dart';
+import 'app_localizations_hi.dart';
+import 'app_localizations_id.dart';
+import 'app_localizations_it.dart';
+import 'app_localizations_ja.dart';
+import 'app_localizations_ko.dart';
+import 'app_localizations_nl.dart';
+import 'app_localizations_pl.dart';
+import 'app_localizations_pt.dart';
+import 'app_localizations_ru.dart';
+import 'app_localizations_th.dart';
+import 'app_localizations_tr.dart';
+import 'app_localizations_vi.dart';
+import 'app_localizations_zh.dart';
+
+// ignore_for_file: type=lint
+
+/// Callers can lookup localized strings with an instance of AppLocalizations
+/// returned by `AppLocalizations.of(context)`.
+///
+/// Applications need to include `AppLocalizations.delegate()` in their app's
+/// `localizationDelegates` list, and the locales they support in the app's
+/// `supportedLocales` list. For example:
+///
+/// ```dart
+/// import 'l10n/app_localizations.dart';
+///
+/// return MaterialApp(
+///   localizationsDelegates: AppLocalizations.localizationsDelegates,
+///   supportedLocales: AppLocalizations.supportedLocales,
+///   home: MyApplicationHome(),
+/// );
+/// ```
+///
+/// ## Update pubspec.yaml
+///
+/// Please make sure to update your pubspec.yaml to include the following
+/// packages:
+///
+/// ```yaml
+/// dependencies:
+///   # Internationalization support.
+///   flutter_localizations:
+///     sdk: flutter
+///   intl: any # Use the pinned version from flutter_localizations
+///
+///   # Rest of dependencies
+/// ```
+///
+/// ## iOS Applications
+///
+/// iOS applications define key application metadata, including supported
+/// locales, in an Info.plist file that is built into the application bundle.
+/// To configure the locales supported by your app, you’ll need to edit this
+/// file.
+///
+/// First, open your project’s ios/Runner.xcworkspace Xcode workspace file.
+/// Then, in the Project Navigator, open the Info.plist file under the Runner
+/// project’s Runner folder.
+///
+/// Next, select the Information Property List item, select Add Item from the
+/// Editor menu, then select Localizations from the pop-up menu.
+///
+/// Select and expand the newly-created Localizations item then, for each
+/// locale your application supports, add a new item and select the locale
+/// you wish to add from the pop-up menu in the Value field. This list should
+/// be consistent with the languages listed in the AppLocalizations.supportedLocales
+/// property.
 abstract class AppLocalizations {
   AppLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
@@ -15,6 +89,16 @@ abstract class AppLocalizations {
 
   static const LocalizationsDelegate<AppLocalizations> delegate = _AppLocalizationsDelegate();
 
+  /// A list of this localizations delegate along with the default localizations
+  /// delegates.
+  ///
+  /// Returns a list of localizations delegates containing this delegate along with
+  /// GlobalMaterialLocalizations.delegate, GlobalCupertinoLocalizations.delegate,
+  /// and GlobalWidgetsLocalizations.delegate.
+  ///
+  /// Additional delegates can be added by appending to this list in
+  /// MaterialApp. This list does not have to be used at all if a custom list
+  /// of delegates is preferred or required.
   static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
     delegate,
     GlobalMaterialLocalizations.delegate,
@@ -22,170 +106,928 @@ abstract class AppLocalizations {
     GlobalWidgetsLocalizations.delegate,
   ];
 
+  /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
-    Locale('en'),
-    Locale('es'),
-    Locale('zh'),
-    Locale('hi'),
-    Locale('fr'),
     Locale('ar'),
     Locale('bn'),
+    Locale('de'),
+    Locale('en'),
+    Locale('es'),
+    Locale('fr'),
+    Locale('hi'),
+    Locale('id'),
+    Locale('it'),
+    Locale('ja'),
+    Locale('ko'),
+    Locale('nl'),
+    Locale('pl'),
     Locale('pt'),
     Locale('ru'),
-    Locale('ja'),
-    Locale('de'),
-    Locale('ko'),
-    Locale('vi'),
-    Locale('tr'),
-    Locale('it'),
     Locale('th'),
-    Locale('pl'),
-    Locale('nl'),
-    Locale('id'),
+    Locale('tr'),
+    Locale('vi'),
+    Locale('zh')
   ];
 
+  /// No description provided for @appTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Artive'**
   String get appTitle;
+
+  /// No description provided for @artworks.
+  ///
+  /// In en, this message translates to:
+  /// **'Artworks'**
   String get artworks;
+
+  /// No description provided for @addArtwork.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Artwork'**
   String get addArtwork;
+
+  /// No description provided for @editArtwork.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Artwork'**
   String get editArtwork;
+
+  /// No description provided for @deleteArtwork.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Artwork'**
   String get deleteArtwork;
+
+  /// No description provided for @name.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
   String get name;
+
+  /// No description provided for @description.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
   String get description;
+
+  /// No description provided for @descriptionOptional.
+  ///
+  /// In en, this message translates to:
+  /// **'Description (optional)'**
   String get descriptionOptional;
+
+  /// No description provided for @date.
+  ///
+  /// In en, this message translates to:
+  /// **'Created at'**
   String get date;
+
+  /// No description provided for @month.
+  ///
+  /// In en, this message translates to:
+  /// **'Month'**
   String get month;
+
+  /// No description provided for @year.
+  ///
+  /// In en, this message translates to:
+  /// **'Year'**
   String get year;
+
+  /// No description provided for @dimension.
+  ///
+  /// In en, this message translates to:
+  /// **'Dimension'**
   String get dimension;
+
+  /// No description provided for @dimensionHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g., 50x70 cm'**
   String get dimensionHint;
+
+  /// No description provided for @medium.
+  ///
+  /// In en, this message translates to:
+  /// **'Medium'**
   String get medium;
+
+  /// No description provided for @mediumHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g., Oil on canvas'**
   String get mediumHint;
+
+  /// No description provided for @images.
+  ///
+  /// In en, this message translates to:
+  /// **'Images'**
   String get images;
+
+  /// No description provided for @addImage.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Image'**
   String get addImage;
+
+  /// No description provided for @photo.
+  ///
+  /// In en, this message translates to:
+  /// **'Photo'**
   String get photo;
+
+  /// No description provided for @reference.
+  ///
+  /// In en, this message translates to:
+  /// **'Reference'**
   String get reference;
+
+  /// No description provided for @scan.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan'**
   String get scan;
+
+  /// No description provided for @save.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
   String get save;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
   String get cancel;
+
+  /// No description provided for @delete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
   String get delete;
+
+  /// No description provided for @confirmDelete.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete this artwork?'**
   String get confirmDelete;
+
+  /// No description provided for @confirmDeleteImage.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete this image?'**
   String get confirmDeleteImage;
+
+  /// No description provided for @yes.
+  ///
+  /// In en, this message translates to:
+  /// **'Yes'**
   String get yes;
+
+  /// No description provided for @no.
+  ///
+  /// In en, this message translates to:
+  /// **'No'**
   String get no;
+
+  /// No description provided for @settings.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
   String get settings;
+
+  /// No description provided for @language.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
   String get language;
+
+  /// No description provided for @about.
+  ///
+  /// In en, this message translates to:
+  /// **'About'**
   String get about;
+
+  /// No description provided for @version.
+  ///
+  /// In en, this message translates to:
+  /// **'Version'**
   String get version;
+
+  /// No description provided for @search.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
   String get search;
-  String get noArtworks;
-  String get noArtworksHint;
-  String get loading;
-  String get error;
-  String get retry;
-  String get uploadingImage;
-  String get imageUploaded;
-  String get imageFailed;
-  String get artworkSaved;
-  String get artworkDeleted;
-  String get requiredField;
-  String get invalidYear;
-  String get invalidMonth;
-  String get selectImageTag;
-  String get gallery;
-  String get camera;
-  String get selectSource;
-  String get id;
-  String get createdAt;
-  String get filterByMedium;
-  String get filterByYear;
-  String get allMedia;
-  String get allYears;
-  String get sortBy;
-  String get sortByName;
-  String get sortByDate;
-  String get sortByCreated;
-  String get ascending;
-  String get descending;
+
+  /// No description provided for @searchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Exact match search'**
   String get searchHint;
+
+  /// No description provided for @noArtworks.
+  ///
+  /// In en, this message translates to:
+  /// **'No artworks yet'**
+  String get noArtworks;
+
+  /// No description provided for @noArtworksHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap + to add your first artwork'**
+  String get noArtworksHint;
+
+  /// No description provided for @loading.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading...'**
+  String get loading;
+
+  /// No description provided for @error.
+  ///
+  /// In en, this message translates to:
+  /// **'Error'**
+  String get error;
+
+  /// No description provided for @retry.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get retry;
+
+  /// No description provided for @uploadingImage.
+  ///
+  /// In en, this message translates to:
+  /// **'Uploading image...'**
+  String get uploadingImage;
+
+  /// No description provided for @imageUploaded.
+  ///
+  /// In en, this message translates to:
+  /// **'Image uploaded'**
+  String get imageUploaded;
+
+  /// No description provided for @imageFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Image upload failed'**
+  String get imageFailed;
+
+  /// No description provided for @artworkSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Artwork saved'**
+  String get artworkSaved;
+
+  /// No description provided for @artworkDeleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Artwork deleted'**
+  String get artworkDeleted;
+
+  /// No description provided for @requiredField.
+  ///
+  /// In en, this message translates to:
+  /// **'This field is required'**
+  String get requiredField;
+
+  /// No description provided for @invalidYear.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a valid year'**
+  String get invalidYear;
+
+  /// No description provided for @invalidMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a month between 1 and 12'**
+  String get invalidMonth;
+
+  /// No description provided for @selectImageTag.
+  ///
+  /// In en, this message translates to:
+  /// **'Select image type'**
+  String get selectImageTag;
+
+  /// No description provided for @gallery.
+  ///
+  /// In en, this message translates to:
+  /// **'Gallery'**
+  String get gallery;
+
+  /// No description provided for @camera.
+  ///
+  /// In en, this message translates to:
+  /// **'Camera'**
+  String get camera;
+
+  /// No description provided for @selectSource.
+  ///
+  /// In en, this message translates to:
+  /// **'Select image source'**
+  String get selectSource;
+
+  /// No description provided for @id.
+  ///
+  /// In en, this message translates to:
+  /// **'ID'**
+  String get id;
+
+  /// No description provided for @createdAt.
+  ///
+  /// In en, this message translates to:
+  /// **'Uploaded at'**
+  String get createdAt;
+
+  /// No description provided for @filterByMedium.
+  ///
+  /// In en, this message translates to:
+  /// **'Filter by medium'**
+  String get filterByMedium;
+
+  /// No description provided for @filterByYear.
+  ///
+  /// In en, this message translates to:
+  /// **'Filter by year'**
+  String get filterByYear;
+
+  /// No description provided for @allMedia.
+  ///
+  /// In en, this message translates to:
+  /// **'All media'**
+  String get allMedia;
+
+  /// No description provided for @allYears.
+  ///
+  /// In en, this message translates to:
+  /// **'All years'**
+  String get allYears;
+
+  /// No description provided for @sortBy.
+  ///
+  /// In en, this message translates to:
+  /// **'Sort by'**
+  String get sortBy;
+
+  /// No description provided for @sortByName.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get sortByName;
+
+  /// No description provided for @sortByDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get sortByDate;
+
+  /// No description provided for @sortByCreated.
+  ///
+  /// In en, this message translates to:
+  /// **'Created'**
+  String get sortByCreated;
+
+  /// No description provided for @ascending.
+  ///
+  /// In en, this message translates to:
+  /// **'Ascending'**
+  String get ascending;
+
+  /// No description provided for @descending.
+  ///
+  /// In en, this message translates to:
+  /// **'Descending'**
+  String get descending;
+
+  /// No description provided for @back.
+  ///
+  /// In en, this message translates to:
+  /// **'Back'**
   String get back;
+
+  /// No description provided for @close.
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
   String get close;
+
+  /// No description provided for @copy.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy'**
   String get copy;
+
+  /// No description provided for @skip.
+  ///
+  /// In en, this message translates to:
+  /// **'Skip'**
   String get skip;
+
+  /// No description provided for @done.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
   String get done;
+
+  /// No description provided for @reset.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset'**
   String get reset;
+
+  /// No description provided for @cloudConnection.
+  ///
+  /// In en, this message translates to:
+  /// **'Cloud Connection'**
   String get cloudConnection;
+
+  /// No description provided for @cloudConnectionSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reconfigure Supabase connection'**
   String get cloudConnectionSubtitle;
+
+  /// No description provided for @resetCloudConnection.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset Cloud Connection'**
   String get resetCloudConnection;
+
+  /// No description provided for @resetCloudConnectionMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'This will disconnect the app from your Supabase project. You will need to run the setup wizard again.\n\nYour data in Supabase will NOT be deleted.'**
   String get resetCloudConnectionMessage;
+
+  /// No description provided for @restartToReconfigure.
+  ///
+  /// In en, this message translates to:
+  /// **'Please restart the app to reconfigure'**
   String get restartToReconfigure;
+
+  /// No description provided for @databasePaused.
+  ///
+  /// In en, this message translates to:
+  /// **'Database Paused'**
   String get databasePaused;
+
+  /// No description provided for @databasePausedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Supabase project is paused due to inactivity.\n\nTo restore:\n1. Go to supabase.com/dashboard\n2. Select your project\n3. Click \"Restore project\"\n\nThis takes about 1 minute.'**
   String get databasePausedMessage;
+
+  /// No description provided for @setupTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Artive Setup'**
   String get setupTitle;
+
+  /// No description provided for @setupWelcome.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to Artive!'**
   String get setupWelcome;
+
+  /// No description provided for @setupWelcomeDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'This wizard will help you set up cloud storage for your artwork catalogue.\n\nYour artworks and images will be stored securely in Supabase, a free cloud platform.\n\nThe setup takes about 5 minutes.'**
   String get setupWelcomeDescription;
+
+  /// No description provided for @setupWhatIsSupabase.
+  ///
+  /// In en, this message translates to:
+  /// **'What is Supabase?'**
   String get setupWhatIsSupabase;
+
+  /// No description provided for @setupWhatIsSupabaseContent.
+  ///
+  /// In en, this message translates to:
+  /// **'Supabase is a free, open-source backend service. It provides a database and file storage for your app.'**
   String get setupWhatIsSupabaseContent;
+
+  /// No description provided for @setupYourData.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Data, Your Control'**
   String get setupYourData;
+
+  /// No description provided for @setupYourDataContent.
+  ///
+  /// In en, this message translates to:
+  /// **'You create your own Supabase account. Your data belongs to you and only you have access.'**
   String get setupYourDataContent;
+
+  /// No description provided for @setupGetStarted.
+  ///
+  /// In en, this message translates to:
+  /// **'Get Started'**
   String get setupGetStarted;
+
+  /// No description provided for @setupStep1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Step 1: Create a Supabase Project'**
   String get setupStep1Title;
+
+  /// No description provided for @setupStep1_1.
+  ///
+  /// In en, this message translates to:
+  /// **'Go to supabase.com and create a free account'**
   String get setupStep1_1;
+
+  /// No description provided for @setupOpenSupabase.
+  ///
+  /// In en, this message translates to:
+  /// **'Open Supabase'**
   String get setupOpenSupabase;
+
+  /// No description provided for @setupStep1_2.
+  ///
+  /// In en, this message translates to:
+  /// **'Click \"New Project\" in the dashboard'**
   String get setupStep1_2;
+
+  /// No description provided for @setupStep1_3.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a name for your project (e.g., \"artive\")'**
   String get setupStep1_3;
+
+  /// No description provided for @setupStep1_4.
+  ///
+  /// In en, this message translates to:
+  /// **'Set a secure database password (save it somewhere safe!)'**
   String get setupStep1_4;
+
+  /// No description provided for @setupStep1_5.
+  ///
+  /// In en, this message translates to:
+  /// **'Select a region close to you'**
   String get setupStep1_5;
+
+  /// No description provided for @setupStep1_6.
+  ///
+  /// In en, this message translates to:
+  /// **'Click \"Create new project\" and wait for it to be ready'**
   String get setupStep1_6;
+
+  /// No description provided for @setupFreeTier.
+  ///
+  /// In en, this message translates to:
+  /// **'Free Tier'**
   String get setupFreeTier;
+
+  /// No description provided for @setupFreeTierContent.
+  ///
+  /// In en, this message translates to:
+  /// **'Supabase free tier includes 500MB database and 1GB file storage - plenty for thousands of artworks!'**
   String get setupFreeTierContent;
+
+  /// No description provided for @setupProjectCreated.
+  ///
+  /// In en, this message translates to:
+  /// **'Project Created'**
   String get setupProjectCreated;
+
+  /// No description provided for @setupStep2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Step 2: Get Your Credentials'**
   String get setupStep2Title;
+
+  /// No description provided for @setupStep2_1.
+  ///
+  /// In en, this message translates to:
+  /// **'In your Supabase project, go to \"Project Settings\" (gear icon)'**
   String get setupStep2_1;
+
+  /// No description provided for @setupStep2_2.
+  ///
+  /// In en, this message translates to:
+  /// **'Click on \"Data API\" in the settings menu'**
   String get setupStep2_2;
+
+  /// No description provided for @setupStep2_3.
+  ///
+  /// In en, this message translates to:
+  /// **'Find \"Project URL\" - looks like: https://xxxxx.supabase.co'**
   String get setupStep2_3;
+
+  /// No description provided for @setupStep2_4.
+  ///
+  /// In en, this message translates to:
+  /// **'Find the \"anon\" key under \"Project API keys\"'**
   String get setupStep2_4;
+
+  /// No description provided for @setupAboutApiKeys.
+  ///
+  /// In en, this message translates to:
+  /// **'About API Keys'**
   String get setupAboutApiKeys;
+
+  /// No description provided for @setupAboutApiKeysContent.
+  ///
+  /// In en, this message translates to:
+  /// **'The anon key is safe for apps. It works with Row Level Security policies.'**
   String get setupAboutApiKeysContent;
+
+  /// No description provided for @setupCredentialsTip.
+  ///
+  /// In en, this message translates to:
+  /// **'Tip: You can click the copy button next to each value in Supabase to copy it to clipboard.'**
   String get setupCredentialsTip;
+
+  /// No description provided for @setupIHaveCredentials.
+  ///
+  /// In en, this message translates to:
+  /// **'I Have My Credentials'**
   String get setupIHaveCredentials;
+
+  /// No description provided for @setupStep3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Step 3: Enter Your Credentials'**
   String get setupStep3Title;
+
+  /// No description provided for @setupProjectUrl.
+  ///
+  /// In en, this message translates to:
+  /// **'Project URL'**
   String get setupProjectUrl;
+
+  /// No description provided for @setupAnonKey.
+  ///
+  /// In en, this message translates to:
+  /// **'Anon Key'**
   String get setupAnonKey;
+
+  /// No description provided for @setupValidateAndContinue.
+  ///
+  /// In en, this message translates to:
+  /// **'Validate & Continue'**
   String get setupValidateAndContinue;
+
+  /// No description provided for @setupStep4Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Step 4: Database Setup'**
   String get setupStep4Title;
+
+  /// No description provided for @setupManualSetupRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Manual Setup Required'**
   String get setupManualSetupRequired;
+
+  /// No description provided for @setupDatabaseManualContent.
+  ///
+  /// In en, this message translates to:
+  /// **'The database tables need to be created manually. This is a one-time setup.'**
   String get setupDatabaseManualContent;
+
+  /// No description provided for @setupStep4_1.
+  ///
+  /// In en, this message translates to:
+  /// **'In Supabase, go to \"SQL Editor\" in the sidebar'**
   String get setupStep4_1;
+
+  /// No description provided for @setupStep4_2.
+  ///
+  /// In en, this message translates to:
+  /// **'Click \"New query\"'**
   String get setupStep4_2;
+
+  /// No description provided for @setupStep4_3.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy and paste the following SQL:'**
   String get setupStep4_3;
+
+  /// No description provided for @setupStep4_4.
+  ///
+  /// In en, this message translates to:
+  /// **'Click \"Run\" to execute the query'**
   String get setupStep4_4;
+
+  /// No description provided for @setupStep4_5.
+  ///
+  /// In en, this message translates to:
+  /// **'You should see \"Success. No rows returned\"'**
   String get setupStep4_5;
+
+  /// No description provided for @setupSqlCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'SQL copied to clipboard'**
   String get setupSqlCopied;
+
+  /// No description provided for @setupCheckingDatabase.
+  ///
+  /// In en, this message translates to:
+  /// **'Checking database...'**
   String get setupCheckingDatabase;
+
+  /// No description provided for @setupIveRunSql.
+  ///
+  /// In en, this message translates to:
+  /// **'I\'ve Run the SQL'**
   String get setupIveRunSql;
+
+  /// No description provided for @setupCheckDatabase.
+  ///
+  /// In en, this message translates to:
+  /// **'Check Database'**
   String get setupCheckDatabase;
+
+  /// No description provided for @setupStep5Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Step 5: Storage Setup'**
   String get setupStep5Title;
+
+  /// No description provided for @setupStorageManualContent.
+  ///
+  /// In en, this message translates to:
+  /// **'Create the storage bucket for your artwork images.'**
   String get setupStorageManualContent;
+
+  /// No description provided for @setupStep5_1.
+  ///
+  /// In en, this message translates to:
+  /// **'In Supabase, go to \"Storage\" in the sidebar'**
   String get setupStep5_1;
+
+  /// No description provided for @setupStep5_2.
+  ///
+  /// In en, this message translates to:
+  /// **'Click \"New bucket\"'**
   String get setupStep5_2;
+
+  /// No description provided for @setupStep5_3.
+  ///
+  /// In en, this message translates to:
+  /// **'Name it exactly: artworks'**
   String get setupStep5_3;
+
+  /// No description provided for @setupStep5_4.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave \"Public bucket\" OFF (recommended)'**
   String get setupStep5_4;
+
+  /// No description provided for @setupStep5_5.
+  ///
+  /// In en, this message translates to:
+  /// **'Click \"Create bucket\"'**
   String get setupStep5_5;
+
+  /// No description provided for @setupAddStoragePolicy.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Storage Policy'**
   String get setupAddStoragePolicy;
+
+  /// No description provided for @setupAddStoragePolicyContent.
+  ///
+  /// In en, this message translates to:
+  /// **'Click bucket → Policies → New Policy → \"For full customization\" → Name: allow_all → Check all operations → Save.'**
   String get setupAddStoragePolicyContent;
+
+  /// No description provided for @setupSettingUpStorage.
+  ///
+  /// In en, this message translates to:
+  /// **'Setting up storage...'**
   String get setupSettingUpStorage;
+
+  /// No description provided for @setupSetupStorage.
+  ///
+  /// In en, this message translates to:
+  /// **'Setup Storage'**
   String get setupSetupStorage;
+
+  /// No description provided for @setupComplete.
+  ///
+  /// In en, this message translates to:
+  /// **'Setup Complete!'**
   String get setupComplete;
+
+  /// No description provided for @setupCompleteDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Artive is now connected to your Supabase project.\n\nYou can start adding your artworks!'**
   String get setupCompleteDescription;
+
+  /// No description provided for @setupQuickTips.
+  ///
+  /// In en, this message translates to:
+  /// **'Quick Tips'**
   String get setupQuickTips;
+
+  /// No description provided for @setupQuickTipsContent.
+  ///
+  /// In en, this message translates to:
+  /// **'• Tap the + button to add your first artwork\n• Add multiple images with different tags (main, reference, scan)\n• Use search and filters to find artworks quickly\n• Change language in Settings'**
   String get setupQuickTipsContent;
+
+  /// No description provided for @setupStartUsing.
+  ///
+  /// In en, this message translates to:
+  /// **'Start Using Artive'**
   String get setupStartUsing;
+
+  /// No description provided for @openInBrowser.
+  ///
+  /// In en, this message translates to:
+  /// **'Open in Browser'**
   String get openInBrowser;
+
+  /// No description provided for @couldNotOpenBrowser.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not open browser automatically. Please copy this URL and open it manually:'**
   String get couldNotOpenBrowser;
+
+  /// No description provided for @urlCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'URL copied to clipboard'**
   String get urlCopied;
-  String get configurationSaved;
-  String get testConnection;
-  String get connectionSuccess;
-  String get connectionFailed;
+
+  /// No description provided for @backupRestore.
+  ///
+  /// In en, this message translates to:
+  /// **'Backup & Restore'**
+  String get backupRestore;
+
+  /// No description provided for @backupRestoreSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Export or import your data'**
+  String get backupRestoreSubtitle;
+
+  /// No description provided for @createBackup.
+  ///
+  /// In en, this message translates to:
+  /// **'Create Backup'**
+  String get createBackup;
+
+  /// No description provided for @createBackupDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Export all your artworks and images to a ZIP file that you can save or share.'**
+  String get createBackupDescription;
+
+  /// No description provided for @restoreBackup.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore Backup'**
+  String get restoreBackup;
+
+  /// No description provided for @restoreBackupDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Import artworks and images from a previously created backup file.'**
+  String get restoreBackupDescription;
+
+  /// No description provided for @restoreBackupConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'How would you like to restore the backup?'**
+  String get restoreBackupConfirm;
+
+  /// No description provided for @restoreMerge.
+  ///
+  /// In en, this message translates to:
+  /// **'Merge with existing'**
+  String get restoreMerge;
+
+  /// No description provided for @restoreReplace.
+  ///
+  /// In en, this message translates to:
+  /// **'Replace all'**
+  String get restoreReplace;
+
+  /// No description provided for @backupCreated.
+  ///
+  /// In en, this message translates to:
+  /// **'Backup created successfully'**
+  String get backupCreated;
+
+  /// No description provided for @restoreComplete.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} artworks restored'**
+  String restoreComplete(int count);
+
+  /// No description provided for @backupNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Backups include all artwork data and images. Store them safely!'**
+  String get backupNote;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
@@ -197,20 +1039,21 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> 
   }
 
   @override
-  bool isSupported(Locale locale) => <String>[
-    'en', 'es', 'zh', 'hi', 'fr', 'ar', 'bn', 'pt', 'ru', 'ja',
-    'de', 'ko', 'vi', 'tr', 'it', 'th', 'pl', 'nl', 'id'
-  ].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['ar', 'bn', 'de', 'en', 'es', 'fr', 'hi', 'id', 'it', 'ja', 'ko', 'nl', 'pl', 'pt', 'ru', 'th', 'tr', 'vi', 'zh'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
 }
 
 AppLocalizations lookupAppLocalizations(Locale locale) {
+
+
+  // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
     case 'ar': return AppLocalizationsAr();
     case 'bn': return AppLocalizationsBn();
     case 'de': return AppLocalizationsDe();
+    case 'en': return AppLocalizationsEn();
     case 'es': return AppLocalizationsEs();
     case 'fr': return AppLocalizationsFr();
     case 'hi': return AppLocalizationsHi();
@@ -226,2781 +1069,12 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
     case 'tr': return AppLocalizationsTr();
     case 'vi': return AppLocalizationsVi();
     case 'zh': return AppLocalizationsZh();
-    case 'en':
-    default: return AppLocalizationsEn();
   }
-}
 
-class AppLocalizationsEn extends AppLocalizations {
-  AppLocalizationsEn() : super('en');
-  @override String get appTitle => 'Artive';
-  @override String get artworks => 'Artworks';
-  @override String get addArtwork => 'Add Artwork';
-  @override String get editArtwork => 'Edit Artwork';
-  @override String get deleteArtwork => 'Delete Artwork';
-  @override String get name => 'Name';
-  @override String get description => 'Description';
-  @override String get descriptionOptional => 'Description (optional)';
-  @override String get date => 'Created at';
-  @override String get month => 'Month';
-  @override String get year => 'Year';
-  @override String get dimension => 'Dimension';
-  @override String get dimensionHint => 'e.g., 50x70 cm';
-  @override String get medium => 'Medium';
-  @override String get mediumHint => 'e.g., Oil on canvas';
-  @override String get images => 'Images';
-  @override String get addImage => 'Add Image';
-  @override String get photo => 'Photo';
-  @override String get reference => 'Reference';
-  @override String get scan => 'Scan';
-  @override String get save => 'Save';
-  @override String get cancel => 'Cancel';
-  @override String get delete => 'Delete';
-  @override String get confirmDelete => 'Are you sure you want to delete this artwork?';
-  @override String get confirmDeleteImage => 'Are you sure you want to delete this image?';
-  @override String get yes => 'Yes';
-  @override String get no => 'No';
-  @override String get settings => 'Settings';
-  @override String get language => 'Language';
-  @override String get about => 'About';
-  @override String get version => 'Version';
-  @override String get search => 'Search';
-  @override String get noArtworks => 'No artworks yet';
-  @override String get noArtworksHint => 'Tap + to add your first artwork';
-  @override String get loading => 'Loading...';
-  @override String get error => 'Error';
-  @override String get retry => 'Retry';
-  @override String get uploadingImage => 'Uploading image...';
-  @override String get imageUploaded => 'Image uploaded';
-  @override String get imageFailed => 'Image upload failed';
-  @override String get artworkSaved => 'Artwork saved';
-  @override String get artworkDeleted => 'Artwork deleted';
-  @override String get requiredField => 'This field is required';
-  @override String get invalidYear => 'Please enter a valid year';
-  @override String get invalidMonth => 'Please enter a month between 1 and 12';
-  @override String get selectImageTag => 'Select image type';
-  @override String get gallery => 'Gallery';
-  @override String get camera => 'Camera';
-  @override String get selectSource => 'Select image source';
-  @override String get id => 'ID';
-  @override String get createdAt => 'Uploaded at';
-  @override String get filterByMedium => 'Filter by medium';
-  @override String get filterByYear => 'Filter by year';
-  @override String get allMedia => 'All media';
-  @override String get allYears => 'All years';
-  @override String get sortBy => 'Sort by';
-  @override String get sortByName => 'Name';
-  @override String get sortByDate => 'Date';
-  @override String get sortByCreated => 'Created';
-  @override String get ascending => 'Ascending';
-  @override String get descending => 'Descending';
-  @override String get searchHint => 'Exact match search';
-  @override String get back => 'Back';
-  @override String get close => 'Close';
-  @override String get copy => 'Copy';
-  @override String get skip => 'Skip';
-  @override String get done => 'Done';
-  @override String get reset => 'Reset';
-  @override String get cloudConnection => 'Cloud Connection';
-  @override String get cloudConnectionSubtitle => 'Configure Supabase to sync your artwork collection across devices';
-  @override String get resetCloudConnection => 'Reset Cloud Connection';
-  @override String get resetCloudConnectionMessage => 'This will remove your cloud connection settings. Your data will remain in Supabase but you\'ll need to reconfigure the connection.';
-  @override String get restartToReconfigure => 'Restart app to reconfigure';
-  @override String get databasePaused => 'Database Paused';
-  @override String get databasePausedMessage => 'Your Supabase project has been paused due to inactivity. Please visit your Supabase dashboard to restore it.';
-  @override String get setupTitle => 'Artive Setup';
-  @override String get setupWelcome => 'Welcome to Artive!';
-  @override String get setupWelcomeDescription => 'Your personal artwork collection manager. Before you start, let\'s set up your cloud storage with Supabase.';
-  @override String get setupWhatIsSupabase => 'What is Supabase?';
-  @override String get setupWhatIsSupabaseContent => 'Supabase is a free, open-source backend service that will securely store your artwork data and images in the cloud. Your data stays under your control.';
-  @override String get setupYourData => 'Your Data, Your Control';
-  @override String get setupYourDataContent => 'By using your own Supabase account, you maintain complete ownership and control over your artwork collection data.';
-  @override String get setupGetStarted => 'Let\'s Get Started';
-  @override String get setupStep1Title => 'Create Supabase Account';
-  @override String get setupStep1_1 => 'Click the button below to open Supabase';
-  @override String get setupOpenSupabase => 'Open Supabase';
-  @override String get setupStep1_2 => 'Sign up for a free account (or log in if you have one)';
-  @override String get setupStep1_3 => 'Click "New Project"';
-  @override String get setupStep1_4 => 'Choose a name (e.g., "artive")';
-  @override String get setupStep1_5 => 'Set a secure database password';
-  @override String get setupStep1_6 => 'Select your region and click "Create new project"';
-  @override String get setupFreeTier => 'Free Tier';
-  @override String get setupFreeTierContent => 'Supabase offers a generous free tier with 500MB database and 1GB file storage - plenty for most art collections!';
-  @override String get setupProjectCreated => 'I\'ve Created My Project';
-  @override String get setupStep2Title => 'Get API Credentials';
-  @override String get setupStep2_1 => 'In your Supabase project, go to Project Settings (gear icon)';
-  @override String get setupStep2_2 => 'Click on "API" in the left sidebar';
-  @override String get setupStep2_3 => 'Find and copy your Project URL';
-  @override String get setupStep2_4 => 'Find and copy your anon/public key';
-  @override String get setupAboutApiKeys => 'About API Keys';
-  @override String get setupAboutApiKeysContent => 'The anon key is safe to use in apps. It only allows access based on your security policies. Never share your service_role key.';
-  @override String get setupCredentialsTip => 'Tip: Keep this page open, you\'ll need these values in the next step';
-  @override String get setupIHaveCredentials => 'I Have My Credentials';
-  @override String get setupStep3Title => 'Enter Your Credentials';
-  @override String get setupProjectUrl => 'Project URL';
-  @override String get setupAnonKey => 'Anon Key';
-  @override String get setupValidateAndContinue => 'Validate & Continue';
-  @override String get setupStep4Title => 'Setup Database';
-  @override String get setupManualSetupRequired => 'Manual Setup Required';
-  @override String get setupDatabaseManualContent => 'For security, database tables need to be created manually. Don\'t worry - it\'s just copy and paste!';
-  @override String get setupStep4_1 => 'Click the button below to copy the SQL';
-  @override String get setupStep4_2 => 'In your Supabase dashboard, go to "SQL Editor"';
-  @override String get setupStep4_3 => 'Click "New query"';
-  @override String get setupStep4_4 => 'Paste the SQL and click "Run"';
-  @override String get setupStep4_5 => 'Wait for the success message';
-  @override String get setupSqlCopied => 'SQL copied to clipboard!';
-  @override String get setupCheckingDatabase => 'Checking database...';
-  @override String get setupIveRunSql => 'I\'ve Run the SQL';
-  @override String get setupCheckDatabase => 'Check Database';
-  @override String get setupStep5Title => 'Setup Storage';
-  @override String get setupStorageManualContent => 'One more step! We need to set up storage for your artwork images.';
-  @override String get setupStep5_1 => 'In your Supabase dashboard, go to "Storage" in the sidebar';
-  @override String get setupStep5_2 => 'Click "New bucket"';
-  @override String get setupStep5_3 => 'Name it exactly: artwork-images';
-  @override String get setupStep5_4 => 'Enable "Public bucket"';
-  @override String get setupStep5_5 => 'Click "Create bucket"';
-  @override String get setupAddStoragePolicy => 'Add Storage Policy';
-  @override String get setupAddStoragePolicyContent => 'Click the button below to copy the storage policy SQL, then run it in the SQL Editor just like before.';
-  @override String get setupSettingUpStorage => 'Setting up storage...';
-  @override String get setupSetupStorage => 'Check Storage Setup';
-  @override String get setupComplete => 'Setup Complete!';
-  @override String get setupCompleteDescription => 'Your Artive cloud storage is ready. Your artwork collection will now sync across all your devices.';
-  @override String get setupQuickTips => 'Quick Tips';
-  @override String get setupQuickTipsContent => '• Add your first artwork with the + button\n• Tap any artwork to view details\n• Your data syncs automatically';
-  @override String get setupStartUsing => 'Start Using Artive';
-  @override String get openInBrowser => 'Open in Browser';
-  @override String get couldNotOpenBrowser => 'Could not open browser';
-  @override String get urlCopied => 'URL copied to clipboard';
-  @override String get configurationSaved => 'Configuration saved';
-  @override String get testConnection => 'Test Connection';
-  @override String get connectionSuccess => 'Connection successful';
-  @override String get connectionFailed => 'Connection failed';
-}
-
-class AppLocalizationsEs extends AppLocalizations {
-  AppLocalizationsEs() : super('es');
-  @override String get appTitle => 'Artive';
-  @override String get artworks => 'Obras';
-  @override String get addArtwork => 'Añadir obra';
-  @override String get editArtwork => 'Editar obra';
-  @override String get deleteArtwork => 'Eliminar obra';
-  @override String get name => 'Nombre';
-  @override String get description => 'Descripción';
-  @override String get descriptionOptional => 'Descripción (opcional)';
-  @override String get date => 'Creado el';
-  @override String get month => 'Mes';
-  @override String get year => 'Año';
-  @override String get dimension => 'Dimensión';
-  @override String get dimensionHint => 'ej., 50x70 cm';
-  @override String get medium => 'Técnica';
-  @override String get mediumHint => 'ej., Óleo sobre lienzo';
-  @override String get images => 'Imágenes';
-  @override String get addImage => 'Añadir imagen';
-  @override String get photo => 'Foto';
-  @override String get reference => 'Referencia';
-  @override String get scan => 'Escaneo';
-  @override String get save => 'Guardar';
-  @override String get cancel => 'Cancelar';
-  @override String get delete => 'Eliminar';
-  @override String get confirmDelete => '¿Estás seguro de que quieres eliminar esta obra?';
-  @override String get confirmDeleteImage => '¿Estás seguro de que quieres eliminar esta imagen?';
-  @override String get yes => 'Sí';
-  @override String get no => 'No';
-  @override String get settings => 'Ajustes';
-  @override String get language => 'Idioma';
-  @override String get about => 'Acerca de';
-  @override String get version => 'Versión';
-  @override String get search => 'Buscar';
-  @override String get noArtworks => 'No hay obras todavía';
-  @override String get noArtworksHint => 'Toca + para añadir tu primera obra';
-  @override String get loading => 'Cargando...';
-  @override String get error => 'Error';
-  @override String get retry => 'Reintentar';
-  @override String get uploadingImage => 'Subiendo imagen...';
-  @override String get imageUploaded => 'Imagen subida';
-  @override String get imageFailed => 'Error al subir imagen';
-  @override String get artworkSaved => 'Obra guardada';
-  @override String get artworkDeleted => 'Obra eliminada';
-  @override String get requiredField => 'Este campo es obligatorio';
-  @override String get invalidYear => 'Por favor introduce un año válido';
-  @override String get invalidMonth => 'Por favor introduce un mes entre 1 y 12';
-  @override String get selectImageTag => 'Selecciona tipo de imagen';
-  @override String get gallery => 'Galería';
-  @override String get camera => 'Cámara';
-  @override String get selectSource => 'Selecciona origen de imagen';
-  @override String get id => 'ID';
-  @override String get createdAt => 'Subido el';
-  @override String get filterByMedium => 'Filtrar por técnica';
-  @override String get filterByYear => 'Filtrar por año';
-  @override String get allMedia => 'Todas las técnicas';
-  @override String get allYears => 'Todos los años';
-  @override String get sortBy => 'Ordenar por';
-  @override String get sortByName => 'Nombre';
-  @override String get sortByDate => 'Fecha';
-  @override String get sortByCreated => 'Creación';
-  @override String get ascending => 'Ascendente';
-  @override String get descending => 'Descendente';
-  @override String get searchHint => 'Búsqueda exacta';
-  @override String get back => 'Atrás';
-  @override String get close => 'Cerrar';
-  @override String get copy => 'Copiar';
-  @override String get skip => 'Omitir';
-  @override String get done => 'Listo';
-  @override String get reset => 'Restablecer';
-  @override String get cloudConnection => 'Conexión a la nube';
-  @override String get cloudConnectionSubtitle => 'Reconfigurar conexión con Supabase';
-  @override String get resetCloudConnection => 'Restablecer conexión a la nube';
-  @override String get resetCloudConnectionMessage => 'Esto desconectará la app de tu proyecto Supabase. Tendrás que ejecutar el asistente de configuración de nuevo.\n\nTus datos en Supabase NO se eliminarán.';
-  @override String get restartToReconfigure => 'Reinicia la app para reconfigurar';
-  @override String get databasePaused => 'Base de datos pausada';
-  @override String get databasePausedMessage => 'Tu proyecto Supabase está pausado por inactividad.\n\nPara restaurar:\n1. Ve a supabase.com/dashboard\n2. Selecciona tu proyecto\n3. Haz clic en \"Restore project\"\n\nTarda aproximadamente 1 minuto.';
-  @override String get setupTitle => 'Configuración de Artive';
-  @override String get setupWelcome => '¡Bienvenido a Artive!';
-  @override String get setupWelcomeDescription => 'Este asistente te ayudará a configurar el almacenamiento en la nube para tu catálogo de obras.\n\nTus obras e imágenes se almacenarán de forma segura en Supabase, una plataforma gratuita en la nube.\n\nLa configuración tarda unos 5 minutos.';
-  @override String get setupWhatIsSupabase => '¿Qué es Supabase?';
-  @override String get setupWhatIsSupabaseContent => 'Supabase es un servicio backend gratuito y de código abierto. Proporciona una base de datos y almacenamiento de archivos para tu app.';
-  @override String get setupYourData => 'Tus datos, tu control';
-  @override String get setupYourDataContent => 'Tú creas tu propia cuenta de Supabase. Tus datos te pertenecen y solo tú tienes acceso.';
-  @override String get setupGetStarted => 'Comenzar';
-  @override String get setupStep1Title => 'Paso 1: Crear un proyecto en Supabase';
-  @override String get setupStep1_1 => 'Ve a supabase.com y crea una cuenta gratuita';
-  @override String get setupOpenSupabase => 'Abrir Supabase';
-  @override String get setupStep1_2 => 'Haz clic en \"New Project\" en el panel';
-  @override String get setupStep1_3 => 'Elige un nombre para tu proyecto (ej., \"artive\")';
-  @override String get setupStep1_4 => 'Establece una contraseña segura para la base de datos (¡guárdala!)';
-  @override String get setupStep1_5 => 'Selecciona una región cercana a ti';
-  @override String get setupStep1_6 => 'Haz clic en \"Create new project\" y espera a que esté listo';
-  @override String get setupFreeTier => 'Plan gratuito';
-  @override String get setupFreeTierContent => 'El plan gratuito de Supabase incluye 500MB de base de datos y 1GB de almacenamiento - ¡suficiente para miles de obras!';
-  @override String get setupProjectCreated => 'Proyecto creado';
-  @override String get setupStep2Title => 'Paso 2: Obtener tus credenciales';
-  @override String get setupStep2_1 => 'En tu proyecto de Supabase, ve a \"Project Settings\" (icono de engranaje)';
-  @override String get setupStep2_2 => 'Haz clic en \"Data API\" en el menú de configuración';
-  @override String get setupStep2_3 => 'Encuentra \"Project URL\" - se ve así: https://xxxxx.supabase.co';
-  @override String get setupStep2_4 => 'Encuentra la clave \"anon\" bajo \"Project API keys\"';
-  @override String get setupAboutApiKeys => 'Sobre las claves API';
-  @override String get setupAboutApiKeysContent => 'La clave anon es segura para apps. Funciona con las políticas de Row Level Security.';
-  @override String get setupCredentialsTip => 'Consejo: Puedes hacer clic en el botón de copiar junto a cada valor en Supabase.';
-  @override String get setupIHaveCredentials => 'Tengo mis credenciales';
-  @override String get setupStep3Title => 'Paso 3: Introduce tus credenciales';
-  @override String get setupProjectUrl => 'URL del proyecto';
-  @override String get setupAnonKey => 'Clave Anon';
-  @override String get setupValidateAndContinue => 'Validar y continuar';
-  @override String get setupStep4Title => 'Paso 4: Configuración de la base de datos';
-  @override String get setupManualSetupRequired => 'Configuración manual requerida';
-  @override String get setupDatabaseManualContent => 'Las tablas de la base de datos necesitan crearse manualmente. Esta es una configuración única.';
-  @override String get setupStep4_1 => 'En Supabase, ve a \"SQL Editor\" en la barra lateral';
-  @override String get setupStep4_2 => 'Haz clic en \"New query\"';
-  @override String get setupStep4_3 => 'Copia y pega el siguiente SQL:';
-  @override String get setupStep4_4 => 'Haz clic en \"Run\" para ejecutar la consulta';
-  @override String get setupStep4_5 => 'Deberías ver \"Success. No rows returned\"';
-  @override String get setupSqlCopied => 'SQL copiado al portapapeles';
-  @override String get setupCheckingDatabase => 'Verificando base de datos...';
-  @override String get setupIveRunSql => 'Ya ejecuté el SQL';
-  @override String get setupCheckDatabase => 'Verificar base de datos';
-  @override String get setupStep5Title => 'Paso 5: Configuración del almacenamiento';
-  @override String get setupStorageManualContent => 'Crea el bucket de almacenamiento para las imágenes de tus obras.';
-  @override String get setupStep5_1 => 'En Supabase, ve a \"Storage\" en la barra lateral';
-  @override String get setupStep5_2 => 'Haz clic en \"New bucket\"';
-  @override String get setupStep5_3 => 'Nómbralo exactamente: artworks';
-  @override String get setupStep5_4 => 'Deja \"Public bucket\" desactivado (recomendado)';
-  @override String get setupStep5_5 => 'Haz clic en \"Create bucket\"';
-  @override String get setupAddStoragePolicy => 'Añadir política de almacenamiento';
-  @override String get setupAddStoragePolicyContent => 'Haz clic en bucket → Policies → New Policy → \"For full customization\" → Nombre: allow_all → Marca todas las operaciones → Guardar.';
-  @override String get setupSettingUpStorage => 'Configurando almacenamiento...';
-  @override String get setupSetupStorage => 'Configurar almacenamiento';
-  @override String get setupComplete => '¡Configuración completada!';
-  @override String get setupCompleteDescription => 'Artive ahora está conectado a tu proyecto Supabase.\n\n¡Puedes empezar a añadir tus obras!';
-  @override String get setupQuickTips => 'Consejos rápidos';
-  @override String get setupQuickTipsContent => '• Toca el botón + para añadir tu primera obra\n• Añade múltiples imágenes con diferentes etiquetas (principal, referencia, escaneo)\n• Usa la búsqueda y los filtros para encontrar obras rápidamente\n• Cambia el idioma en Ajustes';
-  @override String get setupStartUsing => 'Empezar a usar Artive';
-  @override String get openInBrowser => 'Abrir en el navegador';
-  @override String get couldNotOpenBrowser => 'No se pudo abrir el navegador automáticamente. Por favor copia esta URL y ábrela manualmente:';
-  @override String get urlCopied => 'URL copiada al portapapeles';
-  @override String get configurationSaved => 'Configuración guardada';
-  @override String get testConnection => 'Probar conexión';
-  @override String get connectionSuccess => 'Conexión exitosa';
-  @override String get connectionFailed => 'Conexión fallida';
-}
-
-class AppLocalizationsZh extends AppLocalizations {
-  AppLocalizationsZh() : super('zh');
-  @override String get appTitle => 'Artive';
-  @override String get artworks => '作品';
-  @override String get addArtwork => '添加作品';
-  @override String get editArtwork => '编辑作品';
-  @override String get deleteArtwork => '删除作品';
-  @override String get name => '名称';
-  @override String get description => '描述';
-  @override String get descriptionOptional => '描述（可选）';
-  @override String get date => '日期';
-  @override String get month => '月';
-  @override String get year => '年';
-  @override String get dimension => '尺寸';
-  @override String get dimensionHint => '例如：50x70 厘米';
-  @override String get medium => '媒介';
-  @override String get mediumHint => '例如：布面油画';
-  @override String get images => '图片';
-  @override String get addImage => '添加图片';
-  @override String get photo => '主图';
-  @override String get reference => '照片参考';
-  @override String get scan => '扫描';
-  @override String get save => '保存';
-  @override String get cancel => '取消';
-  @override String get delete => '删除';
-  @override String get confirmDelete => '确定要删除这件作品吗？';
-  @override String get confirmDeleteImage => '确定要删除这张图片吗？';
-  @override String get yes => '是';
-  @override String get no => '否';
-  @override String get settings => '设置';
-  @override String get language => '语言';
-  @override String get about => '关于';
-  @override String get version => '版本';
-  @override String get search => '搜索';
-  @override String get noArtworks => '还没有作品';
-  @override String get noArtworksHint => '点击 + 添加您的第一件作品';
-  @override String get loading => '加载中...';
-  @override String get error => '错误';
-  @override String get retry => '重试';
-  @override String get uploadingImage => '正在上传图片...';
-  @override String get imageUploaded => '图片已上传';
-  @override String get imageFailed => '图片上传失败';
-  @override String get artworkSaved => '作品已保存';
-  @override String get artworkDeleted => '作品已删除';
-  @override String get requiredField => '此字段为必填项';
-  @override String get invalidYear => '请输入有效的年份';
-  @override String get invalidMonth => '请输入1到12之间的月份';
-  @override String get selectImageTag => '选择图片类型';
-  @override String get gallery => '图库';
-  @override String get camera => '相机';
-  @override String get selectSource => '选择图片来源';
-  @override String get id => '编号';
-  @override String get createdAt => '创建于';
-  @override String get filterByMedium => '按媒介筛选';
-  @override String get filterByYear => '按年份筛选';
-  @override String get allMedia => '所有媒介';
-  @override String get allYears => '所有年份';
-  @override String get sortBy => '排序方式';
-  @override String get sortByName => '名称';
-  @override String get sortByDate => '日期';
-  @override String get sortByCreated => '创建时间';
-  @override String get ascending => '升序';
-  @override String get descending => '降序';
-  @override String get searchHint => '精确匹配搜索';
-  @override String get back => '返回';
-  @override String get close => '关闭';
-  @override String get copy => '复制';
-  @override String get skip => '跳过';
-  @override String get done => '完成';
-  @override String get reset => '重置';
-  @override String get cloudConnection => '云连接';
-  @override String get cloudConnectionSubtitle => '重新配置 Supabase 连接';
-  @override String get resetCloudConnection => '重置云连接';
-  @override String get resetCloudConnectionMessage => '这将断开应用与您的 Supabase 项目的连接。您需要重新运行设置向导。\n\n您在 Supabase 中的数据不会被删除。';
-  @override String get restartToReconfigure => '请重启应用以重新配置';
-  @override String get databasePaused => '数据库已暂停';
-  @override String get databasePausedMessage => '您的 Supabase 项目因不活动而暂停。\n\n恢复步骤：\n1. 前往 supabase.com/dashboard\n2. 选择您的项目\n3. 点击"恢复项目"\n\n这大约需要1分钟。';
-  @override String get setupTitle => 'Artive 设置';
-  @override String get setupWelcome => '欢迎使用 Artive！';
-  @override String get setupWelcomeDescription => '此向导将帮助您为艺术品目录设置云存储。\n\n您的作品和图片将安全存储在 Supabase（一个免费的云平台）中。\n\n设置大约需要5分钟。';
-  @override String get setupWhatIsSupabase => '什么是 Supabase？';
-  @override String get setupWhatIsSupabaseContent => 'Supabase 是一个免费的开源后端服务。它为您的应用提供数据库和文件存储。';
-  @override String get setupYourData => '您的数据，由您掌控';
-  @override String get setupYourDataContent => '您创建自己的 Supabase 账户。您的数据属于您，只有您可以访问。';
-  @override String get setupGetStarted => '开始';
-  @override String get setupStep1Title => '步骤 1：创建 Supabase 项目';
-  @override String get setupStep1_1 => '前往 supabase.com 创建免费账户';
-  @override String get setupOpenSupabase => '打开 Supabase';
-  @override String get setupStep1_2 => '在控制面板中点击"新建项目"';
-  @override String get setupStep1_3 => '为项目选择一个名称（例如"artive"）';
-  @override String get setupStep1_4 => '设置安全的数据库密码（请妥善保存！）';
-  @override String get setupStep1_5 => '选择离您较近的区域';
-  @override String get setupStep1_6 => '点击"创建新项目"并等待完成';
-  @override String get setupFreeTier => '免费套餐';
-  @override String get setupFreeTierContent => 'Supabase 免费套餐包括 500MB 数据库和 1GB 文件存储——足够存储数千件作品！';
-  @override String get setupProjectCreated => '项目已创建';
-  @override String get setupStep2Title => '步骤 2：获取凭据';
-  @override String get setupStep2_1 => '在您的 Supabase 项目中，转到"项目设置"（齿轮图标）';
-  @override String get setupStep2_2 => '在设置菜单中点击"Data API"';
-  @override String get setupStep2_3 => '找到"Project URL"——格式如：https://xxxxx.supabase.co';
-  @override String get setupStep2_4 => '在"Project API keys"下找到"anon"密钥';
-  @override String get setupAboutApiKeys => '关于 API 密钥';
-  @override String get setupAboutApiKeysContent => 'anon 密钥对应用程序是安全的。它与行级安全策略配合使用。';
-  @override String get setupCredentialsTip => '提示：您可以点击 Supabase 中每个值旁边的复制按钮。';
-  @override String get setupIHaveCredentials => '我已获取凭据';
-  @override String get setupStep3Title => '步骤 3：输入凭据';
-  @override String get setupProjectUrl => '项目 URL';
-  @override String get setupAnonKey => 'Anon 密钥';
-  @override String get setupValidateAndContinue => '验证并继续';
-  @override String get setupStep4Title => '步骤 4：数据库设置';
-  @override String get setupManualSetupRequired => '需要手动设置';
-  @override String get setupDatabaseManualContent => '需要手动创建数据库表。这是一次性设置。';
-  @override String get setupStep4_1 => '在 Supabase 侧边栏中转到"SQL Editor"';
-  @override String get setupStep4_2 => '点击"新建查询"';
-  @override String get setupStep4_3 => '复制并粘贴以下 SQL：';
-  @override String get setupStep4_4 => '点击"运行"执行查询';
-  @override String get setupStep4_5 => '您应该看到"成功。没有返回行"';
-  @override String get setupSqlCopied => 'SQL 已复制到剪贴板';
-  @override String get setupCheckingDatabase => '正在检查数据库...';
-  @override String get setupIveRunSql => '我已运行 SQL';
-  @override String get setupCheckDatabase => '检查数据库';
-  @override String get setupStep5Title => '步骤 5：存储设置';
-  @override String get setupStorageManualContent => '为您的作品图片创建存储桶。';
-  @override String get setupStep5_1 => '在 Supabase 侧边栏中转到"Storage"';
-  @override String get setupStep5_2 => '点击"新建存储桶"';
-  @override String get setupStep5_3 => '将其命名为：artworks';
-  @override String get setupStep5_4 => '保持"公共存储桶"为关闭状态（推荐）';
-  @override String get setupStep5_5 => '点击"创建存储桶"';
-  @override String get setupAddStoragePolicy => '添加存储策略';
-  @override String get setupAddStoragePolicyContent => '点击存储桶 → 策略 → 新建策略 → "完全自定义" → 名称：allow_all → 勾选所有操作 → 保存。';
-  @override String get setupSettingUpStorage => '正在设置存储...';
-  @override String get setupSetupStorage => '设置存储';
-  @override String get setupComplete => '设置完成！';
-  @override String get setupCompleteDescription => 'Artive 现已连接到您的 Supabase 项目。\n\n您可以开始添加作品了！';
-  @override String get setupQuickTips => '快速提示';
-  @override String get setupQuickTipsContent => '• 点击 + 添加您的第一件作品\n• 添加多张带有不同标签的图片（主图、参考、扫描）\n• 使用搜索和筛选快速查找作品\n• 在设置中更改语言';
-  @override String get setupStartUsing => '开始使用 Artive';
-  @override String get openInBrowser => '在浏览器中打开';
-  @override String get couldNotOpenBrowser => '无法自动打开浏览器。请复制此 URL 并手动打开：';
-  @override String get urlCopied => 'URL 已复制到剪贴板';
-  @override String get configurationSaved => '配置已保存';
-  @override String get testConnection => '测试连接';
-  @override String get connectionSuccess => '连接成功';
-  @override String get connectionFailed => '连接失败';
-}
-
-class AppLocalizationsHi extends AppLocalizations {
-  AppLocalizationsHi() : super('hi');
-  @override String get appTitle => 'Artive';
-  @override String get artworks => 'कलाकृतियाँ';
-  @override String get addArtwork => 'कलाकृति जोड़ें';
-  @override String get editArtwork => 'कलाकृति संपादित करें';
-  @override String get deleteArtwork => 'कलाकृति हटाएं';
-  @override String get name => 'नाम';
-  @override String get description => 'विवरण';
-  @override String get descriptionOptional => 'विवरण (वैकल्पिक)';
-  @override String get date => 'तारीख';
-  @override String get month => 'महीना';
-  @override String get year => 'वर्ष';
-  @override String get dimension => 'आयाम';
-  @override String get dimensionHint => 'जैसे, 50x70 सेमी';
-  @override String get medium => 'माध्यम';
-  @override String get mediumHint => 'जैसे, कैनवास पर तेल';
-  @override String get images => 'छवियां';
-  @override String get addImage => 'छवि जोड़ें';
-  @override String get photo => 'मुख्य';
-  @override String get reference => 'फोटो संदर्भ';
-  @override String get scan => 'स्कैन';
-  @override String get save => 'सहेजें';
-  @override String get cancel => 'रद्द करें';
-  @override String get delete => 'हटाएं';
-  @override String get confirmDelete => 'क्या आप वाकई इस कलाकृति को हटाना चाहते हैं?';
-  @override String get confirmDeleteImage => 'क्या आप वाकई इस छवि को हटाना चाहते हैं?';
-  @override String get yes => 'हां';
-  @override String get no => 'नहीं';
-  @override String get settings => 'सेटिंग्स';
-  @override String get language => 'भाषा';
-  @override String get about => 'के बारे में';
-  @override String get version => 'संस्करण';
-  @override String get search => 'खोजें';
-  @override String get noArtworks => 'अभी तक कोई कलाकृति नहीं';
-  @override String get noArtworksHint => 'अपनी पहली कलाकृति जोड़ने के लिए + दबाएं';
-  @override String get loading => 'लोड हो रहा है...';
-  @override String get error => 'त्रुटि';
-  @override String get retry => 'पुनः प्रयास करें';
-  @override String get uploadingImage => 'छवि अपलोड हो रही है...';
-  @override String get imageUploaded => 'छवि अपलोड हो गई';
-  @override String get imageFailed => 'छवि अपलोड विफल';
-  @override String get artworkSaved => 'कलाकृति सहेजी गई';
-  @override String get artworkDeleted => 'कलाकृति हटाई गई';
-  @override String get requiredField => 'यह फ़ील्ड आवश्यक है';
-  @override String get invalidYear => 'कृपया एक मान्य वर्ष दर्ज करें';
-  @override String get invalidMonth => 'कृपया 1 से 12 के बीच महीना दर्ज करें';
-  @override String get selectImageTag => 'छवि प्रकार चुनें';
-  @override String get gallery => 'गैलरी';
-  @override String get camera => 'कैमरा';
-  @override String get selectSource => 'छवि स्रोत चुनें';
-  @override String get id => 'आईडी';
-  @override String get createdAt => 'बनाया गया';
-  @override String get filterByMedium => 'माध्यम से फ़िल्टर करें';
-  @override String get filterByYear => 'वर्ष से फ़िल्टर करें';
-  @override String get allMedia => 'सभी माध्यम';
-  @override String get allYears => 'सभी वर्ष';
-  @override String get sortBy => 'इसके अनुसार क्रमबद्ध करें';
-  @override String get sortByName => 'नाम';
-  @override String get sortByDate => 'तारीख';
-  @override String get sortByCreated => 'निर्मित';
-  @override String get ascending => 'आरोही';
-  @override String get descending => 'अवरोही';
-  @override String get searchHint => 'सटीक मिलान खोज';
-  @override String get back => 'वापस';
-  @override String get close => 'बंद करें';
-  @override String get copy => 'कॉपी करें';
-  @override String get skip => 'छोड़ें';
-  @override String get done => 'हो गया';
-  @override String get reset => 'रीसेट करें';
-  @override String get cloudConnection => 'क्लाउड कनेक्शन';
-  @override String get cloudConnectionSubtitle => 'Supabase कनेक्शन पुनः कॉन्फ़िगर करें';
-  @override String get resetCloudConnection => 'क्लाउड कनेक्शन रीसेट करें';
-  @override String get resetCloudConnectionMessage => 'यह ऐप को आपके Supabase प्रोजेक्ट से डिस्कनेक्ट कर देगा। आपको सेटअप विज़ार्ड फिर से चलाना होगा।\n\nSupabase में आपका डेटा हटाया नहीं जाएगा।';
-  @override String get restartToReconfigure => 'कृपया पुनः कॉन्फ़िगर करने के लिए ऐप रीस्टार्ट करें';
-  @override String get databasePaused => 'डेटाबेस रुका हुआ है';
-  @override String get databasePausedMessage => 'आपका Supabase प्रोजेक्ट निष्क्रियता के कारण रुका हुआ है।\n\nपुनर्स्थापित करने के लिए:\n1. supabase.com/dashboard पर जाएं\n2. अपना प्रोजेक्ट चुनें\n3. \"प्रोजेक्ट पुनर्स्थापित करें\" पर क्लिक करें\n\nइसमें लगभग 1 मिनट लगता है।';
-  @override String get setupTitle => 'Artive सेटअप';
-  @override String get setupWelcome => 'Artive में आपका स्वागत है!';
-  @override String get setupWelcomeDescription => 'यह विज़ार्ड आपकी कलाकृति कैटलॉग के लिए क्लाउड स्टोरेज सेट करने में मदद करेगा।\n\nआपकी कलाकृतियां और छवियां Supabase में सुरक्षित रूप से संग्रहीत होंगी, एक मुफ्त क्लाउड प्लेटफॉर्म।\n\nसेटअप में लगभग 5 मिनट लगते हैं।';
-  @override String get setupWhatIsSupabase => 'Supabase क्या है?';
-  @override String get setupWhatIsSupabaseContent => 'Supabase एक मुफ्त, ओपन-सोर्स बैकएंड सेवा है। यह आपके ऐप के लिए डेटाबेस और फ़ाइल स्टोरेज प्रदान करता है।';
-  @override String get setupYourData => 'आपका डेटा, आपका नियंत्रण';
-  @override String get setupYourDataContent => 'आप अपना खुद का Supabase खाता बनाते हैं। आपका डेटा आपका है और केवल आपकी पहुंच है।';
-  @override String get setupGetStarted => 'शुरू करें';
-  @override String get setupStep1Title => 'चरण 1: Supabase प्रोजेक्ट बनाएं';
-  @override String get setupStep1_1 => 'supabase.com पर जाएं और मुफ्त खाता बनाएं';
-  @override String get setupOpenSupabase => 'Supabase खोलें';
-  @override String get setupStep1_2 => 'डैशबोर्ड में \"नया प्रोजेक्ट\" पर क्लिक करें';
-  @override String get setupStep1_3 => 'अपने प्रोजेक्ट के लिए नाम चुनें (जैसे \"artive\")';
-  @override String get setupStep1_4 => 'सुरक्षित डेटाबेस पासवर्ड सेट करें (इसे सहेजें!)';
-  @override String get setupStep1_5 => 'अपने पास का क्षेत्र चुनें';
-  @override String get setupStep1_6 => '\"नया प्रोजेक्ट बनाएं\" पर क्लिक करें और प्रतीक्षा करें';
-  @override String get setupFreeTier => 'मुफ्त टियर';
-  @override String get setupFreeTierContent => 'Supabase मुफ्त टियर में 500MB डेटाबेस और 1GB फ़ाइल स्टोरेज शामिल है - हज़ारों कलाकृतियों के लिए पर्याप्त!';
-  @override String get setupProjectCreated => 'प्रोजेक्ट बनाया गया';
-  @override String get setupStep2Title => 'चरण 2: अपने क्रेडेंशियल्स प्राप्त करें';
-  @override String get setupStep2_1 => 'अपने Supabase प्रोजेक्ट में, \"प्रोजेक्ट सेटिंग्स\" (गियर आइकन) पर जाएं';
-  @override String get setupStep2_2 => 'सेटिंग्स मेनू में \"Data API\" पर क्लिक करें';
-  @override String get setupStep2_3 => '\"Project URL\" खोजें - जैसे: https://xxxxx.supabase.co';
-  @override String get setupStep2_4 => '\"Project API keys\" के अंतर्गत \"anon\" कुंजी खोजें';
-  @override String get setupAboutApiKeys => 'API कुंजियों के बारे में';
-  @override String get setupAboutApiKeysContent => 'anon कुंजी ऐप्स के लिए सुरक्षित है। यह Row Level Security नीतियों के साथ काम करती है।';
-  @override String get setupCredentialsTip => 'सुझाव: आप Supabase में प्रत्येक मान के बगल में कॉपी बटन पर क्लिक कर सकते हैं।';
-  @override String get setupIHaveCredentials => 'मेरे पास क्रेडेंशियल्स हैं';
-  @override String get setupStep3Title => 'चरण 3: अपने क्रेडेंशियल्स दर्ज करें';
-  @override String get setupProjectUrl => 'प्रोजेक्ट URL';
-  @override String get setupAnonKey => 'Anon कुंजी';
-  @override String get setupValidateAndContinue => 'सत्यापित करें और जारी रखें';
-  @override String get setupStep4Title => 'चरण 4: डेटाबेस सेटअप';
-  @override String get setupManualSetupRequired => 'मैन्युअल सेटअप आवश्यक';
-  @override String get setupDatabaseManualContent => 'डेटाबेस टेबल्स को मैन्युअल रूप से बनाना होगा। यह एक बार का सेटअप है।';
-  @override String get setupStep4_1 => 'Supabase में, साइडबार में \"SQL Editor\" पर जाएं';
-  @override String get setupStep4_2 => '\"नई क्वेरी\" पर क्लिक करें';
-  @override String get setupStep4_3 => 'निम्नलिखित SQL कॉपी और पेस्ट करें:';
-  @override String get setupStep4_4 => 'क्वेरी चलाने के लिए \"Run\" पर क्लिक करें';
-  @override String get setupStep4_5 => 'आपको \"सफलता। कोई पंक्तियां नहीं लौटीं\" दिखना चाहिए';
-  @override String get setupSqlCopied => 'SQL क्लिपबोर्ड पर कॉपी किया गया';
-  @override String get setupCheckingDatabase => 'डेटाबेस जांच रहे हैं...';
-  @override String get setupIveRunSql => 'मैंने SQL चला दिया है';
-  @override String get setupCheckDatabase => 'डेटाबेस जांचें';
-  @override String get setupStep5Title => 'चरण 5: स्टोरेज सेटअप';
-  @override String get setupStorageManualContent => 'अपनी कलाकृति छवियों के लिए स्टोरेज बकेट बनाएं।';
-  @override String get setupStep5_1 => 'Supabase में, साइडबार में \"Storage\" पर जाएं';
-  @override String get setupStep5_2 => '\"नया बकेट\" पर क्लिक करें';
-  @override String get setupStep5_3 => 'इसका नाम बिल्कुल रखें: artworks';
-  @override String get setupStep5_4 => '\"सार्वजनिक बकेट\" बंद रखें (अनुशंसित)';
-  @override String get setupStep5_5 => '\"बकेट बनाएं\" पर क्लिक करें';
-  @override String get setupAddStoragePolicy => 'स्टोरेज नीति जोड़ें';
-  @override String get setupAddStoragePolicyContent => 'बकेट → नीतियां → नई नीति → \"पूर्ण अनुकूलन के लिए\" → नाम: allow_all → सभी ऑपरेशन चेक करें → सहेजें।';
-  @override String get setupSettingUpStorage => 'स्टोरेज सेट कर रहे हैं...';
-  @override String get setupSetupStorage => 'स्टोरेज सेटअप';
-  @override String get setupComplete => 'सेटअप पूर्ण!';
-  @override String get setupCompleteDescription => 'Artive अब आपके Supabase प्रोजेक्ट से जुड़ा है।\n\nआप अपनी कलाकृतियां जोड़ना शुरू कर सकते हैं!';
-  @override String get setupQuickTips => 'त्वरित सुझाव';
-  @override String get setupQuickTipsContent => '• अपनी पहली कलाकृति जोड़ने के लिए + दबाएं\n• विभिन्न टैग के साथ कई छवियां जोड़ें (मुख्य, संदर्भ, स्कैन)\n• कलाकृतियों को जल्दी खोजने के लिए खोज और फ़िल्टर का उपयोग करें\n• सेटिंग्स में भाषा बदलें';
-  @override String get setupStartUsing => 'Artive का उपयोग शुरू करें';
-  @override String get openInBrowser => 'ब्राउज़र में खोलें';
-  @override String get couldNotOpenBrowser => 'ब्राउज़र स्वचालित रूप से नहीं खुल सका। कृपया यह URL कॉपी करें और मैन्युअल रूप से खोलें:';
-  @override String get urlCopied => 'URL क्लिपबोर्ड पर कॉपी किया गया';
-  @override String get configurationSaved => 'कॉन्फ़िगरेशन सहेजा गया';
-  @override String get testConnection => 'कनेक्शन टेस्ट करें';
-  @override String get connectionSuccess => 'कनेक्शन सफल';
-  @override String get connectionFailed => 'कनेक्शन विफल';
-}
-
-class AppLocalizationsFr extends AppLocalizations {
-  AppLocalizationsFr() : super('fr');
-  @override String get appTitle => 'Artive';
-  @override String get artworks => 'Œuvres';
-  @override String get addArtwork => 'Ajouter une œuvre';
-  @override String get editArtwork => "Modifier l'œuvre";
-  @override String get deleteArtwork => "Supprimer l'œuvre";
-  @override String get name => 'Nom';
-  @override String get description => 'Description';
-  @override String get descriptionOptional => 'Description (optionnel)';
-  @override String get date => 'Date';
-  @override String get month => 'Mois';
-  @override String get year => 'Année';
-  @override String get dimension => 'Dimension';
-  @override String get dimensionHint => 'ex., 50x70 cm';
-  @override String get medium => 'Technique';
-  @override String get mediumHint => 'ex., Huile sur toile';
-  @override String get images => 'Images';
-  @override String get addImage => 'Ajouter une image';
-  @override String get photo => 'Principale';
-  @override String get reference => 'Photo référence';
-  @override String get scan => 'Scan';
-  @override String get save => 'Enregistrer';
-  @override String get cancel => 'Annuler';
-  @override String get delete => 'Supprimer';
-  @override String get confirmDelete => 'Êtes-vous sûr de vouloir supprimer cette œuvre ?';
-  @override String get confirmDeleteImage => 'Êtes-vous sûr de vouloir supprimer cette image ?';
-  @override String get yes => 'Oui';
-  @override String get no => 'Non';
-  @override String get settings => 'Paramètres';
-  @override String get language => 'Langue';
-  @override String get about => 'À propos';
-  @override String get version => 'Version';
-  @override String get search => 'Rechercher';
-  @override String get noArtworks => 'Aucune œuvre pour le moment';
-  @override String get noArtworksHint => 'Appuyez sur + pour ajouter votre première œuvre';
-  @override String get loading => 'Chargement...';
-  @override String get error => 'Erreur';
-  @override String get retry => 'Réessayer';
-  @override String get uploadingImage => "Téléchargement de l'image...";
-  @override String get imageUploaded => 'Image téléchargée';
-  @override String get imageFailed => 'Échec du téléchargement';
-  @override String get artworkSaved => 'Œuvre enregistrée';
-  @override String get artworkDeleted => 'Œuvre supprimée';
-  @override String get requiredField => 'Ce champ est obligatoire';
-  @override String get invalidYear => 'Veuillez entrer une année valide';
-  @override String get invalidMonth => 'Veuillez entrer un mois entre 1 et 12';
-  @override String get selectImageTag => "Sélectionner le type d'image";
-  @override String get gallery => 'Galerie';
-  @override String get camera => 'Appareil photo';
-  @override String get selectSource => 'Sélectionner la source';
-  @override String get id => 'ID';
-  @override String get createdAt => 'Créé le';
-  @override String get filterByMedium => 'Filtrer par technique';
-  @override String get filterByYear => 'Filtrer par année';
-  @override String get allMedia => 'Toutes les techniques';
-  @override String get allYears => 'Toutes les années';
-  @override String get sortBy => 'Trier par';
-  @override String get sortByName => 'Nom';
-  @override String get sortByDate => 'Date';
-  @override String get sortByCreated => 'Création';
-  @override String get ascending => 'Croissant';
-  @override String get descending => 'Décroissant';
-  @override String get searchHint => 'Recherche exacte';
-  @override String get back => 'Retour';
-  @override String get close => 'Fermer';
-  @override String get copy => 'Copier';
-  @override String get skip => 'Ignorer';
-  @override String get done => 'Terminé';
-  @override String get reset => 'Réinitialiser';
-  @override String get cloudConnection => 'Connexion Cloud';
-  @override String get cloudConnectionSubtitle => 'Reconfigurer la connexion Supabase';
-  @override String get resetCloudConnection => 'Réinitialiser la connexion Cloud';
-  @override String get resetCloudConnectionMessage => 'Cela déconnectera l\'application de votre projet Supabase. Vous devrez relancer l\'assistant de configuration.\n\nVos données dans Supabase ne seront PAS supprimées.';
-  @override String get restartToReconfigure => 'Veuillez redémarrer l\'application pour reconfigurer';
-  @override String get databasePaused => 'Base de données en pause';
-  @override String get databasePausedMessage => 'Votre projet Supabase est en pause en raison d\'inactivité.\n\nPour restaurer :\n1. Allez sur supabase.com/dashboard\n2. Sélectionnez votre projet\n3. Cliquez sur \"Restaurer le projet\"\n\nCela prend environ 1 minute.';
-  @override String get setupTitle => 'Configuration d\'Artive';
-  @override String get setupWelcome => 'Bienvenue sur Artive !';
-  @override String get setupWelcomeDescription => 'Cet assistant vous aidera à configurer le stockage cloud pour votre catalogue d\'œuvres.\n\nVos œuvres et images seront stockées en toute sécurité dans Supabase, une plateforme cloud gratuite.\n\nLa configuration prend environ 5 minutes.';
-  @override String get setupWhatIsSupabase => 'Qu\'est-ce que Supabase ?';
-  @override String get setupWhatIsSupabaseContent => 'Supabase est un service backend gratuit et open-source. Il fournit une base de données et un stockage de fichiers pour votre application.';
-  @override String get setupYourData => 'Vos données, votre contrôle';
-  @override String get setupYourDataContent => 'Vous créez votre propre compte Supabase. Vos données vous appartiennent et vous seul y avez accès.';
-  @override String get setupGetStarted => 'Commencer';
-  @override String get setupStep1Title => 'Étape 1 : Créer un projet Supabase';
-  @override String get setupStep1_1 => 'Allez sur supabase.com et créez un compte gratuit';
-  @override String get setupOpenSupabase => 'Ouvrir Supabase';
-  @override String get setupStep1_2 => 'Cliquez sur \"Nouveau projet\" dans le tableau de bord';
-  @override String get setupStep1_3 => 'Choisissez un nom pour votre projet (ex. \"artive\")';
-  @override String get setupStep1_4 => 'Définissez un mot de passe sécurisé (sauvegardez-le !)';
-  @override String get setupStep1_5 => 'Sélectionnez une région proche de vous';
-  @override String get setupStep1_6 => 'Cliquez sur \"Créer un nouveau projet\" et attendez';
-  @override String get setupFreeTier => 'Offre gratuite';
-  @override String get setupFreeTierContent => 'L\'offre gratuite Supabase inclut 500 Mo de base de données et 1 Go de stockage - suffisant pour des milliers d\'œuvres !';
-  @override String get setupProjectCreated => 'Projet créé';
-  @override String get setupStep2Title => 'Étape 2 : Obtenir vos identifiants';
-  @override String get setupStep2_1 => 'Dans votre projet Supabase, allez dans \"Paramètres du projet\" (icône engrenage)';
-  @override String get setupStep2_2 => 'Cliquez sur \"Data API\" dans le menu des paramètres';
-  @override String get setupStep2_3 => 'Trouvez \"Project URL\" - ressemble à : https://xxxxx.supabase.co';
-  @override String get setupStep2_4 => 'Trouvez la clé \"anon\" sous \"Project API keys\"';
-  @override String get setupAboutApiKeys => 'À propos des clés API';
-  @override String get setupAboutApiKeysContent => 'La clé anon est sécurisée pour les applications. Elle fonctionne avec les politiques Row Level Security.';
-  @override String get setupCredentialsTip => 'Astuce : Vous pouvez cliquer sur le bouton copier à côté de chaque valeur dans Supabase.';
-  @override String get setupIHaveCredentials => 'J\'ai mes identifiants';
-  @override String get setupStep3Title => 'Étape 3 : Entrer vos identifiants';
-  @override String get setupProjectUrl => 'URL du projet';
-  @override String get setupAnonKey => 'Clé Anon';
-  @override String get setupValidateAndContinue => 'Valider et continuer';
-  @override String get setupStep4Title => 'Étape 4 : Configuration de la base de données';
-  @override String get setupManualSetupRequired => 'Configuration manuelle requise';
-  @override String get setupDatabaseManualContent => 'Les tables de la base de données doivent être créées manuellement. C\'est une configuration unique.';
-  @override String get setupStep4_1 => 'Dans Supabase, allez dans \"SQL Editor\" dans la barre latérale';
-  @override String get setupStep4_2 => 'Cliquez sur \"Nouvelle requête\"';
-  @override String get setupStep4_3 => 'Copiez et collez le SQL suivant :';
-  @override String get setupStep4_4 => 'Cliquez sur \"Exécuter\" pour exécuter la requête';
-  @override String get setupStep4_5 => 'Vous devriez voir \"Succès. Aucune ligne retournée\"';
-  @override String get setupSqlCopied => 'SQL copié dans le presse-papiers';
-  @override String get setupCheckingDatabase => 'Vérification de la base de données...';
-  @override String get setupIveRunSql => 'J\'ai exécuté le SQL';
-  @override String get setupCheckDatabase => 'Vérifier la base de données';
-  @override String get setupStep5Title => 'Étape 5 : Configuration du stockage';
-  @override String get setupStorageManualContent => 'Créez le bucket de stockage pour vos images d\'œuvres.';
-  @override String get setupStep5_1 => 'Dans Supabase, allez dans \"Storage\" dans la barre latérale';
-  @override String get setupStep5_2 => 'Cliquez sur \"Nouveau bucket\"';
-  @override String get setupStep5_3 => 'Nommez-le exactement : artworks';
-  @override String get setupStep5_4 => 'Laissez \"Bucket public\" DÉSACTIVÉ (recommandé)';
-  @override String get setupStep5_5 => 'Cliquez sur \"Créer le bucket\"';
-  @override String get setupAddStoragePolicy => 'Ajouter une politique de stockage';
-  @override String get setupAddStoragePolicyContent => 'Cliquez sur bucket → Politiques → Nouvelle politique → \"Pour personnalisation complète\" → Nom : allow_all → Cocher toutes les opérations → Enregistrer.';
-  @override String get setupSettingUpStorage => 'Configuration du stockage...';
-  @override String get setupSetupStorage => 'Configurer le stockage';
-  @override String get setupComplete => 'Configuration terminée !';
-  @override String get setupCompleteDescription => 'Artive est maintenant connecté à votre projet Supabase.\n\nVous pouvez commencer à ajouter vos œuvres !';
-  @override String get setupQuickTips => 'Conseils rapides';
-  @override String get setupQuickTipsContent => '• Appuyez sur + pour ajouter votre première œuvre\n• Ajoutez plusieurs images avec différents tags (principal, référence, scan)\n• Utilisez la recherche et les filtres pour trouver rapidement des œuvres\n• Changez la langue dans les paramètres';
-  @override String get setupStartUsing => 'Commencer à utiliser Artive';
-  @override String get openInBrowser => 'Ouvrir dans le navigateur';
-  @override String get couldNotOpenBrowser => 'Impossible d\'ouvrir le navigateur automatiquement. Veuillez copier cette URL et l\'ouvrir manuellement :';
-  @override String get urlCopied => 'URL copiée dans le presse-papiers';
-  @override String get configurationSaved => 'Configuration enregistrée';
-  @override String get testConnection => 'Tester la connexion';
-  @override String get connectionSuccess => 'Connexion réussie';
-  @override String get connectionFailed => 'Échec de connexion';
-}
-
-class AppLocalizationsAr extends AppLocalizations {
-  AppLocalizationsAr() : super('ar');
-  @override String get appTitle => 'Artive';
-  @override String get artworks => 'الأعمال الفنية';
-  @override String get addArtwork => 'إضافة عمل فني';
-  @override String get editArtwork => 'تعديل العمل الفني';
-  @override String get deleteArtwork => 'حذف العمل الفني';
-  @override String get name => 'الاسم';
-  @override String get description => 'الوصف';
-  @override String get descriptionOptional => 'الوصف (اختياري)';
-  @override String get date => 'التاريخ';
-  @override String get month => 'الشهر';
-  @override String get year => 'السنة';
-  @override String get dimension => 'الأبعاد';
-  @override String get dimensionHint => 'مثال: 50x70 سم';
-  @override String get medium => 'الوسيط';
-  @override String get mediumHint => 'مثال: زيت على قماش';
-  @override String get images => 'الصور';
-  @override String get addImage => 'إضافة صورة';
-  @override String get photo => 'رئيسية';
-  @override String get reference => 'مرجع صورة';
-  @override String get scan => 'مسح ضوئي';
-  @override String get save => 'حفظ';
-  @override String get cancel => 'إلغاء';
-  @override String get delete => 'حذف';
-  @override String get confirmDelete => 'هل أنت متأكد من حذف هذا العمل الفني؟';
-  @override String get confirmDeleteImage => 'هل أنت متأكد من حذف هذه الصورة؟';
-  @override String get yes => 'نعم';
-  @override String get no => 'لا';
-  @override String get settings => 'الإعدادات';
-  @override String get language => 'اللغة';
-  @override String get about => 'حول';
-  @override String get version => 'الإصدار';
-  @override String get search => 'بحث';
-  @override String get noArtworks => 'لا توجد أعمال فنية بعد';
-  @override String get noArtworksHint => 'اضغط + لإضافة عملك الفني الأول';
-  @override String get loading => 'جاري التحميل...';
-  @override String get error => 'خطأ';
-  @override String get retry => 'إعادة المحاولة';
-  @override String get uploadingImage => 'جاري رفع الصورة...';
-  @override String get imageUploaded => 'تم رفع الصورة';
-  @override String get imageFailed => 'فشل رفع الصورة';
-  @override String get artworkSaved => 'تم حفظ العمل الفني';
-  @override String get artworkDeleted => 'تم حذف العمل الفني';
-  @override String get requiredField => 'هذا الحقل مطلوب';
-  @override String get invalidYear => 'يرجى إدخال سنة صحيحة';
-  @override String get invalidMonth => 'يرجى إدخال شهر بين 1 و 12';
-  @override String get selectImageTag => 'اختر نوع الصورة';
-  @override String get gallery => 'المعرض';
-  @override String get camera => 'الكاميرا';
-  @override String get selectSource => 'اختر مصدر الصورة';
-  @override String get id => 'المعرف';
-  @override String get createdAt => 'تاريخ الإنشاء';
-  @override String get filterByMedium => 'تصفية حسب الوسيط';
-  @override String get filterByYear => 'تصفية حسب السنة';
-  @override String get allMedia => 'جميع الوسائط';
-  @override String get allYears => 'جميع السنوات';
-  @override String get sortBy => 'ترتيب حسب';
-  @override String get sortByName => 'الاسم';
-  @override String get sortByDate => 'التاريخ';
-  @override String get sortByCreated => 'تاريخ الإنشاء';
-  @override String get ascending => 'تصاعدي';
-  @override String get descending => 'تنازلي';
-  @override String get searchHint => 'بحث مطابق تماماً';
-  @override String get back => 'رجوع';
-  @override String get close => 'إغلاق';
-  @override String get copy => 'نسخ';
-  @override String get skip => 'تخطي';
-  @override String get done => 'تم';
-  @override String get reset => 'إعادة تعيين';
-  @override String get cloudConnection => 'اتصال السحابة';
-  @override String get cloudConnectionSubtitle => 'إعادة تكوين اتصال Supabase';
-  @override String get resetCloudConnection => 'إعادة تعيين اتصال السحابة';
-  @override String get resetCloudConnectionMessage => 'سيؤدي هذا إلى فصل التطبيق عن مشروع Supabase الخاص بك. ستحتاج إلى تشغيل معالج الإعداد مرة أخرى.\n\nلن يتم حذف بياناتك في Supabase.';
-  @override String get restartToReconfigure => 'يرجى إعادة تشغيل التطبيق لإعادة التكوين';
-  @override String get databasePaused => 'قاعدة البيانات متوقفة';
-  @override String get databasePausedMessage => 'تم إيقاف مشروع Supabase الخاص بك بسبب عدم النشاط.\n\nللاستعادة:\n1. اذهب إلى supabase.com/dashboard\n2. حدد مشروعك\n3. انقر على \"استعادة المشروع\"\n\nيستغرق هذا حوالي دقيقة واحدة.';
-  @override String get setupTitle => 'إعداد Artive';
-  @override String get setupWelcome => 'مرحباً بك في Artive!';
-  @override String get setupWelcomeDescription => 'سيساعدك هذا المعالج في إعداد التخزين السحابي لكتالوج أعمالك الفنية.\n\nسيتم تخزين أعمالك وصورك بأمان في Supabase، منصة سحابية مجانية.\n\nيستغرق الإعداد حوالي 5 دقائق.';
-  @override String get setupWhatIsSupabase => 'ما هو Supabase؟';
-  @override String get setupWhatIsSupabaseContent => 'Supabase هي خدمة خلفية مجانية ومفتوحة المصدر. توفر قاعدة بيانات وتخزين ملفات لتطبيقك.';
-  @override String get setupYourData => 'بياناتك، تحت سيطرتك';
-  @override String get setupYourDataContent => 'أنت تنشئ حساب Supabase الخاص بك. بياناتك ملكك وأنت فقط من يمكنه الوصول إليها.';
-  @override String get setupGetStarted => 'ابدأ';
-  @override String get setupStep1Title => 'الخطوة 1: إنشاء مشروع Supabase';
-  @override String get setupStep1_1 => 'اذهب إلى supabase.com وأنشئ حساباً مجانياً';
-  @override String get setupOpenSupabase => 'فتح Supabase';
-  @override String get setupStep1_2 => 'انقر على \"مشروع جديد\" في لوحة التحكم';
-  @override String get setupStep1_3 => 'اختر اسماً لمشروعك (مثل \"artive\")';
-  @override String get setupStep1_4 => 'عيّن كلمة مرور آمنة لقاعدة البيانات (احفظها!)';
-  @override String get setupStep1_5 => 'حدد منطقة قريبة منك';
-  @override String get setupStep1_6 => 'انقر على \"إنشاء مشروع جديد\" وانتظر';
-  @override String get setupFreeTier => 'المستوى المجاني';
-  @override String get setupFreeTierContent => 'يتضمن المستوى المجاني من Supabase قاعدة بيانات 500 ميجابايت و1 جيجابايت تخزين ملفات - كافٍ لآلاف الأعمال الفنية!';
-  @override String get setupProjectCreated => 'تم إنشاء المشروع';
-  @override String get setupStep2Title => 'الخطوة 2: الحصول على بيانات الاعتماد';
-  @override String get setupStep2_1 => 'في مشروع Supabase الخاص بك، اذهب إلى \"إعدادات المشروع\" (أيقونة الترس)';
-  @override String get setupStep2_2 => 'انقر على \"Data API\" في قائمة الإعدادات';
-  @override String get setupStep2_3 => 'ابحث عن \"Project URL\" - يبدو مثل: https://xxxxx.supabase.co';
-  @override String get setupStep2_4 => 'ابحث عن مفتاح \"anon\" تحت \"Project API keys\"';
-  @override String get setupAboutApiKeys => 'حول مفاتيح API';
-  @override String get setupAboutApiKeysContent => 'مفتاح anon آمن للتطبيقات. يعمل مع سياسات أمان مستوى الصف.';
-  @override String get setupCredentialsTip => 'نصيحة: يمكنك النقر على زر النسخ بجوار كل قيمة في Supabase.';
-  @override String get setupIHaveCredentials => 'لدي بيانات الاعتماد';
-  @override String get setupStep3Title => 'الخطوة 3: إدخال بيانات الاعتماد';
-  @override String get setupProjectUrl => 'رابط المشروع';
-  @override String get setupAnonKey => 'مفتاح Anon';
-  @override String get setupValidateAndContinue => 'التحقق والمتابعة';
-  @override String get setupStep4Title => 'الخطوة 4: إعداد قاعدة البيانات';
-  @override String get setupManualSetupRequired => 'الإعداد اليدوي مطلوب';
-  @override String get setupDatabaseManualContent => 'يجب إنشاء جداول قاعدة البيانات يدوياً. هذا إعداد لمرة واحدة.';
-  @override String get setupStep4_1 => 'في Supabase، اذهب إلى \"SQL Editor\" في الشريط الجانبي';
-  @override String get setupStep4_2 => 'انقر على \"استعلام جديد\"';
-  @override String get setupStep4_3 => 'انسخ والصق SQL التالي:';
-  @override String get setupStep4_4 => 'انقر على \"تشغيل\" لتنفيذ الاستعلام';
-  @override String get setupStep4_5 => 'يجب أن ترى \"نجاح. لم يتم إرجاع صفوف\"';
-  @override String get setupSqlCopied => 'تم نسخ SQL إلى الحافظة';
-  @override String get setupCheckingDatabase => 'جاري فحص قاعدة البيانات...';
-  @override String get setupIveRunSql => 'لقد قمت بتشغيل SQL';
-  @override String get setupCheckDatabase => 'فحص قاعدة البيانات';
-  @override String get setupStep5Title => 'الخطوة 5: إعداد التخزين';
-  @override String get setupStorageManualContent => 'أنشئ حاوية التخزين لصور أعمالك الفنية.';
-  @override String get setupStep5_1 => 'في Supabase، اذهب إلى \"Storage\" في الشريط الجانبي';
-  @override String get setupStep5_2 => 'انقر على \"حاوية جديدة\"';
-  @override String get setupStep5_3 => 'سمّها بالضبط: artworks';
-  @override String get setupStep5_4 => 'اترك \"حاوية عامة\" مغلقة (موصى به)';
-  @override String get setupStep5_5 => 'انقر على \"إنشاء حاوية\"';
-  @override String get setupAddStoragePolicy => 'إضافة سياسة التخزين';
-  @override String get setupAddStoragePolicyContent => 'انقر على الحاوية ← السياسات ← سياسة جديدة ← \"للتخصيص الكامل\" ← الاسم: allow_all ← حدد جميع العمليات ← حفظ.';
-  @override String get setupSettingUpStorage => 'جاري إعداد التخزين...';
-  @override String get setupSetupStorage => 'إعداد التخزين';
-  @override String get setupComplete => 'اكتمل الإعداد!';
-  @override String get setupCompleteDescription => 'Artive متصل الآن بمشروع Supabase الخاص بك.\n\nيمكنك البدء بإضافة أعمالك الفنية!';
-  @override String get setupQuickTips => 'نصائح سريعة';
-  @override String get setupQuickTipsContent => '• اضغط على + لإضافة عملك الفني الأول\n• أضف صوراً متعددة بعلامات مختلفة (رئيسية، مرجعية، مسح)\n• استخدم البحث والفلاتر للعثور على الأعمال بسرعة\n• غيّر اللغة في الإعدادات';
-  @override String get setupStartUsing => 'ابدأ استخدام Artive';
-  @override String get openInBrowser => 'فتح في المتصفح';
-  @override String get couldNotOpenBrowser => 'تعذر فتح المتصفح تلقائياً. يرجى نسخ هذا الرابط وفتحه يدوياً:';
-  @override String get urlCopied => 'تم نسخ الرابط إلى الحافظة';
-  @override String get configurationSaved => 'تم حفظ الإعدادات';
-  @override String get testConnection => 'اختبار الاتصال';
-  @override String get connectionSuccess => 'نجح الاتصال';
-  @override String get connectionFailed => 'فشل الاتصال';
-}
-
-class AppLocalizationsBn extends AppLocalizations {
-  AppLocalizationsBn() : super('bn');
-  @override String get appTitle => 'Artive';
-  @override String get artworks => 'শিল্পকর্ম';
-  @override String get addArtwork => 'শিল্পকর্ম যোগ করুন';
-  @override String get editArtwork => 'শিল্পকর্ম সম্পাদনা করুন';
-  @override String get deleteArtwork => 'শিল্পকর্ম মুছুন';
-  @override String get name => 'নাম';
-  @override String get description => 'বিবরণ';
-  @override String get descriptionOptional => 'বিবরণ (ঐচ্ছিক)';
-  @override String get date => 'তারিখ';
-  @override String get month => 'মাস';
-  @override String get year => 'বছর';
-  @override String get dimension => 'মাত্রা';
-  @override String get dimensionHint => 'যেমন, ৫০x৭০ সেমি';
-  @override String get medium => 'মাধ্যম';
-  @override String get mediumHint => 'যেমন, ক্যানভাসে তেল';
-  @override String get images => 'ছবি';
-  @override String get addImage => 'ছবি যোগ করুন';
-  @override String get photo => 'প্রধান';
-  @override String get reference => 'ফটো রেফারেন্স';
-  @override String get scan => 'স্ক্যান';
-  @override String get save => 'সংরক্ষণ';
-  @override String get cancel => 'বাতিল';
-  @override String get delete => 'মুছুন';
-  @override String get confirmDelete => 'আপনি কি এই শিল্পকর্মটি মুছে ফেলতে চান?';
-  @override String get confirmDeleteImage => 'আপনি কি এই ছবিটি মুছে ফেলতে চান?';
-  @override String get yes => 'হ্যাঁ';
-  @override String get no => 'না';
-  @override String get settings => 'সেটিংস';
-  @override String get language => 'ভাষা';
-  @override String get about => 'সম্পর্কে';
-  @override String get version => 'সংস্করণ';
-  @override String get search => 'অনুসন্ধান';
-  @override String get noArtworks => 'এখনো কোন শিল্পকর্ম নেই';
-  @override String get noArtworksHint => 'আপনার প্রথম শিল্পকর্ম যোগ করতে + চাপুন';
-  @override String get loading => 'লোড হচ্ছে...';
-  @override String get error => 'ত্রুটি';
-  @override String get retry => 'পুনরায় চেষ্টা করুন';
-  @override String get uploadingImage => 'ছবি আপলোড হচ্ছে...';
-  @override String get imageUploaded => 'ছবি আপলোড হয়েছে';
-  @override String get imageFailed => 'ছবি আপলোড ব্যর্থ';
-  @override String get artworkSaved => 'শিল্পকর্ম সংরক্ষিত';
-  @override String get artworkDeleted => 'শিল্পকর্ম মুছে ফেলা হয়েছে';
-  @override String get requiredField => 'এই ক্ষেত্রটি প্রয়োজন';
-  @override String get invalidYear => 'অনুগ্রহ করে একটি বৈধ বছর লিখুন';
-  @override String get invalidMonth => 'অনুগ্রহ করে ১ থেকে ১২ এর মধ্যে মাস লিখুন';
-  @override String get selectImageTag => 'ছবির ধরন নির্বাচন করুন';
-  @override String get gallery => 'গ্যালারি';
-  @override String get camera => 'ক্যামেরা';
-  @override String get selectSource => 'ছবির উৎস নির্বাচন করুন';
-  @override String get id => 'আইডি';
-  @override String get createdAt => 'তৈরি হয়েছে';
-  @override String get filterByMedium => 'মাধ্যম দিয়ে ফিল্টার';
-  @override String get filterByYear => 'বছর দিয়ে ফিল্টার';
-  @override String get allMedia => 'সব মাধ্যম';
-  @override String get allYears => 'সব বছর';
-  @override String get sortBy => 'সাজান';
-  @override String get sortByName => 'নাম';
-  @override String get sortByDate => 'তারিখ';
-  @override String get sortByCreated => 'তৈরির সময়';
-  @override String get ascending => 'ক্রমবর্ধমান';
-  @override String get descending => 'ক্রমহ্রাসমান';
-  @override String get searchHint => 'সঠিক মিল অনুসন্ধান';
-  @override String get back => 'পেছনে';
-  @override String get close => 'বন্ধ করুন';
-  @override String get copy => 'কপি করুন';
-  @override String get skip => 'এড়িয়ে যান';
-  @override String get done => 'সম্পন্ন';
-  @override String get reset => 'রিসেট';
-  @override String get cloudConnection => 'ক্লাউড সংযোগ';
-  @override String get cloudConnectionSubtitle => 'Supabase সংযোগ পুনরায় কনফিগার করুন';
-  @override String get resetCloudConnection => 'ক্লাউড সংযোগ রিসেট করুন';
-  @override String get resetCloudConnectionMessage => 'এটি অ্যাপটিকে আপনার Supabase প্রকল্প থেকে সংযোগ বিচ্ছিন্ন করবে। আপনাকে সেটআপ উইজার্ড আবার চালাতে হবে।\n\nSupabase-এ আপনার ডেটা মুছে যাবে না।';
-  @override String get restartToReconfigure => 'পুনরায় কনফিগার করতে অ্যাপ রিস্টার্ট করুন';
-  @override String get databasePaused => 'ডেটাবেস বিরতিতে';
-  @override String get databasePausedMessage => 'আপনার Supabase প্রকল্প নিষ্ক্রিয়তার কারণে বিরতিতে আছে।\n\nপুনরুদ্ধার করতে:\n1. supabase.com/dashboard-এ যান\n2. আপনার প্রকল্প নির্বাচন করুন\n3. \"প্রকল্প পুনরুদ্ধার করুন\" ক্লিক করুন\n\nএটি প্রায় ১ মিনিট সময় নেয়।';
-  @override String get setupTitle => 'Artive সেটআপ';
-  @override String get setupWelcome => 'Artive-এ স্বাগতম!';
-  @override String get setupWelcomeDescription => 'এই উইজার্ড আপনার শিল্পকর্ম ক্যাটালগের জন্য ক্লাউড স্টোরেজ সেট আপ করতে সাহায্য করবে।\n\nআপনার শিল্পকর্ম এবং ছবি Supabase-এ নিরাপদে সংরক্ষিত হবে, একটি বিনামূল্যের ক্লাউড প্ল্যাটফর্ম।\n\nসেটআপে প্রায় ৫ মিনিট সময় লাগে।';
-  @override String get setupWhatIsSupabase => 'Supabase কী?';
-  @override String get setupWhatIsSupabaseContent => 'Supabase একটি বিনামূল্যের ওপেন-সোর্স ব্যাকএন্ড সেবা। এটি আপনার অ্যাপের জন্য ডেটাবেস এবং ফাইল স্টোরেজ প্রদান করে।';
-  @override String get setupYourData => 'আপনার ডেটা, আপনার নিয়ন্ত্রণ';
-  @override String get setupYourDataContent => 'আপনি নিজের Supabase অ্যাকাউন্ট তৈরি করেন। আপনার ডেটা আপনার এবং শুধুমাত্র আপনারই অ্যাক্সেস আছে।';
-  @override String get setupGetStarted => 'শুরু করুন';
-  @override String get setupStep1Title => 'ধাপ ১: Supabase প্রকল্প তৈরি করুন';
-  @override String get setupStep1_1 => 'supabase.com-এ যান এবং বিনামূল্যে অ্যাকাউন্ট তৈরি করুন';
-  @override String get setupOpenSupabase => 'Supabase খুলুন';
-  @override String get setupStep1_2 => 'ড্যাশবোর্ডে \"নতুন প্রকল্প\" ক্লিক করুন';
-  @override String get setupStep1_3 => 'আপনার প্রকল্পের জন্য নাম নির্বাচন করুন (যেমন \"artive\")';
-  @override String get setupStep1_4 => 'নিরাপদ ডেটাবেস পাসওয়ার্ড সেট করুন (এটি সংরক্ষণ করুন!)';
-  @override String get setupStep1_5 => 'আপনার কাছের অঞ্চল নির্বাচন করুন';
-  @override String get setupStep1_6 => '\"নতুন প্রকল্প তৈরি করুন\" ক্লিক করুন এবং অপেক্ষা করুন';
-  @override String get setupFreeTier => 'বিনামূল্যে টায়ার';
-  @override String get setupFreeTierContent => 'Supabase বিনামূল্যে টায়ারে ৫০০MB ডেটাবেস এবং ১GB ফাইল স্টোরেজ অন্তর্ভুক্ত - হাজার হাজার শিল্পকর্মের জন্য যথেষ্ট!';
-  @override String get setupProjectCreated => 'প্রকল্প তৈরি হয়েছে';
-  @override String get setupStep2Title => 'ধাপ ২: আপনার শংসাপত্র পান';
-  @override String get setupStep2_1 => 'আপনার Supabase প্রকল্পে \"প্রকল্প সেটিংস\" (গিয়ার আইকন)-এ যান';
-  @override String get setupStep2_2 => 'সেটিংস মেনুতে \"Data API\" ক্লিক করুন';
-  @override String get setupStep2_3 => '\"Project URL\" খুঁজুন - এরকম দেখতে: https://xxxxx.supabase.co';
-  @override String get setupStep2_4 => '\"Project API keys\"-এর অধীনে \"anon\" কী খুঁজুন';
-  @override String get setupAboutApiKeys => 'API কী সম্পর্কে';
-  @override String get setupAboutApiKeysContent => 'anon কী অ্যাপের জন্য নিরাপদ। এটি Row Level Security নীতির সাথে কাজ করে।';
-  @override String get setupCredentialsTip => 'টিপ: আপনি Supabase-এ প্রতিটি মানের পাশে কপি বাটনে ক্লিক করতে পারেন।';
-  @override String get setupIHaveCredentials => 'আমার শংসাপত্র আছে';
-  @override String get setupStep3Title => 'ধাপ ৩: আপনার শংসাপত্র লিখুন';
-  @override String get setupProjectUrl => 'প্রকল্প URL';
-  @override String get setupAnonKey => 'Anon কী';
-  @override String get setupValidateAndContinue => 'যাচাই করুন এবং চালিয়ে যান';
-  @override String get setupStep4Title => 'ধাপ ৪: ডেটাবেস সেটআপ';
-  @override String get setupManualSetupRequired => 'ম্যানুয়াল সেটআপ প্রয়োজন';
-  @override String get setupDatabaseManualContent => 'ডেটাবেস টেবিলগুলি ম্যানুয়ালি তৈরি করতে হবে। এটি একবারের সেটআপ।';
-  @override String get setupStep4_1 => 'Supabase-এ সাইডবারে \"SQL Editor\"-এ যান';
-  @override String get setupStep4_2 => '\"নতুন কোয়েরি\" ক্লিক করুন';
-  @override String get setupStep4_3 => 'নিম্নলিখিত SQL কপি এবং পেস্ট করুন:';
-  @override String get setupStep4_4 => 'কোয়েরি চালাতে \"Run\" ক্লিক করুন';
-  @override String get setupStep4_5 => 'আপনি \"সফল। কোনো সারি ফেরত আসেনি\" দেখতে পাবেন';
-  @override String get setupSqlCopied => 'SQL ক্লিপবোর্ডে কপি হয়েছে';
-  @override String get setupCheckingDatabase => 'ডেটাবেস পরীক্ষা করা হচ্ছে...';
-  @override String get setupIveRunSql => 'আমি SQL চালিয়েছি';
-  @override String get setupCheckDatabase => 'ডেটাবেস পরীক্ষা করুন';
-  @override String get setupStep5Title => 'ধাপ ৫: স্টোরেজ সেটআপ';
-  @override String get setupStorageManualContent => 'আপনার শিল্পকর্ম ছবির জন্য স্টোরেজ বাকেট তৈরি করুন।';
-  @override String get setupStep5_1 => 'Supabase-এ সাইডবারে \"Storage\"-এ যান';
-  @override String get setupStep5_2 => '\"নতুন বাকেট\" ক্লিক করুন';
-  @override String get setupStep5_3 => 'ঠিক এই নাম দিন: artworks';
-  @override String get setupStep5_4 => '\"পাবলিক বাকেট\" বন্ধ রাখুন (প্রস্তাবিত)';
-  @override String get setupStep5_5 => '\"বাকেট তৈরি করুন\" ক্লিক করুন';
-  @override String get setupAddStoragePolicy => 'স্টোরেজ নীতি যোগ করুন';
-  @override String get setupAddStoragePolicyContent => 'বাকেটে ক্লিক করুন → নীতি → নতুন নীতি → \"সম্পূর্ণ কাস্টমাইজেশনের জন্য\" → নাম: allow_all → সব অপারেশন চেক করুন → সংরক্ষণ করুন।';
-  @override String get setupSettingUpStorage => 'স্টোরেজ সেট আপ হচ্ছে...';
-  @override String get setupSetupStorage => 'স্টোরেজ সেটআপ';
-  @override String get setupComplete => 'সেটআপ সম্পূর্ণ!';
-  @override String get setupCompleteDescription => 'Artive এখন আপনার Supabase প্রকল্পের সাথে সংযুক্ত।\n\nআপনি আপনার শিল্পকর্ম যোগ করা শুরু করতে পারেন!';
-  @override String get setupQuickTips => 'দ্রুত টিপস';
-  @override String get setupQuickTipsContent => '• আপনার প্রথম শিল্পকর্ম যোগ করতে + চাপুন\n• বিভিন্ন ট্যাগ সহ একাধিক ছবি যোগ করুন (প্রধান, রেফারেন্স, স্ক্যান)\n• দ্রুত শিল্পকর্ম খুঁজতে অনুসন্ধান এবং ফিল্টার ব্যবহার করুন\n• সেটিংসে ভাষা পরিবর্তন করুন';
-  @override String get setupStartUsing => 'Artive ব্যবহার শুরু করুন';
-  @override String get openInBrowser => 'ব্রাউজারে খুলুন';
-  @override String get couldNotOpenBrowser => 'স্বয়ংক্রিয়ভাবে ব্রাউজার খোলা যায়নি। অনুগ্রহ করে এই URL কপি করুন এবং ম্যানুয়ালি খুলুন:';
-  @override String get urlCopied => 'URL ক্লিপবোর্ডে কপি হয়েছে';
-  @override String get configurationSaved => 'কনফিগারেশন সংরক্ষিত';
-  @override String get testConnection => 'সংযোগ পরীক্ষা';
-  @override String get connectionSuccess => 'সংযোগ সফল';
-  @override String get connectionFailed => 'সংযোগ ব্যর্থ';
-}
-
-class AppLocalizationsPt extends AppLocalizations {
-  AppLocalizationsPt() : super('pt');
-  @override String get appTitle => 'Artive';
-  @override String get artworks => 'Obras';
-  @override String get addArtwork => 'Adicionar obra';
-  @override String get editArtwork => 'Editar obra';
-  @override String get deleteArtwork => 'Excluir obra';
-  @override String get name => 'Nome';
-  @override String get description => 'Descrição';
-  @override String get descriptionOptional => 'Descrição (opcional)';
-  @override String get date => 'Data';
-  @override String get month => 'Mês';
-  @override String get year => 'Ano';
-  @override String get dimension => 'Dimensão';
-  @override String get dimensionHint => 'ex., 50x70 cm';
-  @override String get medium => 'Técnica';
-  @override String get mediumHint => 'ex., Óleo sobre tela';
-  @override String get images => 'Imagens';
-  @override String get addImage => 'Adicionar imagem';
-  @override String get photo => 'Foto';
-  @override String get reference => 'Foto referência';
-  @override String get scan => 'Digitalização';
-  @override String get save => 'Salvar';
-  @override String get cancel => 'Cancelar';
-  @override String get delete => 'Excluir';
-  @override String get confirmDelete => 'Tem certeza que deseja excluir esta obra?';
-  @override String get confirmDeleteImage => 'Tem certeza que deseja excluir esta imagem?';
-  @override String get yes => 'Sim';
-  @override String get no => 'Não';
-  @override String get settings => 'Configurações';
-  @override String get language => 'Idioma';
-  @override String get about => 'Sobre';
-  @override String get version => 'Versão';
-  @override String get search => 'Pesquisar';
-  @override String get noArtworks => 'Nenhuma obra ainda';
-  @override String get noArtworksHint => 'Toque em + para adicionar sua primeira obra';
-  @override String get loading => 'Carregando...';
-  @override String get error => 'Erro';
-  @override String get retry => 'Tentar novamente';
-  @override String get uploadingImage => 'Enviando imagem...';
-  @override String get imageUploaded => 'Imagem enviada';
-  @override String get imageFailed => 'Falha ao enviar imagem';
-  @override String get artworkSaved => 'Obra salva';
-  @override String get artworkDeleted => 'Obra excluída';
-  @override String get requiredField => 'Este campo é obrigatório';
-  @override String get invalidYear => 'Por favor, insira um ano válido';
-  @override String get invalidMonth => 'Por favor, insira um mês entre 1 e 12';
-  @override String get selectImageTag => 'Selecione o tipo de imagem';
-  @override String get gallery => 'Galeria';
-  @override String get camera => 'Câmera';
-  @override String get selectSource => 'Selecione a origem da imagem';
-  @override String get id => 'ID';
-  @override String get createdAt => 'Criado em';
-  @override String get filterByMedium => 'Filtrar por técnica';
-  @override String get filterByYear => 'Filtrar por ano';
-  @override String get allMedia => 'Todas as técnicas';
-  @override String get allYears => 'Todos os anos';
-  @override String get sortBy => 'Ordenar por';
-  @override String get sortByName => 'Nome';
-  @override String get sortByDate => 'Data';
-  @override String get sortByCreated => 'Criação';
-  @override String get ascending => 'Crescente';
-  @override String get descending => 'Decrescente';
-  @override String get searchHint => 'Pesquisa exata';
-  @override String get back => 'Voltar';
-  @override String get close => 'Fechar';
-  @override String get copy => 'Copiar';
-  @override String get skip => 'Pular';
-  @override String get done => 'Concluído';
-  @override String get reset => 'Redefinir';
-  @override String get cloudConnection => 'Conexão na Nuvem';
-  @override String get cloudConnectionSubtitle => 'Reconfigurar conexão Supabase';
-  @override String get resetCloudConnection => 'Redefinir Conexão na Nuvem';
-  @override String get resetCloudConnectionMessage => 'Isso desconectará o app do seu projeto Supabase. Você precisará executar o assistente de configuração novamente.\n\nSeus dados no Supabase NÃO serão excluídos.';
-  @override String get restartToReconfigure => 'Por favor, reinicie o app para reconfigurar';
-  @override String get databasePaused => 'Banco de Dados Pausado';
-  @override String get databasePausedMessage => 'Seu projeto Supabase está pausado por inatividade.\n\nPara restaurar:\n1. Acesse supabase.com/dashboard\n2. Selecione seu projeto\n3. Clique em \"Restaurar projeto\"\n\nIsso leva cerca de 1 minuto.';
-  @override String get setupTitle => 'Configuração do Artive';
-  @override String get setupWelcome => 'Bem-vindo ao Artive!';
-  @override String get setupWelcomeDescription => 'Este assistente ajudará você a configurar o armazenamento em nuvem para seu catálogo de obras.\n\nSuas obras e imagens serão armazenadas com segurança no Supabase, uma plataforma de nuvem gratuita.\n\nA configuração leva cerca de 5 minutos.';
-  @override String get setupWhatIsSupabase => 'O que é Supabase?';
-  @override String get setupWhatIsSupabaseContent => 'Supabase é um serviço de backend gratuito e de código aberto. Ele fornece banco de dados e armazenamento de arquivos para seu app.';
-  @override String get setupYourData => 'Seus Dados, Seu Controle';
-  @override String get setupYourDataContent => 'Você cria sua própria conta Supabase. Seus dados pertencem a você e somente você tem acesso.';
-  @override String get setupGetStarted => 'Começar';
-  @override String get setupStep1Title => 'Passo 1: Criar um Projeto Supabase';
-  @override String get setupStep1_1 => 'Acesse supabase.com e crie uma conta gratuita';
-  @override String get setupOpenSupabase => 'Abrir Supabase';
-  @override String get setupStep1_2 => 'Clique em \"Novo Projeto\" no painel';
-  @override String get setupStep1_3 => 'Escolha um nome para seu projeto (ex. \"artive\")';
-  @override String get setupStep1_4 => 'Defina uma senha segura para o banco (guarde-a!)';
-  @override String get setupStep1_5 => 'Selecione uma região próxima a você';
-  @override String get setupStep1_6 => 'Clique em \"Criar novo projeto\" e aguarde';
-  @override String get setupFreeTier => 'Plano Gratuito';
-  @override String get setupFreeTierContent => 'O plano gratuito do Supabase inclui 500MB de banco de dados e 1GB de armazenamento de arquivos - suficiente para milhares de obras!';
-  @override String get setupProjectCreated => 'Projeto Criado';
-  @override String get setupStep2Title => 'Passo 2: Obter Suas Credenciais';
-  @override String get setupStep2_1 => 'No seu projeto Supabase, vá para \"Configurações do Projeto\" (ícone de engrenagem)';
-  @override String get setupStep2_2 => 'Clique em \"Data API\" no menu de configurações';
-  @override String get setupStep2_3 => 'Encontre \"Project URL\" - parece com: https://xxxxx.supabase.co';
-  @override String get setupStep2_4 => 'Encontre a chave \"anon\" em \"Project API keys\"';
-  @override String get setupAboutApiKeys => 'Sobre Chaves de API';
-  @override String get setupAboutApiKeysContent => 'A chave anon é segura para apps. Ela funciona com políticas de Row Level Security.';
-  @override String get setupCredentialsTip => 'Dica: Você pode clicar no botão de copiar ao lado de cada valor no Supabase.';
-  @override String get setupIHaveCredentials => 'Tenho Minhas Credenciais';
-  @override String get setupStep3Title => 'Passo 3: Inserir Suas Credenciais';
-  @override String get setupProjectUrl => 'URL do Projeto';
-  @override String get setupAnonKey => 'Chave Anon';
-  @override String get setupValidateAndContinue => 'Validar e Continuar';
-  @override String get setupStep4Title => 'Passo 4: Configuração do Banco de Dados';
-  @override String get setupManualSetupRequired => 'Configuração Manual Necessária';
-  @override String get setupDatabaseManualContent => 'As tabelas do banco de dados precisam ser criadas manualmente. Esta é uma configuração única.';
-  @override String get setupStep4_1 => 'No Supabase, vá para \"SQL Editor\" na barra lateral';
-  @override String get setupStep4_2 => 'Clique em \"Nova consulta\"';
-  @override String get setupStep4_3 => 'Copie e cole o seguinte SQL:';
-  @override String get setupStep4_4 => 'Clique em \"Executar\" para executar a consulta';
-  @override String get setupStep4_5 => 'Você deve ver \"Sucesso. Nenhuma linha retornada\"';
-  @override String get setupSqlCopied => 'SQL copiado para a área de transferência';
-  @override String get setupCheckingDatabase => 'Verificando banco de dados...';
-  @override String get setupIveRunSql => 'Executei o SQL';
-  @override String get setupCheckDatabase => 'Verificar Banco de Dados';
-  @override String get setupStep5Title => 'Passo 5: Configuração de Armazenamento';
-  @override String get setupStorageManualContent => 'Crie o bucket de armazenamento para suas imagens de obras.';
-  @override String get setupStep5_1 => 'No Supabase, vá para \"Storage\" na barra lateral';
-  @override String get setupStep5_2 => 'Clique em \"Novo bucket\"';
-  @override String get setupStep5_3 => 'Nomeie exatamente: artworks';
-  @override String get setupStep5_4 => 'Deixe \"Bucket público\" DESATIVADO (recomendado)';
-  @override String get setupStep5_5 => 'Clique em \"Criar bucket\"';
-  @override String get setupAddStoragePolicy => 'Adicionar Política de Armazenamento';
-  @override String get setupAddStoragePolicyContent => 'Clique no bucket → Políticas → Nova Política → \"Para personalização completa\" → Nome: allow_all → Marque todas as operações → Salvar.';
-  @override String get setupSettingUpStorage => 'Configurando armazenamento...';
-  @override String get setupSetupStorage => 'Configurar Armazenamento';
-  @override String get setupComplete => 'Configuração Concluída!';
-  @override String get setupCompleteDescription => 'Artive está agora conectado ao seu projeto Supabase.\n\nVocê pode começar a adicionar suas obras!';
-  @override String get setupQuickTips => 'Dicas Rápidas';
-  @override String get setupQuickTipsContent => '• Toque em + para adicionar sua primeira obra\n• Adicione várias imagens com diferentes tags (principal, referência, digitalização)\n• Use busca e filtros para encontrar obras rapidamente\n• Mude o idioma nas Configurações';
-  @override String get setupStartUsing => 'Começar a Usar Artive';
-  @override String get openInBrowser => 'Abrir no Navegador';
-  @override String get couldNotOpenBrowser => 'Não foi possível abrir o navegador automaticamente. Por favor, copie esta URL e abra manualmente:';
-  @override String get urlCopied => 'URL copiada para a área de transferência';
-  @override String get configurationSaved => 'Configuração salva';
-  @override String get testConnection => 'Testar conexão';
-  @override String get connectionSuccess => 'Conexão bem-sucedida';
-  @override String get connectionFailed => 'Falha na conexão';
-}
-
-class AppLocalizationsRu extends AppLocalizations {
-  AppLocalizationsRu() : super('ru');
-  @override String get appTitle => 'Artive';
-  @override String get artworks => 'Работы';
-  @override String get addArtwork => 'Добавить работу';
-  @override String get editArtwork => 'Редактировать работу';
-  @override String get deleteArtwork => 'Удалить работу';
-  @override String get name => 'Название';
-  @override String get description => 'Описание';
-  @override String get descriptionOptional => 'Описание (необязательно)';
-  @override String get date => 'Дата';
-  @override String get month => 'Месяц';
-  @override String get year => 'Год';
-  @override String get dimension => 'Размер';
-  @override String get dimensionHint => 'напр., 50x70 см';
-  @override String get medium => 'Техника';
-  @override String get mediumHint => 'напр., Масло на холсте';
-  @override String get images => 'Изображения';
-  @override String get addImage => 'Добавить изображение';
-  @override String get photo => 'Основное';
-  @override String get reference => 'Фото референс';
-  @override String get scan => 'Скан';
-  @override String get save => 'Сохранить';
-  @override String get cancel => 'Отмена';
-  @override String get delete => 'Удалить';
-  @override String get confirmDelete => 'Вы уверены, что хотите удалить эту работу?';
-  @override String get confirmDeleteImage => 'Вы уверены, что хотите удалить это изображение?';
-  @override String get yes => 'Да';
-  @override String get no => 'Нет';
-  @override String get settings => 'Настройки';
-  @override String get language => 'Язык';
-  @override String get about => 'О приложении';
-  @override String get version => 'Версия';
-  @override String get search => 'Поиск';
-  @override String get noArtworks => 'Пока нет работ';
-  @override String get noArtworksHint => 'Нажмите + чтобы добавить первую работу';
-  @override String get loading => 'Загрузка...';
-  @override String get error => 'Ошибка';
-  @override String get retry => 'Повторить';
-  @override String get uploadingImage => 'Загрузка изображения...';
-  @override String get imageUploaded => 'Изображение загружено';
-  @override String get imageFailed => 'Ошибка загрузки изображения';
-  @override String get artworkSaved => 'Работа сохранена';
-  @override String get artworkDeleted => 'Работа удалена';
-  @override String get requiredField => 'Это поле обязательно';
-  @override String get invalidYear => 'Пожалуйста, введите корректный год';
-  @override String get invalidMonth => 'Пожалуйста, введите месяц от 1 до 12';
-  @override String get selectImageTag => 'Выберите тип изображения';
-  @override String get gallery => 'Галерея';
-  @override String get camera => 'Камера';
-  @override String get selectSource => 'Выберите источник изображения';
-  @override String get id => 'ID';
-  @override String get createdAt => 'Создано';
-  @override String get filterByMedium => 'Фильтр по технике';
-  @override String get filterByYear => 'Фильтр по году';
-  @override String get allMedia => 'Все техники';
-  @override String get allYears => 'Все годы';
-  @override String get sortBy => 'Сортировать по';
-  @override String get sortByName => 'Названию';
-  @override String get sortByDate => 'Дате';
-  @override String get sortByCreated => 'Создания';
-  @override String get ascending => 'По возрастанию';
-  @override String get descending => 'По убыванию';
-  @override String get configurationSaved => 'Настройки сохранены';
-  @override String get testConnection => 'Проверить соединение';
-  @override String get connectionSuccess => 'Соединение успешно';
-  @override String get connectionFailed => 'Ошибка соединения';
-  @override String get searchHint => 'Точный поиск';
-  @override String get back => 'Назад';
-  @override String get close => 'Закрыть';
-  @override String get copy => 'Копировать';
-  @override String get skip => 'Пропустить';
-  @override String get done => 'Готово';
-  @override String get reset => 'Сбросить';
-  @override String get cloudConnection => 'Облачное подключение';
-  @override String get cloudConnectionSubtitle => 'Перенастроить подключение Supabase';
-  @override String get resetCloudConnection => 'Сбросить облачное подключение';
-  @override String get resetCloudConnectionMessage => 'Это отключит приложение от вашего проекта Supabase. Вам нужно будет снова запустить мастер настройки.\n\nВаши данные в Supabase НЕ будут удалены.';
-  @override String get restartToReconfigure => 'Пожалуйста, перезапустите приложение для перенастройки';
-  @override String get databasePaused => 'База данных приостановлена';
-  @override String get databasePausedMessage => 'Ваш проект Supabase приостановлен из-за неактивности.\n\nДля восстановления:\n1. Перейдите на supabase.com/dashboard\n2. Выберите свой проект\n3. Нажмите "Восстановить проект"\n\nЭто займёт около 1 минуты.';
-  @override String get setupTitle => 'Настройка Artive';
-  @override String get setupWelcome => 'Добро пожаловать в Artive!';
-  @override String get setupWelcomeDescription => 'Этот мастер поможет вам настроить облачное хранилище для каталога ваших работ.\n\nВаши работы и изображения будут надёжно храниться в Supabase, бесплатной облачной платформе.\n\nНастройка занимает около 5 минут.';
-  @override String get setupWhatIsSupabase => 'Что такое Supabase?';
-  @override String get setupWhatIsSupabaseContent => 'Supabase — это бесплатный сервис бэкенда с открытым исходным кодом. Он предоставляет базу данных и хранилище файлов для вашего приложения.';
-  @override String get setupYourData => 'Ваши данные, ваш контроль';
-  @override String get setupYourDataContent => 'Вы создаёте свой собственный аккаунт Supabase. Ваши данные принадлежат вам, и только вы имеете к ним доступ.';
-  @override String get setupGetStarted => 'Начать';
-  @override String get setupStep1Title => 'Шаг 1: Создание проекта Supabase';
-  @override String get setupStep1_1 => 'Перейдите на supabase.com и создайте бесплатный аккаунт';
-  @override String get setupOpenSupabase => 'Открыть Supabase';
-  @override String get setupStep1_2 => 'Нажмите "Новый проект" в панели управления';
-  @override String get setupStep1_3 => 'Выберите имя для проекта (например, "artive")';
-  @override String get setupStep1_4 => 'Установите надёжный пароль базы данных (сохраните его!)';
-  @override String get setupStep1_5 => 'Выберите ближайший к вам регион';
-  @override String get setupStep1_6 => 'Нажмите "Создать новый проект" и подождите';
-  @override String get setupFreeTier => 'Бесплатный план';
-  @override String get setupFreeTierContent => 'Бесплатный план Supabase включает 500 МБ базы данных и 1 ГБ файлового хранилища — достаточно для тысяч работ!';
-  @override String get setupProjectCreated => 'Проект создан';
-  @override String get setupStep2Title => 'Шаг 2: Получение учётных данных';
-  @override String get setupStep2_1 => 'В вашем проекте Supabase перейдите в "Настройки проекта" (значок шестерёнки)';
-  @override String get setupStep2_2 => 'Нажмите на "Data API" в меню настроек';
-  @override String get setupStep2_3 => 'Найдите "Project URL" — выглядит как: https://xxxxx.supabase.co';
-  @override String get setupStep2_4 => 'Найдите ключ "anon" в разделе "Project API keys"';
-  @override String get setupAboutApiKeys => 'Об API-ключах';
-  @override String get setupAboutApiKeysContent => 'Ключ anon безопасен для приложений. Он работает с политиками Row Level Security.';
-  @override String get setupCredentialsTip => 'Совет: Вы можете нажать кнопку копирования рядом с каждым значением в Supabase.';
-  @override String get setupIHaveCredentials => 'У меня есть учётные данные';
-  @override String get setupStep3Title => 'Шаг 3: Ввод учётных данных';
-  @override String get setupProjectUrl => 'URL проекта';
-  @override String get setupAnonKey => 'Ключ Anon';
-  @override String get setupValidateAndContinue => 'Проверить и продолжить';
-  @override String get setupStep4Title => 'Шаг 4: Настройка базы данных';
-  @override String get setupManualSetupRequired => 'Требуется ручная настройка';
-  @override String get setupDatabaseManualContent => 'Таблицы базы данных необходимо создать вручную. Это одноразовая настройка.';
-  @override String get setupStep4_1 => 'В Supabase перейдите в "SQL Editor" на боковой панели';
-  @override String get setupStep4_2 => 'Нажмите "Новый запрос"';
-  @override String get setupStep4_3 => 'Скопируйте и вставьте следующий SQL:';
-  @override String get setupStep4_4 => 'Нажмите "Выполнить" для выполнения запроса';
-  @override String get setupStep4_5 => 'Вы должны увидеть "Успешно. Строки не возвращены"';
-  @override String get setupSqlCopied => 'SQL скопирован в буфер обмена';
-  @override String get setupCheckingDatabase => 'Проверка базы данных...';
-  @override String get setupIveRunSql => 'Я выполнил SQL';
-  @override String get setupCheckDatabase => 'Проверить базу данных';
-  @override String get setupStep5Title => 'Шаг 5: Настройка хранилища';
-  @override String get setupStorageManualContent => 'Создайте корзину хранилища для изображений ваших работ.';
-  @override String get setupStep5_1 => 'В Supabase перейдите в "Storage" на боковой панели';
-  @override String get setupStep5_2 => 'Нажмите "Новая корзина"';
-  @override String get setupStep5_3 => 'Назовите её точно: artworks';
-  @override String get setupStep5_4 => 'Оставьте "Публичная корзина" ВЫКЛЮЧЕННОЙ (рекомендуется)';
-  @override String get setupStep5_5 => 'Нажмите "Создать корзину"';
-  @override String get setupAddStoragePolicy => 'Добавить политику хранилища';
-  @override String get setupAddStoragePolicyContent => 'Нажмите на корзину → Политики → Новая политика → "Для полной настройки" → Имя: allow_all → Отметьте все операции → Сохранить.';
-  @override String get setupSettingUpStorage => 'Настройка хранилища...';
-  @override String get setupSetupStorage => 'Настроить хранилище';
-  @override String get setupComplete => 'Настройка завершена!';
-  @override String get setupCompleteDescription => 'Artive теперь подключён к вашему проекту Supabase.\n\nВы можете начать добавлять свои работы!';
-  @override String get setupQuickTips => 'Быстрые советы';
-  @override String get setupQuickTipsContent => '• Нажмите +, чтобы добавить первую работу\n• Добавляйте несколько изображений с разными тегами (основное, референс, скан)\n• Используйте поиск и фильтры для быстрого поиска работ\n• Измените язык в настройках';
-  @override String get setupStartUsing => 'Начать использовать Artive';
-  @override String get openInBrowser => 'Открыть в браузере';
-  @override String get couldNotOpenBrowser => 'Не удалось открыть браузер автоматически. Пожалуйста, скопируйте этот URL и откройте вручную:';
-  @override String get urlCopied => 'URL скопирован в буфер обмена';
-}
-
-class AppLocalizationsJa extends AppLocalizations {
-  AppLocalizationsJa() : super('ja');
-  @override String get appTitle => 'Artive';
-  @override String get artworks => '作品';
-  @override String get addArtwork => '作品を追加';
-  @override String get editArtwork => '作品を編集';
-  @override String get deleteArtwork => '作品を削除';
-  @override String get name => '名前';
-  @override String get description => '説明';
-  @override String get descriptionOptional => '説明（任意）';
-  @override String get date => '日付';
-  @override String get month => '月';
-  @override String get year => '年';
-  @override String get dimension => 'サイズ';
-  @override String get dimensionHint => '例：50x70 cm';
-  @override String get medium => '技法';
-  @override String get mediumHint => '例：キャンバスに油彩';
-  @override String get images => '画像';
-  @override String get addImage => '画像を追加';
-  @override String get photo => 'メイン';
-  @override String get reference => '参考写真';
-  @override String get scan => 'スキャン';
-  @override String get save => '保存';
-  @override String get cancel => 'キャンセル';
-  @override String get delete => '削除';
-  @override String get confirmDelete => 'この作品を削除してもよろしいですか？';
-  @override String get confirmDeleteImage => 'この画像を削除してもよろしいですか？';
-  @override String get yes => 'はい';
-  @override String get no => 'いいえ';
-  @override String get settings => '設定';
-  @override String get language => '言語';
-  @override String get about => 'アプリについて';
-  @override String get version => 'バージョン';
-  @override String get search => '検索';
-  @override String get noArtworks => 'まだ作品がありません';
-  @override String get noArtworksHint => '+をタップして最初の作品を追加';
-  @override String get loading => '読み込み中...';
-  @override String get error => 'エラー';
-  @override String get retry => '再試行';
-  @override String get uploadingImage => '画像をアップロード中...';
-  @override String get imageUploaded => '画像がアップロードされました';
-  @override String get imageFailed => '画像のアップロードに失敗しました';
-  @override String get artworkSaved => '作品が保存されました';
-  @override String get artworkDeleted => '作品が削除されました';
-  @override String get requiredField => 'この項目は必須です';
-  @override String get invalidYear => '有効な年を入力してください';
-  @override String get invalidMonth => '1から12の月を入力してください';
-  @override String get selectImageTag => '画像タイプを選択';
-  @override String get gallery => 'ギャラリー';
-  @override String get camera => 'カメラ';
-  @override String get selectSource => '画像ソースを選択';
-  @override String get id => 'ID';
-  @override String get createdAt => '作成日';
-  @override String get filterByMedium => '技法でフィルター';
-  @override String get filterByYear => '年でフィルター';
-  @override String get allMedia => 'すべての技法';
-  @override String get allYears => 'すべての年';
-  @override String get sortBy => '並び替え';
-  @override String get sortByName => '名前';
-  @override String get sortByDate => '日付';
-  @override String get sortByCreated => '作成日';
-  @override String get ascending => '昇順';
-  @override String get descending => '降順';
-  @override String get configurationSaved => '設定が保存されました';
-  @override String get testConnection => '接続テスト';
-  @override String get connectionSuccess => '接続成功';
-  @override String get connectionFailed => '接続失敗';
-  @override String get searchHint => '完全一致検索';
-  @override String get back => '戻る';
-  @override String get close => '閉じる';
-  @override String get copy => 'コピー';
-  @override String get skip => 'スキップ';
-  @override String get done => '完了';
-  @override String get reset => 'リセット';
-  @override String get cloudConnection => 'クラウド接続';
-  @override String get cloudConnectionSubtitle => 'Supabase接続を再設定';
-  @override String get resetCloudConnection => 'クラウド接続をリセット';
-  @override String get resetCloudConnectionMessage => 'これによりアプリがSupabaseプロジェクトから切断されます。セットアップウィザードを再度実行する必要があります。\n\nSupabase内のデータは削除されません。';
-  @override String get restartToReconfigure => '再設定するにはアプリを再起動してください';
-  @override String get databasePaused => 'データベースが一時停止中';
-  @override String get databasePausedMessage => 'Supabaseプロジェクトは非アクティブのため一時停止しています。\n\n復元するには：\n1. supabase.com/dashboardにアクセス\n2. プロジェクトを選択\n3. 「プロジェクトを復元」をクリック\n\n約1分かかります。';
-  @override String get setupTitle => 'Artiveセットアップ';
-  @override String get setupWelcome => 'Artiveへようこそ！';
-  @override String get setupWelcomeDescription => 'このウィザードでは、作品カタログのクラウドストレージを設定します。\n\n作品と画像は、無料のクラウドプラットフォームSupabaseに安全に保存されます。\n\nセットアップには約5分かかります。';
-  @override String get setupWhatIsSupabase => 'Supabaseとは？';
-  @override String get setupWhatIsSupabaseContent => 'Supabaseは無料のオープンソースバックエンドサービスです。アプリにデータベースとファイルストレージを提供します。';
-  @override String get setupYourData => 'あなたのデータ、あなたの管理';
-  @override String get setupYourDataContent => 'ご自身のSupabaseアカウントを作成します。データはあなたのものであり、アクセスできるのはあなただけです。';
-  @override String get setupGetStarted => '始める';
-  @override String get setupStep1Title => 'ステップ1：Supabaseプロジェクトを作成';
-  @override String get setupStep1_1 => 'supabase.comにアクセスして無料アカウントを作成';
-  @override String get setupOpenSupabase => 'Supabaseを開く';
-  @override String get setupStep1_2 => 'ダッシュボードで「新規プロジェクト」をクリック';
-  @override String get setupStep1_3 => 'プロジェクト名を選択（例：「artive」）';
-  @override String get setupStep1_4 => '安全なデータベースパスワードを設定（保存してください！）';
-  @override String get setupStep1_5 => '近くのリージョンを選択';
-  @override String get setupStep1_6 => '「新規プロジェクト作成」をクリックして待機';
-  @override String get setupFreeTier => '無料プラン';
-  @override String get setupFreeTierContent => 'Supabase無料プランには500MBのデータベースと1GBのファイルストレージが含まれます。数千の作品に十分です！';
-  @override String get setupProjectCreated => 'プロジェクト作成完了';
-  @override String get setupStep2Title => 'ステップ2：認証情報を取得';
-  @override String get setupStep2_1 => 'Supabaseプロジェクトで「プロジェクト設定」（歯車アイコン）に移動';
-  @override String get setupStep2_2 => '設定メニューで「Data API」をクリック';
-  @override String get setupStep2_3 => '「Project URL」を探す - 形式：https://xxxxx.supabase.co';
-  @override String get setupStep2_4 => '「Project API keys」の下にある「anon」キーを探す';
-  @override String get setupAboutApiKeys => 'APIキーについて';
-  @override String get setupAboutApiKeysContent => 'anonキーはアプリで安全に使用できます。Row Level Securityポリシーと連携します。';
-  @override String get setupCredentialsTip => 'ヒント：Supabaseの各値の横にあるコピーボタンをクリックできます。';
-  @override String get setupIHaveCredentials => '認証情報を取得しました';
-  @override String get setupStep3Title => 'ステップ3：認証情報を入力';
-  @override String get setupProjectUrl => 'プロジェクトURL';
-  @override String get setupAnonKey => 'Anonキー';
-  @override String get setupValidateAndContinue => '検証して続行';
-  @override String get setupStep4Title => 'ステップ4：データベースセットアップ';
-  @override String get setupManualSetupRequired => '手動セットアップが必要';
-  @override String get setupDatabaseManualContent => 'データベーステーブルは手動で作成する必要があります。これは一度だけの設定です。';
-  @override String get setupStep4_1 => 'Supabaseのサイドバーで「SQL Editor」に移動';
-  @override String get setupStep4_2 => '「新規クエリ」をクリック';
-  @override String get setupStep4_3 => '以下のSQLをコピーして貼り付け：';
-  @override String get setupStep4_4 => '「実行」をクリックしてクエリを実行';
-  @override String get setupStep4_5 => '「成功。行は返されませんでした」と表示されるはずです';
-  @override String get setupSqlCopied => 'SQLをクリップボードにコピーしました';
-  @override String get setupCheckingDatabase => 'データベースを確認中...';
-  @override String get setupIveRunSql => 'SQLを実行しました';
-  @override String get setupCheckDatabase => 'データベースを確認';
-  @override String get setupStep5Title => 'ステップ5：ストレージセットアップ';
-  @override String get setupStorageManualContent => '作品画像用のストレージバケットを作成します。';
-  @override String get setupStep5_1 => 'Supabaseのサイドバーで「Storage」に移動';
-  @override String get setupStep5_2 => '「新規バケット」をクリック';
-  @override String get setupStep5_3 => '名前を正確に：artworks';
-  @override String get setupStep5_4 => '「公開バケット」はオフのまま（推奨）';
-  @override String get setupStep5_5 => '「バケット作成」をクリック';
-  @override String get setupAddStoragePolicy => 'ストレージポリシーを追加';
-  @override String get setupAddStoragePolicyContent => 'バケット → ポリシー → 新規ポリシー → 「完全カスタマイズ」 → 名前：allow_all → すべての操作にチェック → 保存。';
-  @override String get setupSettingUpStorage => 'ストレージを設定中...';
-  @override String get setupSetupStorage => 'ストレージをセットアップ';
-  @override String get setupComplete => 'セットアップ完了！';
-  @override String get setupCompleteDescription => 'ArtiveがSupabaseプロジェクトに接続されました。\n\n作品の追加を開始できます！';
-  @override String get setupQuickTips => 'クイックヒント';
-  @override String get setupQuickTipsContent => '• +をタップして最初の作品を追加\n• 異なるタグで複数の画像を追加（メイン、参照、スキャン）\n• 検索とフィルターで作品を素早く見つける\n• 設定で言語を変更';
-  @override String get setupStartUsing => 'Artiveを使い始める';
-  @override String get openInBrowser => 'ブラウザで開く';
-  @override String get couldNotOpenBrowser => 'ブラウザを自動で開けませんでした。このURLをコピーして手動で開いてください：';
-  @override String get urlCopied => 'URLをクリップボードにコピーしました';
-}
-
-class AppLocalizationsDe extends AppLocalizations {
-  AppLocalizationsDe() : super('de');
-  @override String get appTitle => 'Artive';
-  @override String get artworks => 'Kunstwerke';
-  @override String get addArtwork => 'Kunstwerk hinzufügen';
-  @override String get editArtwork => 'Kunstwerk bearbeiten';
-  @override String get deleteArtwork => 'Kunstwerk löschen';
-  @override String get name => 'Name';
-  @override String get description => 'Beschreibung';
-  @override String get descriptionOptional => 'Beschreibung (optional)';
-  @override String get date => 'Datum';
-  @override String get month => 'Monat';
-  @override String get year => 'Jahr';
-  @override String get dimension => 'Maße';
-  @override String get dimensionHint => 'z.B., 50x70 cm';
-  @override String get medium => 'Technik';
-  @override String get mediumHint => 'z.B., Öl auf Leinwand';
-  @override String get images => 'Bilder';
-  @override String get addImage => 'Bild hinzufügen';
-  @override String get photo => 'Haupt';
-  @override String get reference => 'Fotoreferenz';
-  @override String get scan => 'Scan';
-  @override String get save => 'Speichern';
-  @override String get cancel => 'Abbrechen';
-  @override String get delete => 'Löschen';
-  @override String get confirmDelete => 'Sind Sie sicher, dass Sie dieses Kunstwerk löschen möchten?';
-  @override String get confirmDeleteImage => 'Sind Sie sicher, dass Sie dieses Bild löschen möchten?';
-  @override String get yes => 'Ja';
-  @override String get no => 'Nein';
-  @override String get settings => 'Einstellungen';
-  @override String get language => 'Sprache';
-  @override String get about => 'Über';
-  @override String get version => 'Version';
-  @override String get search => 'Suchen';
-  @override String get noArtworks => 'Noch keine Kunstwerke';
-  @override String get noArtworksHint => 'Tippen Sie auf + um Ihr erstes Kunstwerk hinzuzufügen';
-  @override String get loading => 'Laden...';
-  @override String get error => 'Fehler';
-  @override String get retry => 'Wiederholen';
-  @override String get uploadingImage => 'Bild wird hochgeladen...';
-  @override String get imageUploaded => 'Bild hochgeladen';
-  @override String get imageFailed => 'Bild-Upload fehlgeschlagen';
-  @override String get artworkSaved => 'Kunstwerk gespeichert';
-  @override String get artworkDeleted => 'Kunstwerk gelöscht';
-  @override String get requiredField => 'Dieses Feld ist erforderlich';
-  @override String get invalidYear => 'Bitte geben Sie ein gültiges Jahr ein';
-  @override String get invalidMonth => 'Bitte geben Sie einen Monat zwischen 1 und 12 ein';
-  @override String get selectImageTag => 'Bildtyp auswählen';
-  @override String get gallery => 'Galerie';
-  @override String get camera => 'Kamera';
-  @override String get selectSource => 'Bildquelle auswählen';
-  @override String get id => 'ID';
-  @override String get createdAt => 'Erstellt am';
-  @override String get filterByMedium => 'Nach Technik filtern';
-  @override String get filterByYear => 'Nach Jahr filtern';
-  @override String get allMedia => 'Alle Techniken';
-  @override String get allYears => 'Alle Jahre';
-  @override String get sortBy => 'Sortieren nach';
-  @override String get sortByName => 'Name';
-  @override String get sortByDate => 'Datum';
-  @override String get sortByCreated => 'Erstellung';
-  @override String get ascending => 'Aufsteigend';
-  @override String get descending => 'Absteigend';
-  @override String get configurationSaved => 'Konfiguration gespeichert';
-  @override String get testConnection => 'Verbindung testen';
-  @override String get connectionSuccess => 'Verbindung erfolgreich';
-  @override String get connectionFailed => 'Verbindung fehlgeschlagen';
-  @override String get searchHint => 'Exakte Suche';
-  @override String get back => 'Zurück';
-  @override String get close => 'Schließen';
-  @override String get copy => 'Kopieren';
-  @override String get skip => 'Überspringen';
-  @override String get done => 'Fertig';
-  @override String get reset => 'Zurücksetzen';
-  @override String get cloudConnection => 'Cloud-Verbindung';
-  @override String get cloudConnectionSubtitle => 'Supabase-Verbindung neu konfigurieren';
-  @override String get resetCloudConnection => 'Cloud-Verbindung zurücksetzen';
-  @override String get resetCloudConnectionMessage => 'Dadurch wird die App von Ihrem Supabase-Projekt getrennt. Sie müssen den Einrichtungsassistenten erneut ausführen.\n\nIhre Daten in Supabase werden NICHT gelöscht.';
-  @override String get restartToReconfigure => 'Bitte starten Sie die App neu, um sie neu zu konfigurieren';
-  @override String get databasePaused => 'Datenbank pausiert';
-  @override String get databasePausedMessage => 'Ihr Supabase-Projekt wurde wegen Inaktivität pausiert.\n\nZum Wiederherstellen:\n1. Gehen Sie zu supabase.com/dashboard\n2. Wählen Sie Ihr Projekt\n3. Klicken Sie auf "Projekt wiederherstellen"\n\nDies dauert etwa 1 Minute.';
-  @override String get setupTitle => 'Artive Einrichtung';
-  @override String get setupWelcome => 'Willkommen bei Artive!';
-  @override String get setupWelcomeDescription => 'Dieser Assistent hilft Ihnen bei der Einrichtung des Cloud-Speichers für Ihren Kunstkatalog.\n\nIhre Kunstwerke und Bilder werden sicher in Supabase, einer kostenlosen Cloud-Plattform, gespeichert.\n\nDie Einrichtung dauert etwa 5 Minuten.';
-  @override String get setupWhatIsSupabase => 'Was ist Supabase?';
-  @override String get setupWhatIsSupabaseContent => 'Supabase ist ein kostenloser Open-Source-Backend-Dienst. Er bietet eine Datenbank und Dateispeicher für Ihre App.';
-  @override String get setupYourData => 'Ihre Daten, Ihre Kontrolle';
-  @override String get setupYourDataContent => 'Sie erstellen Ihr eigenes Supabase-Konto. Ihre Daten gehören Ihnen und nur Sie haben Zugriff.';
-  @override String get setupGetStarted => 'Loslegen';
-  @override String get setupStep1Title => 'Schritt 1: Supabase-Projekt erstellen';
-  @override String get setupStep1_1 => 'Gehen Sie zu supabase.com und erstellen Sie ein kostenloses Konto';
-  @override String get setupOpenSupabase => 'Supabase öffnen';
-  @override String get setupStep1_2 => 'Klicken Sie im Dashboard auf "Neues Projekt"';
-  @override String get setupStep1_3 => 'Wählen Sie einen Namen für Ihr Projekt (z.B. "artive")';
-  @override String get setupStep1_4 => 'Legen Sie ein sicheres Datenbank-Passwort fest (speichern Sie es!)';
-  @override String get setupStep1_5 => 'Wählen Sie eine Region in Ihrer Nähe';
-  @override String get setupStep1_6 => 'Klicken Sie auf "Neues Projekt erstellen" und warten Sie';
-  @override String get setupFreeTier => 'Kostenloses Kontingent';
-  @override String get setupFreeTierContent => 'Das kostenlose Supabase-Kontingent umfasst 500MB Datenbank und 1GB Dateispeicher - genug für Tausende von Kunstwerken!';
-  @override String get setupProjectCreated => 'Projekt erstellt';
-  @override String get setupStep2Title => 'Schritt 2: Zugangsdaten abrufen';
-  @override String get setupStep2_1 => 'Gehen Sie in Ihrem Supabase-Projekt zu "Projekteinstellungen" (Zahnrad-Symbol)';
-  @override String get setupStep2_2 => 'Klicken Sie im Einstellungsmenü auf "Data API"';
-  @override String get setupStep2_3 => 'Suchen Sie "Project URL" - sieht aus wie: https://xxxxx.supabase.co';
-  @override String get setupStep2_4 => 'Suchen Sie den "anon" Schlüssel unter "Project API keys"';
-  @override String get setupAboutApiKeys => 'Über API-Schlüssel';
-  @override String get setupAboutApiKeysContent => 'Der anon-Schlüssel ist sicher für Apps. Er funktioniert mit Row Level Security-Richtlinien.';
-  @override String get setupCredentialsTip => 'Tipp: Sie können auf die Kopieren-Schaltfläche neben jedem Wert in Supabase klicken.';
-  @override String get setupIHaveCredentials => 'Ich habe meine Zugangsdaten';
-  @override String get setupStep3Title => 'Schritt 3: Zugangsdaten eingeben';
-  @override String get setupProjectUrl => 'Projekt-URL';
-  @override String get setupAnonKey => 'Anon-Schlüssel';
-  @override String get setupValidateAndContinue => 'Validieren & Fortfahren';
-  @override String get setupStep4Title => 'Schritt 4: Datenbank-Einrichtung';
-  @override String get setupManualSetupRequired => 'Manuelle Einrichtung erforderlich';
-  @override String get setupDatabaseManualContent => 'Die Datenbanktabellen müssen manuell erstellt werden. Dies ist eine einmalige Einrichtung.';
-  @override String get setupStep4_1 => 'Gehen Sie in Supabase zu "SQL Editor" in der Seitenleiste';
-  @override String get setupStep4_2 => 'Klicken Sie auf "Neue Abfrage"';
-  @override String get setupStep4_3 => 'Kopieren Sie das folgende SQL und fügen Sie es ein:';
-  @override String get setupStep4_4 => 'Klicken Sie auf "Ausführen", um die Abfrage auszuführen';
-  @override String get setupStep4_5 => 'Sie sollten "Erfolg. Keine Zeilen zurückgegeben" sehen';
-  @override String get setupSqlCopied => 'SQL in die Zwischenablage kopiert';
-  @override String get setupCheckingDatabase => 'Datenbank wird überprüft...';
-  @override String get setupIveRunSql => 'Ich habe das SQL ausgeführt';
-  @override String get setupCheckDatabase => 'Datenbank überprüfen';
-  @override String get setupStep5Title => 'Schritt 5: Speicher-Einrichtung';
-  @override String get setupStorageManualContent => 'Erstellen Sie den Speicher-Bucket für Ihre Kunstwerk-Bilder.';
-  @override String get setupStep5_1 => 'Gehen Sie in Supabase zu "Storage" in der Seitenleiste';
-  @override String get setupStep5_2 => 'Klicken Sie auf "Neuer Bucket"';
-  @override String get setupStep5_3 => 'Benennen Sie ihn genau: artworks';
-  @override String get setupStep5_4 => 'Lassen Sie "Öffentlicher Bucket" AUS (empfohlen)';
-  @override String get setupStep5_5 => 'Klicken Sie auf "Bucket erstellen"';
-  @override String get setupAddStoragePolicy => 'Speicherrichtlinie hinzufügen';
-  @override String get setupAddStoragePolicyContent => 'Klicken Sie auf Bucket → Richtlinien → Neue Richtlinie → "Für vollständige Anpassung" → Name: allow_all → Alle Operationen aktivieren → Speichern.';
-  @override String get setupSettingUpStorage => 'Speicher wird eingerichtet...';
-  @override String get setupSetupStorage => 'Speicher einrichten';
-  @override String get setupComplete => 'Einrichtung abgeschlossen!';
-  @override String get setupCompleteDescription => 'Artive ist jetzt mit Ihrem Supabase-Projekt verbunden.\n\nSie können jetzt Ihre Kunstwerke hinzufügen!';
-  @override String get setupQuickTips => 'Schnelltipps';
-  @override String get setupQuickTipsContent => '• Tippen Sie auf + um Ihr erstes Kunstwerk hinzuzufügen\n• Fügen Sie mehrere Bilder mit verschiedenen Tags hinzu (Haupt, Referenz, Scan)\n• Nutzen Sie Suche und Filter, um Kunstwerke schnell zu finden\n• Ändern Sie die Sprache in den Einstellungen';
-  @override String get setupStartUsing => 'Artive verwenden';
-  @override String get openInBrowser => 'Im Browser öffnen';
-  @override String get couldNotOpenBrowser => 'Browser konnte nicht automatisch geöffnet werden. Bitte kopieren Sie diese URL und öffnen Sie sie manuell:';
-  @override String get urlCopied => 'URL in die Zwischenablage kopiert';
-}
-
-class AppLocalizationsKo extends AppLocalizations {
-  AppLocalizationsKo() : super('ko');
-  @override String get appTitle => 'Artive';
-  @override String get artworks => '작품';
-  @override String get addArtwork => '작품 추가';
-  @override String get editArtwork => '작품 편집';
-  @override String get deleteArtwork => '작품 삭제';
-  @override String get name => '이름';
-  @override String get description => '설명';
-  @override String get descriptionOptional => '설명 (선택사항)';
-  @override String get date => '날짜';
-  @override String get month => '월';
-  @override String get year => '년';
-  @override String get dimension => '크기';
-  @override String get dimensionHint => '예: 50x70 cm';
-  @override String get medium => '기법';
-  @override String get mediumHint => '예: 캔버스에 유채';
-  @override String get images => '이미지';
-  @override String get addImage => '이미지 추가';
-  @override String get photo => '메인';
-  @override String get reference => '사진 참조';
-  @override String get scan => '스캔';
-  @override String get save => '저장';
-  @override String get cancel => '취소';
-  @override String get delete => '삭제';
-  @override String get confirmDelete => '이 작품을 삭제하시겠습니까?';
-  @override String get confirmDeleteImage => '이 이미지를 삭제하시겠습니까?';
-  @override String get yes => '예';
-  @override String get no => '아니오';
-  @override String get settings => '설정';
-  @override String get language => '언어';
-  @override String get about => '정보';
-  @override String get version => '버전';
-  @override String get search => '검색';
-  @override String get noArtworks => '아직 작품이 없습니다';
-  @override String get noArtworksHint => '+를 눌러 첫 번째 작품을 추가하세요';
-  @override String get loading => '로딩 중...';
-  @override String get error => '오류';
-  @override String get retry => '다시 시도';
-  @override String get uploadingImage => '이미지 업로드 중...';
-  @override String get imageUploaded => '이미지 업로드됨';
-  @override String get imageFailed => '이미지 업로드 실패';
-  @override String get artworkSaved => '작품이 저장됨';
-  @override String get artworkDeleted => '작품이 삭제됨';
-  @override String get requiredField => '필수 항목입니다';
-  @override String get invalidYear => '유효한 연도를 입력하세요';
-  @override String get invalidMonth => '1에서 12 사이의 월을 입력하세요';
-  @override String get selectImageTag => '이미지 유형 선택';
-  @override String get gallery => '갤러리';
-  @override String get camera => '카메라';
-  @override String get selectSource => '이미지 소스 선택';
-  @override String get id => 'ID';
-  @override String get createdAt => '생성일';
-  @override String get filterByMedium => '기법으로 필터';
-  @override String get filterByYear => '연도로 필터';
-  @override String get allMedia => '모든 기법';
-  @override String get allYears => '모든 연도';
-  @override String get sortBy => '정렬 기준';
-  @override String get sortByName => '이름';
-  @override String get sortByDate => '날짜';
-  @override String get sortByCreated => '생성일';
-  @override String get ascending => '오름차순';
-  @override String get descending => '내림차순';
-  @override String get configurationSaved => '구성이 저장됨';
-  @override String get testConnection => '연결 테스트';
-  @override String get connectionSuccess => '연결 성공';
-  @override String get connectionFailed => '연결 실패';
-  @override String get searchHint => '정확히 일치 검색';
-  @override String get back => '뒤로';
-  @override String get close => '닫기';
-  @override String get copy => '복사';
-  @override String get skip => '건너뛰기';
-  @override String get done => '완료';
-  @override String get reset => '재설정';
-  @override String get cloudConnection => '클라우드 연결';
-  @override String get cloudConnectionSubtitle => 'Supabase 연결 재구성';
-  @override String get resetCloudConnection => '클라우드 연결 재설정';
-  @override String get resetCloudConnectionMessage => '앱이 Supabase 프로젝트에서 연결 해제됩니다. 설정 마법사를 다시 실행해야 합니다.\n\nSupabase의 데이터는 삭제되지 않습니다.';
-  @override String get restartToReconfigure => '재구성하려면 앱을 다시 시작하세요';
-  @override String get databasePaused => '데이터베이스 일시 중지됨';
-  @override String get databasePausedMessage => 'Supabase 프로젝트가 비활성으로 인해 일시 중지되었습니다.\n\n복원하려면:\n1. supabase.com/dashboard로 이동\n2. 프로젝트 선택\n3. "프로젝트 복원" 클릭\n\n약 1분 소요됩니다.';
-  @override String get setupTitle => 'Artive 설정';
-  @override String get setupWelcome => 'Artive에 오신 것을 환영합니다!';
-  @override String get setupWelcomeDescription => '이 마법사는 작품 카탈로그를 위한 클라우드 스토리지 설정을 도와드립니다.\n\n작품과 이미지는 무료 클라우드 플랫폼인 Supabase에 안전하게 저장됩니다.\n\n설정은 약 5분 정도 소요됩니다.';
-  @override String get setupWhatIsSupabase => 'Supabase란?';
-  @override String get setupWhatIsSupabaseContent => 'Supabase는 무료 오픈소스 백엔드 서비스입니다. 앱을 위한 데이터베이스와 파일 스토리지를 제공합니다.';
-  @override String get setupYourData => '당신의 데이터, 당신의 통제';
-  @override String get setupYourDataContent => '자신만의 Supabase 계정을 만듭니다. 데이터는 당신의 것이며 당신만 접근할 수 있습니다.';
-  @override String get setupGetStarted => '시작하기';
-  @override String get setupStep1Title => '1단계: Supabase 프로젝트 생성';
-  @override String get setupStep1_1 => 'supabase.com에서 무료 계정 생성';
-  @override String get setupOpenSupabase => 'Supabase 열기';
-  @override String get setupStep1_2 => '대시보드에서 "새 프로젝트" 클릭';
-  @override String get setupStep1_3 => '프로젝트 이름 선택 (예: "artive")';
-  @override String get setupStep1_4 => '안전한 데이터베이스 비밀번호 설정 (저장해두세요!)';
-  @override String get setupStep1_5 => '가까운 지역 선택';
-  @override String get setupStep1_6 => '"새 프로젝트 만들기" 클릭 후 대기';
-  @override String get setupFreeTier => '무료 플랜';
-  @override String get setupFreeTierContent => 'Supabase 무료 플랜에는 500MB 데이터베이스와 1GB 파일 스토리지가 포함됩니다 - 수천 개의 작품에 충분합니다!';
-  @override String get setupProjectCreated => '프로젝트 생성됨';
-  @override String get setupStep2Title => '2단계: 자격 증명 가져오기';
-  @override String get setupStep2_1 => 'Supabase 프로젝트에서 "프로젝트 설정" (톱니바퀴 아이콘)으로 이동';
-  @override String get setupStep2_2 => '설정 메뉴에서 "Data API" 클릭';
-  @override String get setupStep2_3 => '"Project URL" 찾기 - 형식: https://xxxxx.supabase.co';
-  @override String get setupStep2_4 => '"Project API keys"에서 "anon" 키 찾기';
-  @override String get setupAboutApiKeys => 'API 키 정보';
-  @override String get setupAboutApiKeysContent => 'anon 키는 앱에서 안전하게 사용할 수 있습니다. Row Level Security 정책과 함께 작동합니다.';
-  @override String get setupCredentialsTip => '팁: Supabase에서 각 값 옆의 복사 버튼을 클릭할 수 있습니다.';
-  @override String get setupIHaveCredentials => '자격 증명을 가져왔습니다';
-  @override String get setupStep3Title => '3단계: 자격 증명 입력';
-  @override String get setupProjectUrl => '프로젝트 URL';
-  @override String get setupAnonKey => 'Anon 키';
-  @override String get setupValidateAndContinue => '검증 및 계속';
-  @override String get setupStep4Title => '4단계: 데이터베이스 설정';
-  @override String get setupManualSetupRequired => '수동 설정 필요';
-  @override String get setupDatabaseManualContent => '데이터베이스 테이블을 수동으로 생성해야 합니다. 이것은 일회성 설정입니다.';
-  @override String get setupStep4_1 => 'Supabase 사이드바에서 "SQL Editor"로 이동';
-  @override String get setupStep4_2 => '"새 쿼리" 클릭';
-  @override String get setupStep4_3 => '다음 SQL을 복사하여 붙여넣기:';
-  @override String get setupStep4_4 => '"실행"을 클릭하여 쿼리 실행';
-  @override String get setupStep4_5 => '"성공. 반환된 행 없음"이 표시되어야 합니다';
-  @override String get setupSqlCopied => 'SQL이 클립보드에 복사됨';
-  @override String get setupCheckingDatabase => '데이터베이스 확인 중...';
-  @override String get setupIveRunSql => 'SQL을 실행했습니다';
-  @override String get setupCheckDatabase => '데이터베이스 확인';
-  @override String get setupStep5Title => '5단계: 스토리지 설정';
-  @override String get setupStorageManualContent => '작품 이미지용 스토리지 버킷을 생성합니다.';
-  @override String get setupStep5_1 => 'Supabase 사이드바에서 "Storage"로 이동';
-  @override String get setupStep5_2 => '"새 버킷" 클릭';
-  @override String get setupStep5_3 => '이름을 정확히: artworks';
-  @override String get setupStep5_4 => '"공개 버킷"은 꺼둠 (권장)';
-  @override String get setupStep5_5 => '"버킷 만들기" 클릭';
-  @override String get setupAddStoragePolicy => '스토리지 정책 추가';
-  @override String get setupAddStoragePolicyContent => '버킷 클릭 → 정책 → 새 정책 → "전체 사용자 지정" → 이름: allow_all → 모든 작업 체크 → 저장.';
-  @override String get setupSettingUpStorage => '스토리지 설정 중...';
-  @override String get setupSetupStorage => '스토리지 설정';
-  @override String get setupComplete => '설정 완료!';
-  @override String get setupCompleteDescription => 'Artive가 Supabase 프로젝트에 연결되었습니다.\n\n작품 추가를 시작할 수 있습니다!';
-  @override String get setupQuickTips => '빠른 팁';
-  @override String get setupQuickTipsContent => '• +를 눌러 첫 번째 작품 추가\n• 다양한 태그로 여러 이미지 추가 (메인, 참조, 스캔)\n• 검색과 필터로 작품을 빠르게 찾기\n• 설정에서 언어 변경';
-  @override String get setupStartUsing => 'Artive 사용 시작';
-  @override String get openInBrowser => '브라우저에서 열기';
-  @override String get couldNotOpenBrowser => '브라우저를 자동으로 열 수 없습니다. 이 URL을 복사하여 수동으로 열어주세요:';
-  @override String get urlCopied => 'URL이 클립보드에 복사됨';
-}
-
-class AppLocalizationsVi extends AppLocalizations {
-  AppLocalizationsVi() : super('vi');
-  @override String get appTitle => 'Artive';
-  @override String get artworks => 'Tác phẩm';
-  @override String get addArtwork => 'Thêm tác phẩm';
-  @override String get editArtwork => 'Sửa tác phẩm';
-  @override String get deleteArtwork => 'Xóa tác phẩm';
-  @override String get name => 'Tên';
-  @override String get description => 'Mô tả';
-  @override String get descriptionOptional => 'Mô tả (tùy chọn)';
-  @override String get date => 'Ngày';
-  @override String get month => 'Tháng';
-  @override String get year => 'Năm';
-  @override String get dimension => 'Kích thước';
-  @override String get dimensionHint => 'vd: 50x70 cm';
-  @override String get medium => 'Chất liệu';
-  @override String get mediumHint => 'vd: Sơn dầu trên canvas';
-  @override String get images => 'Hình ảnh';
-  @override String get addImage => 'Thêm hình ảnh';
-  @override String get photo => 'Chính';
-  @override String get reference => 'Ảnh tham khảo';
-  @override String get scan => 'Quét';
-  @override String get save => 'Lưu';
-  @override String get cancel => 'Hủy';
-  @override String get delete => 'Xóa';
-  @override String get confirmDelete => 'Bạn có chắc muốn xóa tác phẩm này?';
-  @override String get confirmDeleteImage => 'Bạn có chắc muốn xóa hình ảnh này?';
-  @override String get yes => 'Có';
-  @override String get no => 'Không';
-  @override String get settings => 'Cài đặt';
-  @override String get language => 'Ngôn ngữ';
-  @override String get about => 'Giới thiệu';
-  @override String get version => 'Phiên bản';
-  @override String get search => 'Tìm kiếm';
-  @override String get noArtworks => 'Chưa có tác phẩm nào';
-  @override String get noArtworksHint => 'Nhấn + để thêm tác phẩm đầu tiên';
-  @override String get loading => 'Đang tải...';
-  @override String get error => 'Lỗi';
-  @override String get retry => 'Thử lại';
-  @override String get uploadingImage => 'Đang tải lên hình ảnh...';
-  @override String get imageUploaded => 'Hình ảnh đã tải lên';
-  @override String get imageFailed => 'Tải hình ảnh thất bại';
-  @override String get artworkSaved => 'Đã lưu tác phẩm';
-  @override String get artworkDeleted => 'Đã xóa tác phẩm';
-  @override String get requiredField => 'Trường này là bắt buộc';
-  @override String get invalidYear => 'Vui lòng nhập năm hợp lệ';
-  @override String get invalidMonth => 'Vui lòng nhập tháng từ 1 đến 12';
-  @override String get selectImageTag => 'Chọn loại hình ảnh';
-  @override String get gallery => 'Thư viện';
-  @override String get camera => 'Máy ảnh';
-  @override String get selectSource => 'Chọn nguồn hình ảnh';
-  @override String get id => 'ID';
-  @override String get createdAt => 'Ngày tạo';
-  @override String get filterByMedium => 'Lọc theo chất liệu';
-  @override String get filterByYear => 'Lọc theo năm';
-  @override String get allMedia => 'Tất cả chất liệu';
-  @override String get allYears => 'Tất cả các năm';
-  @override String get sortBy => 'Sắp xếp theo';
-  @override String get sortByName => 'Tên';
-  @override String get sortByDate => 'Ngày';
-  @override String get sortByCreated => 'Ngày tạo';
-  @override String get ascending => 'Tăng dần';
-  @override String get descending => 'Giảm dần';
-  @override String get configurationSaved => 'Đã lưu cấu hình';
-  @override String get testConnection => 'Kiểm tra kết nối';
-  @override String get connectionSuccess => 'Kết nối thành công';
-  @override String get connectionFailed => 'Kết nối thất bại';
-  @override String get searchHint => 'Tìm kiếm chính xác';
-  @override String get back => 'Quay lại';
-  @override String get close => 'Đóng';
-  @override String get copy => 'Sao chép';
-  @override String get skip => 'Bỏ qua';
-  @override String get done => 'Xong';
-  @override String get reset => 'Đặt lại';
-  @override String get cloudConnection => 'Kết nối đám mây';
-  @override String get cloudConnectionSubtitle => 'Cấu hình lại kết nối Supabase';
-  @override String get resetCloudConnection => 'Đặt lại kết nối đám mây';
-  @override String get resetCloudConnectionMessage => 'Điều này sẽ ngắt kết nối ứng dụng khỏi dự án Supabase của bạn. Bạn sẽ cần chạy lại trình hướng dẫn cài đặt.\n\nDữ liệu của bạn trong Supabase sẽ KHÔNG bị xóa.';
-  @override String get restartToReconfigure => 'Vui lòng khởi động lại ứng dụng để cấu hình lại';
-  @override String get databasePaused => 'Cơ sở dữ liệu đã tạm dừng';
-  @override String get databasePausedMessage => 'Dự án Supabase của bạn đã bị tạm dừng do không hoạt động.\n\nĐể khôi phục:\n1. Truy cập supabase.com/dashboard\n2. Chọn dự án của bạn\n3. Nhấp "Khôi phục dự án"\n\nQuá trình này mất khoảng 1 phút.';
-  @override String get setupTitle => 'Cài đặt Artive';
-  @override String get setupWelcome => 'Chào mừng đến với Artive!';
-  @override String get setupWelcomeDescription => 'Trình hướng dẫn này sẽ giúp bạn thiết lập lưu trữ đám mây cho danh mục tác phẩm nghệ thuật.\n\nTác phẩm và hình ảnh của bạn sẽ được lưu trữ an toàn trong Supabase, một nền tảng đám mây miễn phí.\n\nCài đặt mất khoảng 5 phút.';
-  @override String get setupWhatIsSupabase => 'Supabase là gì?';
-  @override String get setupWhatIsSupabaseContent => 'Supabase là dịch vụ backend miễn phí, mã nguồn mở. Nó cung cấp cơ sở dữ liệu và lưu trữ tệp cho ứng dụng của bạn.';
-  @override String get setupYourData => 'Dữ liệu của bạn, quyền kiểm soát của bạn';
-  @override String get setupYourDataContent => 'Bạn tạo tài khoản Supabase của riêng mình. Dữ liệu thuộc về bạn và chỉ bạn có quyền truy cập.';
-  @override String get setupGetStarted => 'Bắt đầu';
-  @override String get setupStep1Title => 'Bước 1: Tạo dự án Supabase';
-  @override String get setupStep1_1 => 'Truy cập supabase.com và tạo tài khoản miễn phí';
-  @override String get setupOpenSupabase => 'Mở Supabase';
-  @override String get setupStep1_2 => 'Nhấp "Dự án mới" trong bảng điều khiển';
-  @override String get setupStep1_3 => 'Chọn tên cho dự án (ví dụ: "artive")';
-  @override String get setupStep1_4 => 'Đặt mật khẩu cơ sở dữ liệu an toàn (lưu lại!)';
-  @override String get setupStep1_5 => 'Chọn khu vực gần bạn';
-  @override String get setupStep1_6 => 'Nhấp "Tạo dự án mới" và đợi';
-  @override String get setupFreeTier => 'Gói miễn phí';
-  @override String get setupFreeTierContent => 'Gói miễn phí Supabase bao gồm 500MB cơ sở dữ liệu và 1GB lưu trữ tệp - đủ cho hàng nghìn tác phẩm!';
-  @override String get setupProjectCreated => 'Đã tạo dự án';
-  @override String get setupStep2Title => 'Bước 2: Lấy thông tin xác thực';
-  @override String get setupStep2_1 => 'Trong dự án Supabase, vào "Cài đặt dự án" (biểu tượng bánh răng)';
-  @override String get setupStep2_2 => 'Nhấp "Data API" trong menu cài đặt';
-  @override String get setupStep2_3 => 'Tìm "Project URL" - có dạng: https://xxxxx.supabase.co';
-  @override String get setupStep2_4 => 'Tìm khóa "anon" trong "Project API keys"';
-  @override String get setupAboutApiKeys => 'Về khóa API';
-  @override String get setupAboutApiKeysContent => 'Khóa anon an toàn cho ứng dụng. Nó hoạt động với chính sách Row Level Security.';
-  @override String get setupCredentialsTip => 'Mẹo: Bạn có thể nhấp nút sao chép bên cạnh mỗi giá trị trong Supabase.';
-  @override String get setupIHaveCredentials => 'Tôi có thông tin xác thực';
-  @override String get setupStep3Title => 'Bước 3: Nhập thông tin xác thực';
-  @override String get setupProjectUrl => 'URL dự án';
-  @override String get setupAnonKey => 'Khóa Anon';
-  @override String get setupValidateAndContinue => 'Xác thực và tiếp tục';
-  @override String get setupStep4Title => 'Bước 4: Cài đặt cơ sở dữ liệu';
-  @override String get setupManualSetupRequired => 'Cần cài đặt thủ công';
-  @override String get setupDatabaseManualContent => 'Các bảng cơ sở dữ liệu cần được tạo thủ công. Đây là cài đặt một lần.';
-  @override String get setupStep4_1 => 'Trong Supabase, vào "SQL Editor" ở thanh bên';
-  @override String get setupStep4_2 => 'Nhấp "Truy vấn mới"';
-  @override String get setupStep4_3 => 'Sao chép và dán SQL sau:';
-  @override String get setupStep4_4 => 'Nhấp "Chạy" để thực thi truy vấn';
-  @override String get setupStep4_5 => 'Bạn sẽ thấy "Thành công. Không có hàng nào được trả về"';
-  @override String get setupSqlCopied => 'Đã sao chép SQL vào clipboard';
-  @override String get setupCheckingDatabase => 'Đang kiểm tra cơ sở dữ liệu...';
-  @override String get setupIveRunSql => 'Tôi đã chạy SQL';
-  @override String get setupCheckDatabase => 'Kiểm tra cơ sở dữ liệu';
-  @override String get setupStep5Title => 'Bước 5: Cài đặt lưu trữ';
-  @override String get setupStorageManualContent => 'Tạo bucket lưu trữ cho hình ảnh tác phẩm.';
-  @override String get setupStep5_1 => 'Trong Supabase, vào "Storage" ở thanh bên';
-  @override String get setupStep5_2 => 'Nhấp "Bucket mới"';
-  @override String get setupStep5_3 => 'Đặt tên chính xác: artworks';
-  @override String get setupStep5_4 => 'Để "Bucket công khai" TẮT (khuyến nghị)';
-  @override String get setupStep5_5 => 'Nhấp "Tạo bucket"';
-  @override String get setupAddStoragePolicy => 'Thêm chính sách lưu trữ';
-  @override String get setupAddStoragePolicyContent => 'Nhấp bucket → Chính sách → Chính sách mới → "Để tùy chỉnh đầy đủ" → Tên: allow_all → Chọn tất cả thao tác → Lưu.';
-  @override String get setupSettingUpStorage => 'Đang cài đặt lưu trữ...';
-  @override String get setupSetupStorage => 'Cài đặt lưu trữ';
-  @override String get setupComplete => 'Cài đặt hoàn tất!';
-  @override String get setupCompleteDescription => 'Artive đã được kết nối với dự án Supabase của bạn.\n\nBạn có thể bắt đầu thêm tác phẩm!';
-  @override String get setupQuickTips => 'Mẹo nhanh';
-  @override String get setupQuickTipsContent => '• Nhấn + để thêm tác phẩm đầu tiên\n• Thêm nhiều hình ảnh với các thẻ khác nhau (chính, tham khảo, quét)\n• Sử dụng tìm kiếm và bộ lọc để tìm tác phẩm nhanh chóng\n• Thay đổi ngôn ngữ trong Cài đặt';
-  @override String get setupStartUsing => 'Bắt đầu sử dụng Artive';
-  @override String get openInBrowser => 'Mở trong trình duyệt';
-  @override String get couldNotOpenBrowser => 'Không thể tự động mở trình duyệt. Vui lòng sao chép URL này và mở thủ công:';
-  @override String get urlCopied => 'Đã sao chép URL vào clipboard';
-}
-
-class AppLocalizationsTr extends AppLocalizations {
-  AppLocalizationsTr() : super('tr');
-  @override String get appTitle => 'Artive';
-  @override String get artworks => 'Eserler';
-  @override String get addArtwork => 'Eser ekle';
-  @override String get editArtwork => 'Eseri düzenle';
-  @override String get deleteArtwork => 'Eseri sil';
-  @override String get name => 'Ad';
-  @override String get description => 'Açıklama';
-  @override String get descriptionOptional => 'Açıklama (isteğe bağlı)';
-  @override String get date => 'Tarih';
-  @override String get month => 'Ay';
-  @override String get year => 'Yıl';
-  @override String get dimension => 'Boyut';
-  @override String get dimensionHint => 'örn., 50x70 cm';
-  @override String get medium => 'Teknik';
-  @override String get mediumHint => 'örn., Tuval üzerine yağlı boya';
-  @override String get images => 'Görseller';
-  @override String get addImage => 'Görsel ekle';
-  @override String get photo => 'Ana';
-  @override String get reference => 'Fotoğraf referansı';
-  @override String get scan => 'Tarama';
-  @override String get save => 'Kaydet';
-  @override String get cancel => 'İptal';
-  @override String get delete => 'Sil';
-  @override String get confirmDelete => 'Bu eseri silmek istediğinizden emin misiniz?';
-  @override String get confirmDeleteImage => 'Bu görseli silmek istediğinizden emin misiniz?';
-  @override String get yes => 'Evet';
-  @override String get no => 'Hayır';
-  @override String get settings => 'Ayarlar';
-  @override String get language => 'Dil';
-  @override String get about => 'Hakkında';
-  @override String get version => 'Sürüm';
-  @override String get search => 'Ara';
-  @override String get noArtworks => 'Henüz eser yok';
-  @override String get noArtworksHint => 'İlk eserinizi eklemek için + düğmesine dokunun';
-  @override String get loading => 'Yükleniyor...';
-  @override String get error => 'Hata';
-  @override String get retry => 'Tekrar dene';
-  @override String get uploadingImage => 'Görsel yükleniyor...';
-  @override String get imageUploaded => 'Görsel yüklendi';
-  @override String get imageFailed => 'Görsel yüklenemedi';
-  @override String get artworkSaved => 'Eser kaydedildi';
-  @override String get artworkDeleted => 'Eser silindi';
-  @override String get requiredField => 'Bu alan zorunludur';
-  @override String get invalidYear => 'Lütfen geçerli bir yıl girin';
-  @override String get invalidMonth => 'Lütfen 1 ile 12 arasında bir ay girin';
-  @override String get selectImageTag => 'Görsel türü seçin';
-  @override String get gallery => 'Galeri';
-  @override String get camera => 'Kamera';
-  @override String get selectSource => 'Görsel kaynağı seçin';
-  @override String get id => 'ID';
-  @override String get createdAt => 'Oluşturulma tarihi';
-  @override String get filterByMedium => 'Tekniğe göre filtrele';
-  @override String get filterByYear => 'Yıla göre filtrele';
-  @override String get allMedia => 'Tüm teknikler';
-  @override String get allYears => 'Tüm yıllar';
-  @override String get sortBy => 'Sırala';
-  @override String get sortByName => 'Ad';
-  @override String get sortByDate => 'Tarih';
-  @override String get sortByCreated => 'Oluşturulma';
-  @override String get ascending => 'Artan';
-  @override String get descending => 'Azalan';
-  @override String get configurationSaved => 'Yapılandırma kaydedildi';
-  @override String get testConnection => 'Bağlantıyı test et';
-  @override String get connectionSuccess => 'Bağlantı başarılı';
-  @override String get connectionFailed => 'Bağlantı başarısız';
-  @override String get searchHint => 'Tam eşleşme araması';
-  @override String get back => 'Geri';
-  @override String get close => 'Kapat';
-  @override String get copy => 'Kopyala';
-  @override String get skip => 'Atla';
-  @override String get done => 'Tamam';
-  @override String get reset => 'Sıfırla';
-  @override String get cloudConnection => 'Bulut Bağlantısı';
-  @override String get cloudConnectionSubtitle => 'Supabase bağlantısını yeniden yapılandır';
-  @override String get resetCloudConnection => 'Bulut Bağlantısını Sıfırla';
-  @override String get resetCloudConnectionMessage => 'Bu, uygulamanın Supabase projenizle bağlantısını kesecektir. Kurulum sihirbazını tekrar çalıştırmanız gerekecek.\n\nSupabase\'deki verileriniz SİLİNMEYECEKTİR.';
-  @override String get restartToReconfigure => 'Yeniden yapılandırmak için uygulamayı yeniden başlatın';
-  @override String get databasePaused => 'Veritabanı Duraklatıldı';
-  @override String get databasePausedMessage => 'Supabase projeniz hareketsizlik nedeniyle duraklatıldı.\n\nGeri yüklemek için:\n1. supabase.com/dashboard adresine gidin\n2. Projenizi seçin\n3. "Projeyi geri yükle" tıklayın\n\nBu yaklaşık 1 dakika sürer.';
-  @override String get setupTitle => 'Artive Kurulumu';
-  @override String get setupWelcome => 'Artive\'e Hoş Geldiniz!';
-  @override String get setupWelcomeDescription => 'Bu sihirbaz, sanat eseri kataloğunuz için bulut depolamayı kurmanıza yardımcı olacak.\n\nEserleriniz ve görseller, ücretsiz bir bulut platformu olan Supabase\'de güvenle depolanacak.\n\nKurulum yaklaşık 5 dakika sürer.';
-  @override String get setupWhatIsSupabase => 'Supabase Nedir?';
-  @override String get setupWhatIsSupabaseContent => 'Supabase, ücretsiz, açık kaynaklı bir backend hizmetidir. Uygulamanız için veritabanı ve dosya depolama sağlar.';
-  @override String get setupYourData => 'Verileriniz, Kontrolünüz';
-  @override String get setupYourDataContent => 'Kendi Supabase hesabınızı oluşturursunuz. Verileriniz size aittir ve yalnızca siz erişebilirsiniz.';
-  @override String get setupGetStarted => 'Başla';
-  @override String get setupStep1Title => 'Adım 1: Supabase Projesi Oluşturun';
-  @override String get setupStep1_1 => 'supabase.com adresine gidin ve ücretsiz hesap oluşturun';
-  @override String get setupOpenSupabase => 'Supabase\'i Aç';
-  @override String get setupStep1_2 => 'Panelde "Yeni Proje" tıklayın';
-  @override String get setupStep1_3 => 'Projeniz için bir ad seçin (örn. "artive")';
-  @override String get setupStep1_4 => 'Güvenli bir veritabanı şifresi belirleyin (kaydedin!)';
-  @override String get setupStep1_5 => 'Size yakın bir bölge seçin';
-  @override String get setupStep1_6 => '"Yeni proje oluştur" tıklayın ve bekleyin';
-  @override String get setupFreeTier => 'Ücretsiz Katman';
-  @override String get setupFreeTierContent => 'Supabase ücretsiz katmanı 500MB veritabanı ve 1GB dosya depolama içerir - binlerce eser için yeterli!';
-  @override String get setupProjectCreated => 'Proje Oluşturuldu';
-  @override String get setupStep2Title => 'Adım 2: Kimlik Bilgilerinizi Alın';
-  @override String get setupStep2_1 => 'Supabase projenizde "Proje Ayarları"na (dişli simgesi) gidin';
-  @override String get setupStep2_2 => 'Ayarlar menüsünde "Data API" tıklayın';
-  @override String get setupStep2_3 => '"Project URL" bulun - şöyle görünür: https://xxxxx.supabase.co';
-  @override String get setupStep2_4 => '"Project API keys" altında "anon" anahtarını bulun';
-  @override String get setupAboutApiKeys => 'API Anahtarları Hakkında';
-  @override String get setupAboutApiKeysContent => 'Anon anahtarı uygulamalar için güvenlidir. Row Level Security politikalarıyla çalışır.';
-  @override String get setupCredentialsTip => 'İpucu: Supabase\'de her değerin yanındaki kopyala düğmesine tıklayabilirsiniz.';
-  @override String get setupIHaveCredentials => 'Kimlik Bilgilerim Var';
-  @override String get setupStep3Title => 'Adım 3: Kimlik Bilgilerinizi Girin';
-  @override String get setupProjectUrl => 'Proje URL';
-  @override String get setupAnonKey => 'Anon Anahtarı';
-  @override String get setupValidateAndContinue => 'Doğrula ve Devam Et';
-  @override String get setupStep4Title => 'Adım 4: Veritabanı Kurulumu';
-  @override String get setupManualSetupRequired => 'Manuel Kurulum Gerekli';
-  @override String get setupDatabaseManualContent => 'Veritabanı tabloları manuel olarak oluşturulmalıdır. Bu tek seferlik bir kurulumdur.';
-  @override String get setupStep4_1 => 'Supabase\'de yan çubuktaki "SQL Editor"a gidin';
-  @override String get setupStep4_2 => '"Yeni sorgu" tıklayın';
-  @override String get setupStep4_3 => 'Aşağıdaki SQL\'i kopyalayıp yapıştırın:';
-  @override String get setupStep4_4 => 'Sorguyu çalıştırmak için "Çalıştır" tıklayın';
-  @override String get setupStep4_5 => '"Başarılı. Satır döndürülmedi" görmelisiniz';
-  @override String get setupSqlCopied => 'SQL panoya kopyalandı';
-  @override String get setupCheckingDatabase => 'Veritabanı kontrol ediliyor...';
-  @override String get setupIveRunSql => 'SQL\'i Çalıştırdım';
-  @override String get setupCheckDatabase => 'Veritabanını Kontrol Et';
-  @override String get setupStep5Title => 'Adım 5: Depolama Kurulumu';
-  @override String get setupStorageManualContent => 'Eser görselleriniz için depolama kovası oluşturun.';
-  @override String get setupStep5_1 => 'Supabase\'de yan çubuktaki "Storage"a gidin';
-  @override String get setupStep5_2 => '"Yeni kova" tıklayın';
-  @override String get setupStep5_3 => 'Tam olarak şu adı verin: artworks';
-  @override String get setupStep5_4 => '"Genel kova" KAPALI bırakın (önerilir)';
-  @override String get setupStep5_5 => '"Kova oluştur" tıklayın';
-  @override String get setupAddStoragePolicy => 'Depolama Politikası Ekle';
-  @override String get setupAddStoragePolicyContent => 'Kovaya tıklayın → Politikalar → Yeni Politika → "Tam özelleştirme için" → Ad: allow_all → Tüm işlemleri işaretleyin → Kaydet.';
-  @override String get setupSettingUpStorage => 'Depolama kuruluyor...';
-  @override String get setupSetupStorage => 'Depolamayı Kur';
-  @override String get setupComplete => 'Kurulum Tamamlandı!';
-  @override String get setupCompleteDescription => 'Artive artık Supabase projenize bağlı.\n\nEserlerinizi eklemeye başlayabilirsiniz!';
-  @override String get setupQuickTips => 'Hızlı İpuçları';
-  @override String get setupQuickTipsContent => '• İlk eserinizi eklemek için + düğmesine dokunun\n• Farklı etiketlerle birden fazla görsel ekleyin (ana, referans, tarama)\n• Eserleri hızlı bulmak için arama ve filtreleri kullanın\n• Ayarlarda dili değiştirin';
-  @override String get setupStartUsing => 'Artive\'i Kullanmaya Başla';
-  @override String get openInBrowser => 'Tarayıcıda Aç';
-  @override String get couldNotOpenBrowser => 'Tarayıcı otomatik açılamadı. Lütfen bu URL\'yi kopyalayın ve manuel olarak açın:';
-  @override String get urlCopied => 'URL panoya kopyalandı';
-}
-
-class AppLocalizationsIt extends AppLocalizations {
-  AppLocalizationsIt() : super('it');
-  @override String get appTitle => 'Artive';
-  @override String get artworks => 'Opere';
-  @override String get addArtwork => 'Aggiungi opera';
-  @override String get editArtwork => 'Modifica opera';
-  @override String get deleteArtwork => 'Elimina opera';
-  @override String get name => 'Nome';
-  @override String get description => 'Descrizione';
-  @override String get descriptionOptional => 'Descrizione (opzionale)';
-  @override String get date => 'Data';
-  @override String get month => 'Mese';
-  @override String get year => 'Anno';
-  @override String get dimension => 'Dimensione';
-  @override String get dimensionHint => 'es., 50x70 cm';
-  @override String get medium => 'Tecnica';
-  @override String get mediumHint => 'es., Olio su tela';
-  @override String get images => 'Immagini';
-  @override String get addImage => 'Aggiungi immagine';
-  @override String get photo => 'Principale';
-  @override String get reference => 'Foto riferimento';
-  @override String get scan => 'Scansione';
-  @override String get save => 'Salva';
-  @override String get cancel => 'Annulla';
-  @override String get delete => 'Elimina';
-  @override String get confirmDelete => 'Sei sicuro di voler eliminare questa opera?';
-  @override String get confirmDeleteImage => 'Sei sicuro di voler eliminare questa immagine?';
-  @override String get yes => 'Sì';
-  @override String get no => 'No';
-  @override String get settings => 'Impostazioni';
-  @override String get language => 'Lingua';
-  @override String get about => 'Informazioni';
-  @override String get version => 'Versione';
-  @override String get search => 'Cerca';
-  @override String get noArtworks => 'Nessuna opera ancora';
-  @override String get noArtworksHint => 'Tocca + per aggiungere la tua prima opera';
-  @override String get loading => 'Caricamento...';
-  @override String get error => 'Errore';
-  @override String get retry => 'Riprova';
-  @override String get uploadingImage => 'Caricamento immagine...';
-  @override String get imageUploaded => 'Immagine caricata';
-  @override String get imageFailed => 'Caricamento immagine fallito';
-  @override String get artworkSaved => 'Opera salvata';
-  @override String get artworkDeleted => 'Opera eliminata';
-  @override String get requiredField => 'Questo campo è obbligatorio';
-  @override String get invalidYear => 'Inserisci un anno valido';
-  @override String get invalidMonth => 'Inserisci un mese tra 1 e 12';
-  @override String get selectImageTag => 'Seleziona tipo immagine';
-  @override String get gallery => 'Galleria';
-  @override String get camera => 'Fotocamera';
-  @override String get selectSource => 'Seleziona origine immagine';
-  @override String get id => 'ID';
-  @override String get createdAt => 'Creato il';
-  @override String get filterByMedium => 'Filtra per tecnica';
-  @override String get filterByYear => 'Filtra per anno';
-  @override String get allMedia => 'Tutte le tecniche';
-  @override String get allYears => 'Tutti gli anni';
-  @override String get sortBy => 'Ordina per';
-  @override String get sortByName => 'Nome';
-  @override String get sortByDate => 'Data';
-  @override String get sortByCreated => 'Creazione';
-  @override String get ascending => 'Crescente';
-  @override String get descending => 'Decrescente';
-  @override String get configurationSaved => 'Configurazione salvata';
-  @override String get testConnection => 'Testa connessione';
-  @override String get connectionSuccess => 'Connessione riuscita';
-  @override String get connectionFailed => 'Connessione fallita';
-  @override String get searchHint => 'Ricerca esatta';
-  @override String get back => 'Indietro';
-  @override String get close => 'Chiudi';
-  @override String get copy => 'Copia';
-  @override String get skip => 'Salta';
-  @override String get done => 'Fatto';
-  @override String get reset => 'Reimposta';
-  @override String get cloudConnection => 'Connessione Cloud';
-  @override String get cloudConnectionSubtitle => 'Riconfigura connessione Supabase';
-  @override String get resetCloudConnection => 'Reimposta Connessione Cloud';
-  @override String get resetCloudConnectionMessage => 'Questo disconnetterà l\'app dal tuo progetto Supabase. Dovrai eseguire nuovamente la procedura guidata.\n\nI tuoi dati in Supabase NON verranno eliminati.';
-  @override String get restartToReconfigure => 'Riavvia l\'app per riconfigurare';
-  @override String get databasePaused => 'Database in Pausa';
-  @override String get databasePausedMessage => 'Il tuo progetto Supabase è in pausa per inattività.\n\nPer ripristinare:\n1. Vai su supabase.com/dashboard\n2. Seleziona il tuo progetto\n3. Clicca su "Ripristina progetto"\n\nCi vuole circa 1 minuto.';
-  @override String get setupTitle => 'Configurazione Artive';
-  @override String get setupWelcome => 'Benvenuto in Artive!';
-  @override String get setupWelcomeDescription => 'Questa procedura guidata ti aiuterà a configurare l\'archiviazione cloud per il tuo catalogo di opere.\n\nLe tue opere e immagini verranno archiviate in modo sicuro in Supabase, una piattaforma cloud gratuita.\n\nLa configurazione richiede circa 5 minuti.';
-  @override String get setupWhatIsSupabase => 'Cos\'è Supabase?';
-  @override String get setupWhatIsSupabaseContent => 'Supabase è un servizio backend gratuito e open-source. Fornisce database e archiviazione file per la tua app.';
-  @override String get setupYourData => 'I tuoi dati, il tuo controllo';
-  @override String get setupYourDataContent => 'Crei il tuo account Supabase personale. I tuoi dati appartengono a te e solo tu puoi accedervi.';
-  @override String get setupGetStarted => 'Inizia';
-  @override String get setupStep1Title => 'Passo 1: Crea un progetto Supabase';
-  @override String get setupStep1_1 => 'Vai su supabase.com e crea un account gratuito';
-  @override String get setupOpenSupabase => 'Apri Supabase';
-  @override String get setupStep1_2 => 'Clicca su "Nuovo progetto" nella dashboard';
-  @override String get setupStep1_3 => 'Scegli un nome per il progetto (es. "artive")';
-  @override String get setupStep1_4 => 'Imposta una password sicura per il database (salvala!)';
-  @override String get setupStep1_5 => 'Seleziona una regione vicina a te';
-  @override String get setupStep1_6 => 'Clicca su "Crea nuovo progetto" e attendi';
-  @override String get setupFreeTier => 'Piano Gratuito';
-  @override String get setupFreeTierContent => 'Il piano gratuito di Supabase include 500MB di database e 1GB di archiviazione file - sufficiente per migliaia di opere!';
-  @override String get setupProjectCreated => 'Progetto Creato';
-  @override String get setupStep2Title => 'Passo 2: Ottieni le tue credenziali';
-  @override String get setupStep2_1 => 'Nel tuo progetto Supabase, vai su "Impostazioni Progetto" (icona ingranaggio)';
-  @override String get setupStep2_2 => 'Clicca su "Data API" nel menu impostazioni';
-  @override String get setupStep2_3 => 'Trova "Project URL" - tipo: https://xxxxx.supabase.co';
-  @override String get setupStep2_4 => 'Trova la chiave "anon" sotto "Project API keys"';
-  @override String get setupAboutApiKeys => 'Informazioni sulle chiavi API';
-  @override String get setupAboutApiKeysContent => 'La chiave anon è sicura per le app. Funziona con le policy Row Level Security.';
-  @override String get setupCredentialsTip => 'Suggerimento: Puoi cliccare il pulsante copia accanto ad ogni valore in Supabase.';
-  @override String get setupIHaveCredentials => 'Ho le mie credenziali';
-  @override String get setupStep3Title => 'Passo 3: Inserisci le tue credenziali';
-  @override String get setupProjectUrl => 'URL del Progetto';
-  @override String get setupAnonKey => 'Chiave Anon';
-  @override String get setupValidateAndContinue => 'Valida e Continua';
-  @override String get setupStep4Title => 'Passo 4: Configurazione Database';
-  @override String get setupManualSetupRequired => 'Configurazione Manuale Richiesta';
-  @override String get setupDatabaseManualContent => 'Le tabelle del database devono essere create manualmente. È una configurazione una tantum.';
-  @override String get setupStep4_1 => 'In Supabase, vai su "SQL Editor" nella barra laterale';
-  @override String get setupStep4_2 => 'Clicca su "Nuova query"';
-  @override String get setupStep4_3 => 'Copia e incolla il seguente SQL:';
-  @override String get setupStep4_4 => 'Clicca su "Esegui" per eseguire la query';
-  @override String get setupStep4_5 => 'Dovresti vedere "Successo. Nessuna riga restituita"';
-  @override String get setupSqlCopied => 'SQL copiato negli appunti';
-  @override String get setupCheckingDatabase => 'Verifica database in corso...';
-  @override String get setupIveRunSql => 'Ho eseguito l\'SQL';
-  @override String get setupCheckDatabase => 'Verifica Database';
-  @override String get setupStep5Title => 'Passo 5: Configurazione Storage';
-  @override String get setupStorageManualContent => 'Crea il bucket di archiviazione per le immagini delle tue opere.';
-  @override String get setupStep5_1 => 'In Supabase, vai su "Storage" nella barra laterale';
-  @override String get setupStep5_2 => 'Clicca su "Nuovo bucket"';
-  @override String get setupStep5_3 => 'Chiamalo esattamente: artworks';
-  @override String get setupStep5_4 => 'Lascia "Bucket pubblico" DISATTIVATO (consigliato)';
-  @override String get setupStep5_5 => 'Clicca su "Crea bucket"';
-  @override String get setupAddStoragePolicy => 'Aggiungi Policy di Storage';
-  @override String get setupAddStoragePolicyContent => 'Clicca bucket → Policy → Nuova Policy → "Per personalizzazione completa" → Nome: allow_all → Seleziona tutte le operazioni → Salva.';
-  @override String get setupSettingUpStorage => 'Configurazione storage in corso...';
-  @override String get setupSetupStorage => 'Configura Storage';
-  @override String get setupComplete => 'Configurazione Completata!';
-  @override String get setupCompleteDescription => 'Artive è ora connesso al tuo progetto Supabase.\n\nPuoi iniziare ad aggiungere le tue opere!';
-  @override String get setupQuickTips => 'Suggerimenti Rapidi';
-  @override String get setupQuickTipsContent => '• Tocca + per aggiungere la tua prima opera\n• Aggiungi più immagini con tag diversi (principale, riferimento, scansione)\n• Usa ricerca e filtri per trovare opere rapidamente\n• Cambia la lingua nelle Impostazioni';
-  @override String get setupStartUsing => 'Inizia a Usare Artive';
-  @override String get openInBrowser => 'Apri nel Browser';
-  @override String get couldNotOpenBrowser => 'Impossibile aprire il browser automaticamente. Copia questo URL e aprilo manualmente:';
-  @override String get urlCopied => 'URL copiato negli appunti';
-}
-
-class AppLocalizationsTh extends AppLocalizations {
-  AppLocalizationsTh() : super('th');
-  @override String get appTitle => 'Artive';
-  @override String get artworks => 'ผลงาน';
-  @override String get addArtwork => 'เพิ่มผลงาน';
-  @override String get editArtwork => 'แก้ไขผลงาน';
-  @override String get deleteArtwork => 'ลบผลงาน';
-  @override String get name => 'ชื่อ';
-  @override String get description => 'คำอธิบาย';
-  @override String get descriptionOptional => 'คำอธิบาย (ไม่บังคับ)';
-  @override String get date => 'วันที่';
-  @override String get month => 'เดือน';
-  @override String get year => 'ปี';
-  @override String get dimension => 'ขนาด';
-  @override String get dimensionHint => 'เช่น 50x70 ซม.';
-  @override String get medium => 'เทคนิค';
-  @override String get mediumHint => 'เช่น สีน้ำมันบนผ้าใบ';
-  @override String get images => 'รูปภาพ';
-  @override String get addImage => 'เพิ่มรูปภาพ';
-  @override String get photo => 'หลัก';
-  @override String get reference => 'ภาพอ้างอิง';
-  @override String get scan => 'สแกน';
-  @override String get save => 'บันทึก';
-  @override String get cancel => 'ยกเลิก';
-  @override String get delete => 'ลบ';
-  @override String get confirmDelete => 'คุณแน่ใจหรือไม่ที่จะลบผลงานนี้?';
-  @override String get confirmDeleteImage => 'คุณแน่ใจหรือไม่ที่จะลบรูปภาพนี้?';
-  @override String get yes => 'ใช่';
-  @override String get no => 'ไม่';
-  @override String get settings => 'การตั้งค่า';
-  @override String get language => 'ภาษา';
-  @override String get about => 'เกี่ยวกับ';
-  @override String get version => 'เวอร์ชัน';
-  @override String get search => 'ค้นหา';
-  @override String get noArtworks => 'ยังไม่มีผลงาน';
-  @override String get noArtworksHint => 'แตะ + เพื่อเพิ่มผลงานชิ้นแรก';
-  @override String get loading => 'กำลังโหลด...';
-  @override String get error => 'ข้อผิดพลาด';
-  @override String get retry => 'ลองอีกครั้ง';
-  @override String get uploadingImage => 'กำลังอัปโหลดรูปภาพ...';
-  @override String get imageUploaded => 'อัปโหลดรูปภาพแล้ว';
-  @override String get imageFailed => 'อัปโหลดรูปภาพล้มเหลว';
-  @override String get artworkSaved => 'บันทึกผลงานแล้ว';
-  @override String get artworkDeleted => 'ลบผลงานแล้ว';
-  @override String get requiredField => 'ฟิลด์นี้จำเป็น';
-  @override String get invalidYear => 'กรุณาใส่ปีที่ถูกต้อง';
-  @override String get invalidMonth => 'กรุณาใส่เดือนระหว่าง 1 ถึง 12';
-  @override String get selectImageTag => 'เลือกประเภทรูปภาพ';
-  @override String get gallery => 'แกลเลอรี';
-  @override String get camera => 'กล้อง';
-  @override String get selectSource => 'เลือกแหล่งที่มารูปภาพ';
-  @override String get id => 'ID';
-  @override String get createdAt => 'สร้างเมื่อ';
-  @override String get filterByMedium => 'กรองตามเทคนิค';
-  @override String get filterByYear => 'กรองตามปี';
-  @override String get allMedia => 'ทุกเทคนิค';
-  @override String get allYears => 'ทุกปี';
-  @override String get sortBy => 'เรียงตาม';
-  @override String get sortByName => 'ชื่อ';
-  @override String get sortByDate => 'วันที่';
-  @override String get sortByCreated => 'วันที่สร้าง';
-  @override String get ascending => 'น้อยไปมาก';
-  @override String get descending => 'มากไปน้อย';
-  @override String get configurationSaved => 'บันทึกการตั้งค่าแล้ว';
-  @override String get testConnection => 'ทดสอบการเชื่อมต่อ';
-  @override String get connectionSuccess => 'เชื่อมต่อสำเร็จ';
-  @override String get connectionFailed => 'เชื่อมต่อล้มเหลว';
-  @override String get searchHint => 'ค้นหาแบบตรงทั้งหมด';
-  @override String get back => 'กลับ';
-  @override String get close => 'ปิด';
-  @override String get copy => 'คัดลอก';
-  @override String get skip => 'ข้าม';
-  @override String get done => 'เสร็จสิ้น';
-  @override String get reset => 'รีเซ็ต';
-  @override String get cloudConnection => 'การเชื่อมต่อคลาวด์';
-  @override String get cloudConnectionSubtitle => 'กำหนดค่าการเชื่อมต่อ Supabase ใหม่';
-  @override String get resetCloudConnection => 'รีเซ็ตการเชื่อมต่อคลาวด์';
-  @override String get resetCloudConnectionMessage => 'การดำเนินการนี้จะยกเลิกการเชื่อมต่อแอปจากโปรเจกต์ Supabase ของคุณ คุณจะต้องเรียกใช้ตัวช่วยการตั้งค่าอีกครั้ง\n\nข้อมูลของคุณใน Supabase จะไม่ถูกลบ';
-  @override String get restartToReconfigure => 'กรุณารีสตาร์ทแอปเพื่อกำหนดค่าใหม่';
-  @override String get databasePaused => 'ฐานข้อมูลถูกหยุดชั่วคราว';
-  @override String get databasePausedMessage => 'โปรเจกต์ Supabase ของคุณถูกหยุดชั่วคราวเนื่องจากไม่มีการใช้งาน\n\nในการกู้คืน:\n1. ไปที่ supabase.com/dashboard\n2. เลือกโปรเจกต์ของคุณ\n3. คลิก "กู้คืนโปรเจกต์"\n\nใช้เวลาประมาณ 1 นาที';
-  @override String get setupTitle => 'ตั้งค่า Artive';
-  @override String get setupWelcome => 'ยินดีต้อนรับสู่ Artive!';
-  @override String get setupWelcomeDescription => 'ตัวช่วยนี้จะช่วยคุณตั้งค่าที่เก็บข้อมูลคลาวด์สำหรับแคตตาล็อกผลงานศิลปะของคุณ\n\nผลงานและรูปภาพของคุณจะถูกจัดเก็บอย่างปลอดภัยใน Supabase แพลตฟอร์มคลาวด์ฟรี\n\nการตั้งค่าใช้เวลาประมาณ 5 นาที';
-  @override String get setupWhatIsSupabase => 'Supabase คืออะไร?';
-  @override String get setupWhatIsSupabaseContent => 'Supabase เป็นบริการแบ็กเอนด์ฟรีและโอเพนซอร์ส มีฐานข้อมูลและที่เก็บไฟล์สำหรับแอปของคุณ';
-  @override String get setupYourData => 'ข้อมูลของคุณ การควบคุมของคุณ';
-  @override String get setupYourDataContent => 'คุณสร้างบัญชี Supabase ของคุณเอง ข้อมูลเป็นของคุณและมีเพียงคุณเท่านั้นที่เข้าถึงได้';
-  @override String get setupGetStarted => 'เริ่มต้น';
-  @override String get setupStep1Title => 'ขั้นตอนที่ 1: สร้างโปรเจกต์ Supabase';
-  @override String get setupStep1_1 => 'ไปที่ supabase.com และสร้างบัญชีฟรี';
-  @override String get setupOpenSupabase => 'เปิด Supabase';
-  @override String get setupStep1_2 => 'คลิก "โปรเจกต์ใหม่" ในแดชบอร์ด';
-  @override String get setupStep1_3 => 'เลือกชื่อสำหรับโปรเจกต์ของคุณ (เช่น "artive")';
-  @override String get setupStep1_4 => 'ตั้งรหัสผ่านฐานข้อมูลที่ปลอดภัย (บันทึกไว้!)';
-  @override String get setupStep1_5 => 'เลือกภูมิภาคใกล้คุณ';
-  @override String get setupStep1_6 => 'คลิก "สร้างโปรเจกต์ใหม่" และรอ';
-  @override String get setupFreeTier => 'แพ็กเกจฟรี';
-  @override String get setupFreeTierContent => 'แพ็กเกจฟรีของ Supabase รวมฐานข้อมูล 500MB และที่เก็บไฟล์ 1GB - เพียงพอสำหรับผลงานนับพัน!';
-  @override String get setupProjectCreated => 'สร้างโปรเจกต์แล้ว';
-  @override String get setupStep2Title => 'ขั้นตอนที่ 2: รับข้อมูลรับรอง';
-  @override String get setupStep2_1 => 'ในโปรเจกต์ Supabase ไปที่ "การตั้งค่าโปรเจกต์" (ไอคอนเฟือง)';
-  @override String get setupStep2_2 => 'คลิก "Data API" ในเมนูการตั้งค่า';
-  @override String get setupStep2_3 => 'หา "Project URL" - ดูเหมือน: https://xxxxx.supabase.co';
-  @override String get setupStep2_4 => 'หาคีย์ "anon" ภายใต้ "Project API keys"';
-  @override String get setupAboutApiKeys => 'เกี่ยวกับคีย์ API';
-  @override String get setupAboutApiKeysContent => 'คีย์ anon ปลอดภัยสำหรับแอป ทำงานร่วมกับนโยบาย Row Level Security';
-  @override String get setupCredentialsTip => 'เคล็ดลับ: คุณสามารถคลิกปุ่มคัดลอกข้างแต่ละค่าใน Supabase';
-  @override String get setupIHaveCredentials => 'ฉันมีข้อมูลรับรองแล้ว';
-  @override String get setupStep3Title => 'ขั้นตอนที่ 3: ป้อนข้อมูลรับรอง';
-  @override String get setupProjectUrl => 'URL โปรเจกต์';
-  @override String get setupAnonKey => 'คีย์ Anon';
-  @override String get setupValidateAndContinue => 'ตรวจสอบและดำเนินการต่อ';
-  @override String get setupStep4Title => 'ขั้นตอนที่ 4: ตั้งค่าฐานข้อมูล';
-  @override String get setupManualSetupRequired => 'ต้องตั้งค่าด้วยตนเอง';
-  @override String get setupDatabaseManualContent => 'ต้องสร้างตารางฐานข้อมูลด้วยตนเอง นี่เป็นการตั้งค่าครั้งเดียว';
-  @override String get setupStep4_1 => 'ใน Supabase ไปที่ "SQL Editor" ในแถบด้านข้าง';
-  @override String get setupStep4_2 => 'คลิก "คิวรีใหม่"';
-  @override String get setupStep4_3 => 'คัดลอกและวาง SQL ต่อไปนี้:';
-  @override String get setupStep4_4 => 'คลิก "รัน" เพื่อดำเนินการคิวรี';
-  @override String get setupStep4_5 => 'คุณควรเห็น "สำเร็จ ไม่มีแถวที่ส่งกลับ"';
-  @override String get setupSqlCopied => 'คัดลอก SQL ไปยังคลิปบอร์ดแล้ว';
-  @override String get setupCheckingDatabase => 'กำลังตรวจสอบฐานข้อมูล...';
-  @override String get setupIveRunSql => 'ฉันรัน SQL แล้ว';
-  @override String get setupCheckDatabase => 'ตรวจสอบฐานข้อมูล';
-  @override String get setupStep5Title => 'ขั้นตอนที่ 5: ตั้งค่าที่เก็บข้อมูล';
-  @override String get setupStorageManualContent => 'สร้างบัคเก็ตที่เก็บข้อมูลสำหรับรูปภาพผลงานของคุณ';
-  @override String get setupStep5_1 => 'ใน Supabase ไปที่ "Storage" ในแถบด้านข้าง';
-  @override String get setupStep5_2 => 'คลิก "บัคเก็ตใหม่"';
-  @override String get setupStep5_3 => 'ตั้งชื่อให้ถูกต้อง: artworks';
-  @override String get setupStep5_4 => 'ปิด "บัคเก็ตสาธารณะ" ไว้ (แนะนำ)';
-  @override String get setupStep5_5 => 'คลิก "สร้างบัคเก็ต"';
-  @override String get setupAddStoragePolicy => 'เพิ่มนโยบายที่เก็บข้อมูล';
-  @override String get setupAddStoragePolicyContent => 'คลิกบัคเก็ต → นโยบาย → นโยบายใหม่ → "สำหรับการปรับแต่งเต็มรูปแบบ" → ชื่อ: allow_all → เลือกทุกการดำเนินการ → บันทึก';
-  @override String get setupSettingUpStorage => 'กำลังตั้งค่าที่เก็บข้อมูล...';
-  @override String get setupSetupStorage => 'ตั้งค่าที่เก็บข้อมูล';
-  @override String get setupComplete => 'ตั้งค่าเสร็จสิ้น!';
-  @override String get setupCompleteDescription => 'Artive เชื่อมต่อกับโปรเจกต์ Supabase ของคุณแล้ว\n\nคุณสามารถเริ่มเพิ่มผลงานได้!';
-  @override String get setupQuickTips => 'เคล็ดลับด่วน';
-  @override String get setupQuickTipsContent => '• แตะ + เพื่อเพิ่มผลงานชิ้นแรก\n• เพิ่มรูปภาพหลายรูปพร้อมแท็กต่างๆ (หลัก, อ้างอิง, สแกน)\n• ใช้การค้นหาและตัวกรองเพื่อค้นหาผลงานอย่างรวดเร็ว\n• เปลี่ยนภาษาในการตั้งค่า';
-  @override String get setupStartUsing => 'เริ่มใช้ Artive';
-  @override String get openInBrowser => 'เปิดในเบราว์เซอร์';
-  @override String get couldNotOpenBrowser => 'ไม่สามารถเปิดเบราว์เซอร์โดยอัตโนมัติ กรุณาคัดลอก URL นี้และเปิดด้วยตนเอง:';
-  @override String get urlCopied => 'คัดลอก URL ไปยังคลิปบอร์ดแล้ว';
-}
-
-class AppLocalizationsPl extends AppLocalizations {
-  AppLocalizationsPl() : super('pl');
-  @override String get appTitle => 'Artive';
-  @override String get artworks => 'Prace';
-  @override String get addArtwork => 'Dodaj pracę';
-  @override String get editArtwork => 'Edytuj pracę';
-  @override String get deleteArtwork => 'Usuń pracę';
-  @override String get name => 'Nazwa';
-  @override String get description => 'Opis';
-  @override String get descriptionOptional => 'Opis (opcjonalnie)';
-  @override String get date => 'Data';
-  @override String get month => 'Miesiąc';
-  @override String get year => 'Rok';
-  @override String get dimension => 'Wymiary';
-  @override String get dimensionHint => 'np., 50x70 cm';
-  @override String get medium => 'Technika';
-  @override String get mediumHint => 'np., Olej na płótnie';
-  @override String get images => 'Obrazy';
-  @override String get addImage => 'Dodaj obraz';
-  @override String get photo => 'Główny';
-  @override String get reference => 'Foto referencja';
-  @override String get scan => 'Skan';
-  @override String get save => 'Zapisz';
-  @override String get cancel => 'Anuluj';
-  @override String get delete => 'Usuń';
-  @override String get confirmDelete => 'Czy na pewno chcesz usunąć tę pracę?';
-  @override String get confirmDeleteImage => 'Czy na pewno chcesz usunąć ten obraz?';
-  @override String get yes => 'Tak';
-  @override String get no => 'Nie';
-  @override String get settings => 'Ustawienia';
-  @override String get language => 'Język';
-  @override String get about => 'O aplikacji';
-  @override String get version => 'Wersja';
-  @override String get search => 'Szukaj';
-  @override String get noArtworks => 'Brak prac';
-  @override String get noArtworksHint => 'Dotknij + aby dodać pierwszą pracę';
-  @override String get loading => 'Ładowanie...';
-  @override String get error => 'Błąd';
-  @override String get retry => 'Ponów';
-  @override String get uploadingImage => 'Przesyłanie obrazu...';
-  @override String get imageUploaded => 'Obraz przesłany';
-  @override String get imageFailed => 'Przesyłanie obrazu nie powiodło się';
-  @override String get artworkSaved => 'Praca zapisana';
-  @override String get artworkDeleted => 'Praca usunięta';
-  @override String get requiredField => 'To pole jest wymagane';
-  @override String get invalidYear => 'Wprowadź prawidłowy rok';
-  @override String get invalidMonth => 'Wprowadź miesiąc od 1 do 12';
-  @override String get selectImageTag => 'Wybierz typ obrazu';
-  @override String get gallery => 'Galeria';
-  @override String get camera => 'Aparat';
-  @override String get selectSource => 'Wybierz źródło obrazu';
-  @override String get id => 'ID';
-  @override String get createdAt => 'Utworzono';
-  @override String get filterByMedium => 'Filtruj według techniki';
-  @override String get filterByYear => 'Filtruj według roku';
-  @override String get allMedia => 'Wszystkie techniki';
-  @override String get allYears => 'Wszystkie lata';
-  @override String get sortBy => 'Sortuj według';
-  @override String get sortByName => 'Nazwy';
-  @override String get sortByDate => 'Daty';
-  @override String get sortByCreated => 'Utworzenia';
-  @override String get ascending => 'Rosnąco';
-  @override String get descending => 'Malejąco';
-  @override String get configurationSaved => 'Konfiguracja zapisana';
-  @override String get testConnection => 'Testuj połączenie';
-  @override String get connectionSuccess => 'Połączenie udane';
-  @override String get connectionFailed => 'Połączenie nieudane';
-  @override String get searchHint => 'Dokładne wyszukiwanie';
-  @override String get back => 'Wstecz';
-  @override String get close => 'Zamknij';
-  @override String get copy => 'Kopiuj';
-  @override String get skip => 'Pomiń';
-  @override String get done => 'Gotowe';
-  @override String get reset => 'Resetuj';
-  @override String get cloudConnection => 'Połączenie z chmurą';
-  @override String get cloudConnectionSubtitle => 'Ponownie skonfiguruj połączenie Supabase';
-  @override String get resetCloudConnection => 'Resetuj połączenie z chmurą';
-  @override String get resetCloudConnectionMessage => 'Spowoduje to odłączenie aplikacji od projektu Supabase. Będziesz musiał ponownie uruchomić kreator konfiguracji.\n\nTwoje dane w Supabase NIE zostaną usunięte.';
-  @override String get restartToReconfigure => 'Uruchom ponownie aplikację, aby skonfigurować';
-  @override String get databasePaused => 'Baza danych wstrzymana';
-  @override String get databasePausedMessage => 'Twój projekt Supabase został wstrzymany z powodu braku aktywności.\n\nAby przywrócić:\n1. Przejdź do supabase.com/dashboard\n2. Wybierz swój projekt\n3. Kliknij "Przywróć projekt"\n\nTo zajmuje około 1 minuty.';
-  @override String get setupTitle => 'Konfiguracja Artive';
-  @override String get setupWelcome => 'Witaj w Artive!';
-  @override String get setupWelcomeDescription => 'Ten kreator pomoże Ci skonfigurować chmurę dla katalogu prac.\n\nTwoje prace i obrazy będą bezpiecznie przechowywane w Supabase, darmowej platformie chmurowej.\n\nKonfiguracja trwa około 5 minut.';
-  @override String get setupWhatIsSupabase => 'Czym jest Supabase?';
-  @override String get setupWhatIsSupabaseContent => 'Supabase to darmowa usługa backendowa open-source. Zapewnia bazę danych i przechowywanie plików dla Twojej aplikacji.';
-  @override String get setupYourData => 'Twoje dane, Twoja kontrola';
-  @override String get setupYourDataContent => 'Tworzysz własne konto Supabase. Twoje dane należą do Ciebie i tylko Ty masz do nich dostęp.';
-  @override String get setupGetStarted => 'Rozpocznij';
-  @override String get setupStep1Title => 'Krok 1: Utwórz projekt Supabase';
-  @override String get setupStep1_1 => 'Przejdź do supabase.com i utwórz darmowe konto';
-  @override String get setupOpenSupabase => 'Otwórz Supabase';
-  @override String get setupStep1_2 => 'Kliknij "Nowy projekt" w panelu';
-  @override String get setupStep1_3 => 'Wybierz nazwę dla projektu (np. "artive")';
-  @override String get setupStep1_4 => 'Ustaw bezpieczne hasło bazy danych (zapisz je!)';
-  @override String get setupStep1_5 => 'Wybierz region blisko Ciebie';
-  @override String get setupStep1_6 => 'Kliknij "Utwórz nowy projekt" i poczekaj';
-  @override String get setupFreeTier => 'Darmowy plan';
-  @override String get setupFreeTierContent => 'Darmowy plan Supabase zawiera 500MB bazy danych i 1GB przechowywania plików - wystarczająco na tysiące prac!';
-  @override String get setupProjectCreated => 'Projekt utworzony';
-  @override String get setupStep2Title => 'Krok 2: Pobierz dane uwierzytelniające';
-  @override String get setupStep2_1 => 'W projekcie Supabase przejdź do "Ustawienia projektu" (ikona koła zębatego)';
-  @override String get setupStep2_2 => 'Kliknij "Data API" w menu ustawień';
-  @override String get setupStep2_3 => 'Znajdź "Project URL" - wygląda jak: https://xxxxx.supabase.co';
-  @override String get setupStep2_4 => 'Znajdź klucz "anon" w "Project API keys"';
-  @override String get setupAboutApiKeys => 'O kluczach API';
-  @override String get setupAboutApiKeysContent => 'Klucz anon jest bezpieczny dla aplikacji. Działa z politykami Row Level Security.';
-  @override String get setupCredentialsTip => 'Wskazówka: Możesz kliknąć przycisk kopiowania obok każdej wartości w Supabase.';
-  @override String get setupIHaveCredentials => 'Mam dane uwierzytelniające';
-  @override String get setupStep3Title => 'Krok 3: Wprowadź dane uwierzytelniające';
-  @override String get setupProjectUrl => 'URL projektu';
-  @override String get setupAnonKey => 'Klucz Anon';
-  @override String get setupValidateAndContinue => 'Zweryfikuj i kontynuuj';
-  @override String get setupStep4Title => 'Krok 4: Konfiguracja bazy danych';
-  @override String get setupManualSetupRequired => 'Wymagana ręczna konfiguracja';
-  @override String get setupDatabaseManualContent => 'Tabele bazy danych muszą być utworzone ręcznie. To jednorazowa konfiguracja.';
-  @override String get setupStep4_1 => 'W Supabase przejdź do "SQL Editor" na pasku bocznym';
-  @override String get setupStep4_2 => 'Kliknij "Nowe zapytanie"';
-  @override String get setupStep4_3 => 'Skopiuj i wklej następujący SQL:';
-  @override String get setupStep4_4 => 'Kliknij "Uruchom", aby wykonać zapytanie';
-  @override String get setupStep4_5 => 'Powinieneś zobaczyć "Sukces. Nie zwrócono wierszy"';
-  @override String get setupSqlCopied => 'SQL skopiowany do schowka';
-  @override String get setupCheckingDatabase => 'Sprawdzanie bazy danych...';
-  @override String get setupIveRunSql => 'Wykonałem SQL';
-  @override String get setupCheckDatabase => 'Sprawdź bazę danych';
-  @override String get setupStep5Title => 'Krok 5: Konfiguracja przechowywania';
-  @override String get setupStorageManualContent => 'Utwórz zasobnik przechowywania dla obrazów prac.';
-  @override String get setupStep5_1 => 'W Supabase przejdź do "Storage" na pasku bocznym';
-  @override String get setupStep5_2 => 'Kliknij "Nowy zasobnik"';
-  @override String get setupStep5_3 => 'Nazwij go dokładnie: artworks';
-  @override String get setupStep5_4 => 'Pozostaw "Publiczny zasobnik" WYŁĄCZONY (zalecane)';
-  @override String get setupStep5_5 => 'Kliknij "Utwórz zasobnik"';
-  @override String get setupAddStoragePolicy => 'Dodaj politykę przechowywania';
-  @override String get setupAddStoragePolicyContent => 'Kliknij zasobnik → Polityki → Nowa polityka → "Pełna personalizacja" → Nazwa: allow_all → Zaznacz wszystkie operacje → Zapisz.';
-  @override String get setupSettingUpStorage => 'Konfigurowanie przechowywania...';
-  @override String get setupSetupStorage => 'Skonfiguruj przechowywanie';
-  @override String get setupComplete => 'Konfiguracja zakończona!';
-  @override String get setupCompleteDescription => 'Artive jest teraz połączony z Twoim projektem Supabase.\n\nMożesz zacząć dodawać swoje prace!';
-  @override String get setupQuickTips => 'Szybkie wskazówki';
-  @override String get setupQuickTipsContent => '• Dotknij +, aby dodać pierwszą pracę\n• Dodaj wiele obrazów z różnymi tagami (główny, referencja, skan)\n• Używaj wyszukiwania i filtrów, aby szybko znajdować prace\n• Zmień język w Ustawieniach';
-  @override String get setupStartUsing => 'Zacznij używać Artive';
-  @override String get openInBrowser => 'Otwórz w przeglądarce';
-  @override String get couldNotOpenBrowser => 'Nie można automatycznie otworzyć przeglądarki. Skopiuj ten URL i otwórz ręcznie:';
-  @override String get urlCopied => 'URL skopiowany do schowka';
-}
-
-class AppLocalizationsNl extends AppLocalizations {
-  AppLocalizationsNl() : super('nl');
-  @override String get appTitle => 'Artive';
-  @override String get artworks => 'Kunstwerken';
-  @override String get addArtwork => 'Kunstwerk toevoegen';
-  @override String get editArtwork => 'Kunstwerk bewerken';
-  @override String get deleteArtwork => 'Kunstwerk verwijderen';
-  @override String get name => 'Naam';
-  @override String get description => 'Beschrijving';
-  @override String get descriptionOptional => 'Beschrijving (optioneel)';
-  @override String get date => 'Datum';
-  @override String get month => 'Maand';
-  @override String get year => 'Jaar';
-  @override String get dimension => 'Afmeting';
-  @override String get dimensionHint => 'bijv., 50x70 cm';
-  @override String get medium => 'Techniek';
-  @override String get mediumHint => 'bijv., Olieverf op doek';
-  @override String get images => 'Afbeeldingen';
-  @override String get addImage => 'Afbeelding toevoegen';
-  @override String get photo => 'Hoofd';
-  @override String get reference => 'Foto referentie';
-  @override String get scan => 'Scan';
-  @override String get save => 'Opslaan';
-  @override String get cancel => 'Annuleren';
-  @override String get delete => 'Verwijderen';
-  @override String get confirmDelete => 'Weet je zeker dat je dit kunstwerk wilt verwijderen?';
-  @override String get confirmDeleteImage => 'Weet je zeker dat je deze afbeelding wilt verwijderen?';
-  @override String get yes => 'Ja';
-  @override String get no => 'Nee';
-  @override String get settings => 'Instellingen';
-  @override String get language => 'Taal';
-  @override String get about => 'Over';
-  @override String get version => 'Versie';
-  @override String get search => 'Zoeken';
-  @override String get noArtworks => 'Nog geen kunstwerken';
-  @override String get noArtworksHint => 'Tik op + om je eerste kunstwerk toe te voegen';
-  @override String get loading => 'Laden...';
-  @override String get error => 'Fout';
-  @override String get retry => 'Opnieuw proberen';
-  @override String get uploadingImage => 'Afbeelding uploaden...';
-  @override String get imageUploaded => 'Afbeelding geüpload';
-  @override String get imageFailed => 'Afbeelding upload mislukt';
-  @override String get artworkSaved => 'Kunstwerk opgeslagen';
-  @override String get artworkDeleted => 'Kunstwerk verwijderd';
-  @override String get requiredField => 'Dit veld is verplicht';
-  @override String get invalidYear => 'Voer een geldig jaar in';
-  @override String get invalidMonth => 'Voer een maand tussen 1 en 12 in';
-  @override String get selectImageTag => 'Selecteer afbeeldingstype';
-  @override String get gallery => 'Galerij';
-  @override String get camera => 'Camera';
-  @override String get selectSource => 'Selecteer afbeeldingsbron';
-  @override String get id => 'ID';
-  @override String get createdAt => 'Aangemaakt op';
-  @override String get filterByMedium => 'Filter op techniek';
-  @override String get filterByYear => 'Filter op jaar';
-  @override String get allMedia => 'Alle technieken';
-  @override String get allYears => 'Alle jaren';
-  @override String get sortBy => 'Sorteren op';
-  @override String get sortByName => 'Naam';
-  @override String get sortByDate => 'Datum';
-  @override String get sortByCreated => 'Aanmaakdatum';
-  @override String get ascending => 'Oplopend';
-  @override String get descending => 'Aflopend';
-  @override String get configurationSaved => 'Configuratie opgeslagen';
-  @override String get testConnection => 'Test verbinding';
-  @override String get connectionSuccess => 'Verbinding geslaagd';
-  @override String get connectionFailed => 'Verbinding mislukt';
-  @override String get searchHint => 'Exacte zoekopdracht';
-  @override String get back => 'Terug';
-  @override String get close => 'Sluiten';
-  @override String get copy => 'Kopiëren';
-  @override String get skip => 'Overslaan';
-  @override String get done => 'Klaar';
-  @override String get reset => 'Resetten';
-  @override String get cloudConnection => 'Cloudverbinding';
-  @override String get cloudConnectionSubtitle => 'Supabase-verbinding opnieuw configureren';
-  @override String get resetCloudConnection => 'Cloudverbinding resetten';
-  @override String get resetCloudConnectionMessage => 'Dit verbreekt de verbinding van de app met je Supabase-project. Je moet de installatiewizard opnieuw uitvoeren.\n\nJe gegevens in Supabase worden NIET verwijderd.';
-  @override String get restartToReconfigure => 'Herstart de app om opnieuw te configureren';
-  @override String get databasePaused => 'Database Gepauzeerd';
-  @override String get databasePausedMessage => 'Je Supabase-project is gepauzeerd vanwege inactiviteit.\n\nOm te herstellen:\n1. Ga naar supabase.com/dashboard\n2. Selecteer je project\n3. Klik op "Project herstellen"\n\nDit duurt ongeveer 1 minuut.';
-  @override String get setupTitle => 'Artive Instellen';
-  @override String get setupWelcome => 'Welkom bij Artive!';
-  @override String get setupWelcomeDescription => 'Deze wizard helpt je bij het instellen van cloudopslag voor je kunstwerkcatalogus.\n\nJe kunstwerken en afbeeldingen worden veilig opgeslagen in Supabase, een gratis cloudplatform.\n\nDe installatie duurt ongeveer 5 minuten.';
-  @override String get setupWhatIsSupabase => 'Wat is Supabase?';
-  @override String get setupWhatIsSupabaseContent => 'Supabase is een gratis, open-source backend-service. Het biedt een database en bestandsopslag voor je app.';
-  @override String get setupYourData => 'Jouw Gegevens, Jouw Controle';
-  @override String get setupYourDataContent => 'Je maakt je eigen Supabase-account aan. Je gegevens zijn van jou en alleen jij hebt toegang.';
-  @override String get setupGetStarted => 'Aan de slag';
-  @override String get setupStep1Title => 'Stap 1: Maak een Supabase-project';
-  @override String get setupStep1_1 => 'Ga naar supabase.com en maak een gratis account aan';
-  @override String get setupOpenSupabase => 'Open Supabase';
-  @override String get setupStep1_2 => 'Klik op "Nieuw project" in het dashboard';
-  @override String get setupStep1_3 => 'Kies een naam voor je project (bijv. "artive")';
-  @override String get setupStep1_4 => 'Stel een veilig databasewachtwoord in (bewaar het!)';
-  @override String get setupStep1_5 => 'Selecteer een regio dicht bij jou';
-  @override String get setupStep1_6 => 'Klik op "Nieuw project maken" en wacht';
-  @override String get setupFreeTier => 'Gratis Tier';
-  @override String get setupFreeTierContent => 'De gratis Supabase-tier bevat 500MB database en 1GB bestandsopslag - genoeg voor duizenden kunstwerken!';
-  @override String get setupProjectCreated => 'Project Aangemaakt';
-  @override String get setupStep2Title => 'Stap 2: Haal je Inloggegevens op';
-  @override String get setupStep2_1 => 'Ga in je Supabase-project naar "Projectinstellingen" (tandwiel-icoon)';
-  @override String get setupStep2_2 => 'Klik op "Data API" in het instellingenmenu';
-  @override String get setupStep2_3 => 'Zoek "Project URL" - ziet eruit als: https://xxxxx.supabase.co';
-  @override String get setupStep2_4 => 'Zoek de "anon" sleutel onder "Project API keys"';
-  @override String get setupAboutApiKeys => 'Over API-sleutels';
-  @override String get setupAboutApiKeysContent => 'De anon-sleutel is veilig voor apps. Het werkt met Row Level Security-beleid.';
-  @override String get setupCredentialsTip => 'Tip: Je kunt op de kopieerknop naast elke waarde in Supabase klikken.';
-  @override String get setupIHaveCredentials => 'Ik heb mijn inloggegevens';
-  @override String get setupStep3Title => 'Stap 3: Voer je Inloggegevens in';
-  @override String get setupProjectUrl => 'Project URL';
-  @override String get setupAnonKey => 'Anon-sleutel';
-  @override String get setupValidateAndContinue => 'Valideren en Doorgaan';
-  @override String get setupStep4Title => 'Stap 4: Database Instellen';
-  @override String get setupManualSetupRequired => 'Handmatige Installatie Vereist';
-  @override String get setupDatabaseManualContent => 'De databasetabellen moeten handmatig worden aangemaakt. Dit is een eenmalige installatie.';
-  @override String get setupStep4_1 => 'Ga in Supabase naar "SQL Editor" in de zijbalk';
-  @override String get setupStep4_2 => 'Klik op "Nieuwe query"';
-  @override String get setupStep4_3 => 'Kopieer en plak de volgende SQL:';
-  @override String get setupStep4_4 => 'Klik op "Uitvoeren" om de query uit te voeren';
-  @override String get setupStep4_5 => 'Je zou "Succes. Geen rijen geretourneerd" moeten zien';
-  @override String get setupSqlCopied => 'SQL gekopieerd naar klembord';
-  @override String get setupCheckingDatabase => 'Database controleren...';
-  @override String get setupIveRunSql => 'Ik heb de SQL uitgevoerd';
-  @override String get setupCheckDatabase => 'Controleer Database';
-  @override String get setupStep5Title => 'Stap 5: Opslag Instellen';
-  @override String get setupStorageManualContent => 'Maak de opslagbucket voor je kunstwerkafbeeldingen.';
-  @override String get setupStep5_1 => 'Ga in Supabase naar "Storage" in de zijbalk';
-  @override String get setupStep5_2 => 'Klik op "Nieuwe bucket"';
-  @override String get setupStep5_3 => 'Noem het precies: artworks';
-  @override String get setupStep5_4 => 'Laat "Openbare bucket" UIT (aanbevolen)';
-  @override String get setupStep5_5 => 'Klik op "Bucket maken"';
-  @override String get setupAddStoragePolicy => 'Opslagbeleid Toevoegen';
-  @override String get setupAddStoragePolicyContent => 'Klik op bucket → Beleid → Nieuw beleid → "Voor volledige aanpassing" → Naam: allow_all → Vink alle bewerkingen aan → Opslaan.';
-  @override String get setupSettingUpStorage => 'Opslag instellen...';
-  @override String get setupSetupStorage => 'Opslag Instellen';
-  @override String get setupComplete => 'Installatie Voltooid!';
-  @override String get setupCompleteDescription => 'Artive is nu verbonden met je Supabase-project.\n\nJe kunt beginnen met het toevoegen van je kunstwerken!';
-  @override String get setupQuickTips => 'Snelle Tips';
-  @override String get setupQuickTipsContent => '• Tik op + om je eerste kunstwerk toe te voegen\n• Voeg meerdere afbeeldingen toe met verschillende tags (hoofd, referentie, scan)\n• Gebruik zoeken en filters om kunstwerken snel te vinden\n• Wijzig de taal in Instellingen';
-  @override String get setupStartUsing => 'Begin Artive te Gebruiken';
-  @override String get openInBrowser => 'Openen in Browser';
-  @override String get couldNotOpenBrowser => 'Kon browser niet automatisch openen. Kopieer deze URL en open handmatig:';
-  @override String get urlCopied => 'URL gekopieerd naar klembord';
-}
-
-class AppLocalizationsId extends AppLocalizations {
-  AppLocalizationsId() : super('id');
-  @override String get appTitle => 'Artive';
-  @override String get artworks => 'Karya';
-  @override String get addArtwork => 'Tambah karya';
-  @override String get editArtwork => 'Edit karya';
-  @override String get deleteArtwork => 'Hapus karya';
-  @override String get name => 'Nama';
-  @override String get description => 'Deskripsi';
-  @override String get descriptionOptional => 'Deskripsi (opsional)';
-  @override String get date => 'Tanggal';
-  @override String get month => 'Bulan';
-  @override String get year => 'Tahun';
-  @override String get dimension => 'Dimensi';
-  @override String get dimensionHint => 'cth., 50x70 cm';
-  @override String get medium => 'Media';
-  @override String get mediumHint => 'cth., Cat minyak di kanvas';
-  @override String get images => 'Gambar';
-  @override String get addImage => 'Tambah gambar';
-  @override String get photo => 'Utama';
-  @override String get reference => 'Referensi foto';
-  @override String get scan => 'Pindai';
-  @override String get save => 'Simpan';
-  @override String get cancel => 'Batal';
-  @override String get delete => 'Hapus';
-  @override String get confirmDelete => 'Apakah Anda yakin ingin menghapus karya ini?';
-  @override String get confirmDeleteImage => 'Apakah Anda yakin ingin menghapus gambar ini?';
-  @override String get yes => 'Ya';
-  @override String get no => 'Tidak';
-  @override String get settings => 'Pengaturan';
-  @override String get language => 'Bahasa';
-  @override String get about => 'Tentang';
-  @override String get version => 'Versi';
-  @override String get search => 'Cari';
-  @override String get noArtworks => 'Belum ada karya';
-  @override String get noArtworksHint => 'Ketuk + untuk menambahkan karya pertama Anda';
-  @override String get loading => 'Memuat...';
-  @override String get error => 'Kesalahan';
-  @override String get retry => 'Coba lagi';
-  @override String get uploadingImage => 'Mengunggah gambar...';
-  @override String get imageUploaded => 'Gambar diunggah';
-  @override String get imageFailed => 'Gagal mengunggah gambar';
-  @override String get artworkSaved => 'Karya disimpan';
-  @override String get artworkDeleted => 'Karya dihapus';
-  @override String get requiredField => 'Bidang ini wajib diisi';
-  @override String get invalidYear => 'Masukkan tahun yang valid';
-  @override String get invalidMonth => 'Masukkan bulan antara 1 dan 12';
-  @override String get selectImageTag => 'Pilih jenis gambar';
-  @override String get gallery => 'Galeri';
-  @override String get camera => 'Kamera';
-  @override String get selectSource => 'Pilih sumber gambar';
-  @override String get id => 'ID';
-  @override String get createdAt => 'Dibuat pada';
-  @override String get filterByMedium => 'Filter berdasarkan media';
-  @override String get filterByYear => 'Filter berdasarkan tahun';
-  @override String get allMedia => 'Semua media';
-  @override String get allYears => 'Semua tahun';
-  @override String get sortBy => 'Urutkan berdasarkan';
-  @override String get sortByName => 'Nama';
-  @override String get sortByDate => 'Tanggal';
-  @override String get sortByCreated => 'Tanggal dibuat';
-  @override String get ascending => 'Menaik';
-  @override String get descending => 'Menurun';
-  @override String get configurationSaved => 'Konfigurasi disimpan';
-  @override String get testConnection => 'Tes koneksi';
-  @override String get connectionSuccess => 'Koneksi berhasil';
-  @override String get connectionFailed => 'Koneksi gagal';
-  @override String get searchHint => 'Pencarian tepat';
-  @override String get back => 'Kembali';
-  @override String get close => 'Tutup';
-  @override String get copy => 'Salin';
-  @override String get skip => 'Lewati';
-  @override String get done => 'Selesai';
-  @override String get reset => 'Atur Ulang';
-  @override String get cloudConnection => 'Koneksi Cloud';
-  @override String get cloudConnectionSubtitle => 'Konfigurasi ulang koneksi Supabase';
-  @override String get resetCloudConnection => 'Atur Ulang Koneksi Cloud';
-  @override String get resetCloudConnectionMessage => 'Ini akan memutus koneksi aplikasi dari proyek Supabase Anda. Anda perlu menjalankan wizard pengaturan lagi.\n\nData Anda di Supabase TIDAK akan dihapus.';
-  @override String get restartToReconfigure => 'Silakan mulai ulang aplikasi untuk mengkonfigurasi ulang';
-  @override String get databasePaused => 'Database Dijeda';
-  @override String get databasePausedMessage => 'Proyek Supabase Anda dijeda karena tidak aktif.\n\nUntuk memulihkan:\n1. Buka supabase.com/dashboard\n2. Pilih proyek Anda\n3. Klik "Pulihkan proyek"\n\nIni membutuhkan waktu sekitar 1 menit.';
-  @override String get setupTitle => 'Pengaturan Artive';
-  @override String get setupWelcome => 'Selamat datang di Artive!';
-  @override String get setupWelcomeDescription => 'Wizard ini akan membantu Anda mengatur penyimpanan cloud untuk katalog karya seni Anda.\n\nKarya dan gambar Anda akan disimpan dengan aman di Supabase, platform cloud gratis.\n\nPengaturan membutuhkan waktu sekitar 5 menit.';
-  @override String get setupWhatIsSupabase => 'Apa itu Supabase?';
-  @override String get setupWhatIsSupabaseContent => 'Supabase adalah layanan backend gratis dan open-source. Menyediakan database dan penyimpanan file untuk aplikasi Anda.';
-  @override String get setupYourData => 'Data Anda, Kontrol Anda';
-  @override String get setupYourDataContent => 'Anda membuat akun Supabase sendiri. Data Anda milik Anda dan hanya Anda yang memiliki akses.';
-  @override String get setupGetStarted => 'Mulai';
-  @override String get setupStep1Title => 'Langkah 1: Buat Proyek Supabase';
-  @override String get setupStep1_1 => 'Buka supabase.com dan buat akun gratis';
-  @override String get setupOpenSupabase => 'Buka Supabase';
-  @override String get setupStep1_2 => 'Klik "Proyek Baru" di dashboard';
-  @override String get setupStep1_3 => 'Pilih nama untuk proyek Anda (mis. "artive")';
-  @override String get setupStep1_4 => 'Tetapkan kata sandi database yang aman (simpan!)';
-  @override String get setupStep1_5 => 'Pilih wilayah dekat Anda';
-  @override String get setupStep1_6 => 'Klik "Buat proyek baru" dan tunggu';
-  @override String get setupFreeTier => 'Tingkat Gratis';
-  @override String get setupFreeTierContent => 'Tingkat gratis Supabase mencakup database 500MB dan penyimpanan file 1GB - cukup untuk ribuan karya!';
-  @override String get setupProjectCreated => 'Proyek Dibuat';
-  @override String get setupStep2Title => 'Langkah 2: Dapatkan Kredensial Anda';
-  @override String get setupStep2_1 => 'Di proyek Supabase Anda, buka "Pengaturan Proyek" (ikon roda gigi)';
-  @override String get setupStep2_2 => 'Klik "Data API" di menu pengaturan';
-  @override String get setupStep2_3 => 'Temukan "Project URL" - terlihat seperti: https://xxxxx.supabase.co';
-  @override String get setupStep2_4 => 'Temukan kunci "anon" di bawah "Project API keys"';
-  @override String get setupAboutApiKeys => 'Tentang Kunci API';
-  @override String get setupAboutApiKeysContent => 'Kunci anon aman untuk aplikasi. Bekerja dengan kebijakan Row Level Security.';
-  @override String get setupCredentialsTip => 'Tips: Anda dapat mengklik tombol salin di samping setiap nilai di Supabase.';
-  @override String get setupIHaveCredentials => 'Saya Sudah Punya Kredensial';
-  @override String get setupStep3Title => 'Langkah 3: Masukkan Kredensial Anda';
-  @override String get setupProjectUrl => 'URL Proyek';
-  @override String get setupAnonKey => 'Kunci Anon';
-  @override String get setupValidateAndContinue => 'Validasi dan Lanjutkan';
-  @override String get setupStep4Title => 'Langkah 4: Pengaturan Database';
-  @override String get setupManualSetupRequired => 'Pengaturan Manual Diperlukan';
-  @override String get setupDatabaseManualContent => 'Tabel database perlu dibuat secara manual. Ini pengaturan satu kali.';
-  @override String get setupStep4_1 => 'Di Supabase, buka "SQL Editor" di sidebar';
-  @override String get setupStep4_2 => 'Klik "Query baru"';
-  @override String get setupStep4_3 => 'Salin dan tempel SQL berikut:';
-  @override String get setupStep4_4 => 'Klik "Jalankan" untuk mengeksekusi query';
-  @override String get setupStep4_5 => 'Anda seharusnya melihat "Berhasil. Tidak ada baris yang dikembalikan"';
-  @override String get setupSqlCopied => 'SQL disalin ke clipboard';
-  @override String get setupCheckingDatabase => 'Memeriksa database...';
-  @override String get setupIveRunSql => 'Saya Sudah Menjalankan SQL';
-  @override String get setupCheckDatabase => 'Periksa Database';
-  @override String get setupStep5Title => 'Langkah 5: Pengaturan Penyimpanan';
-  @override String get setupStorageManualContent => 'Buat bucket penyimpanan untuk gambar karya Anda.';
-  @override String get setupStep5_1 => 'Di Supabase, buka "Storage" di sidebar';
-  @override String get setupStep5_2 => 'Klik "Bucket baru"';
-  @override String get setupStep5_3 => 'Beri nama persis: artworks';
-  @override String get setupStep5_4 => 'Biarkan "Bucket publik" MATI (disarankan)';
-  @override String get setupStep5_5 => 'Klik "Buat bucket"';
-  @override String get setupAddStoragePolicy => 'Tambah Kebijakan Penyimpanan';
-  @override String get setupAddStoragePolicyContent => 'Klik bucket → Kebijakan → Kebijakan Baru → "Untuk kustomisasi penuh" → Nama: allow_all → Centang semua operasi → Simpan.';
-  @override String get setupSettingUpStorage => 'Mengatur penyimpanan...';
-  @override String get setupSetupStorage => 'Atur Penyimpanan';
-  @override String get setupComplete => 'Pengaturan Selesai!';
-  @override String get setupCompleteDescription => 'Artive sekarang terhubung ke proyek Supabase Anda.\n\nAnda dapat mulai menambahkan karya seni Anda!';
-  @override String get setupQuickTips => 'Tips Cepat';
-  @override String get setupQuickTipsContent => '• Ketuk + untuk menambahkan karya pertama Anda\n• Tambahkan beberapa gambar dengan tag berbeda (utama, referensi, pindai)\n• Gunakan pencarian dan filter untuk menemukan karya dengan cepat\n• Ubah bahasa di Pengaturan';
-  @override String get setupStartUsing => 'Mulai Menggunakan Artive';
-  @override String get openInBrowser => 'Buka di Browser';
-  @override String get couldNotOpenBrowser => 'Tidak dapat membuka browser secara otomatis. Silakan salin URL ini dan buka secara manual:';
-  @override String get urlCopied => 'URL disalin ke clipboard';
+  throw FlutterError(
+    'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
+    'an issue with the localizations generation tool. Please file an issue '
+    'on GitHub with a reproducible sample app and the gen-l10n configuration '
+    'that was used.'
+  );
 }

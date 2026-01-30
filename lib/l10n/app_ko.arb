@@ -137,5 +137,24 @@
   "setupStartUsing": "Artive 사용 시작",
   "openInBrowser": "브라우저에서 열기",
   "couldNotOpenBrowser": "브라우저를 자동으로 열 수 없습니다. 이 URL을 복사하여 수동으로 열어주세요:",
-  "urlCopied": "URL이 클립보드에 복사됨"
-}
+  "urlCopied": "URL이 클립보드에 복사됨",
+  "backupRestore": "백업 및 복원",
+  "backupRestoreSubtitle": "데이터를 내보내거나 가져오기",
+  "createBackup": "백업 만들기",
+  "createBackupDescription": "모든 작품과 이미지를 저장하거나 공유할 수 있는 ZIP 파일로 내보냅니다.",
+  "restoreBackup": "백업 복원",
+  "restoreBackupDescription": "이전에 생성한 백업 파일에서 작품과 이미지를 가져옵니다.",
+  "restoreBackupConfirm": "백업을 어떻게 복원하시겠습니까?",
+  "restoreMerge": "기존 항목과 병합",
+  "restoreReplace": "모두 교체",
+  "backupCreated": "백업이 성공적으로 생성되었습니다",
+  "restoreComplete": "{count}개의 작품이 복원되었습니다",
+  "@restoreComplete": {
+      "placeholders": {
+        "count": {
+          "type": "int"
+        }
+      }
+    },
+    "backupNote": "Backups include all artwork data and images. Store them safely!"
+  }
