@@ -33,7 +33,7 @@ class ArtiveApp extends StatefulWidget {
   State<ArtiveApp> createState() => _ArtiveAppState();
 }
 
-class _ArtiveAppState extends State<ArtiveApp> {
+class _ArtiveAppState extends State<ArtiveApp> with WidgetsBindingObserver {
   bool _isLoading = true;
   bool _isSetupComplete = false;
   AppConfig? _config;
@@ -41,7 +41,30 @@ class _ArtiveAppState extends State<ArtiveApp> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     _checkSetup();
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    _disposeSupabase();
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.detached) {
+      _disposeSupabase();
+    }
+  }
+
+  Future<void> _disposeSupabase() async {
+    try {
+      await Supabase.instance.dispose();
+    } catch (_) {
+      // Ignore if not initialized
+    }
   }
 
   Future<void> _checkSetup() async {
@@ -51,41 +74,51 @@ class _ArtiveAppState extends State<ArtiveApp> {
 
       if (isComplete && credentials != null) {
         try {
-          // Only initialize if not already initialized (setup wizard may have done it)
-          try {
-            Supabase.instance; // Check if already initialized
-          } catch (_) {
-            // Not initialized yet, do it now
-            await Supabase.initialize(
-              url: credentials['url']!,
-              anonKey: credentials['anonKey']!,
-            );
+          // Always try to initialize - Supabase.initialize handles already-initialized case
+          await Supabase.initialize(
+            url: credentials['url']!,
+            anonKey: credentials['anonKey']!,
+          );
+        } catch (e) {
+          // Ignore "already initialized" errors, they're expected on hot restart
+          if (!e.toString().contains('already been initialized')) {
+            rethrow;
           }
+        }
+        
+        try {
           _config = await AppConfig.load();
+        } catch (e) {
+          _config = AppConfig.defaults();
+        }
+        
+        if (mounted) {
           setState(() {
             _isSetupComplete = true;
             _isLoading = false;
           });
-        } catch (e) {
-          await SetupService.resetSetup();
+        }
+      } else {
+        if (mounted) {
           setState(() {
             _isSetupComplete = false;
             _isLoading = false;
           });
         }
-      } else {
+      }
+    } catch (e) {
+      // If there's any error during setup check, reset to setup wizard
+      try {
+        await SetupService.resetSetup();
+      } catch (_) {
+        // Ignore reset errors
+      }
+      if (mounted) {
         setState(() {
           _isSetupComplete = false;
           _isLoading = false;
         });
       }
-    } catch (e) {
-      // If there's any error during setup check, reset to setup wizard
-      await SetupService.resetSetup();
-      setState(() {
-        _isSetupComplete = false;
-        _isLoading = false;
-      });
     }
   }
 
