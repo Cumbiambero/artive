@@ -114,25 +114,39 @@ class _HomeScreenState extends State<HomeScreen> {
 
           return RefreshIndicator(
             onRefresh: provider.loadArtworks,
-            child: GridView.builder(
-              padding: const EdgeInsets.all(8),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                childAspectRatio: 0.75,
-                crossAxisSpacing: 8,
-                mainAxisSpacing: 8,
-              ),
-              itemCount: provider.artworks.length,
-              itemBuilder: (context, index) {
-                final artwork = provider.artworks[index];
-                return ArtworkCard(
-                  artwork: artwork,
-                  onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => ArtworkDetailScreen(artworkId: artwork.id!),
-                    ),
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                // Responsive grid: 2 columns on mobile, more on wider screens
+                final crossAxisCount = constraints.maxWidth > 1200
+                    ? 6
+                    : constraints.maxWidth > 900
+                        ? 5
+                        : constraints.maxWidth > 600
+                            ? 4
+                            : constraints.maxWidth > 400
+                                ? 3
+                                : 2;
+                return GridView.builder(
+                  padding: const EdgeInsets.all(8),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: crossAxisCount,
+                    childAspectRatio: 0.75,
+                    crossAxisSpacing: 8,
+                    mainAxisSpacing: 8,
                   ),
+                  itemCount: provider.artworks.length,
+                  itemBuilder: (context, index) {
+                    final artwork = provider.artworks[index];
+                    return ArtworkCard(
+                      artwork: artwork,
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => ArtworkDetailScreen(artworkId: artwork.id!),
+                        ),
+                      ),
+                    );
+                  },
                 );
               },
             ),
@@ -178,12 +192,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   bool _isPausedError(String error) {
     final lower = error.toLowerCase();
-    return lower.contains('failed host lookup') ||
-           lower.contains('connection refused') ||
-           lower.contains('connection timed out') ||
-           lower.contains('network is unreachable') ||
+    // Only detect as paused if we get specific Supabase paused indicators
+    return lower.contains('project is paused') ||
            lower.contains('503') ||
-           lower.contains('service unavailable') ||
-           lower.contains('project is paused');
+           lower.contains('service unavailable');
   }
 }

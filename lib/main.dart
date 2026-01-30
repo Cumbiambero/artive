@@ -1,3 +1,4 @@
+import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
@@ -9,6 +10,16 @@ import 'core/services/services.dart';
 import 'l10n/app_localizations.dart';
 import 'ui/screens/screens.dart';
 import 'ui/screens/setup_wizard_screen.dart';
+
+Locale _resolveSystemLocale() {
+  final systemLocale = ui.PlatformDispatcher.instance.locale;
+  for (var supported in LocaleProvider.supportedLocales) {
+    if (supported.languageCode == systemLocale.languageCode) {
+      return supported;
+    }
+  }
+  return const Locale('en');
+}
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,10 +50,16 @@ class _ArtiveAppState extends State<ArtiveApp> {
 
     if (isComplete && credentials != null) {
       try {
-        await Supabase.initialize(
-          url: credentials['url']!,
-          anonKey: credentials['anonKey']!,
-        );
+        // Only initialize if not already initialized (setup wizard may have done it)
+        try {
+          Supabase.instance; // Check if already initialized
+        } catch (_) {
+          // Not initialized yet, do it now
+          await Supabase.initialize(
+            url: credentials['url']!,
+            anonKey: credentials['anonKey']!,
+          );
+        }
         _config = await AppConfig.load();
         setState(() {
           _isSetupComplete = true;
@@ -84,12 +101,28 @@ class _ArtiveAppState extends State<ArtiveApp> {
     }
 
     if (!_isSetupComplete) {
+      final resolvedLocale = _resolveSystemLocale();
       return MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
+        darkTheme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.deepPurple,
+            brightness: Brightness.dark,
+          ),
+          useMaterial3: true,
+        ),
+        locale: resolvedLocale,
+        supportedLocales: LocaleProvider.supportedLocales,
+        localizationsDelegates: const [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
         home: SetupWizardScreen(onSetupComplete: _onSetupComplete),
       );
     }

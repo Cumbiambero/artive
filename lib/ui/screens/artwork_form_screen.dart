@@ -1,3 +1,5 @@
+import 'dart:io' show Platform;
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
@@ -178,9 +180,9 @@ class _ArtworkFormScreenState extends State<ArtworkFormScreen> {
                   height: 120,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: currentArtwork.images.length,
+                    itemCount: currentArtwork.sortedImages.length,
                     itemBuilder: (_, index) {
-                      final image = currentArtwork.images[index];
+                      final image = currentArtwork.sortedImages[index];
                       return Padding(
                         padding: const EdgeInsets.only(right: 8),
                         child: SizedBox(
@@ -267,6 +269,9 @@ class _ArtworkFormScreenState extends State<ArtworkFormScreen> {
 
   Future<void> _addImage(BuildContext context) async {
     final l10n = AppLocalizations.of(context)!;
+    
+    // macOS doesn't support camera capture via image_picker
+    final isMacOS = !kIsWeb && Platform.isMacOS;
 
     final source = await showModalBottomSheet<ImageSource>(
       context: context,
@@ -278,11 +283,12 @@ class _ArtworkFormScreenState extends State<ArtworkFormScreen> {
             title: Text(l10n.gallery),
             onTap: () => Navigator.pop(context, ImageSource.gallery),
           ),
-          ListTile(
-            leading: const Icon(Icons.camera_alt),
-            title: Text(l10n.camera),
-            onTap: () => Navigator.pop(context, ImageSource.camera),
-          ),
+          if (!isMacOS)
+            ListTile(
+              leading: const Icon(Icons.camera_alt),
+              title: Text(l10n.camera),
+              onTap: () => Navigator.pop(context, ImageSource.camera),
+            ),
         ],
       ),
     );
@@ -306,12 +312,12 @@ class _ArtworkFormScreenState extends State<ArtworkFormScreen> {
           ),
           ListTile(
             leading: const Icon(Icons.star, color: Colors.blue),
-            title: Text(l10n.mainImage),
+            title: Text(l10n.photo),
             onTap: () => Navigator.pop(context, ImageTag.main),
           ),
           ListTile(
             leading: const Icon(Icons.photo_camera, color: Colors.orange),
-            title: Text(l10n.photoReference),
+            title: Text(l10n.reference),
             onTap: () => Navigator.pop(context, ImageTag.photoReference),
           ),
           ListTile(

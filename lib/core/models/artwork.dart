@@ -77,12 +77,18 @@ class Artwork {
     );
   }
 
+  /// Returns the preferred thumbnail image: Scan > Photo > Reference
   ArtworkImage? get mainImage {
-    try {
-      return images.firstWhere((img) => img.tag == ImageTag.main);
-    } catch (_) {
-      return images.isNotEmpty ? images.first : null;
-    }
+    if (images.isEmpty) return null;
+    // Return first image by priority: scan (0), photo/main (1), reference (2)
+    return sortedImages.first;
+  }
+
+  /// Returns images sorted by tag: Scan first, then Photo, then Reference
+  List<ArtworkImage> get sortedImages {
+    final sorted = List<ArtworkImage>.from(images);
+    sorted.sort((a, b) => a.tag.sortOrder.compareTo(b.tag.sortOrder));
+    return sorted;
   }
 
   String get dateDisplay {

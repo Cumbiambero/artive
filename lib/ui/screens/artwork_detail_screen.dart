@@ -55,14 +55,14 @@ class _ArtworkDetailScreenState extends State<ArtworkDetailScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            if (artwork.images.isNotEmpty) ...[
+            if (artwork.sortedImages.isNotEmpty) ...[
               AspectRatio(
                 aspectRatio: 1,
                 child: PageView.builder(
                   onPageChanged: (i) => setState(() => _currentImageIndex = i),
-                  itemCount: artwork.images.length,
+                  itemCount: artwork.sortedImages.length,
                   itemBuilder: (_, index) {
-                    final image = artwork.images[index];
+                    final image = artwork.sortedImages[index];
                     return GestureDetector(
                       onTap: () => _showFullImage(context, provider, image),
                       child: CachedNetworkImage(
@@ -76,13 +76,13 @@ class _ArtworkDetailScreenState extends State<ArtworkDetailScreen> {
                   },
                 ),
               ),
-              if (artwork.images.length > 1)
+              if (artwork.sortedImages.length > 1)
                 Padding(
                   padding: const EdgeInsets.all(8),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: List.generate(
-                      artwork.images.length,
+                      artwork.sortedImages.length,
                       (i) => Container(
                         width: 8,
                         height: 8,
@@ -117,7 +117,7 @@ class _ArtworkDetailScreenState extends State<ArtworkDetailScreen> {
                 ],
               ),
             ),
-            if (artwork.images.isNotEmpty) ...[
+            if (artwork.sortedImages.isNotEmpty) ...[
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Text(
@@ -131,9 +131,9 @@ class _ArtworkDetailScreenState extends State<ArtworkDetailScreen> {
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   padding: const EdgeInsets.symmetric(horizontal: 16),
-                  itemCount: artwork.images.length,
+                  itemCount: artwork.sortedImages.length,
                   itemBuilder: (_, index) {
-                    final image = artwork.images[index];
+                    final image = artwork.sortedImages[index];
                     return Padding(
                       padding: const EdgeInsets.only(right: 8),
                       child: GestureDetector(
@@ -285,8 +285,8 @@ class _ArtworkDetailScreenState extends State<ArtworkDetailScreen> {
 
   String _getTagLabel(AppLocalizations l10n, ImageTag tag) {
     return switch (tag) {
-      ImageTag.main => l10n.mainImage,
-      ImageTag.photoReference => l10n.photoReference,
+      ImageTag.main => l10n.photo,
+      ImageTag.photoReference => l10n.reference,
       ImageTag.scan => l10n.scan,
     };
   }

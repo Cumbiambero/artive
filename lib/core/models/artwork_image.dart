@@ -6,11 +6,23 @@ enum ImageTag {
   String get displayKey {
     switch (this) {
       case ImageTag.main:
-        return 'mainImage';
+        return 'photo';
       case ImageTag.photoReference:
-        return 'photoReference';
+        return 'reference';
       case ImageTag.scan:
         return 'scan';
+    }
+  }
+
+  /// Sort order: scan (0) < photo/main (1) < reference (2)
+  int get sortOrder {
+    switch (this) {
+      case ImageTag.scan:
+        return 0;
+      case ImageTag.main:
+        return 1;
+      case ImageTag.photoReference:
+        return 2;
     }
   }
 

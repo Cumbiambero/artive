@@ -75,11 +75,11 @@ class ImageTile extends StatelessWidget {
             itemBuilder: (_) => [
               PopupMenuItem(
                 value: 'main',
-                child: Text(l10n.mainImage),
+                child: Text(l10n.photo),
               ),
               PopupMenuItem(
                 value: 'photo_reference',
-                child: Text(l10n.photoReference),
+                child: Text(l10n.reference),
               ),
               PopupMenuItem(
                 value: 'scan',
@@ -117,8 +117,8 @@ class ImageTile extends StatelessWidget {
 
   String _getTagLabel(AppLocalizations l10n, ImageTag tag) {
     return switch (tag) {
-      ImageTag.main => l10n.mainImage,
-      ImageTag.photoReference => l10n.photoReference,
+      ImageTag.main => l10n.photo,
+      ImageTag.photoReference => l10n.reference,
       ImageTag.scan => l10n.scan,
     };
   }
