@@ -103,7 +103,6 @@ class _ArtworkDetailScreenState extends State<ArtworkDetailScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _buildInfoRow(l10n.id, '#${artwork.id}'),
                   _buildInfoRow(l10n.name, artwork.name),
                   if (artwork.description?.isNotEmpty == true)
                     _buildInfoRow(l10n.description, artwork.description!),

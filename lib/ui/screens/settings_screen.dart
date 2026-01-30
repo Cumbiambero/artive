@@ -32,8 +32,8 @@ class SettingsScreen extends StatelessWidget {
           const Divider(),
           ListTile(
             leading: const Icon(Icons.cloud_outlined),
-            title: const Text('Cloud Connection'),
-            subtitle: const Text('Reconfigure Supabase connection'),
+            title: Text(l10n.cloudConnection),
+            subtitle: Text(l10n.cloudConnectionSubtitle),
             onTap: () => _showResetDialog(context),
           ),
           const Divider(),
@@ -73,19 +73,16 @@ class SettingsScreen extends StatelessWidget {
   }
 
   void _showResetDialog(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       builder: (_) => AlertDialog(
-        title: const Text('Reset Cloud Connection'),
-        content: const Text(
-          'This will disconnect the app from your Supabase project. '
-          'You will need to run the setup wizard again.\n\n'
-          'Your data in Supabase will NOT be deleted.',
-        ),
+        title: Text(l10n.resetCloudConnection),
+        content: Text(l10n.resetCloudConnectionMessage),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Cancel'),
+            child: Text(l10n.cancel),
           ),
           FilledButton(
             onPressed: () async {
@@ -93,11 +90,11 @@ class SettingsScreen extends StatelessWidget {
               if (context.mounted) {
                 Navigator.pop(context);
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Please restart the app to reconfigure')),
+                  SnackBar(content: Text(l10n.restartToReconfigure)),
                 );
               }
             },
-            child: const Text('Reset'),
+            child: Text(l10n.reset),
           ),
         ],
       ),

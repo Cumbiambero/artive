@@ -57,6 +57,15 @@ class _ArtworkFormScreenState extends State<ArtworkFormScreen> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    
+    // Watch provider to get updated artwork with images
+    final provider = context.watch<ArtworkProvider>();
+    final currentArtwork = isEditing 
+        ? provider.artworks.firstWhere(
+            (a) => a.id == widget.artwork!.id,
+            orElse: () => widget.artwork!,
+          )
+        : null;
 
     return Scaffold(
       appBar: AppBar(
@@ -164,14 +173,14 @@ class _ArtworkFormScreenState extends State<ArtworkFormScreen> {
                 ],
               ),
               const SizedBox(height: 8),
-              if (widget.artwork!.images.isNotEmpty)
+              if (currentArtwork!.images.isNotEmpty)
                 SizedBox(
                   height: 120,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: widget.artwork!.images.length,
+                    itemCount: currentArtwork.images.length,
                     itemBuilder: (_, index) {
-                      final image = widget.artwork!.images[index];
+                      final image = currentArtwork.images[index];
                       return Padding(
                         padding: const EdgeInsets.only(right: 8),
                         child: SizedBox(

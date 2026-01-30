@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../core/services/setup_service.dart';
+import '../../l10n/app_localizations.dart';
 
 class SetupWizardScreen extends StatefulWidget {
   final VoidCallback onSetupComplete;
@@ -63,14 +64,15 @@ class _SetupWizardScreenState extends State<SetupWizardScreen> {
   }
 
   void _showUrlFallback(String url) {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       builder: (_) => AlertDialog(
-        title: const Text('Open in Browser'),
+        title: Text(l10n.openInBrowser),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Text('Could not open browser automatically. Please copy this URL and open it manually:'),
+            Text(l10n.couldNotOpenBrowser),
             const SizedBox(height: 16),
             SelectableText(url, style: const TextStyle(fontWeight: FontWeight.bold)),
           ],
@@ -81,14 +83,14 @@ class _SetupWizardScreenState extends State<SetupWizardScreen> {
               Clipboard.setData(ClipboardData(text: url));
               Navigator.pop(context);
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('URL copied to clipboard')),
+                SnackBar(content: Text(l10n.urlCopied)),
               );
             },
-            child: const Text('Copy URL'),
+            child: Text('${l10n.copy} URL'),
           ),
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Close'),
+            child: Text(l10n.close),
           ),
         ],
       ),
@@ -170,14 +172,15 @@ class _SetupWizardScreenState extends State<SetupWizardScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Artive Setup'),
+        title: Text(l10n.setupTitle),
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(4),
           child: LinearProgressIndicator(
             value: (_currentStep + 1) / _steps.length,
-            backgroundColor: Colors.grey[300],
+            backgroundColor: Theme.of(context).colorScheme.surfaceContainerHighest,
           ),
         ),
       ),
@@ -219,114 +222,115 @@ class _SetupWizardScreenState extends State<SetupWizardScreen> {
   }
 
   Widget _buildWelcomePage() {
+    final l10n = AppLocalizations.of(context)!;
     return _buildPageContainer(
       children: [
-        const Icon(Icons.palette, size: 80, color: Colors.deepPurple),
+                Icon(Icons.palette, size: 80, color: Theme.of(context).colorScheme.primary),
         const SizedBox(height: 24),
-        Text('Welcome to Artive!', style: Theme.of(context).textTheme.headlineMedium),
+        Text(l10n.setupWelcome, style: Theme.of(context).textTheme.headlineMedium),
         const SizedBox(height: 16),
-        const Text(
-          'This wizard will help you set up cloud storage for your artwork catalogue.\n\n'
-          'Your artworks and images will be stored securely in Supabase, a free cloud platform.\n\n'
-          'The setup takes about 5 minutes.',
-          style: TextStyle(fontSize: 16),
+        Text(
+          l10n.setupWelcomeDescription,
+          style: const TextStyle(fontSize: 16),
         ),
         const SizedBox(height: 24),
         _buildInfoCard(
           icon: Icons.cloud_outlined,
-          title: 'What is Supabase?',
-          content: 'Supabase is a free, open-source backend service. It provides a database and file storage for your app.',
+          title: l10n.setupWhatIsSupabase,
+          content: l10n.setupWhatIsSupabaseContent,
         ),
         const SizedBox(height: 16),
         _buildInfoCard(
           icon: Icons.lock_outlined,
-          title: 'Your Data, Your Control',
-          content: 'You create your own Supabase account. Your data belongs to you and only you have access.',
+          title: l10n.setupYourData,
+          content: l10n.setupYourDataContent,
         ),
       ],
       bottomButton: SizedBox(
         width: double.infinity,
         child: FilledButton(
           onPressed: _nextStep,
-          child: const Text('Get Started'),
+          child: Text(l10n.setupGetStarted),
         ),
       ),
     );
   }
 
   Widget _buildCreateProjectPage() {
+    final l10n = AppLocalizations.of(context)!;
     return _buildPageContainer(
       children: [
-        Text('Step 1: Create a Supabase Project', style: Theme.of(context).textTheme.headlineSmall),
+        Text(l10n.setupStep1Title, style: Theme.of(context).textTheme.headlineSmall),
         const SizedBox(height: 24),
-        _buildNumberedStep(1, 'Go to supabase.com and create a free account'),
+        _buildNumberedStep(1, l10n.setupStep1_1),
         const SizedBox(height: 8),
         OutlinedButton.icon(
           onPressed: () => _launchUrl('https://supabase.com'),
           icon: const Icon(Icons.open_in_new),
-          label: const Text('Open Supabase'),
+          label: Text(l10n.setupOpenSupabase),
         ),
         const SizedBox(height: 24),
-        _buildNumberedStep(2, 'Click "New Project" in the dashboard'),
+        _buildNumberedStep(2, l10n.setupStep1_2),
         const SizedBox(height: 16),
-        _buildNumberedStep(3, 'Choose a name for your project (e.g., "artive")'),
+        _buildNumberedStep(3, l10n.setupStep1_3),
         const SizedBox(height: 16),
-        _buildNumberedStep(4, 'Set a secure database password (save it somewhere safe!)'),
+        _buildNumberedStep(4, l10n.setupStep1_4),
         const SizedBox(height: 16),
-        _buildNumberedStep(5, 'Select a region close to you'),
+        _buildNumberedStep(5, l10n.setupStep1_5),
         const SizedBox(height: 16),
-        _buildNumberedStep(6, 'Click "Create new project" and wait for it to be ready'),
+        _buildNumberedStep(6, l10n.setupStep1_6),
         const SizedBox(height: 24),
         _buildInfoCard(
           icon: Icons.info_outlined,
-          title: 'Free Tier',
-          content: 'Supabase free tier includes 500MB database and 1GB file storage - plenty for thousands of artworks!',
+          title: l10n.setupFreeTier,
+          content: l10n.setupFreeTierContent,
         ),
       ],
       bottomButton: Row(
         children: [
-          TextButton(onPressed: _previousStep, child: const Text('Back')),
+          TextButton(onPressed: _previousStep, child: Text(l10n.back)),
           const Spacer(),
-          FilledButton(onPressed: _nextStep, child: const Text('Project Created')),
+          FilledButton(onPressed: _nextStep, child: Text(l10n.setupProjectCreated)),
         ],
       ),
     );
   }
 
   Widget _buildGetCredentialsPage() {
+    final l10n = AppLocalizations.of(context)!;
     return _buildPageContainer(
       children: [
-        Text('Step 2: Get Your Credentials', style: Theme.of(context).textTheme.headlineSmall),
+        Text(l10n.setupStep2Title, style: Theme.of(context).textTheme.headlineSmall),
         const SizedBox(height: 24),
-        _buildNumberedStep(1, 'In your Supabase project, go to "Project Settings" (gear icon)'),
+        _buildNumberedStep(1, l10n.setupStep2_1),
         const SizedBox(height: 16),
-        _buildNumberedStep(2, 'Click on "Data API" in the settings menu'),
+        _buildNumberedStep(2, l10n.setupStep2_2),
         const SizedBox(height: 16),
-        _buildNumberedStep(3, 'Find "Project URL" - looks like: https://xxxxx.supabase.co'),
+        _buildNumberedStep(3, l10n.setupStep2_3),
         const SizedBox(height: 16),
-        _buildNumberedStep(4, 'Find the "anon" key under "Project API keys"'),
+        _buildNumberedStep(4, l10n.setupStep2_4),
         const SizedBox(height: 16),
         _buildInfoCard(
           icon: Icons.info_outlined,
-          title: 'About API Keys',
-          content: 'The anon key is safe for apps. It works with Row Level Security policies.',
+          title: l10n.setupAboutApiKeys,
+          content: l10n.setupAboutApiKeysContent,
         ),
         const SizedBox(height: 24),
         Container(
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: Colors.amber[50],
+            color: Theme.of(context).colorScheme.tertiaryContainer.withOpacity(0.3),
             borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: Colors.amber[200]!),
+            border: Border.all(color: Theme.of(context).colorScheme.tertiary.withOpacity(0.3)),
           ),
-          child: const Row(
+          child: Row(
             children: [
-              Icon(Icons.lightbulb_outline, color: Colors.amber),
-              SizedBox(width: 12),
+              Icon(Icons.lightbulb_outline, color: Theme.of(context).colorScheme.tertiary),
+              const SizedBox(width: 12),
               Expanded(
                 child: Text(
-                  'Tip: You can click the copy button next to each value in Supabase to copy it to clipboard.',
-                  style: TextStyle(fontSize: 14),
+                  l10n.setupCredentialsTip,
+                  style: const TextStyle(fontSize: 14),
                 ),
               ),
             ],
@@ -335,26 +339,27 @@ class _SetupWizardScreenState extends State<SetupWizardScreen> {
       ],
       bottomButton: Row(
         children: [
-          TextButton(onPressed: _previousStep, child: const Text('Back')),
+          TextButton(onPressed: _previousStep, child: Text(l10n.back)),
           const Spacer(),
-          FilledButton(onPressed: _nextStep, child: const Text('I Have My Credentials')),
+          FilledButton(onPressed: _nextStep, child: Text(l10n.setupIHaveCredentials)),
         ],
       ),
     );
   }
 
   Widget _buildConfigurePage() {
+    final l10n = AppLocalizations.of(context)!;
     return _buildPageContainer(
       children: [
-        Text('Step 3: Enter Your Credentials', style: Theme.of(context).textTheme.headlineSmall),
+        Text(l10n.setupStep3Title, style: Theme.of(context).textTheme.headlineSmall),
         const SizedBox(height: 24),
         TextField(
           controller: _urlController,
-          decoration: const InputDecoration(
-            labelText: 'Project URL',
+          decoration: InputDecoration(
+            labelText: l10n.setupProjectUrl,
             hintText: 'https://xxxxx.supabase.co',
-            border: OutlineInputBorder(),
-            prefixIcon: Icon(Icons.link),
+            border: const OutlineInputBorder(),
+            prefixIcon: const Icon(Icons.link),
           ),
           keyboardType: TextInputType.url,
         ),
@@ -362,7 +367,7 @@ class _SetupWizardScreenState extends State<SetupWizardScreen> {
         TextField(
           controller: _anonKeyController,
           decoration: InputDecoration(
-            labelText: 'Anon Public Key',
+            labelText: l10n.setupAnonKey,
             hintText: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
             border: const OutlineInputBorder(),
             prefixIcon: const Icon(Icons.key),
@@ -384,15 +389,15 @@ class _SetupWizardScreenState extends State<SetupWizardScreen> {
           Container(
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: Colors.red[50],
+              color: Theme.of(context).colorScheme.errorContainer,
               borderRadius: BorderRadius.circular(8),
-              border: Border.all(color: Colors.red[200]!),
+              border: Border.all(color: Theme.of(context).colorScheme.error.withOpacity(0.3)),
             ),
             child: Row(
               children: [
-                Icon(Icons.error_outline, color: Colors.red[700]),
+                Icon(Icons.error_outline, color: Theme.of(context).colorScheme.error),
                 const SizedBox(width: 8),
-                Expanded(child: Text(_error!, style: TextStyle(color: Colors.red[700]))),
+                Expanded(child: Text(_error!, style: TextStyle(color: Theme.of(context).colorScheme.onErrorContainer))),
               ],
             ),
           ),
@@ -400,13 +405,13 @@ class _SetupWizardScreenState extends State<SetupWizardScreen> {
       ],
       bottomButton: Row(
         children: [
-          TextButton(onPressed: _previousStep, child: const Text('Back')),
+          TextButton(onPressed: _previousStep, child: Text(l10n.back)),
           const Spacer(),
           FilledButton(
             onPressed: _isValidating ? null : _validateAndSaveCredentials,
             child: _isValidating
                 ? const SizedBox(width: 20, height: 20, child: CircularProgressIndicator(strokeWidth: 2))
-                : const Text('Validate & Continue'),
+                : Text(l10n.setupValidateAndContinue),
           ),
         ],
       ),
@@ -414,31 +419,32 @@ class _SetupWizardScreenState extends State<SetupWizardScreen> {
   }
 
   Widget _buildDatabasePage() {
+    final l10n = AppLocalizations.of(context)!;
     final needsManualSetup = _error == 'database_setup_needed';
 
     return _buildPageContainer(
       children: [
-        Text('Step 4: Database Setup', style: Theme.of(context).textTheme.headlineSmall),
+        Text(l10n.setupStep4Title, style: Theme.of(context).textTheme.headlineSmall),
         const SizedBox(height: 24),
         if (needsManualSetup) ...[
           _buildInfoCard(
             icon: Icons.info_outlined,
-            title: 'Manual Setup Required',
-            content: 'The database tables need to be created manually. This is a one-time setup.',
+            title: l10n.setupManualSetupRequired,
+            content: l10n.setupDatabaseManualContent,
           ),
           const SizedBox(height: 24),
-          _buildNumberedStep(1, 'In Supabase, go to "SQL Editor" in the sidebar'),
+          _buildNumberedStep(1, l10n.setupStep4_1),
           const SizedBox(height: 16),
-          _buildNumberedStep(2, 'Click "New query"'),
+          _buildNumberedStep(2, l10n.setupStep4_2),
           const SizedBox(height: 16),
-          _buildNumberedStep(3, 'Copy and paste the following SQL:'),
+          _buildNumberedStep(3, l10n.setupStep4_3),
           const SizedBox(height: 12),
           Container(
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: Colors.grey[100],
+              color: Theme.of(context).colorScheme.surfaceContainerHighest,
               borderRadius: BorderRadius.circular(8),
-              border: Border.all(color: Colors.grey[300]!),
+              border: Border.all(color: Theme.of(context).colorScheme.outlineVariant),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -450,11 +456,11 @@ class _SetupWizardScreenState extends State<SetupWizardScreen> {
                       onPressed: () {
                         Clipboard.setData(const ClipboardData(text: _databaseSQL));
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('SQL copied to clipboard')),
+                          SnackBar(content: Text(l10n.setupSqlCopied)),
                         );
                       },
                       icon: const Icon(Icons.copy, size: 16),
-                      label: const Text('Copy'),
+                      label: Text(l10n.copy),
                     ),
                   ],
                 ),
@@ -463,35 +469,35 @@ class _SetupWizardScreenState extends State<SetupWizardScreen> {
             ),
           ),
           const SizedBox(height: 16),
-          _buildNumberedStep(4, 'Click "Run" to execute the query'),
+          _buildNumberedStep(4, l10n.setupStep4_4),
           const SizedBox(height: 16),
-          _buildNumberedStep(5, 'You should see "Success. No rows returned"'),
+          _buildNumberedStep(5, l10n.setupStep4_5),
         ] else ...[
           const Center(child: CircularProgressIndicator()),
           const SizedBox(height: 24),
-          const Center(child: Text('Checking database...')),
+          Center(child: Text(l10n.setupCheckingDatabase)),
         ],
         if (_error != null && !needsManualSetup) ...[
           const SizedBox(height: 16),
           Container(
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: Colors.red[50],
+              color: Theme.of(context).colorScheme.errorContainer,
               borderRadius: BorderRadius.circular(8),
             ),
-            child: Text(_error!, style: TextStyle(color: Colors.red[700])),
+            child: Text(_error!, style: TextStyle(color: Theme.of(context).colorScheme.onErrorContainer)),
           ),
         ],
       ],
       bottomButton: Row(
         children: [
-          TextButton(onPressed: _previousStep, child: const Text('Back')),
+          TextButton(onPressed: _previousStep, child: Text(l10n.back)),
           const Spacer(),
           FilledButton(
             onPressed: _isSettingUp ? null : _setupDatabase,
             child: _isSettingUp
                 ? const SizedBox(width: 20, height: 20, child: CircularProgressIndicator(strokeWidth: 2))
-                : Text(needsManualSetup ? 'I\'ve Run the SQL' : 'Check Database'),
+                : Text(needsManualSetup ? l10n.setupIveRunSql : l10n.setupCheckDatabase),
           ),
         ],
       ),
@@ -499,60 +505,61 @@ class _SetupWizardScreenState extends State<SetupWizardScreen> {
   }
 
   Widget _buildStoragePage() {
+    final l10n = AppLocalizations.of(context)!;
     final needsManualSetup = _error == 'storage_manual_setup';
 
     return _buildPageContainer(
       children: [
-        Text('Step 5: Storage Setup', style: Theme.of(context).textTheme.headlineSmall),
+        Text(l10n.setupStep5Title, style: Theme.of(context).textTheme.headlineSmall),
         const SizedBox(height: 24),
         if (needsManualSetup) ...[
           _buildInfoCard(
             icon: Icons.info_outlined,
-            title: 'Manual Setup Required',
-            content: 'Create the storage bucket for your artwork images.',
+            title: l10n.setupManualSetupRequired,
+            content: l10n.setupStorageManualContent,
           ),
           const SizedBox(height: 24),
-          _buildNumberedStep(1, 'In Supabase, go to "Storage" in the sidebar'),
+          _buildNumberedStep(1, l10n.setupStep5_1),
           const SizedBox(height: 16),
-          _buildNumberedStep(2, 'Click "New bucket"'),
+          _buildNumberedStep(2, l10n.setupStep5_2),
           const SizedBox(height: 16),
-          _buildNumberedStep(3, 'Name it exactly: artworks'),
+          _buildNumberedStep(3, l10n.setupStep5_3),
           const SizedBox(height: 16),
-          _buildNumberedStep(4, 'Leave "Public bucket" OFF (recommended)'),
+          _buildNumberedStep(4, l10n.setupStep5_4),
           const SizedBox(height: 16),
-          _buildNumberedStep(5, 'Click "Create bucket"'),
+          _buildNumberedStep(5, l10n.setupStep5_5),
           const SizedBox(height: 24),
           _buildInfoCard(
             icon: Icons.security,
-            title: 'Add Storage Policy',
-            content: 'Click bucket → Policies → New Policy → "For full customization" → Name: allow_all → Check all operations → Save.',
+            title: l10n.setupAddStoragePolicy,
+            content: l10n.setupAddStoragePolicyContent,
           ),
         ] else ...[
           const Center(child: CircularProgressIndicator()),
           const SizedBox(height: 24),
-          const Center(child: Text('Setting up storage...')),
+          Center(child: Text(l10n.setupSettingUpStorage)),
         ],
         if (_error != null && !needsManualSetup) ...[
           const SizedBox(height: 16),
           Container(
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: Colors.red[50],
+              color: Theme.of(context).colorScheme.errorContainer,
               borderRadius: BorderRadius.circular(8),
             ),
-            child: Text(_error!, style: TextStyle(color: Colors.red[700])),
+            child: Text(_error!, style: TextStyle(color: Theme.of(context).colorScheme.onErrorContainer)),
           ),
         ],
       ],
       bottomButton: Row(
         children: [
-          TextButton(onPressed: _previousStep, child: const Text('Back')),
+          TextButton(onPressed: _previousStep, child: Text(l10n.back)),
           const Spacer(),
           if (needsManualSetup)
             Flexible(
               child: TextButton(
                 onPressed: _skipStorageAndComplete,
-                child: const Text('Skip'),
+                child: Text(l10n.skip),
               ),
             ),
           const SizedBox(width: 8),
@@ -561,7 +568,7 @@ class _SetupWizardScreenState extends State<SetupWizardScreen> {
               onPressed: _isSettingUp ? null : _setupStorage,
               child: _isSettingUp
                   ? const SizedBox(width: 20, height: 20, child: CircularProgressIndicator(strokeWidth: 2))
-                  : Text(needsManualSetup ? 'Done' : 'Setup Storage'),
+                  : Text(needsManualSetup ? l10n.done : l10n.setupSetupStorage),
             ),
           ),
         ],
@@ -570,37 +577,34 @@ class _SetupWizardScreenState extends State<SetupWizardScreen> {
   }
 
   Widget _buildCompletePage() {
+    final l10n = AppLocalizations.of(context)!;
     return _buildPageContainer(
       children: [
-        const Center(child: Icon(Icons.check_circle, size: 100, color: Colors.green)),
+                Center(child: Icon(Icons.check_circle, size: 100, color: Theme.of(context).colorScheme.primary)),
         const SizedBox(height: 24),
         Center(
-          child: Text('Setup Complete!', style: Theme.of(context).textTheme.headlineMedium),
+          child: Text(l10n.setupComplete, style: Theme.of(context).textTheme.headlineMedium),
         ),
         const SizedBox(height: 16),
-        const Center(
+        Center(
           child: Text(
-            'Artive is now connected to your Supabase project.\n\n'
-            'You can start adding your artworks!',
+            l10n.setupCompleteDescription,
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 16),
+            style: const TextStyle(fontSize: 16),
           ),
         ),
         const SizedBox(height: 32),
         _buildInfoCard(
           icon: Icons.tips_and_updates_outlined,
-          title: 'Quick Tips',
-          content: '• Tap the + button to add your first artwork\n'
-              '• Add multiple images with different tags (main, reference, scan)\n'
-              '• Use search and filters to find artworks quickly\n'
-              '• Change language in Settings',
+          title: l10n.setupQuickTips,
+          content: l10n.setupQuickTipsContent,
         ),
       ],
       bottomButton: SizedBox(
         width: double.infinity,
         child: FilledButton(
           onPressed: widget.onSetupComplete,
-          child: const Text('Start Using Artive'),
+          child: Text(l10n.setupStartUsing),
         ),
       ),
     );
@@ -614,11 +618,11 @@ class _SetupWizardScreenState extends State<SetupWizardScreen> {
           width: 28,
           height: 28,
           decoration: BoxDecoration(
-            color: Colors.deepPurple,
+            color: Theme.of(context).colorScheme.primary,
             borderRadius: BorderRadius.circular(14),
           ),
           child: Center(
-            child: Text('$number', style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+            child: Text('$number', style: TextStyle(color: Theme.of(context).colorScheme.onPrimary, fontWeight: FontWeight.bold)),
           ),
         ),
         const SizedBox(width: 12),
@@ -631,16 +635,16 @@ class _SetupWizardScreenState extends State<SetupWizardScreen> {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.deepPurple[50],
+        color: Theme.of(context).colorScheme.primaryContainer.withOpacity(0.3),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.deepPurple[100]!),
+        border: Border.all(color: Theme.of(context).colorScheme.primary.withOpacity(0.3)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
-              Icon(icon, color: Colors.deepPurple),
+              Icon(icon, color: Theme.of(context).colorScheme.primary),
               const SizedBox(width: 8),
               Text(title, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
             ],

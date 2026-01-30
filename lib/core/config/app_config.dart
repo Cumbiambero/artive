@@ -4,19 +4,16 @@ import 'package:flutter/services.dart';
 class AppConfig {
   final SupabaseConfig supabase;
   final StorageConfig storage;
-  final CloudflareR2Config cloudflareR2;
 
   AppConfig({
     required this.supabase,
     required this.storage,
-    required this.cloudflareR2,
   });
 
   factory AppConfig.fromJson(Map<String, dynamic> json) {
     return AppConfig(
       supabase: SupabaseConfig.fromJson(json['supabase']),
       storage: StorageConfig.fromJson(json['storage']),
-      cloudflareR2: CloudflareR2Config.fromJson(json['cloudflareR2']),
     );
   }
 
@@ -29,14 +26,6 @@ class AppConfig {
         compressionQuality: 85,
         generateThumbnails: true,
         thumbnailSize: 300,
-      ),
-      cloudflareR2: CloudflareR2Config(
-        enabled: false,
-        accountId: '',
-        accessKeyId: '',
-        secretAccessKey: '',
-        bucketName: '',
-        publicUrl: '',
       ),
     );
   }
@@ -91,40 +80,4 @@ class StorageConfig {
       thumbnailSize: json['thumbnailSize'] ?? 300,
     );
   }
-}
-
-class CloudflareR2Config {
-  final bool enabled;
-  final String accountId;
-  final String accessKeyId;
-  final String secretAccessKey;
-  final String bucketName;
-  final String publicUrl;
-
-  CloudflareR2Config({
-    required this.enabled,
-    required this.accountId,
-    required this.accessKeyId,
-    required this.secretAccessKey,
-    required this.bucketName,
-    required this.publicUrl,
-  });
-
-  factory CloudflareR2Config.fromJson(Map<String, dynamic> json) {
-    return CloudflareR2Config(
-      enabled: json['enabled'] ?? false,
-      accountId: json['accountId'] ?? '',
-      accessKeyId: json['accessKeyId'] ?? '',
-      secretAccessKey: json['secretAccessKey'] ?? '',
-      bucketName: json['bucketName'] ?? '',
-      publicUrl: json['publicUrl'] ?? '',
-    );
-  }
-
-  bool get isConfigured => 
-    enabled && 
-    accountId.isNotEmpty && 
-    accessKeyId.isNotEmpty && 
-    secretAccessKey.isNotEmpty && 
-    bucketName.isNotEmpty;
 }

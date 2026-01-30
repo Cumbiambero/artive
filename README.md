@@ -84,14 +84,6 @@ For advanced users, you can pre-configure credentials in `assets/config/app_conf
     "maxImageSizeMB": 10,
     "compressionQuality": 85,
     "thumbnailSize": 300
-  },
-  "cloudflareR2": {
-    "enabled": false,
-    "accountId": "",
-    "accessKeyId": "",
-    "secretAccessKey": "",
-    "bucketName": "",
-    "publicUrl": ""
   }
 }
 ```
@@ -128,8 +120,10 @@ lib/
     └── widgets/                 # Reusable widgets
 
 assets/
-└── config/
-    └── app_config.json          # Configuration file
+├── config/
+│   └── app_config.json          # Configuration file
+└── icon/
+    └── icon.png                 # App icon
 
 supabase/
 └── schema.sql                   # Database schema
@@ -145,7 +139,6 @@ The app is designed to be easily configurable without code changes:
 
 ## Future Enhancements
 
-- Cloudflare R2 integration for alternative storage
 - Export/import functionality
 - Backup and restore
 - Statistics and analytics

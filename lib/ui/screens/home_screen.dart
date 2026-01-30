@@ -59,19 +59,37 @@ class _HomeScreenState extends State<HomeScreen> {
           }
 
           if (provider.error != null) {
+            final isPaused = _isPausedError(provider.error!);
             return Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(l10n.error),
-                  const SizedBox(height: 8),
-                  Text(provider.error!),
-                  const SizedBox(height: 16),
-                  FilledButton(
-                    onPressed: provider.loadArtworks,
-                    child: Text(l10n.retry),
-                  ),
-                ],
+              child: Padding(
+                padding: const EdgeInsets.all(24),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      isPaused ? Icons.cloud_off : Icons.error_outline,
+                      size: 64,
+                      color: Theme.of(context).colorScheme.error,
+                    ),
+                    const SizedBox(height: 16),
+                    Text(
+                      isPaused ? l10n.databasePaused : l10n.error,
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      isPaused ? l10n.databasePausedMessage : provider.error!,
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                    const SizedBox(height: 24),
+                    FilledButton.icon(
+                      onPressed: provider.loadArtworks,
+                      icon: const Icon(Icons.refresh),
+                      label: Text(l10n.retry),
+                    ),
+                  ],
+                ),
               ),
             );
           }
@@ -156,5 +174,16 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
     );
+  }
+
+  bool _isPausedError(String error) {
+    final lower = error.toLowerCase();
+    return lower.contains('failed host lookup') ||
+           lower.contains('connection refused') ||
+           lower.contains('connection timed out') ||
+           lower.contains('network is unreachable') ||
+           lower.contains('503') ||
+           lower.contains('service unavailable') ||
+           lower.contains('project is paused');
   }
 }

@@ -59,7 +59,17 @@ class _SearchScreenState extends State<SearchScreen> {
 
     if (_results == null) {
       return Center(
-        child: Text(l10n.search),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(l10n.search),
+            const SizedBox(height: 8),
+            Text(
+              l10n.searchHint,
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
+          ],
+        ),
       );
     }
 
