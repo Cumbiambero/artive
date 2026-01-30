@@ -28,7 +28,7 @@ English, Español, 中文, हिन्दी, Français, العربية, বা
 
 ## Screenshots
 
-<!-- Add screenshots here -->
+![Artive App Screenshot](assets/screenshot/screenshot.png)
 
 ## Getting Started
 
