@@ -156,5 +156,30 @@
         }
       }
     },
-    "backupNote": "Backups include all artwork data and images. Store them safely!"
-  }
+  "backupNote": "备份包含所有作品和图片数据。请妥善保存！",
+  "itemsSelected": "已选择 {count} 项",
+  "@itemsSelected": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "confirmDeleteMultiple": "删除 {count} 件作品？",
+  "@confirmDeleteMultiple": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "artworksDeleted": "已删除 {count} 件作品",
+  "@artworksDeleted": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "selectAll": "全选"
+}

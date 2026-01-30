@@ -459,4 +459,22 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get backupNote => 'Cadangan mencakup semua data karya seni dan gambar. Simpan dengan aman!';
+
+  @override
+  String itemsSelected(int count) {
+    return '$count dipilih';
+  }
+
+  @override
+  String confirmDeleteMultiple(int count) {
+    return 'Hapus $count karya?';
+  }
+
+  @override
+  String artworksDeleted(int count) {
+    return '$count karya dihapus';
+  }
+
+  @override
+  String get selectAll => 'Pilih semua';
 }

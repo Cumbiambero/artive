@@ -156,5 +156,30 @@
       }
     }
   },
-  "backupNote": "ข้อมูลสำรองรวมข้อมูลผลงานศิลปะและภาพทั้งหมด เก็บรักษาไว้อย่างปลอดภัย!"
+  "backupNote": "ข้อมูลสำรองรวมถึงข้อมูลผลงานและภาพทั้งหมด เก็บไว้อย่างปลอดภัย!",
+  "itemsSelected": "เลือก {count} รายการ",
+  "@itemsSelected": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "confirmDeleteMultiple": "ลบผลงาน {count} ชิ้น?",
+  "@confirmDeleteMultiple": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "artworksDeleted": "ลบผลงาน {count} ชิ้นแล้ว",
+  "@artworksDeleted": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "selectAll": "เลือกทั้งหมด"
 }

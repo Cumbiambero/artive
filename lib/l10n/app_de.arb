@@ -156,5 +156,30 @@
       }
     }
   },
-  "backupNote": "Sicherungen enthalten alle Kunstwerk-Daten und Bilder. Bewahren Sie sie sicher auf!"
+  "backupNote": "Sicherungen enthalten alle Kunstwerkdaten und Bilder. Bewahren Sie sie sicher auf!",
+  "itemsSelected": "{count} ausgewählt",
+  "@itemsSelected": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "confirmDeleteMultiple": "{count} Kunstwerk(e) löschen?",
+  "@confirmDeleteMultiple": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "artworksDeleted": "{count} Kunstwerk(e) gelöscht",
+  "@artworksDeleted": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "selectAll": "Alle auswählen"
 }

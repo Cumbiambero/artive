@@ -156,5 +156,30 @@
       }
     }
   },
-  "backupNote": "Cadangan mencakup semua data karya seni dan gambar. Simpan dengan aman!"
+  "backupNote": "Cadangan mencakup semua data karya seni dan gambar. Simpan dengan aman!",
+  "itemsSelected": "{count} dipilih",
+  "@itemsSelected": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "confirmDeleteMultiple": "Hapus {count} karya?",
+  "@confirmDeleteMultiple": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "artworksDeleted": "{count} karya dihapus",
+  "@artworksDeleted": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "selectAll": "Pilih semua"
 }

@@ -156,5 +156,30 @@
       }
     }
   },
-  "backupNote": "Yedeklemeler tüm eser verilerini ve görselleri içerir. Güvenli bir şekilde saklayın!"
+  "backupNote": "Yedekler tüm eser ve görsel verilerini içerir. Onları güvenli bir şekilde saklayın!",
+  "itemsSelected": "{count} seçildi",
+  "@itemsSelected": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "confirmDeleteMultiple": "{count} eser silinsin mi?",
+  "@confirmDeleteMultiple": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "artworksDeleted": "{count} eser silindi",
+  "@artworksDeleted": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "selectAll": "Tümünü seç"
 }

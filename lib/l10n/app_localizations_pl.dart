@@ -458,5 +458,23 @@ class AppLocalizationsPl extends AppLocalizations {
   }
 
   @override
-  String get backupNote => 'Backups include all artwork data and images. Store them safely!';
+  String get backupNote => 'Kopie zapasowe zawierają wszystkie dane dzieł i obrazy. Przechowuj je bezpiecznie!';
+
+  @override
+  String itemsSelected(int count) {
+    return 'Zaznaczono: $count';
+  }
+
+  @override
+  String confirmDeleteMultiple(int count) {
+    return 'Usunąć $count dzieło/dzieła?';
+  }
+
+  @override
+  String artworksDeleted(int count) {
+    return 'Usunięto $count dzieło/dzieła';
+  }
+
+  @override
+  String get selectAll => 'Zaznacz wszystko';
 }

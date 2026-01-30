@@ -458,5 +458,23 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get backupNote => 'Резервные копии включают все данные о произведениях и изображения. Храните их в безопасном месте!';
+  String get backupNote => 'Резервные копии включают все данные о работах и изображениях. Храните их в безопасности!';
+
+  @override
+  String itemsSelected(int count) {
+    return 'Выбрано $count';
+  }
+
+  @override
+  String confirmDeleteMultiple(int count) {
+    return 'Удалить $count работ(ы)?';
+  }
+
+  @override
+  String artworksDeleted(int count) {
+    return '$count работ(ы) удалено';
+  }
+
+  @override
+  String get selectAll => 'Выбрать все';
 }

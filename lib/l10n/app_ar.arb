@@ -156,5 +156,30 @@
       }
     }
   },
-  "backupNote": "تتضمن النسخ الاحتياطية جميع بيانات الأعمال الفنية والصور. احفظها بأمان!"
+  "backupNote": "تتضمن النسخ الاحتياطية جميع بيانات الأعمال الفنية والصور. احفظها بأمان!",
+  "itemsSelected": "{count} محددة",
+  "@itemsSelected": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "confirmDeleteMultiple": "حذف {count} عمل فني؟",
+  "@confirmDeleteMultiple": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "artworksDeleted": "تم حذف {count} عمل فني",
+  "@artworksDeleted": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "selectAll": "تحديد الكل"
 }

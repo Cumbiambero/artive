@@ -458,5 +458,23 @@ class AppLocalizationsJa extends AppLocalizations {
   }
 
   @override
-  String get backupNote => 'バックアップにはすべての作品データと画像が含まれます。安全に保管してください！';
+  String get backupNote => 'バックアップにはすべての作品と画像データが含まれます。安全に保管してください！';
+
+  @override
+  String itemsSelected(int count) {
+    return '$count件選択中';
+  }
+
+  @override
+  String confirmDeleteMultiple(int count) {
+    return '$count件の作品を削除しますか？';
+  }
+
+  @override
+  String artworksDeleted(int count) {
+    return '$count件の作品を削除しました';
+  }
+
+  @override
+  String get selectAll => 'すべて選択';
 }

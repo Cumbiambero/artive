@@ -156,5 +156,30 @@
       }
     }
   },
-  "backupNote": "Las copias de seguridad incluyen todos los datos de obras e imágenes. ¡Guárdalas de forma segura!"
+  "backupNote": "Las copias de seguridad incluyen todos los datos de obras e imágenes. ¡Guárdalas de forma segura!",
+  "itemsSelected": "{count} seleccionados",
+  "@itemsSelected": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "confirmDeleteMultiple": "¿Eliminar {count} obra(s)?",
+  "@confirmDeleteMultiple": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "artworksDeleted": "{count} obra(s) eliminada(s)",
+  "@artworksDeleted": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "selectAll": "Seleccionar todo"
 }

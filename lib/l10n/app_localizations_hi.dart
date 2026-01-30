@@ -458,5 +458,23 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
-  String get backupNote => 'बैकअप में सभी कलाकृति डेटा और छवियां शामिल हैं। उन्हें सुरक्षित रूप से संग्रहीत करें!';
+  String get backupNote => 'बैकअप में सभी कलाकृति और छवि डेटा शामिल हैं। उन्हें सुरक्षित रूप से स्टोर करें!';
+
+  @override
+  String itemsSelected(int count) {
+    return '$count चयनित';
+  }
+
+  @override
+  String confirmDeleteMultiple(int count) {
+    return '$count कलाकृतियां हटाएं?';
+  }
+
+  @override
+  String artworksDeleted(int count) {
+    return '$count कलाकृतियां हटाई गईं';
+  }
+
+  @override
+  String get selectAll => 'सभी चुनें';
 }

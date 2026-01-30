@@ -156,5 +156,30 @@
       }
     }
   },
-  "backupNote": "Резервные копии включают все данные о произведениях и изображения. Храните их в безопасном месте!"
+  "backupNote": "Резервные копии включают все данные о работах и изображениях. Храните их в безопасности!",
+  "itemsSelected": "Выбрано {count}",
+  "@itemsSelected": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "confirmDeleteMultiple": "Удалить {count} работ(ы)?",
+  "@confirmDeleteMultiple": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "artworksDeleted": "{count} работ(ы) удалено",
+  "@artworksDeleted": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "selectAll": "Выбрать все"
 }

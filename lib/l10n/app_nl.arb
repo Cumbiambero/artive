@@ -156,5 +156,30 @@
       }
     }
   },
-  "backupNote": "Backups bevatten alle kunstwerkgegevens en afbeeldingen. Bewaar ze veilig!"
+  "backupNote": "Back-ups bevatten alle kunstwerkgegevens en afbeeldingen. Bewaar ze veilig!",
+  "itemsSelected": "{count} geselecteerd",
+  "@itemsSelected": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "confirmDeleteMultiple": "{count} kunstwerk(en) verwijderen?",
+  "@confirmDeleteMultiple": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "artworksDeleted": "{count} kunstwerk(en) verwijderd",
+  "@artworksDeleted": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "selectAll": "Alles selecteren"
 }

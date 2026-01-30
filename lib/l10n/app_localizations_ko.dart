@@ -458,5 +458,23 @@ class AppLocalizationsKo extends AppLocalizations {
   }
 
   @override
-  String get backupNote => 'Backups include all artwork data and images. Store them safely!';
+  String get backupNote => '백업에는 모든 작품과 이미지 데이터가 포함됩니다. 안전하게 보관하세요!';
+
+  @override
+  String itemsSelected(int count) {
+    return '$count개 선택됨';
+  }
+
+  @override
+  String confirmDeleteMultiple(int count) {
+    return '$count개의 작품을 삭제하시겠습니까?';
+  }
+
+  @override
+  String artworksDeleted(int count) {
+    return '$count개의 작품이 삭제되었습니다';
+  }
+
+  @override
+  String get selectAll => '모두 선택';
 }

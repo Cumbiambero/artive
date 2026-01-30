@@ -156,5 +156,30 @@
       }
     }
   },
-  "backupNote": "バックアップにはすべての作品データと画像が含まれます。安全に保管してください！"
+  "backupNote": "バックアップにはすべての作品と画像データが含まれます。安全に保管してください！",
+  "itemsSelected": "{count}件選択中",
+  "@itemsSelected": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "confirmDeleteMultiple": "{count}件の作品を削除しますか？",
+  "@confirmDeleteMultiple": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "artworksDeleted": "{count}件の作品を削除しました",
+  "@artworksDeleted": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "selectAll": "すべて選択"
 }

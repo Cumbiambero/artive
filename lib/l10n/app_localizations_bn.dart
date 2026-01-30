@@ -458,5 +458,23 @@ class AppLocalizationsBn extends AppLocalizations {
   }
 
   @override
-  String get backupNote => 'ব্যাকআপে সমস্ত শিল্পকর্মের ডেটা এবং ছবি অন্তর্ভুক্ত। সেগুলি নিরাপদে সংরক্ষণ করুন!';
+  String get backupNote => 'ব্যাকআপে সমস্ত শিল্পকর্ম এবং ছবির ডেটা অন্তর্ভুক্ত রয়েছে। সেগুলি নিরাপদে সংরক্ষণ করুন!';
+
+  @override
+  String itemsSelected(int count) {
+    return '$countটি নির্বাচিত';
+  }
+
+  @override
+  String confirmDeleteMultiple(int count) {
+    return '$countটি শিল্পকর্ম মুছবেন?';
+  }
+
+  @override
+  String artworksDeleted(int count) {
+    return '$countটি শিল্পকর্ম মুছে ফেলা হয়েছে';
+  }
+
+  @override
+  String get selectAll => 'সব নির্বাচন করুন';
 }

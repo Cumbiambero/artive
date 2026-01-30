@@ -21,6 +21,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  bool _isSelectionMode = false;
+  final Set<int> _selectedIds = {};
+
   @override
   void initState() {
     super.initState();
@@ -29,14 +32,116 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  void _toggleSelection(int id) {
+    setState(() {
+      if (_selectedIds.contains(id)) {
+        _selectedIds.remove(id);
+        if (_selectedIds.isEmpty) {
+          _isSelectionMode = false;
+        }
+      } else {
+        _selectedIds.add(id);
+      }
+    });
+  }
+
+  void _enterSelectionMode(int id) {
+    setState(() {
+      _isSelectionMode = true;
+      _selectedIds.add(id);
+    });
+  }
+
+  void _exitSelectionMode() {
+    setState(() {
+      _isSelectionMode = false;
+      _selectedIds.clear();
+    });
+  }
+
+  Future<void> _deleteSelected() async {
+    final l10n = AppLocalizations.of(context)!;
+    final count = _selectedIds.length;
+    
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(l10n.deleteArtwork),
+        content: Text(l10n.confirmDeleteMultiple(count)),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: Text(l10n.cancel),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(context, true),
+            child: Text(l10n.delete),
+          ),
+        ],
+      ),
+    );
+
+    if (confirmed != true || !mounted) return;
+
+    try {
+      final provider = context.read<ArtworkProvider>();
+      for (final id in _selectedIds) {
+        await provider.deleteArtwork(id);
+      }
+      _exitSelectionMode();
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(l10n.artworksDeleted(count))),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error: $e')),
+        );
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(l10n.appTitle),
-        actions: [
+        leading: _isSelectionMode
+            ? IconButton(
+                icon: const Icon(Icons.close),
+                onPressed: _exitSelectionMode,
+              )
+            : null,
+        title: _isSelectionMode
+            ? Text(l10n.itemsSelected(_selectedIds.length))
+            : Text(l10n.appTitle),
+        actions: _isSelectionMode
+            ? [
+                IconButton(
+                  icon: const Icon(Icons.select_all),
+                  onPressed: () {
+                    final provider = context.read<ArtworkProvider>();
+                    setState(() {
+                      if (_selectedIds.length == provider.artworks.length) {
+                        _selectedIds.clear();
+                        _isSelectionMode = false;
+                      } else {
+                        _selectedIds.addAll(
+                          provider.artworks.map((a) => a.id!),
+                        );
+                      }
+                    });
+                  },
+                ),
+                IconButton(
+                  icon: const Icon(Icons.delete),
+                  onPressed: _selectedIds.isEmpty ? null : _deleteSelected,
+                ),
+              ]
+            : [
           IconButton(
             icon: const Icon(Icons.search),
             onPressed: () => Navigator.push(
@@ -149,14 +254,28 @@ class _HomeScreenState extends State<HomeScreen> {
                   itemCount: provider.artworks.length,
                   itemBuilder: (context, index) {
                     final artwork = provider.artworks[index];
+                    final isSelected = _selectedIds.contains(artwork.id);
                     return ArtworkCard(
                       artwork: artwork,
-                      onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => ArtworkDetailScreen(artworkId: artwork.id!),
-                        ),
-                      ),
+                      isSelected: isSelected,
+                      isSelectionMode: _isSelectionMode,
+                      onTap: () {
+                        if (_isSelectionMode) {
+                          _toggleSelection(artwork.id!);
+                        } else {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => ArtworkDetailScreen(artworkId: artwork.id!),
+                            ),
+                          );
+                        }
+                      },
+                      onLongPress: () {
+                        if (!_isSelectionMode) {
+                          _enterSelectionMode(artwork.id!);
+                        }
+                      },
                     );
                   },
                 );

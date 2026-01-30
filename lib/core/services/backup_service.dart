@@ -269,6 +269,25 @@ class BackupService {
     Map<String, dynamic> data,
     Archive archive,
   ) async {
+    // Check for duplicates (same name + date)
+    final name = data['name'] as String;
+    final dateYear = data['date_year'] as int?;
+    final dateMonth = data['date_month'] as int?;
+    
+    final existing = await _client
+        .from('artworks')
+        .select('id')
+        .eq('name', name)
+        .eq('date_year', dateYear ?? 0)
+        .eq('date_month', dateMonth ?? 0)
+        .maybeSingle();
+    
+    // Skip if duplicate found
+    if (existing != null) {
+      print('Skipping duplicate artwork: $name');
+      return;
+    }
+    
     // Create artwork record
     final artworkResponse = await _client
         .from('artworks')

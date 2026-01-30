@@ -7,11 +7,17 @@ import '../../core/providers/providers.dart';
 class ArtworkCard extends StatelessWidget {
   final Artwork artwork;
   final VoidCallback onTap;
+  final VoidCallback? onLongPress;
+  final bool isSelected;
+  final bool isSelectionMode;
 
   const ArtworkCard({
     super.key,
     required this.artwork,
     required this.onTap,
+    this.onLongPress,
+    this.isSelected = false,
+    this.isSelectionMode = false,
   });
 
   @override
@@ -23,7 +29,10 @@ class ArtworkCard extends StatelessWidget {
       clipBehavior: Clip.antiAlias,
       child: InkWell(
         onTap: onTap,
-        child: Column(
+        onLongPress: onLongPress,
+        child: Stack(
+          children: [
+            Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
@@ -73,6 +82,33 @@ class ArtworkCard extends StatelessWidget {
             ),
           ],
         ),
+        if (isSelectionMode)
+          Positioned.fill(
+            child: Container(
+              color: isSelected
+                  ? Theme.of(context).colorScheme.primary.withOpacity(0.3)
+                  : Colors.transparent,
+              child: isSelected
+                  ? Align(
+                      alignment: Alignment.topRight,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8),
+                        child: CircleAvatar(
+                          radius: 12,
+                          backgroundColor: Theme.of(context).colorScheme.primary,
+                          child: const Icon(
+                            Icons.check,
+                            size: 16,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    )
+                  : null,
+            ),
+          ),
+        ],
+      ),
       ),
     );
   }

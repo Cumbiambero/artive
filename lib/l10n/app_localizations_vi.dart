@@ -459,4 +459,22 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get backupNote => 'Bản sao lưu bao gồm tất cả dữ liệu tác phẩm và hình ảnh. Hãy lưu trữ chúng một cách an toàn!';
+
+  @override
+  String itemsSelected(int count) {
+    return 'Đã chọn $count';
+  }
+
+  @override
+  String confirmDeleteMultiple(int count) {
+    return 'Xóa $count tác phẩm?';
+  }
+
+  @override
+  String artworksDeleted(int count) {
+    return 'Đã xóa $count tác phẩm';
+  }
+
+  @override
+  String get selectAll => 'Chọn tất cả';
 }

@@ -1028,6 +1028,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Backups include all artwork data and images. Store them safely!'**
   String get backupNote;
+
+  /// No description provided for @itemsSelected.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} selected'**
+  String itemsSelected(int count);
+
+  /// No description provided for @confirmDeleteMultiple.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete {count} artwork(s)?'**
+  String confirmDeleteMultiple(int count);
+
+  /// No description provided for @artworksDeleted.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} artwork(s) deleted'**
+  String artworksDeleted(int count);
+
+  /// No description provided for @selectAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Select all'**
+  String get selectAll;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -458,5 +458,23 @@ class AppLocalizationsTr extends AppLocalizations {
   }
 
   @override
-  String get backupNote => 'Yedeklemeler tüm eser verilerini ve görselleri içerir. Güvenli bir şekilde saklayın!';
+  String get backupNote => 'Yedekler tüm eser ve görsel verilerini içerir. Onları güvenli bir şekilde saklayın!';
+
+  @override
+  String itemsSelected(int count) {
+    return '$count seçildi';
+  }
+
+  @override
+  String confirmDeleteMultiple(int count) {
+    return '$count eser silinsin mi?';
+  }
+
+  @override
+  String artworksDeleted(int count) {
+    return '$count eser silindi';
+  }
+
+  @override
+  String get selectAll => 'Tümünü seç';
 }

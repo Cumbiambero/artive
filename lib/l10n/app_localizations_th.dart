@@ -458,5 +458,23 @@ class AppLocalizationsTh extends AppLocalizations {
   }
 
   @override
-  String get backupNote => 'ข้อมูลสำรองรวมข้อมูลผลงานศิลปะและภาพทั้งหมด เก็บรักษาไว้อย่างปลอดภัย!';
+  String get backupNote => 'ข้อมูลสำรองรวมถึงข้อมูลผลงานและภาพทั้งหมด เก็บไว้อย่างปลอดภัย!';
+
+  @override
+  String itemsSelected(int count) {
+    return 'เลือก $count รายการ';
+  }
+
+  @override
+  String confirmDeleteMultiple(int count) {
+    return 'ลบผลงาน $count ชิ้น?';
+  }
+
+  @override
+  String artworksDeleted(int count) {
+    return 'ลบผลงาน $count ชิ้นแล้ว';
+  }
+
+  @override
+  String get selectAll => 'เลือกทั้งหมด';
 }

@@ -459,4 +459,22 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get backupNote => 'تتضمن النسخ الاحتياطية جميع بيانات الأعمال الفنية والصور. احفظها بأمان!';
+
+  @override
+  String itemsSelected(int count) {
+    return '$count محددة';
+  }
+
+  @override
+  String confirmDeleteMultiple(int count) {
+    return 'حذف $count عمل فني؟';
+  }
+
+  @override
+  String artworksDeleted(int count) {
+    return 'تم حذف $count عمل فني';
+  }
+
+  @override
+  String get selectAll => 'تحديد الكل';
 }

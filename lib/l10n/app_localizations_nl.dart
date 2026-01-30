@@ -458,5 +458,23 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
-  String get backupNote => 'Backups bevatten alle kunstwerkgegevens en afbeeldingen. Bewaar ze veilig!';
+  String get backupNote => 'Back-ups bevatten alle kunstwerkgegevens en afbeeldingen. Bewaar ze veilig!';
+
+  @override
+  String itemsSelected(int count) {
+    return '$count geselecteerd';
+  }
+
+  @override
+  String confirmDeleteMultiple(int count) {
+    return '$count kunstwerk(en) verwijderen?';
+  }
+
+  @override
+  String artworksDeleted(int count) {
+    return '$count kunstwerk(en) verwijderd';
+  }
+
+  @override
+  String get selectAll => 'Alles selecteren';
 }

@@ -156,5 +156,30 @@
       }
     }
   },
-  "backupNote": "Backups include all artwork data and images. Store them safely!"
+  "backupNote": "Backups include all artwork data and images. Store them safely!",
+  "itemsSelected": "{count} selected",
+  "@itemsSelected": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "confirmDeleteMultiple": "Delete {count} artwork(s)?",
+  "@confirmDeleteMultiple": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "artworksDeleted": "{count} artwork(s) deleted",
+  "@artworksDeleted": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "selectAll": "Select all"
 }

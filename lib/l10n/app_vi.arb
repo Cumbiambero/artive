@@ -156,5 +156,30 @@
       }
     }
   },
-  "backupNote": "Bản sao lưu bao gồm tất cả dữ liệu tác phẩm và hình ảnh. Hãy lưu trữ chúng một cách an toàn!"
+  "backupNote": "Bản sao lưu bao gồm tất cả dữ liệu tác phẩm và hình ảnh. Hãy lưu trữ chúng một cách an toàn!",
+  "itemsSelected": "Đã chọn {count}",
+  "@itemsSelected": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "confirmDeleteMultiple": "Xóa {count} tác phẩm?",
+  "@confirmDeleteMultiple": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "artworksDeleted": "Đã xóa {count} tác phẩm",
+  "@artworksDeleted": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "selectAll": "Chọn tất cả"
 }

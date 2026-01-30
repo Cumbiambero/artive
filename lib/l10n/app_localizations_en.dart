@@ -459,4 +459,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get backupNote => 'Backups include all artwork data and images. Store them safely!';
+
+  @override
+  String itemsSelected(int count) {
+    return '$count selected';
+  }
+
+  @override
+  String confirmDeleteMultiple(int count) {
+    return 'Delete $count artwork(s)?';
+  }
+
+  @override
+  String artworksDeleted(int count) {
+    return '$count artwork(s) deleted';
+  }
+
+  @override
+  String get selectAll => 'Select all';
 }

@@ -156,5 +156,30 @@
       }
     }
   },
-  "backupNote": "बैकअप में सभी कलाकृति डेटा और छवियां शामिल हैं। उन्हें सुरक्षित रूप से संग्रहीत करें!"
+  "backupNote": "बैकअप में सभी कलाकृति और छवि डेटा शामिल हैं। उन्हें सुरक्षित रूप से स्टोर करें!",
+  "itemsSelected": "{count} चयनित",
+  "@itemsSelected": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "confirmDeleteMultiple": "{count} कलाकृतियां हटाएं?",
+  "@confirmDeleteMultiple": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "artworksDeleted": "{count} कलाकृतियां हटाई गईं",
+  "@artworksDeleted": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "selectAll": "सभी चुनें"
 }

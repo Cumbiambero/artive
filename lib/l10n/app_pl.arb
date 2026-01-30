@@ -156,5 +156,30 @@
         }
       }
     },
-    "backupNote": "Backups include all artwork data and images. Store them safely!"
+  "backupNote": "Kopie zapasowe zawierają wszystkie dane dzieł i obrazy. Przechowuj je bezpiecznie!",
+  "itemsSelected": "Zaznaczono: {count}",
+  "@itemsSelected": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "confirmDeleteMultiple": "Usunąć {count} dzieło/dzieła?",
+  "@confirmDeleteMultiple": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "artworksDeleted": "Usunięto {count} dzieło/dzieła",
+  "@artworksDeleted": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "selectAll": "Zaznacz wszystko"
   }

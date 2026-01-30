@@ -458,5 +458,23 @@ class AppLocalizationsZh extends AppLocalizations {
   }
 
   @override
-  String get backupNote => 'Backups include all artwork data and images. Store them safely!';
+  String get backupNote => '备份包含所有作品和图片数据。请妥善保存！';
+
+  @override
+  String itemsSelected(int count) {
+    return '已选择 $count 项';
+  }
+
+  @override
+  String confirmDeleteMultiple(int count) {
+    return '删除 $count 件作品？';
+  }
+
+  @override
+  String artworksDeleted(int count) {
+    return '已删除 $count 件作品';
+  }
+
+  @override
+  String get selectAll => '全选';
 }

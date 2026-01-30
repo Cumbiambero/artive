@@ -459,4 +459,22 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get backupNote => 'Las copias de seguridad incluyen todos los datos de obras e imágenes. ¡Guárdalas de forma segura!';
+
+  @override
+  String itemsSelected(int count) {
+    return '$count seleccionados';
+  }
+
+  @override
+  String confirmDeleteMultiple(int count) {
+    return '¿Eliminar $count obra(s)?';
+  }
+
+  @override
+  String artworksDeleted(int count) {
+    return '$count obra(s) eliminada(s)';
+  }
+
+  @override
+  String get selectAll => 'Seleccionar todo';
 }

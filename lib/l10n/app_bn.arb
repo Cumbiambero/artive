@@ -156,5 +156,30 @@
       }
     }
   },
-  "backupNote": "ব্যাকআপে সমস্ত শিল্পকর্মের ডেটা এবং ছবি অন্তর্ভুক্ত। সেগুলি নিরাপদে সংরক্ষণ করুন!"
+  "backupNote": "ব্যাকআপে সমস্ত শিল্পকর্ম এবং ছবির ডেটা অন্তর্ভুক্ত রয়েছে। সেগুলি নিরাপদে সংরক্ষণ করুন!",
+  "itemsSelected": "{count}টি নির্বাচিত",
+  "@itemsSelected": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "confirmDeleteMultiple": "{count}টি শিল্পকর্ম মুছবেন?",
+  "@confirmDeleteMultiple": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "artworksDeleted": "{count}টি শিল্পকর্ম মুছে ফেলা হয়েছে",
+  "@artworksDeleted": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "selectAll": "সব নির্বাচন করুন"
 }
