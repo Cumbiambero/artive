@@ -45,34 +45,43 @@ class _ArtiveAppState extends State<ArtiveApp> {
   }
 
   Future<void> _checkSetup() async {
-    final isComplete = await SetupService.isSetupComplete();
-    final credentials = await SetupService.getSavedCredentials();
+    try {
+      final isComplete = await SetupService.isSetupComplete();
+      final credentials = await SetupService.getSavedCredentials();
 
-    if (isComplete && credentials != null) {
-      try {
-        // Only initialize if not already initialized (setup wizard may have done it)
+      if (isComplete && credentials != null) {
         try {
-          Supabase.instance; // Check if already initialized
-        } catch (_) {
-          // Not initialized yet, do it now
-          await Supabase.initialize(
-            url: credentials['url']!,
-            anonKey: credentials['anonKey']!,
-          );
+          // Only initialize if not already initialized (setup wizard may have done it)
+          try {
+            Supabase.instance; // Check if already initialized
+          } catch (_) {
+            // Not initialized yet, do it now
+            await Supabase.initialize(
+              url: credentials['url']!,
+              anonKey: credentials['anonKey']!,
+            );
+          }
+          _config = await AppConfig.load();
+          setState(() {
+            _isSetupComplete = true;
+            _isLoading = false;
+          });
+        } catch (e) {
+          await SetupService.resetSetup();
+          setState(() {
+            _isSetupComplete = false;
+            _isLoading = false;
+          });
         }
-        _config = await AppConfig.load();
-        setState(() {
-          _isSetupComplete = true;
-          _isLoading = false;
-        });
-      } catch (e) {
-        await SetupService.resetSetup();
+      } else {
         setState(() {
           _isSetupComplete = false;
           _isLoading = false;
         });
       }
-    } else {
+    } catch (e) {
+      // If there's any error during setup check, reset to setup wizard
+      await SetupService.resetSetup();
       setState(() {
         _isSetupComplete = false;
         _isLoading = false;
