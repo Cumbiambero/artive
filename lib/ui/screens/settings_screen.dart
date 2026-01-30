@@ -4,9 +4,15 @@ import 'package:provider/provider.dart';
 import '../../core/providers/providers.dart';
 import '../../core/services/setup_service.dart';
 import '../../l10n/app_localizations.dart';
+import 'backup_restore_screen.dart';
 
 class SettingsScreen extends StatefulWidget {
-  const SettingsScreen({super.key});
+  final String bucketName;
+  
+  const SettingsScreen({
+    super.key,
+    required this.bucketName,
+  });
 
   @override
   State<SettingsScreen> createState() => _SettingsScreenState();
@@ -56,6 +62,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
             title: Text(l10n.cloudConnection),
             subtitle: Text(l10n.cloudConnectionSubtitle),
             onTap: () => _showResetDialog(context),
+          ),
+          const Divider(),
+          ListTile(
+            leading: const Icon(Icons.backup),
+            title: Text(l10n.backupRestore),
+            subtitle: Text(l10n.backupRestoreSubtitle),
+            onTap: () => _openBackupRestore(context),
           ),
           const Divider(),
           ListTile(

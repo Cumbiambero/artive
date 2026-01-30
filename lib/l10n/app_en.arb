@@ -137,5 +137,24 @@
   "setupStartUsing": "Start Using Artive",
   "openInBrowser": "Open in Browser",
   "couldNotOpenBrowser": "Could not open browser automatically. Please copy this URL and open it manually:",
-  "urlCopied": "URL copied to clipboard"
+  "urlCopied": "URL copied to clipboard",
+  "backupRestore": "Backup & Restore",
+  "backupRestoreSubtitle": "Export or import your data",
+  "createBackup": "Create Backup",
+  "createBackupDescription": "Export all your artworks and images to a ZIP file that you can save or share.",
+  "restoreBackup": "Restore Backup",
+  "restoreBackupDescription": "Import artworks and images from a previously created backup file.",
+  "restoreBackupConfirm": "How would you like to restore the backup?",
+  "restoreMerge": "Merge with existing",
+  "restoreReplace": "Replace all",
+  "backupCreated": "Backup created successfully",
+  "restoreComplete": "{count} artworks restored",
+  "@restoreComplete": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "backupNote": "Backups include all artwork data and images. Store them safely!"
 }
