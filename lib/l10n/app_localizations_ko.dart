@@ -270,7 +270,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get setupStep1_2 => '대시보드에서 \"새 프로젝트\" 클릭';
 
   @override
-  String get setupStep1_3 => '프로젝트 이름 선택 (예: \"artive\")';
+  String get setupStep1_3 => '프로젝트 이름 선택 (예: \"Artive\")';
 
   @override
   String get setupStep1_4 => '안전한 데이터베이스 비밀번호 설정 (저장해두세요!)';

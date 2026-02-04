@@ -270,7 +270,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get setupStep1_2 => 'انقر على \"مشروع جديد\" في لوحة التحكم';
 
   @override
-  String get setupStep1_3 => 'اختر اسماً لمشروعك (مثل \"artive\")';
+  String get setupStep1_3 => 'اختر اسماً لمشروعك (مثل \"Artive\")';
 
   @override
   String get setupStep1_4 => 'عيّن كلمة مرور آمنة لقاعدة البيانات (احفظها!)';

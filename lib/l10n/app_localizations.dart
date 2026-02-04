@@ -654,7 +654,7 @@ abstract class AppLocalizations {
   /// No description provided for @setupStep1_3.
   ///
   /// In en, this message translates to:
-  /// **'Choose a name for your project (e.g., \"artive\")'**
+  /// **'Choose a name for your project (e.g., \"Artive\")'**
   String get setupStep1_3;
 
   /// No description provided for @setupStep1_4.

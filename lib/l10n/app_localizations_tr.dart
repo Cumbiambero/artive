@@ -270,7 +270,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get setupStep1_2 => 'Panelde \"Yeni Proje\" tıklayın';
 
   @override
-  String get setupStep1_3 => 'Projeniz için bir ad seçin (örn. \"artive\")';
+  String get setupStep1_3 => 'Projeniz için bir ad seçin (örn. \"Artive\")';
 
   @override
   String get setupStep1_4 => 'Güvenli bir veritabanı şifresi belirleyin (kaydedin!)';

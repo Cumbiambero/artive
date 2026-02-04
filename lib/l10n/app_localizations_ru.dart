@@ -270,7 +270,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get setupStep1_2 => 'Нажмите \"Новый проект\" в панели управления';
 
   @override
-  String get setupStep1_3 => 'Выберите имя для проекта (например, \"artive\")';
+  String get setupStep1_3 => 'Выберите имя для проекта (например, \"Artive\")';
 
   @override
   String get setupStep1_4 => 'Установите надёжный пароль базы данных (сохраните его!)';

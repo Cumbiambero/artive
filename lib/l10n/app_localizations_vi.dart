@@ -270,7 +270,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get setupStep1_2 => 'Nhấp \"Dự án mới\" trong bảng điều khiển';
 
   @override
-  String get setupStep1_3 => 'Chọn tên cho dự án (ví dụ: \"artive\")';
+  String get setupStep1_3 => 'Chọn tên cho dự án (ví dụ: \"Artive\")';
 
   @override
   String get setupStep1_4 => 'Đặt mật khẩu cơ sở dữ liệu an toàn (lưu lại!)';

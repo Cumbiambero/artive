@@ -270,7 +270,7 @@ class AppLocalizationsIt extends AppLocalizations {
   String get setupStep1_2 => 'Clicca su \"Nuovo progetto\" nella dashboard';
 
   @override
-  String get setupStep1_3 => 'Scegli un nome per il progetto (es. \"artive\")';
+  String get setupStep1_3 => 'Scegli un nome per il progetto (es. \"Artive\")';
 
   @override
   String get setupStep1_4 => 'Imposta una password sicura per il database (salvala!)';

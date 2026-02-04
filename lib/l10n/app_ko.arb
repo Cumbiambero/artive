@@ -87,7 +87,7 @@
   "setupStep1_1": "supabase.com에서 무료 계정 생성",
   "setupOpenSupabase": "Supabase 열기",
   "setupStep1_2": "대시보드에서 \"새 프로젝트\" 클릭",
-  "setupStep1_3": "프로젝트 이름 선택 (예: \"artive\")",
+  "setupStep1_3": "프로젝트 이름 선택 (예: \"Artive\")",
   "setupStep1_4": "안전한 데이터베이스 비밀번호 설정 (저장해두세요!)",
   "setupStep1_5": "가까운 지역 선택",
   "setupStep1_6": "\"새 프로젝트 만들기\" 클릭 후 대기",

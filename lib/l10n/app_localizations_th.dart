@@ -270,7 +270,7 @@ class AppLocalizationsTh extends AppLocalizations {
   String get setupStep1_2 => 'คลิก \"โปรเจกต์ใหม่\" ในแดชบอร์ด';
 
   @override
-  String get setupStep1_3 => 'เลือกชื่อสำหรับโปรเจกต์ของคุณ (เช่น \"artive\")';
+  String get setupStep1_3 => 'เลือกชื่อสำหรับโปรเจกต์ของคุณ (เช่น \"Artive\")';
 
   @override
   String get setupStep1_4 => 'ตั้งรหัสผ่านฐานข้อมูลที่ปลอดภัย (บันทึกไว้!)';

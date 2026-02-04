@@ -270,7 +270,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get setupStep1_2 => 'डैशबोर्ड में \"नया प्रोजेक्ट\" पर क्लिक करें';
 
   @override
-  String get setupStep1_3 => 'अपने प्रोजेक्ट के लिए नाम चुनें (जैसे \"artive\")';
+  String get setupStep1_3 => 'अपने प्रोजेक्ट के लिए नाम चुनें (जैसे \"Artive\")';
 
   @override
   String get setupStep1_4 => 'सुरक्षित डेटाबेस पासवर्ड सेट करें (इसे सहेजें!)';

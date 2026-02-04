@@ -87,7 +87,7 @@
   "setupStep1_1": "Allez sur supabase.com et créez un compte gratuit",
   "setupOpenSupabase": "Ouvrir Supabase",
   "setupStep1_2": "Cliquez sur \"Nouveau projet\" dans le tableau de bord",
-  "setupStep1_3": "Choisissez un nom pour votre projet (ex. \"artive\")",
+  "setupStep1_3": "Choisissez un nom pour votre projet (ex. \"Artive\")",
   "setupStep1_4": "Définissez un mot de passe sécurisé (sauvegardez-le !)",
   "setupStep1_5": "Sélectionnez une région proche de vous",
   "setupStep1_6": "Cliquez sur \"Créer un nouveau projet\" et attendez",

@@ -270,7 +270,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get setupStep1_2 => 'ড্যাশবোর্ডে \"নতুন প্রকল্প\" ক্লিক করুন';
 
   @override
-  String get setupStep1_3 => 'আপনার প্রকল্পের জন্য নাম নির্বাচন করুন (যেমন \"artive\")';
+  String get setupStep1_3 => 'আপনার প্রকল্পের জন্য নাম নির্বাচন করুন (যেমন \"Artive\")';
 
   @override
   String get setupStep1_4 => 'নিরাপদ ডেটাবেস পাসওয়ার্ড সেট করুন (এটি সংরক্ষণ করুন!)';

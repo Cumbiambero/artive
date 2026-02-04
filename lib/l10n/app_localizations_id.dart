@@ -270,7 +270,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get setupStep1_2 => 'Klik \"Proyek Baru\" di dashboard';
 
   @override
-  String get setupStep1_3 => 'Pilih nama untuk proyek Anda (mis. \"artive\")';
+  String get setupStep1_3 => 'Pilih nama untuk proyek Anda (mis. \"Artive\")';
 
   @override
   String get setupStep1_4 => 'Tetapkan kata sandi database yang aman (simpan!)';
