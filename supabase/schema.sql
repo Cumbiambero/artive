@@ -33,37 +33,56 @@ CREATE INDEX IF NOT EXISTS idx_artworks_medium ON artworks(medium);
 CREATE INDEX IF NOT EXISTS idx_artworks_date_year ON artworks(date_year);
 CREATE INDEX IF NOT EXISTS idx_artwork_images_artwork_id ON artwork_images(artwork_id);
 
+-- Ensure foreign key has proper index (covering index)
+CREATE INDEX IF NOT EXISTS idx_artwork_images_artwork_id_fkey_covering ON artwork_images(artwork_id) INCLUDE (id, storage_path, thumbnail_path, tag, sort_order);
+
 -- Enable Row Level Security
 ALTER TABLE artworks ENABLE ROW LEVEL SECURITY;
 ALTER TABLE artwork_images ENABLE ROW LEVEL SECURITY;
 
 -- Create policies with proper security controls
--- Separate policies for read (SELECT) and write (INSERT/UPDATE/DELETE) operations
+-- Optimized for performance: single policy per operation type
 -- This follows Supabase best practices while maintaining single-user functionality
 
--- Artworks: Allow public read access
+-- Artworks: Public read access (SELECT only)
 CREATE POLICY "Allow public read on artworks" ON artworks
-  FOR SELECT 
+  FOR SELECT
   USING (true);
 
--- Artworks: Allow authenticated users to insert, update, delete
--- Uses anon key authentication (anyone with valid anon key can write)
+-- Artworks: Authenticated write access (INSERT/UPDATE/DELETE)
+-- Uses (select auth.role()) to evaluate once per query, not per row
 CREATE POLICY "Allow authenticated write on artworks" ON artworks
-  FOR ALL 
-  USING (auth.role() = 'anon' OR auth.role() = 'authenticated')
-  WITH CHECK (auth.role() = 'anon' OR auth.role() = 'authenticated');
+  FOR INSERT
+  WITH CHECK ((select auth.role()) = 'anon' OR (select auth.role()) = 'authenticated');
 
--- Artwork images: Allow public read access
+CREATE POLICY "Allow authenticated update on artworks" ON artworks
+  FOR UPDATE
+  USING ((select auth.role()) = 'anon' OR (select auth.role()) = 'authenticated')
+  WITH CHECK ((select auth.role()) = 'anon' OR (select auth.role()) = 'authenticated');
+
+CREATE POLICY "Allow authenticated delete on artworks" ON artworks
+  FOR DELETE
+  USING ((select auth.role()) = 'anon' OR (select auth.role()) = 'authenticated');
+
+-- Artwork images: Public read access (SELECT only)
 CREATE POLICY "Allow public read on artwork_images" ON artwork_images
-  FOR SELECT 
+  FOR SELECT
   USING (true);
 
--- Artwork images: Allow authenticated users to insert, update, delete
--- Uses anon key authentication (anyone with valid anon key can write)
-CREATE POLICY "Allow authenticated write on artwork_images" ON artwork_images
-  FOR ALL 
-  USING (auth.role() = 'anon' OR auth.role() = 'authenticated')
-  WITH CHECK (auth.role() = 'anon' OR auth.role() = 'authenticated');
+-- Artwork images: Authenticated write access (INSERT/UPDATE/DELETE)
+-- Uses (select auth.role()) to evaluate once per query, not per row
+CREATE POLICY "Allow authenticated insert on artwork_images" ON artwork_images
+  FOR INSERT
+  WITH CHECK ((select auth.role()) = 'anon' OR (select auth.role()) = 'authenticated');
+
+CREATE POLICY "Allow authenticated update on artwork_images" ON artwork_images
+  FOR UPDATE
+  USING ((select auth.role()) = 'anon' OR (select auth.role()) = 'authenticated')
+  WITH CHECK ((select auth.role()) = 'anon' OR (select auth.role()) = 'authenticated');
+
+CREATE POLICY "Allow authenticated delete on artwork_images" ON artwork_images
+  FOR DELETE
+  USING ((select auth.role()) = 'anon' OR (select auth.role()) = 'authenticated');
 
 -- Create storage bucket for artwork images
 -- Note: This needs to be done in Supabase Dashboard > Storage > New Bucket
