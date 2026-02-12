@@ -11,6 +11,15 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
+# Functions
+print_status() {
+    echo -e "${GREEN}✓ $1${NC}"
+}
+
+print_building() {
+    echo -e "${YELLOW}→ Building $1...${NC}"
+}
+
 # Get version from pubspec.yaml
 VERSION=$(grep '^version:' pubspec.yaml | sed 's/version: //' | tr -d ' ')
 echo -e "${GREEN}Building Artive v${VERSION}${NC}"
@@ -29,17 +38,6 @@ print_status "App icons generated"
 DIST_DIR="dist"
 rm -rf "$DIST_DIR"
 mkdir -p "$DIST_DIR"
-
-# Function to print status
-print_status() {
-    echo -e "${GREEN}✓ $1${NC}"
-}
-
-print_building() {
-    echo -e "${YELLOW}→ Building $1...${NC}"
-}
-
-# Build Android APK
 print_building "Android APK"
 flutter build apk --release
 if [ -f "build/app/outputs/flutter-apk/app-release.apk" ]; then
