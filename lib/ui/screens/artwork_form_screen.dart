@@ -26,7 +26,7 @@ class _ArtworkFormScreenState extends State<ArtworkFormScreen> {
   final _yearController = TextEditingController();
   final _dimensionController = TextEditingController();
   final _mediumController = TextEditingController();
-  
+
   bool _isLoading = false;
   final _imagePicker = ImagePicker();
 
@@ -59,10 +59,10 @@ class _ArtworkFormScreenState extends State<ArtworkFormScreen> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    
+
     // Watch provider to get updated artwork with images
     final provider = context.watch<ArtworkProvider>();
-    final currentArtwork = isEditing 
+    final currentArtwork = isEditing
         ? provider.artworks.firstWhere(
             (a) => a.id == widget.artwork!.id,
             orElse: () => widget.artwork!,
@@ -150,13 +150,17 @@ class _ArtworkFormScreenState extends State<ArtworkFormScreen> {
               validator: (v) => v?.isEmpty == true ? l10n.requiredField : null,
             ),
             const SizedBox(height: 16),
-            TextFormField(
+            MediumAutocompleteField(
+              labelText: l10n.medium,
+              hintText: l10n.mediumHint,
+              options: context.watch<ArtworkProvider>().media,
+              initialValue: widget.artwork?.medium,
               controller: _mediumController,
-              decoration: InputDecoration(
-                labelText: l10n.medium,
-                hintText: l10n.mediumHint,
-                border: const OutlineInputBorder(),
-              ),
+              onSelected: (value) {
+                if (value != null) {
+                  _mediumController.text = value;
+                }
+              },
               validator: (v) => v?.isEmpty == true ? l10n.requiredField : null,
             ),
             if (isEditing) ...[
@@ -227,8 +231,8 @@ class _ArtworkFormScreenState extends State<ArtworkFormScreen> {
       final artwork = Artwork(
         id: widget.artwork?.id,
         name: _nameController.text,
-        description: _descriptionController.text.isEmpty 
-            ? null 
+        description: _descriptionController.text.isEmpty
+            ? null
             : _descriptionController.text,
         dateMonth: int.tryParse(_monthController.text),
         dateYear: int.tryParse(_yearController.text),
@@ -244,22 +248,20 @@ class _ArtworkFormScreenState extends State<ArtworkFormScreen> {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (_) => ArtworkFormScreen(
-                artwork: created,
-              ),
+              builder: (_) => ArtworkFormScreen(artwork: created),
             ),
           );
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(l10n.artworkSaved)),
-          );
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(l10n.artworkSaved)));
           return;
         }
       }
 
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(l10n.artworkSaved)),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(l10n.artworkSaved)));
         Navigator.pop(context);
       }
     } finally {
@@ -269,7 +271,7 @@ class _ArtworkFormScreenState extends State<ArtworkFormScreen> {
 
   Future<void> _addImage(BuildContext context) async {
     final l10n = AppLocalizations.of(context)!;
-    
+
     // macOS doesn't support camera capture via image_picker
     final isMacOS = !kIsWeb && Platform.isMacOS;
 
@@ -336,15 +338,15 @@ class _ArtworkFormScreenState extends State<ArtworkFormScreen> {
       final provider = context.read<ArtworkProvider>();
       await provider.addImage(widget.artwork!.id!, file, tag);
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(l10n.imageUploaded)),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(l10n.imageUploaded)));
       }
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(l10n.imageFailed)),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(l10n.imageFailed)));
       }
     } finally {
       if (mounted) setState(() => _isLoading = false);
@@ -353,7 +355,7 @@ class _ArtworkFormScreenState extends State<ArtworkFormScreen> {
 
   Future<void> _deleteImage(ArtworkImage image) async {
     final l10n = AppLocalizations.of(context)!;
-    
+
     final confirm = await showDialog<bool>(
       context: context,
       builder: (_) => AlertDialog(
