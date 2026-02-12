@@ -1,8 +1,6 @@
 # Artive
 
-<p align="center">
-  <img src="assets/icon/icon.png" width="120" alt="Artive Logo">
-</p>
+<p align="center"><img src="assets/icon/icon.png" alt="Artive Logo"></p>
 
 A cross-platform mobile application for visual artists to catalogue and archive their artworks with cloud storage.
 

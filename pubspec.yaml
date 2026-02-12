@@ -2,7 +2,7 @@ name: Artive
 description: "Artwork catalogue app for visual artists. Archive your artworks with metadata and cloud storage."
 publish_to: 'none'
 
-version: 0.4.0
+version: 0.4.1
 
 environment:
   sdk: ^3.10.7
@@ -58,4 +58,8 @@ flutter_launcher_icons:
   android: true
   ios: true
   image_path: "assets/icon/icon.png"
-  remove_alpha_ios: false
+  remove_alpha_ios: true
+  # Uncomment below for separate Android adaptive icon (recommended)
+  # adaptive_icon_background: "#FFFFFF"  # or use image_path for background
+  # adaptive_icon_foreground: "assets/icon/icon.png"
+  min_sdk_android: 21  # Minimum Android SDK
