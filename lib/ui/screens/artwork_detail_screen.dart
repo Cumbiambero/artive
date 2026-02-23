@@ -109,6 +109,8 @@ class _ArtworkDetailScreenState extends State<ArtworkDetailScreen> {
                   _buildInfoRow(l10n.date, artwork.dateDisplay),
                   _buildInfoRow(l10n.dimension, artwork.dimension),
                   _buildInfoRow(l10n.medium, artwork.medium),
+                  if (artwork.isStudy)
+                    _buildInfoRow(l10n.isStudy, l10n.yes),
                   if (artwork.createdAt != null)
                     _buildInfoRow(
                       l10n.createdAt,
