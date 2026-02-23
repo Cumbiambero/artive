@@ -15,6 +15,7 @@
   "dimensionHint": "vd: 50x70 cm",
   "medium": "Chất liệu",
   "mediumHint": "vd: Sơn dầu trên canvas",
+  "isStudy": "Phác thảo",
   "images": "Hình ảnh",
   "addImage": "Thêm hình ảnh",
   "photo": "Chính",

@@ -15,6 +15,7 @@
   "dimensionHint": "e.g., 50x70 cm",
   "medium": "Medium",
   "mediumHint": "e.g., Oil on canvas",
+  "isStudy": "Study",
   "images": "Images",
   "addImage": "Add Image",
   "photo": "Photo",

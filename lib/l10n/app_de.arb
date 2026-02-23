@@ -15,6 +15,7 @@
   "dimensionHint": "z.B., 50x70 cm",
   "medium": "Technik",
   "mediumHint": "z.B., Öl auf Leinwand",
+  "isStudy": "Studie",
   "images": "Bilder",
   "addImage": "Bild hinzufügen",
   "photo": "Haupt",

@@ -77,6 +77,18 @@ class ArtworkRepository {
     return media;
   }
 
+  Future<List<String>> getDistinctDimensions() async {
+    final response = await _client
+        .from('artworks')
+        .select('dimension')
+        .order('dimension');
+    final dimensions = (response as List)
+        .map((e) => e['dimension'] as String)
+        .toSet()
+        .toList();
+    return dimensions;
+  }
+
   Future<List<int>> getDistinctYears() async {
     final response = await _client
         .from('artworks')

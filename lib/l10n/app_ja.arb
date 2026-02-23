@@ -15,6 +15,7 @@
   "dimensionHint": "例：50x70 cm",
   "medium": "技法",
   "mediumHint": "例：キャンバスに油彩",
+  "isStudy": "習作",
   "images": "画像",
   "addImage": "画像を追加",
   "photo": "メイン",

@@ -67,6 +67,7 @@ class _MediumAutocompleteFieldState extends State<MediumAutocompleteField> {
   @override
   Widget build(BuildContext context) {
     return Autocomplete<String>(
+      initialValue: TextEditingValue(text: _controller.text),
       optionsBuilder: (TextEditingValue textEditingValue) {
         if (textEditingValue.text.isEmpty) {
           // Show all options when field is empty
@@ -82,6 +83,16 @@ class _MediumAutocompleteFieldState extends State<MediumAutocompleteField> {
       displayStringForOption: (option) => option,
       fieldViewBuilder:
           (context, textEditingController, focusNode, onFieldSubmitted) {
+            // Sync the external controller with the autocomplete's controller
+            if (widget.controller != null) {
+              textEditingController.text = widget.controller!.text;
+              textEditingController.addListener(() {
+                if (widget.controller!.text != textEditingController.text) {
+                  widget.controller!.text = textEditingController.text;
+                }
+              });
+            }
+            
             return TextFormField(
               controller: textEditingController,
               focusNode: focusNode,

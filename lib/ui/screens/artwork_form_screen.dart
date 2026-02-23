@@ -28,6 +28,7 @@ class _ArtworkFormScreenState extends State<ArtworkFormScreen> {
   final _mediumController = TextEditingController();
 
   bool _isLoading = false;
+  bool _isStudy = false;
   final _imagePicker = ImagePicker();
 
   bool get isEditing => widget.artwork != null;
@@ -42,6 +43,7 @@ class _ArtworkFormScreenState extends State<ArtworkFormScreen> {
       _yearController.text = widget.artwork!.dateYear?.toString() ?? '';
       _dimensionController.text = widget.artwork!.dimension;
       _mediumController.text = widget.artwork!.medium;
+      _isStudy = widget.artwork!.isStudy;
     }
   }
 
@@ -140,13 +142,17 @@ class _ArtworkFormScreenState extends State<ArtworkFormScreen> {
               ],
             ),
             const SizedBox(height: 16),
-            TextFormField(
+            MediumAutocompleteField(
+              labelText: l10n.dimension,
+              hintText: l10n.dimensionHint,
+              options: context.watch<ArtworkProvider>().dimensions,
+              initialValue: widget.artwork?.dimension,
               controller: _dimensionController,
-              decoration: InputDecoration(
-                labelText: l10n.dimension,
-                hintText: l10n.dimensionHint,
-                border: const OutlineInputBorder(),
-              ),
+              onSelected: (value) {
+                if (value != null) {
+                  _dimensionController.text = value;
+                }
+              },
               validator: (v) => v?.isEmpty == true ? l10n.requiredField : null,
             ),
             const SizedBox(height: 16),
@@ -162,6 +168,14 @@ class _ArtworkFormScreenState extends State<ArtworkFormScreen> {
                 }
               },
               validator: (v) => v?.isEmpty == true ? l10n.requiredField : null,
+            ),
+            const SizedBox(height: 16),
+            CheckboxListTile(
+              value: _isStudy,
+              onChanged: (value) => setState(() => _isStudy = value ?? false),
+              title: Text(l10n.isStudy),
+              controlAffinity: ListTileControlAffinity.leading,
+              contentPadding: EdgeInsets.zero,
             ),
             if (isEditing) ...[
               const SizedBox(height: 24),
@@ -238,6 +252,7 @@ class _ArtworkFormScreenState extends State<ArtworkFormScreen> {
         dateYear: int.tryParse(_yearController.text),
         dimension: _dimensionController.text,
         medium: _mediumController.text,
+        isStudy: _isStudy,
       );
 
       if (isEditing) {

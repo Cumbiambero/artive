@@ -11,6 +11,7 @@ class ArtworkProvider extends ChangeNotifier {
 
   List<Artwork> _artworks = [];
   List<String> _media = [];
+  List<String> _dimensions = [];
   List<int> _years = [];
   bool _isLoading = false;
   String? _error;
@@ -23,6 +24,7 @@ class ArtworkProvider extends ChangeNotifier {
 
   List<Artwork> get artworks => _artworks;
   List<String> get media => _media;
+  List<String> get dimensions => _dimensions;
   List<int> get years => _years;
   bool get isLoading => _isLoading;
   String? get error => _error;
@@ -44,6 +46,7 @@ class ArtworkProvider extends ChangeNotifier {
         ascending: _ascending,
       );
       _media = await _artworkRepo.getDistinctMedia();
+      _dimensions = await _artworkRepo.getDistinctDimensions();
       _years = await _artworkRepo.getDistinctYears();
     } catch (e) {
       _error = e.toString();

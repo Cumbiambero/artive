@@ -8,6 +8,7 @@ class Artwork {
   final int? dateYear;
   final String dimension;
   final String medium;
+  final bool isStudy;
   final DateTime? createdAt;
   final List<ArtworkImage> images;
 
@@ -19,6 +20,7 @@ class Artwork {
     this.dateYear,
     required this.dimension,
     required this.medium,
+    this.isStudy = false,
     this.createdAt,
     this.images = const [],
   });
@@ -32,6 +34,7 @@ class Artwork {
       dateYear: json['date_year'],
       dimension: json['dimension'],
       medium: json['medium'],
+      isStudy: json['is_study'] ?? false,
       createdAt: json['created_at'] != null 
         ? DateTime.parse(json['created_at']) 
         : null,
@@ -50,6 +53,7 @@ class Artwork {
       'date_year': dateYear,
       'dimension': dimension,
       'medium': medium,
+      'is_study': isStudy,
     };
   }
 
@@ -61,6 +65,7 @@ class Artwork {
     int? dateYear,
     String? dimension,
     String? medium,
+    bool? isStudy,
     DateTime? createdAt,
     List<ArtworkImage>? images,
   }) {
@@ -72,6 +77,7 @@ class Artwork {
       dateYear: dateYear ?? this.dateYear,
       dimension: dimension ?? this.dimension,
       medium: medium ?? this.medium,
+      isStudy: isStudy ?? this.isStudy,
       createdAt: createdAt ?? this.createdAt,
       images: images ?? this.images,
     );

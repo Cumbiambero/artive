@@ -15,6 +15,7 @@
   "dimensionHint": "เช่น 50x70 ซม.",
   "medium": "เทคนิค",
   "mediumHint": "เช่น สีน้ำมันบนผ้าใบ",
+  "isStudy": "ภาพร่าง",
   "images": "รูปภาพ",
   "addImage": "เพิ่มรูปภาพ",
   "photo": "หลัก",

@@ -13,6 +13,7 @@ CREATE TABLE IF NOT EXISTS artworks (
   date_year INTEGER CHECK (date_year >= 1900 AND date_year <= 2100),
   dimension TEXT,
   medium TEXT,
+  is_study BOOLEAN DEFAULT FALSE,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
