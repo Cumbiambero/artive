@@ -54,6 +54,9 @@ class AppLocalizationsHi extends AppLocalizations {
   String get mediumHint => 'जैसे, कैनवास पर तेल';
 
   @override
+  String get isStudy => 'अध्ययन';
+
+  @override
   String get images => 'छवियां';
 
   @override

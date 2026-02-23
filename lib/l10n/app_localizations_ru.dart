@@ -54,6 +54,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get mediumHint => 'напр., Масло на холсте';
 
   @override
+  String get isStudy => 'Этюд';
+
+  @override
   String get images => 'Изображения';
 
   @override

@@ -29,6 +29,11 @@ echo -e "${YELLOW}Cleaning environment...${NC}"
 flutter clean
 flutter pub get
 
+# Generate localizations
+echo -e "${YELLOW}Generating localizations...${NC}"
+flutter gen-l10n
+print_status "Localizations generated"
+
 # Generate app icons
 echo -e "${YELLOW}Generating app icons...${NC}"
 dart run flutter_launcher_icons

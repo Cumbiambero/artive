@@ -54,6 +54,9 @@ class AppLocalizationsFr extends AppLocalizations {
   String get mediumHint => 'ex., Huile sur toile';
 
   @override
+  String get isStudy => 'Étude';
+
+  @override
   String get images => 'Images';
 
   @override

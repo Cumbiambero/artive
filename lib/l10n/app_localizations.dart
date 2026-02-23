@@ -219,6 +219,12 @@ abstract class AppLocalizations {
   /// **'e.g., Oil on canvas'**
   String get mediumHint;
 
+  /// No description provided for @isStudy.
+  ///
+  /// In en, this message translates to:
+  /// **'Study'**
+  String get isStudy;
+
   /// No description provided for @images.
   ///
   /// In en, this message translates to:

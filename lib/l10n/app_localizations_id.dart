@@ -54,6 +54,9 @@ class AppLocalizationsId extends AppLocalizations {
   String get mediumHint => 'cth., Cat minyak di kanvas';
 
   @override
+  String get isStudy => 'Studi';
+
+  @override
   String get images => 'Gambar';
 
   @override

@@ -54,6 +54,9 @@ class AppLocalizationsTh extends AppLocalizations {
   String get mediumHint => 'เช่น สีน้ำมันบนผ้าใบ';
 
   @override
+  String get isStudy => 'ภาพร่าง';
+
+  @override
   String get images => 'รูปภาพ';
 
   @override

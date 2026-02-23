@@ -57,9 +57,17 @@ flutter:
 flutter_launcher_icons:
   android: true
   ios: true
-  macos: true
   image_path: "assets/icon/icon.png"
   remove_alpha_ios: true
+  macos:
+    generate: true
+    image_path: "assets/icon/icon.png"
+  windows:
+    generate: true
+    image_path: "assets/icon/icon.png"
+  linux:
+    generate: true
+    image_path: "assets/icon/icon.png"
   # Uncomment below for separate Android adaptive icon (recommended)
   # adaptive_icon_background: "#FFFFFF"  # or use image_path for background
   # adaptive_icon_foreground: "assets/icon/icon.png"

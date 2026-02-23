@@ -54,6 +54,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get mediumHint => 'örn., Tuval üzerine yağlı boya';
 
   @override
+  String get isStudy => 'Çalışma';
+
+  @override
   String get images => 'Görseller';
 
   @override

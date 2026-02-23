@@ -54,6 +54,9 @@ class AppLocalizationsNl extends AppLocalizations {
   String get mediumHint => 'bijv., Olieverf op doek';
 
   @override
+  String get isStudy => 'Studie';
+
+  @override
   String get images => 'Afbeeldingen';
 
   @override

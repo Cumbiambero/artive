@@ -54,6 +54,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get mediumHint => '例如：布面油画';
 
   @override
+  String get isStudy => '习作';
+
+  @override
   String get images => '图片';
 
   @override

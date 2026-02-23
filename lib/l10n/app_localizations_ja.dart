@@ -54,6 +54,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get mediumHint => '例：キャンバスに油彩';
 
   @override
+  String get isStudy => '習作';
+
+  @override
   String get images => '画像';
 
   @override

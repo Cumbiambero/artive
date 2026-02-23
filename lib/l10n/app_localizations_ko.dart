@@ -54,6 +54,9 @@ class AppLocalizationsKo extends AppLocalizations {
   String get mediumHint => '예: 캔버스에 유채';
 
   @override
+  String get isStudy => '습작';
+
+  @override
   String get images => '이미지';
 
   @override

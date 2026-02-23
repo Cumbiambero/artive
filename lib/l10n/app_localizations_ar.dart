@@ -54,6 +54,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get mediumHint => 'مثال: زيت على قماش';
 
   @override
+  String get isStudy => 'دراسة';
+
+  @override
   String get images => 'الصور';
 
   @override

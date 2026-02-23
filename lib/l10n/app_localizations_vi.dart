@@ -54,6 +54,9 @@ class AppLocalizationsVi extends AppLocalizations {
   String get mediumHint => 'vd: Sơn dầu trên canvas';
 
   @override
+  String get isStudy => 'Phác thảo';
+
+  @override
   String get images => 'Hình ảnh';
 
   @override
