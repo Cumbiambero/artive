@@ -156,6 +156,24 @@ The app is designed to be easily configurable without code changes:
 
 Artive stores your data in your personal Supabase project. You have full control over your data. The app does not collect any analytics or personal information.
 
+## Keeping Supabase Active (Free Tier)
+
+Supabase free-tier projects are automatically **paused after 7 days of inactivity**. This repository includes a GitHub Actions workflow (`.github/workflows/main.yml`) that pings the database every 3 days to prevent this.
+
+### Setup (required for your own fork)
+
+1. Go to your GitHub repository → **Settings** → **Secrets and variables** → **Actions**
+2. Add the following **Repository secrets**:
+
+   | Secret name | Where to find it |
+   |---|---|
+   | `SUPABASE_URL` | Supabase dashboard → Project Settings → API → Project URL |
+   | `API_KEY` | Supabase dashboard → Project Settings → API → `anon` / `public` key |
+
+3. The workflow runs automatically on schedule. To test it immediately, go to **Actions** → **Keep Supabase Alive** → **Run workflow**.
+
+> **Note**: If the workflow job fails, it means the ping received an HTTP error. Check that your secrets are set correctly and that your Supabase project is not already paused (resume it manually once from the dashboard).
+
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
