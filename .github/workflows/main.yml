@@ -9,13 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     environment: PROD 
     steps:
-      - name: Debug secrets presence
-        run: |
-          echo "SUPABASE_URL length: ${#URL}"
-          echo "API_KEY length: ${#KEY}"
-        env:
-          URL: ${{ secrets.SUPABASE_URL }}
-          KEY: ${{ secrets.API_KEY }}
       - name: Ping Supabase database
         run: |
           curl --fail --show-error --silent \
