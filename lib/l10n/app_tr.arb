@@ -182,5 +182,37 @@
       }
     }
   },
-  "selectAll": "Tümünü seç"
+  "selectAll": "Tümünü seç",
+
+  "publicWebsiteSection": "Herkese açık web sitesi",
+  "isPublic": "Web sitesinde görünür",
+  "isPublicSubtitle": "Bu eseri herkese açık portföyünüzde göster",
+  "forSale": "Satılık",
+  "forSaleSubtitle": "Bu eseri satın alınabilir olarak işaretle",
+  "price": "Fiyat",
+  "currency": "Para birimi",
+  "invalidPrice": "Lütfen geçerli bir fiyat girin",
+
+  "artistProfile": "Sanatçı profili",
+  "artistProfileSubtitle": "Ad, biyografi ve iletişim bilgileri",
+  "artistName": "Sanatçı adı",
+  "biography": "Biyografi",
+  "biographyHint": "Kendiniz ve çalışmalarınız hakkında kısa bir biyografi yazın…",
+  "contactInfo": "İletişim",
+  "emailAddress": "E-posta adresi",
+  "instagramHandle": "Instagram",
+  "websiteUrl": "Web sitesi",
+  "phoneNumber": "Telefon",
+  "facebook": "Facebook",
+  "location": "Konum",
+  "locationHint": "örn. Berlin, Almanya",
+  "profileSaved": "Profil kaydedildi",
+
+  "publicWebsite": "Herkese açık web sitesi",
+  "publicWebsiteSubtitle": "Portföyünüzü dünyayla paylaşın",
+  "publicWebsiteGitHubPagesHint": "Portföyünüz deponuzdaki docs/index.html dosyasında bulunuyor. Yayınlamak için:",
+  "publicWebsiteGitHubPagesSteps": "1. Reponuzu GitHub'a gönderin\n2. Settings → Pages bölümüne gidin\n3. Source'u \"Deploy from a branch\" → /docs olarak ayarlayın\n4. Siteniz https://kullanici.github.io/artive/ adresinde olacak",
+  "publicWebsiteUrlHint": "Edge Function'ı dağıtın ve bu URL'yi paylaşın:",
+  "copyLink": "Bağlantıyı kopyala",
+  "linkCopied": "Bağlantı kopyalandı"
 }

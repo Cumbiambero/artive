@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio</title>
+  <meta name="description" content="Artist portfolio" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #fafafa;
+      --surface: #fff;
+      --border: #e0e0e0;
+      --text: #1a1a1a;
+      --muted: #757575;
+      --accent: #6750a4;
+      --accent-container: #eaddff;
+      --radius: 12px;
+      --nav-h: 60px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #141218;
+        --surface: #1d1b20;
+        --border: #333;
+        --text: #e6e1e5;
+        --muted: #917f9e;
+        --accent: #cfbcff;
+        --accent-container: #4a3f6b;
+      }
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--surface); border-bottom: 1px solid var(--border);
+      height: var(--nav-h);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 24px; gap: 16px;
+    }
+    .nav-brand { font-size: 1.1rem; font-weight: 700; color: var(--text); flex-shrink: 0; }
+    .nav-links { display: flex; gap: 24px; list-style: none; }
+    .nav-links a { color: var(--muted); font-size: 0.9rem; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+    section { max-width: 1100px; margin: 0 auto; padding: 56px 24px; }
+    section + section { border-top: 1px solid var(--border); }
+    h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 32px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: box-shadow .2s; }
+    .card:hover { box-shadow: 0 4px 20px rgba(0,0,0,.12); }
+    .card-img { aspect-ratio: 1; background: var(--border); overflow: hidden; }
+    .card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s; }
+    .card:hover .card-img img { transform: scale(1.04); }
+    .no-img { width: 100%; height: 100%; background: var(--bg); }
+    .card-body { padding: 12px 14px 14px; }
+    .card-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 4px; }
+    .card-meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+    .sale-badge {
+      display: inline-flex; align-items: center;
+      background: var(--accent-container); color: var(--accent);
+      border: none; border-radius: 20px;
+      padding: 4px 12px; font-size: 0.78rem; font-weight: 600;
+      cursor: pointer; transition: opacity .2s;
+    }
+    .sale-badge:hover { opacity: .8; }
+    .no-artworks { color: var(--muted); text-align: center; padding: 48px 0; }
+    .bio-name { font-size: 1.8rem; font-weight: 700; margin-bottom: 20px; }
+    .bio-text { max-width: 680px; color: var(--muted); white-space: pre-line; }
+    .contact-items { display: flex; flex-direction: column; gap: 12px; }
+    .contact-row { display: flex; align-items: center; gap: 12px; }
+    .contact-label { min-width: 120px; font-weight: 600; font-size: 0.9rem; }
+    .contact-value { color: var(--muted); font-size: 0.9rem; }
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(0,0,0,.5);
+      display: flex; align-items: center; justify-content: center;
+      padding: 16px;
+    }
+    .modal-overlay.hidden { display: none; }
+    .modal {
+      background: var(--surface); border-radius: var(--radius);
+      padding: 28px; max-width: 420px; width: 100%;
+      box-shadow: 0 8px 32px rgba(0,0,0,.24);
+    }
+    .modal h3 { font-size: 1rem; font-weight: 600; margin-bottom: 16px; color: var(--muted); }
+    .contact-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+    .contact-list li { display: flex; gap: 8px; flex-wrap: wrap; align-items: baseline; }
+    .cl { font-weight: 600; font-size: 0.85rem; min-width: 90px; }
+    .modal-close {
+      width: 100%; padding: 10px;
+      background: var(--accent); color: #fff; border: none;
+      border-radius: 8px; font-size: 0.95rem; font-weight: 600;
+      cursor: pointer; transition: opacity .2s;
+    }
+    .modal-close:hover { opacity: .85; }
+    footer { text-align: center; color: var(--muted); font-size: 0.78rem; padding: 24px; border-top: 1px solid var(--border); }
+    .skeleton { animation: pulse 1.5s ease-in-out infinite; background: var(--border); border-radius: var(--radius); }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .4; } }
+    @media (max-width: 480px) {
+      nav { padding: 0 16px; }
+      .nav-links { gap: 16px; }
+      section { padding: 40px 16px; }
+      .grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-brand" id="nav-brand">&#8203;</span>
+  <ul class="nav-links" id="nav-links"></ul>
+</nav>
+
+<section id="gallery">
+  <h2 id="gallery-title">&#8203;</h2>
+  <div id="gallery-content">
+    <div class="grid" id="skeleton-grid">
+      <div class="skeleton" style="height:260px"></div>
+      <div class="skeleton" style="height:260px"></div>
+      <div class="skeleton" style="height:260px"></div>
+    </div>
+  </div>
+</section>
+
+<div id="bio-section" style="display:none">
+  <section id="biography">
+    <h2 id="bio-title"></h2>
+    <p class="bio-name" id="bio-name"></p>
+    <p class="bio-text" id="bio-text"></p>
+  </section>
+</div>
+
+<div id="contact-section" style="display:none">
+  <section id="contact">
+    <h2 id="contact-title"></h2>
+    <div class="contact-items" id="contact-items"></div>
+  </section>
+</div>
+
+<footer id="footer"></footer>
+
+<div id="modal-overlay" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal">
+    <h3 id="modal-title"></h3>
+    <ul class="contact-list" id="modal-contacts"></ul>
+    <button class="modal-close" id="modal-close-btn"></button>
+  </div>
+</div>
+
+<script>
+// ─── Configuration ──────────────────────────────────────────────────────────
+// These are safe to expose: the anon key is a public read-only key protected
+// by Row Level Security policies in your Supabase project.
+const SUPABASE_URL  = 'https://xdkambiuoeskzwubkcxi.supabase.co';
+const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inhka2FtYml1b2Vza3p3dWJrY3hpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk2Nzc4NTYsImV4cCI6MjA4NTI1Mzg1Nn0.e1YN9l-LUjKJVH4kKcNvV6WTiThmnEjqN9BefbubWhI';
+const CDN           = SUPABASE_URL + '/storage/v1/object/public/artworks/';
+const HEADERS       = { 'apikey': SUPABASE_ANON, 'Authorization': 'Bearer ' + SUPABASE_ANON };
+
+// ─── Translations ────────────────────────────────────────────────────────────
+const i18n = {
+  en: { gallery:"Gallery", biography:"Biography", contact:"Contact", forSale:"For Sale", noArtworks:"No artworks published yet.", contactArtist:"Contact the artist", close:"Close", email:"Email", instagram:"Instagram", website:"Website", phone:"Phone", facebook:"Facebook", location:"Location", footer:"Portfolio powered by Artive" },
+  es: { gallery:"Galería", biography:"Biografía", contact:"Contacto", forSale:"En venta", noArtworks:"Aún no hay obras publicadas.", contactArtist:"Contactar al artista", close:"Cerrar", email:"Correo electrónico", instagram:"Instagram", website:"Sitio web", phone:"Teléfono", facebook:"Facebook", location:"Ubicación", footer:"Portfolio impulsado por Artive" },
+  de: { gallery:"Galerie", biography:"Biografie", contact:"Kontakt", forSale:"Zum Verkauf", noArtworks:"Noch keine Werke veröffentlicht.", contactArtist:"Künstler kontaktieren", close:"Schließen", email:"E-Mail", instagram:"Instagram", website:"Website", phone:"Telefon", facebook:"Facebook", location:"Ort", footer:"Portfolio powered by Artive" },
+  fr: { gallery:"Galerie", biography:"Biographie", contact:"Contact", forSale:"En vente", noArtworks:"Aucune œuvre publiée pour l'instant.", contactArtist:"Contacter l'artiste", close:"Fermer", email:"E-mail", instagram:"Instagram", website:"Site web", phone:"Téléphone", facebook:"Facebook", location:"Lieu", footer:"Portfolio propulsé par Artive" },
+  it: { gallery:"Galleria", biography:"Biografia", contact:"Contatto", forSale:"In vendita", noArtworks:"Nessuna opera pubblicata ancora.", contactArtist:"Contatta l'artista", close:"Chiudi", email:"E-mail", instagram:"Instagram", website:"Sito web", phone:"Telefono", facebook:"Facebook", location:"Luogo", footer:"Portfolio powered by Artive" },
+  pt: { gallery:"Galeria", biography:"Biografia", contact:"Contato", forSale:"À venda", noArtworks:"Nenhuma obra publicada ainda.", contactArtist:"Contatar o artista", close:"Fechar", email:"E-mail", instagram:"Instagram", website:"Site", phone:"Telefone", facebook:"Facebook", location:"Localização", footer:"Portfolio powered by Artive" },
+  nl: { gallery:"Galerij", biography:"Biografie", contact:"Contact", forSale:"Te koop", noArtworks:"Nog geen werken gepubliceerd.", contactArtist:"Neem contact op met de artiest", close:"Sluiten", email:"E-mail", instagram:"Instagram", website:"Website", phone:"Telefoon", facebook:"Facebook", location:"Locatie", footer:"Portfolio powered by Artive" },
+  pl: { gallery:"Galeria", biography:"Biografia", contact:"Kontakt", forSale:"Na sprzedaż", noArtworks:"Brak opublikowanych prac.", contactArtist:"Skontaktuj się z artystą", close:"Zamknij", email:"E-mail", instagram:"Instagram", website:"Strona", phone:"Telefon", facebook:"Facebook", location:"Lokalizacja", footer:"Portfolio powered by Artive" },
+  ru: { gallery:"Галерея", biography:"Биография", contact:"Контакт", forSale:"На продажу", noArtworks:"Работы ещё не опубликованы.", contactArtist:"Связаться с художником", close:"Закрыть", email:"Эл. почта", instagram:"Instagram", website:"Сайт", phone:"Телефон", facebook:"Facebook", location:"Местоположение", footer:"Портфолио на Artive" },
+  tr: { gallery:"Galeri", biography:"Biyografi", contact:"İletişim", forSale:"Satılık", noArtworks:"Henüz yayınlanan eser yok.", contactArtist:"Sanatçıyla iletişime geç", close:"Kapat", email:"E-posta", instagram:"Instagram", website:"Web sitesi", phone:"Telefon", facebook:"Facebook", location:"Konum", footer:"Portfolio powered by Artive" },
+  zh: { gallery:"画廊", biography:"简介", contact:"联系", forSale:"出售中", noArtworks:"暂无已发布的作品。", contactArtist:"联系艺术家", close:"关闭", email:"电子邮件", instagram:"Instagram", website:"网站", phone:"电话", facebook:"Facebook", location:"地点", footer:"作品集由 Artive 提供" },
+  ja: { gallery:"ギャラリー", biography:"プロフィール", contact:"お問い合わせ", forSale:"販売中", noArtworks:"作品はまだ公開されていません。", contactArtist:"アーティストに問い合わせる", close:"閉じる", email:"メール", instagram:"Instagram", website:"ウェブサイト", phone:"電話", facebook:"Facebook", location:"場所", footer:"Artive によるポートフォリオ" },
+  ko: { gallery:"갤러리", biography:"약력", contact:"연락처", forSale:"판매 중", noArtworks:"아직 게시된 작품이 없습니다.", contactArtist:"아티스트에게 연락", close:"닫기", email:"이메일", instagram:"Instagram", website:"웹사이트", phone:"전화", facebook:"Facebook", location:"위치", footer:"Artive로 만든 포트폴리오" },
+  hi: { gallery:"गैलरी", biography:"जीवनी", contact:"संपर्क", forSale:"बिक्री के लिए", noArtworks:"अभी तक कोई कृति प्रकाशित नहीं।", contactArtist:"कलाकार से संपर्क करें", close:"बंद करें", email:"ईमेल", instagram:"Instagram", website:"वेबसाइट", phone:"फ़ोन", facebook:"Facebook", location:"स्थान", footer:"Artive द्वारा पोर्टफोलियो" },
+  ar: { gallery:"معرض", biography:"السيرة الذاتية", contact:"تواصل", forSale:"للبيع", noArtworks:"لا توجد أعمال منشورة بعد.", contactArtist:"تواصل مع الفنان", close:"إغلاق", email:"البريد الإلكتروني", instagram:"Instagram", website:"الموقع", phone:"الهاتف", facebook:"Facebook", location:"الموقع", footer:"محفظة أعمال مدعومة من Artive" },
+  bn: { gallery:"গ্যালারি", biography:"জীবনী", contact:"যোগাযোগ", forSale:"বিক্রয়ের জন্য", noArtworks:"এখনো কোনো শিল্পকর্ম প্রকাশিত হয়নি।", contactArtist:"শিল্পীর সাথে যোগাযোগ করুন", close:"বন্ধ করুন", email:"ইমেইল", instagram:"Instagram", website:"ওয়েবসাইট", phone:"ফোন", facebook:"Facebook", location:"অবস্থান", footer:"Artive দ্বারা পোর্টফোলিও" },
+  vi: { gallery:"Thư viện", biography:"Tiểu sử", contact:"Liên hệ", forSale:"Đang bán", noArtworks:"Chưa có tác phẩm nào được công bố.", contactArtist:"Liên hệ nghệ sĩ", close:"Đóng", email:"Email", instagram:"Instagram", website:"Trang web", phone:"Điện thoại", facebook:"Facebook", location:"Địa điểm", footer:"Portfolio được xây dựng bởi Artive" },
+  th: { gallery:"แกลเลอรี", biography:"ประวัติ", contact:"ติดต่อ", forSale:"ขายอยู่", noArtworks:"ยังไม่มีผลงานที่เผยแพร่", contactArtist:"ติดต่อศิลปิน", close:"ปิด", email:"อีเมล", instagram:"Instagram", website:"เว็บไซต์", phone:"โทรศัพท์", facebook:"Facebook", location:"ที่ตั้ง", footer:"พอร์ตโฟลิโอโดย Artive" },
+  id: { gallery:"Galeri", biography:"Biografi", contact:"Kontak", forSale:"Dijual", noArtworks:"Belum ada karya yang dipublikasikan.", contactArtist:"Hubungi seniman", close:"Tutup", email:"Email", instagram:"Instagram", website:"Situs web", phone:"Telepon", facebook:"Facebook", location:"Lokasi", footer:"Portfolio powered by Artive" }
+};
+
+// ─── Language detection ───────────────────────────────────────────────────────
+const langRaw = (navigator.language || 'en').slice(0, 2).toLowerCase();
+const lang = i18n[langRaw] ? langRaw : 'en';
+const T = i18n[lang];
+const RTL = ['ar', 'he', 'fa', 'ur'].includes(lang);
+if (RTL) document.documentElement.dir = 'rtl';
+document.documentElement.lang = lang;
+
+// ─── Helpers ──────────────────────────────────────────────────────────────────
+function esc(s) {
+  if (!s) return '';
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function imgUrl(path) {
+  if (!path) return null;
+  return CDN + encodeURIComponent(path).replace(/%2F/g, '/');
+}
+
+// ─── Contact info builder ─────────────────────────────────────────────────────
+function buildContacts(profile) {
+  if (!profile) return [];
+  const contacts = [];
+  if (profile.contact_email) contacts.push({ label: T.email, value: profile.contact_email, href: 'mailto:' + encodeURIComponent(profile.contact_email) });
+  if (profile.contact_instagram) {
+    const handle = profile.contact_instagram.startsWith('@') ? profile.contact_instagram : '@' + profile.contact_instagram;
+    contacts.push({ label: T.instagram, value: handle, href: 'https://instagram.com/' + encodeURIComponent(handle.replace(/^@/, '')) });
+  }
+  if (profile.contact_website) contacts.push({ label: T.website, value: profile.contact_website, href: profile.contact_website });
+  if (profile.contact_phone) contacts.push({ label: T.phone, value: profile.contact_phone, href: 'tel:' + profile.contact_phone.replace(/\s/g,'') });
+  if (profile.contact_facebook) contacts.push({ label: T.facebook, value: profile.contact_facebook, href: profile.contact_facebook });
+  if (profile.contact_location) contacts.push({ label: T.location, value: profile.contact_location, href: null });
+  return contacts;
+}
+
+// ─── Modal ────────────────────────────────────────────────────────────────────
+let _contacts = [];
+function openModal(artworkName) {
+  const overlay = document.getElementById('modal-overlay');
+  const title   = document.getElementById('modal-title');
+  title.textContent = artworkName || T.contactArtist;
+  overlay.classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('modal-close-btn').focus();
+}
+function closeModal() {
+  document.getElementById('modal-overlay').classList.add('hidden');
+  document.body.style.overflow = '';
+}
+document.getElementById('modal-close-btn').textContent = T.close;
+document.getElementById('modal-close-btn').addEventListener('click', closeModal);
+document.getElementById('modal-overlay').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+// ─── Render ───────────────────────────────────────────────────────────────────
+function render(profile, artworks) {
+  const artistName = (profile && profile.name) ? profile.name : 'Artist';
+  _contacts = buildContacts(profile);
+
+  // Page title + nav brand
+  document.title = artistName;
+  document.querySelector('meta[name=description]').content = artistName + ' — ' + T.gallery;
+  document.getElementById('nav-brand').textContent = artistName;
+
+  // Nav links
+  const navLinks = document.getElementById('nav-links');
+  navLinks.innerHTML = '';
+  const addLink = (href, text) => { const li = document.createElement('li'); li.innerHTML = '<a href="' + href + '">' + esc(text) + '</a>'; navLinks.appendChild(li); };
+  addLink('#gallery', T.gallery);
+  if (profile && profile.bio) addLink('#biography', T.biography);
+  if (_contacts.length > 0) addLink('#contact', T.contact);
+
+  // Gallery title
+  document.getElementById('gallery-title').textContent = T.gallery;
+
+  // Gallery content
+  const gc = document.getElementById('gallery-content');
+  if (!artworks || artworks.length === 0) {
+    gc.innerHTML = '<p class="no-artworks">' + esc(T.noArtworks) + '</p>';
+  } else {
+    gc.innerHTML = '<div class="grid">' + artworks.map(renderCard).join('') + '</div>';
+  }
+
+  // Biography
+  if (profile && profile.bio) {
+    document.getElementById('bio-section').style.display = '';
+    document.getElementById('bio-title').textContent = T.biography;
+    document.getElementById('bio-name').textContent = artistName;
+    document.getElementById('bio-text').textContent = profile.bio;
+  }
+
+  // Contact section
+  if (_contacts.length > 0) {
+    document.getElementById('contact-section').style.display = '';
+    document.getElementById('contact-title').textContent = T.contact;
+    const items = document.getElementById('contact-items');
+    items.innerHTML = _contacts.map(c => {
+      const val = c.href
+        ? '<a href="' + esc(c.href) + '" target="_blank" rel="noopener noreferrer" class="contact-value">' + esc(c.value) + '</a>'
+        : '<span class="contact-value">' + esc(c.value) + '</span>';
+      return '<div class="contact-row"><span class="contact-label">' + esc(c.label) + '</span>' + val + '</div>';
+    }).join('');
+  }
+
+  // Modal contact list
+  const modalList = document.getElementById('modal-contacts');
+  modalList.innerHTML = _contacts.map(c => {
+    const val = c.href
+      ? '<a href="' + esc(c.href) + '" target="_blank" rel="noopener noreferrer">' + esc(c.value) + '</a>'
+      : esc(c.value);
+    return '<li><span class="cl">' + esc(c.label) + ':</span> ' + val + '</li>';
+  }).join('');
+
+  // Footer
+  document.getElementById('footer').textContent = T.footer;
+}
+
+function renderCard(artwork) {
+  const images = artwork.artwork_images || [];
+  const priority = { scan: 0, main: 1, photo_reference: 2 };
+  const sorted = [...images].sort((a, b) => (priority[a.tag] ?? 9) - (priority[b.tag] ?? 9));
+  const mainImg = sorted[0];
+  const thumb = mainImg ? imgUrl(mainImg.thumbnail_path || mainImg.storage_path) : null;
+
+  const name     = esc(artwork.name || '');
+  const year     = artwork.date_year ? String(artwork.date_year) : '';
+  const medium   = esc(artwork.medium || '');
+  const dim      = esc(artwork.dimension || '');
+  const meta     = [year, medium, dim].filter(Boolean).join(' · ');
+  const isForSale = artwork.is_for_sale === true;
+  const currency  = esc(artwork.price_currency || '');
+  const amount    = artwork.price_amount
+    ? Number(artwork.price_amount).toLocaleString(lang, { minimumFractionDigits: 0, maximumFractionDigits: 2 })
+    : null;
+
+  const badge = (isForSale && amount)
+    ? '<button class="sale-badge" onclick="openModal(' + JSON.stringify(artwork.name || '') + ')">' + esc(T.forSale) + ' · ' + currency + ' ' + amount + '</button>'
+    : '';
+  const img = thumb
+    ? '<img src="' + esc(thumb) + '" alt="' + name + '" loading="lazy" />'
+    : '<div class="no-img"></div>';
+
+  return '<article class="card"><div class="card-img">' + img + '</div><div class="card-body"><p class="card-title">' + name + '</p><p class="card-meta">' + esc(meta) + '</p>' + badge + '</div></article>';
+}
+
+// ─── Data fetch ───────────────────────────────────────────────────────────────
+async function main() {
+  try {
+    const [profileRes, artworksRes] = await Promise.all([
+      fetch(SUPABASE_URL + '/rest/v1/artist_profile?id=eq.1&select=*', { headers: HEADERS }),
+      fetch(SUPABASE_URL + '/rest/v1/artworks?is_public=eq.true&select=*,artwork_images(*)&order=date_year.desc.nullslast,created_at.desc', { headers: HEADERS })
+    ]);
+    const profiles  = await profileRes.json();
+    const artworks  = await artworksRes.json();
+    render(Array.isArray(profiles) ? profiles[0] : null, Array.isArray(artworks) ? artworks : []);
+  } catch (err) {
+    document.getElementById('gallery-content').innerHTML = '<p class="no-artworks">Failed to load portfolio. Please try again later.</p>';
+    document.getElementById('gallery-title').textContent = 'Gallery';
+    document.getElementById('nav-brand').textContent = 'Portfolio';
+    document.getElementById('footer').textContent = T.footer;
+    console.error(err);
+  }
+}
+
+main();
+</script>
+</body>
+</html>

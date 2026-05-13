@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:provider/provider.dart';
 import '../../core/providers/providers.dart';
 import '../../core/services/setup_service.dart';
 import '../../l10n/app_localizations.dart';
+import 'artist_profile_screen.dart';
 import 'backup_restore_screen.dart';
 
 class SettingsScreen extends StatefulWidget {
   final String bucketName;
-  
+
   const SettingsScreen({
     super.key,
     required this.bucketName,
@@ -20,11 +22,20 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   String _version = 'Loading...';
+  String _supabaseUrl = '';
 
   @override
   void initState() {
     super.initState();
     _loadVersion();
+    _loadSupabaseUrl();
+  }
+
+  Future<void> _loadSupabaseUrl() async {
+    final credentials = await SetupService.getSavedCredentials();
+    if (mounted && credentials != null) {
+      setState(() => _supabaseUrl = credentials['url'] ?? '');
+    }
   }
 
   Future<void> _loadVersion() async {
@@ -55,6 +66,25 @@ class _SettingsScreenState extends State<SettingsScreen> {
               },
             ),
             onTap: () => _showLanguageDialog(context),
+          ),
+          const Divider(),
+          ListTile(
+            leading: const Icon(Icons.person_outline),
+            title: Text(l10n.artistProfile),
+            subtitle: Text(l10n.artistProfileSubtitle),
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => const ArtistProfileScreen(),
+              ),
+            ),
+          ),
+          const Divider(),
+          ListTile(
+            leading: const Icon(Icons.public),
+            title: Text(l10n.publicWebsite),
+            subtitle: Text(l10n.publicWebsiteSubtitle),
+            onTap: () => _showWebsiteUrl(context),
           ),
           const Divider(),
           ListTile(
@@ -150,5 +180,43 @@ class _SettingsScreenState extends State<SettingsScreen> {
       // Pop back to home to refresh
       Navigator.pop(context, true);
     }
+  }
+
+  void _showWebsiteUrl(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
+    showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: Text(l10n.publicWebsite),
+        content: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(l10n.publicWebsiteGitHubPagesHint),
+              const SizedBox(height: 12),
+              Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.surfaceContainerHighest,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Text(
+                  l10n.publicWebsiteGitHubPagesSteps,
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
+              ),
+            ],
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: Text(l10n.close),
+          ),
+        ],
+      ),
+    );
   }
 }

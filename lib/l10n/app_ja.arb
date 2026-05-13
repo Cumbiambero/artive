@@ -182,5 +182,37 @@
       }
     }
   },
-  "selectAll": "すべて選択"
+  "selectAll": "すべて選択",
+
+  "publicWebsiteSection": "公開ウェブサイト",
+  "isPublic": "ウェブサイトに表示",
+  "isPublicSubtitle": "この作品を公開ポートフォリオに表示する",
+  "forSale": "販売中",
+  "forSaleSubtitle": "この作品を購入可能としてマーク",
+  "price": "価格",
+  "currency": "通貨",
+  "invalidPrice": "有効な価格を入力してください",
+
+  "artistProfile": "アーティストプロフィール",
+  "artistProfileSubtitle": "名前、経歴、連絡先",
+  "artistName": "アーティスト名",
+  "biography": "経歴",
+  "biographyHint": "あなたと作品についての簡単な経歴を書いてください…",
+  "contactInfo": "連絡先",
+  "emailAddress": "メールアドレス",
+  "instagramHandle": "Instagram",
+  "websiteUrl": "ウェブサイト",
+  "phoneNumber": "電話番号",
+  "facebook": "Facebook",
+  "location": "場所",
+  "locationHint": "例: ドイツ・ベルリン",
+  "profileSaved": "プロフィールを保存しました",
+
+  "publicWebsite": "公開ウェブサイト",
+  "publicWebsiteSubtitle": "ポートフォリオを世界と共有する",
+  "publicWebsiteGitHubPagesHint": "ポートフォリオはリポジトリの docs/index.html にあります。公開手順：",
+  "publicWebsiteGitHubPagesSteps": "1. リポジトリを GitHub にプッシュ\n2. Settings → Pages に移動\n3. Source を \"Deploy from a branch\" → /docs に設定\n4. サイトは https://ユーザー名.github.io/artive/ で公開されます",
+  "publicWebsiteUrlHint": "Edge Function をデプロイしてこの URL を共有してください：",
+  "copyLink": "リンクをコピー",
+  "linkCopied": "リンクをコピーしました"
 }

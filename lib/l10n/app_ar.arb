@@ -182,5 +182,37 @@
       }
     }
   },
-  "selectAll": "تحديد الكل"
+  "selectAll": "تحديد الكل",
+
+  "publicWebsiteSection": "الموقع العام",
+  "isPublic": "مرئي على الموقع",
+  "isPublicSubtitle": "عرض هذا العمل في معرضك العام",
+  "forSale": "للبيع",
+  "forSaleSubtitle": "تحديد هذا العمل كمتاح للشراء",
+  "price": "السعر",
+  "currency": "العملة",
+  "invalidPrice": "يرجى إدخال سعر صحيح",
+
+  "artistProfile": "ملف الفنان",
+  "artistProfileSubtitle": "الاسم والسيرة الذاتية ومعلومات الاتصال",
+  "artistName": "اسم الفنان",
+  "biography": "السيرة الذاتية",
+  "biographyHint": "اكتب سيرة ذاتية موجزة عنك وعن عملك…",
+  "contactInfo": "التواصل",
+  "emailAddress": "البريد الإلكتروني",
+  "instagramHandle": "Instagram",
+  "websiteUrl": "الموقع الإلكتروني",
+  "phoneNumber": "الهاتف",
+  "facebook": "Facebook",
+  "location": "الموقع",
+  "locationHint": "مثال: برلين، ألمانيا",
+  "profileSaved": "تم حفظ الملف الشخصي",
+
+  "publicWebsite": "الموقع العام",
+  "publicWebsiteSubtitle": "شارك معرضك مع العالم",
+  "publicWebsiteGitHubPagesHint": "محفظتك موجودة في ملف docs/index.html بالمستودع. لنشرها:",
+  "publicWebsiteGitHubPagesSteps": "1. ارفع المستودع إلى GitHub\n2. اذهب إلى Settings → Pages\n3. اضبط Source على \"Deploy from a branch\" → /docs\n4. سيكون موقعك على https://اسم-المستخدم.github.io/artive/",
+  "publicWebsiteUrlHint": "نشر Edge Function وشارك هذا الرابط:",
+  "copyLink": "نسخ الرابط",
+  "linkCopied": "تم نسخ الرابط"
 }

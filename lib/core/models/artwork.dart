@@ -9,6 +9,10 @@ class Artwork {
   final String dimension;
   final String medium;
   final bool isStudy;
+  final bool isPublic;
+  final bool isForSale;
+  final double? priceAmount;
+  final String? priceCurrency;
   final DateTime? createdAt;
   final List<ArtworkImage> images;
 
@@ -21,6 +25,10 @@ class Artwork {
     required this.dimension,
     required this.medium,
     this.isStudy = false,
+    this.isPublic = false,
+    this.isForSale = false,
+    this.priceAmount,
+    this.priceCurrency,
     this.createdAt,
     this.images = const [],
   });
@@ -35,6 +43,12 @@ class Artwork {
       dimension: json['dimension'],
       medium: json['medium'],
       isStudy: json['is_study'] ?? false,
+      isPublic: json['is_public'] ?? false,
+      isForSale: json['is_for_sale'] ?? false,
+      priceAmount: json['price_amount'] != null
+          ? (json['price_amount'] as num).toDouble()
+          : null,
+      priceCurrency: json['price_currency'],
       createdAt: json['created_at'] != null 
         ? DateTime.parse(json['created_at']) 
         : null,
@@ -54,6 +68,10 @@ class Artwork {
       'dimension': dimension,
       'medium': medium,
       'is_study': isStudy,
+      'is_public': isPublic,
+      'is_for_sale': isForSale,
+      'price_amount': priceAmount,
+      'price_currency': priceCurrency,
     };
   }
 
@@ -66,6 +84,10 @@ class Artwork {
     String? dimension,
     String? medium,
     bool? isStudy,
+    bool? isPublic,
+    bool? isForSale,
+    double? priceAmount,
+    String? priceCurrency,
     DateTime? createdAt,
     List<ArtworkImage>? images,
   }) {
@@ -78,6 +100,10 @@ class Artwork {
       dimension: dimension ?? this.dimension,
       medium: medium ?? this.medium,
       isStudy: isStudy ?? this.isStudy,
+      isPublic: isPublic ?? this.isPublic,
+      isForSale: isForSale ?? this.isForSale,
+      priceAmount: priceAmount ?? this.priceAmount,
+      priceCurrency: priceCurrency ?? this.priceCurrency,
       createdAt: createdAt ?? this.createdAt,
       images: images ?? this.images,
     );

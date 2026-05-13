@@ -182,5 +182,37 @@
       }
     }
   },
-  "selectAll": "Выбрать все"
+  "selectAll": "Выбрать все",
+
+  "publicWebsiteSection": "Публичный сайт",
+  "isPublic": "Видно на сайте",
+  "isPublicSubtitle": "Показать эту работу в публичном портфолио",
+  "forSale": "На продажу",
+  "forSaleSubtitle": "Отметить эту работу как доступную для покупки",
+  "price": "Цена",
+  "currency": "Валюта",
+  "invalidPrice": "Введите корректную цену",
+
+  "artistProfile": "Профиль художника",
+  "artistProfileSubtitle": "Имя, биография и контактная информация",
+  "artistName": "Имя художника",
+  "biography": "Биография",
+  "biographyHint": "Напишите краткую биографию о себе и своём творчестве…",
+  "contactInfo": "Контакт",
+  "emailAddress": "Адрес электронной почты",
+  "instagramHandle": "Instagram",
+  "websiteUrl": "Сайт",
+  "phoneNumber": "Телефон",
+  "facebook": "Facebook",
+  "location": "Местоположение",
+  "locationHint": "напр. Берлин, Германия",
+  "profileSaved": "Профиль сохранён",
+
+  "publicWebsite": "Публичный сайт",
+  "publicWebsiteSubtitle": "Поделитесь своим портфолио с миром",
+  "publicWebsiteGitHubPagesHint": "Ваше портфолио находится в файле docs/index.html репозитория. Чтобы опубликовать его:",
+  "publicWebsiteGitHubPagesSteps": "1. Загрузите репозиторий на GitHub\n2. Перейдите в Settings → Pages\n3. Установите Source: \"Deploy from a branch\" → /docs\n4. Ваш сайт будет по адресу https://пользователь.github.io/artive/",
+  "publicWebsiteUrlHint": "Разверните Edge Function и поделитесь этим URL:",
+  "copyLink": "Копировать ссылку",
+  "linkCopied": "Ссылка скопирована"
 }

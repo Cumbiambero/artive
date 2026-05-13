@@ -182,5 +182,37 @@
       }
     }
   },
-  "selectAll": "Alle auswählen"
+  "selectAll": "Alle auswählen",
+
+  "publicWebsiteSection": "Öffentliche Website",
+  "isPublic": "Auf Website sichtbar",
+  "isPublicSubtitle": "Dieses Werk im öffentlichen Portfolio anzeigen",
+  "forSale": "Zum Verkauf",
+  "forSaleSubtitle": "Dieses Werk als käuflich markieren",
+  "price": "Preis",
+  "currency": "Währung",
+  "invalidPrice": "Bitte einen gültigen Preis eingeben",
+
+  "artistProfile": "Künstlerprofil",
+  "artistProfileSubtitle": "Name, Biografie und Kontaktinformationen",
+  "artistName": "Künstlername",
+  "biography": "Biografie",
+  "biographyHint": "Schreibe eine kurze Biografie über dich und deine Arbeit…",
+  "contactInfo": "Kontakt",
+  "emailAddress": "E-Mail-Adresse",
+  "instagramHandle": "Instagram",
+  "websiteUrl": "Website",
+  "phoneNumber": "Telefon",
+  "facebook": "Facebook",
+  "location": "Ort",
+  "locationHint": "z.B. Berlin, Deutschland",
+  "profileSaved": "Profil gespeichert",
+
+  "publicWebsite": "Öffentliche Website",
+  "publicWebsiteSubtitle": "Teile dein Portfolio mit der Welt",
+  "publicWebsiteGitHubPagesHint": "Dein Portfolio befindet sich in der Datei docs/index.html deines Repositorys. So veröffentlichst du es:",
+  "publicWebsiteGitHubPagesSteps": "1. Pushe dein Repo zu GitHub\n2. Gehe zu Settings → Pages\n3. Setze Source auf \"Deploy from a branch\" → /docs\n4. Deine Seite wird unter https://nutzername.github.io/artive/ erreichbar sein",
+  "publicWebsiteUrlHint": "Deploye die Edge Function und teile diese URL:",
+  "copyLink": "Link kopieren",
+  "linkCopied": "Link kopiert"
 }

@@ -182,5 +182,37 @@
       }
     }
   },
-  "selectAll": "เลือกทั้งหมด"
+  "selectAll": "เลือกทั้งหมด",
+
+  "publicWebsiteSection": "เว็บไซต์สาธารณะ",
+  "isPublic": "แสดงบนเว็บไซต์",
+  "isPublicSubtitle": "แสดงผลงานนี้ในพอร์ตโฟลิโอสาธารณะของคุณ",
+  "forSale": "ขายอยู่",
+  "forSaleSubtitle": "ทำเครื่องหมายผลงานนี้ว่าพร้อมขาย",
+  "price": "ราคา",
+  "currency": "สกุลเงิน",
+  "invalidPrice": "กรุณาใส่ราคาที่ถูกต้อง",
+
+  "artistProfile": "โปรไฟล์ศิลปิน",
+  "artistProfileSubtitle": "ชื่อ ประวัติย่อ และข้อมูลการติดต่อ",
+  "artistName": "ชื่อศิลปิน",
+  "biography": "ประวัติ",
+  "biographyHint": "เขียนประวัติย่อเกี่ยวกับตัวคุณและผลงานของคุณ…",
+  "contactInfo": "ติดต่อ",
+  "emailAddress": "ที่อยู่อีเมล",
+  "instagramHandle": "Instagram",
+  "websiteUrl": "เว็บไซต์",
+  "phoneNumber": "โทรศัพท์",
+  "facebook": "Facebook",
+  "location": "ที่ตั้ง",
+  "locationHint": "เช่น เบอร์ลิน, เยอรมนี",
+  "profileSaved": "บันทึกโปรไฟล์แล้ว",
+
+  "publicWebsite": "เว็บไซต์สาธารณะ",
+  "publicWebsiteSubtitle": "แบ่งปันพอร์ตโฟลิโอของคุณกับโลก",
+  "publicWebsiteGitHubPagesHint": "พอร์ตโฟลิโอของคุณอยู่ใน docs/index.html ของ repository เพื่อเผยแพร่:",
+  "publicWebsiteGitHubPagesSteps": "1. Push repo ไปที่ GitHub\n2. ไปที่ Settings → Pages\n3. ตั้ง Source เป็น \"Deploy from a branch\" → /docs\n4. เว็บไซต์ของคุณจะอยู่ที่ https://ชื่อผู้ใช้.github.io/artive/",
+  "publicWebsiteUrlHint": "ปรับใช้ Edge Function และแชร์ URL นี้:",
+  "copyLink": "คัดลอกลิงก์",
+  "linkCopied": "คัดลอกลิงก์แล้ว"
 }

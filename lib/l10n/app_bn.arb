@@ -182,5 +182,37 @@
       }
     }
   },
-  "selectAll": "সব নির্বাচন করুন"
+  "selectAll": "সব নির্বাচন করুন",
+
+  "publicWebsiteSection": "পাবলিক ওয়েবসাইট",
+  "isPublic": "ওয়েবসাইটে দৃশ্যমান",
+  "isPublicSubtitle": "এই শিল্পকর্মটি আপনার পাবলিক পোর্টফোলিওতে দেখান",
+  "forSale": "বিক্রয়ের জন্য",
+  "forSaleSubtitle": "এই কাজটিকে কেনার জন্য উপলব্ধ হিসেবে চিহ্নিত করুন",
+  "price": "মূল্য",
+  "currency": "মুদ্রা",
+  "invalidPrice": "একটি বৈধ মূল্য লিখুন",
+
+  "artistProfile": "শিল্পীর প্রোফাইল",
+  "artistProfileSubtitle": "নাম, জীবনী এবং যোগাযোগের তথ্য",
+  "artistName": "শিল্পীর নাম",
+  "biography": "জীবনী",
+  "biographyHint": "নিজের এবং আপনার কাজ সম্পর্কে একটি সংক্ষিপ্ত জীবনী লিখুন…",
+  "contactInfo": "যোগাযোগ",
+  "emailAddress": "ইমেইল ঠিকানা",
+  "instagramHandle": "Instagram",
+  "websiteUrl": "ওয়েবসাইট",
+  "phoneNumber": "ফোন",
+  "facebook": "Facebook",
+  "location": "অবস্থান",
+  "locationHint": "যেমন: বার্লিন, জার্মানি",
+  "profileSaved": "প্রোফাইল সংরক্ষিত হয়েছে",
+
+  "publicWebsite": "পাবলিক ওয়েবসাইট",
+  "publicWebsiteSubtitle": "বিশ্বের সাথে আপনার পোর্টফোলিও শেয়ার করুন",
+  "publicWebsiteGitHubPagesHint": "আপনার পোর্টফোলিও রিপোজিটরির docs/index.html ফাইলে আছে। প্রকাশ করতে:",
+  "publicWebsiteGitHubPagesSteps": "1. আপনার রেপো GitHub-এ পুশ করুন\n2. Settings → Pages-এ যান\n3. Source \"Deploy from a branch\" → /docs সেট করুন\n4. আপনার সাইট https://username.github.io/artive/ এ থাকবে",
+  "publicWebsiteUrlHint": "Edge Function ডিপ্লয় করুন এবং এই URL শেয়ার করুন:",
+  "copyLink": "লিঙ্ক কপি করুন",
+  "linkCopied": "লিঙ্ক কপি করা হয়েছে"
 }

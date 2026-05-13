@@ -111,6 +111,32 @@ class _ArtworkDetailScreenState extends State<ArtworkDetailScreen> {
                   _buildInfoRow(l10n.medium, artwork.medium),
                   if (artwork.isStudy)
                     _buildInfoRow(l10n.isStudy, l10n.yes),
+                  if (artwork.isPublic || artwork.isForSale) ...[
+                    const SizedBox(height: 4),
+                    Wrap(
+                      spacing: 8,
+                      children: [
+                        if (artwork.isPublic)
+                          Chip(
+                            avatar: const Icon(Icons.public, size: 16),
+                            label: Text(l10n.isPublic),
+                            visualDensity: VisualDensity.compact,
+                          ),
+                        if (artwork.isForSale)
+                          Chip(
+                            avatar: const Icon(Icons.sell_outlined, size: 16),
+                            label: Text(
+                              '${artwork.priceCurrency ?? ''} ${artwork.priceAmount?.toStringAsFixed(2) ?? ''}'.trim(),
+                            ),
+                            backgroundColor: Theme.of(context)
+                                .colorScheme
+                                .primaryContainer,
+                            visualDensity: VisualDensity.compact,
+                          ),
+                      ],
+                    ),
+                    const SizedBox(height: 4),
+                  ],
                   if (artwork.createdAt != null)
                     _buildInfoRow(
                       l10n.createdAt,

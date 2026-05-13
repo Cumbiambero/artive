@@ -182,5 +182,37 @@
       }
     }
   },
-  "selectAll": "全选"
+  "selectAll": "全选",
+
+  "publicWebsiteSection": "公开网站",
+  "isPublic": "在网站上显示",
+  "isPublicSubtitle": "在您的公开作品集中展示此作品",
+  "forSale": "出售中",
+  "forSaleSubtitle": "将此作品标记为可购买",
+  "price": "价格",
+  "currency": "货币",
+  "invalidPrice": "请输入有效价格",
+
+  "artistProfile": "艺术家简介",
+  "artistProfileSubtitle": "姓名、简介及联系方式",
+  "artistName": "艺术家姓名",
+  "biography": "个人简介",
+  "biographyHint": "撰写关于您和您的作品的简短介绍…",
+  "contactInfo": "联系方式",
+  "emailAddress": "电子邮件地址",
+  "instagramHandle": "Instagram",
+  "websiteUrl": "网站",
+  "phoneNumber": "电话",
+  "facebook": "Facebook",
+  "location": "地点",
+  "locationHint": "例如：德国柏林",
+  "profileSaved": "简介已保存",
+
+  "publicWebsite": "公开网站",
+  "publicWebsiteSubtitle": "与世界分享您的作品集",
+  "publicWebsiteGitHubPagesHint": "您的作品集位于仓库中的 docs/index.html 文件。发布步骤：",
+  "publicWebsiteGitHubPagesSteps": "1. 将仓库推送到 GitHub\n2. 进入 Settings → Pages\n3. 将 Source 设置为 \"Deploy from a branch\" → /docs\n4. 您的网站将在 https://用户名.github.io/artive/ 上线",
+  "publicWebsiteUrlHint": "部署 Edge Function 并分享此 URL：",
+  "copyLink": "复制链接",
+  "linkCopied": "链接已复制"
 }

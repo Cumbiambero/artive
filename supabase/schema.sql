@@ -14,6 +14,10 @@ CREATE TABLE IF NOT EXISTS artworks (
   dimension TEXT,
   medium TEXT,
   is_study BOOLEAN DEFAULT FALSE,
+  is_public BOOLEAN DEFAULT FALSE,
+  is_for_sale BOOLEAN DEFAULT FALSE,
+  price_amount NUMERIC(10,2),
+  price_currency TEXT,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
@@ -27,6 +31,40 @@ CREATE TABLE IF NOT EXISTS artwork_images (
   sort_order INTEGER DEFAULT 0,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
+
+-- Create artist_profile table (single-row, id always = 1)
+CREATE TABLE IF NOT EXISTS artist_profile (
+  id INTEGER PRIMARY KEY DEFAULT 1,
+  name TEXT NOT NULL DEFAULT '',
+  bio TEXT,
+  contact_email TEXT,
+  contact_instagram TEXT,
+  contact_website TEXT,
+  contact_phone TEXT,
+  contact_facebook TEXT,
+  contact_location TEXT,
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  CONSTRAINT single_row CHECK (id = 1)
+);
+
+-- Seed the single profile row so upsert always finds it
+INSERT INTO artist_profile (id) VALUES (1) ON CONFLICT (id) DO NOTHING;
+
+-- Enable Row Level Security on artist_profile
+ALTER TABLE artist_profile ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Allow public read on artist_profile" ON artist_profile
+  FOR SELECT
+  USING (true);
+
+CREATE POLICY "Allow authenticated write on artist_profile" ON artist_profile
+  FOR INSERT
+  WITH CHECK ((select auth.role()) = 'anon' OR (select auth.role()) = 'authenticated');
+
+CREATE POLICY "Allow authenticated update on artist_profile" ON artist_profile
+  FOR UPDATE
+  USING ((select auth.role()) = 'anon' OR (select auth.role()) = 'authenticated')
+  WITH CHECK ((select auth.role()) = 'anon' OR (select auth.role()) = 'authenticated');
 
 -- Create indexes for better performance
 CREATE INDEX IF NOT EXISTS idx_artworks_name ON artworks(name);
@@ -105,3 +143,35 @@ CREATE POLICY "Allow authenticated delete on artwork_images" ON artwork_images
 -- DELETE policy
 -- CREATE POLICY "Allow deletions" ON storage.objects
 --   FOR DELETE USING (bucket_id = 'artworks');
+
+-- =============================================================
+-- MIGRATION: Run this block if you already have the schema set up
+-- (existing users upgrading from a version before public website)
+-- =============================================================
+-- ALTER TABLE artworks
+--   ADD COLUMN IF NOT EXISTS is_public BOOLEAN DEFAULT FALSE,
+--   ADD COLUMN IF NOT EXISTS is_for_sale BOOLEAN DEFAULT FALSE,
+--   ADD COLUMN IF NOT EXISTS price_amount NUMERIC(10,2),
+--   ADD COLUMN IF NOT EXISTS price_currency TEXT;
+--
+-- CREATE TABLE IF NOT EXISTS artist_profile (
+--   id INTEGER PRIMARY KEY DEFAULT 1,
+--   name TEXT NOT NULL DEFAULT '',
+--   bio TEXT,
+--   contact_email TEXT,
+--   contact_instagram TEXT,
+--   contact_website TEXT,
+--   contact_phone TEXT,
+--   contact_facebook TEXT,
+--   contact_location TEXT,
+--   updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+--   CONSTRAINT single_row CHECK (id = 1)
+-- );
+--
+-- INSERT INTO artist_profile (id) VALUES (1) ON CONFLICT (id) DO NOTHING;
+--
+-- ALTER TABLE artist_profile ENABLE ROW LEVEL SECURITY;
+--
+-- CREATE POLICY "Allow public read on artist_profile" ON artist_profile FOR SELECT USING (true);
+-- CREATE POLICY "Allow authenticated write on artist_profile" ON artist_profile FOR INSERT WITH CHECK ((select auth.role()) = 'anon' OR (select auth.role()) = 'authenticated');
+-- CREATE POLICY "Allow authenticated update on artist_profile" ON artist_profile FOR UPDATE USING ((select auth.role()) = 'anon' OR (select auth.role()) = 'authenticated') WITH CHECK ((select auth.role()) = 'anon' OR (select auth.role()) = 'authenticated');

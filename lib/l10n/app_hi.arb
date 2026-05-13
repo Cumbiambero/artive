@@ -182,5 +182,37 @@
       }
     }
   },
-  "selectAll": "सभी चुनें"
+  "selectAll": "सभी चुनें",
+
+  "publicWebsiteSection": "सार्वजनिक वेबसाइट",
+  "isPublic": "वेबसाइट पर दिखाएं",
+  "isPublicSubtitle": "इस कृति को अपने सार्वजनिक पोर्टफोलियो में दिखाएं",
+  "forSale": "बिक्री के लिए",
+  "forSaleSubtitle": "इस कृति को खरीद के लिए उपलब्ध चिह्नित करें",
+  "price": "मूल्य",
+  "currency": "मुद्रा",
+  "invalidPrice": "कृपया एक वैध मूल्य दर्ज करें",
+
+  "artistProfile": "कलाकार प्रोफ़ाइल",
+  "artistProfileSubtitle": "नाम, जीवनी और संपर्क जानकारी",
+  "artistName": "कलाकार का नाम",
+  "biography": "जीवनी",
+  "biographyHint": "अपने बारे में और अपने काम के बारे में एक संक्षिप्त जीवनी लिखें…",
+  "contactInfo": "संपर्क",
+  "emailAddress": "ईमेल पता",
+  "instagramHandle": "Instagram",
+  "websiteUrl": "वेबसाइट",
+  "phoneNumber": "फ़ोन",
+  "facebook": "Facebook",
+  "location": "स्थान",
+  "locationHint": "उदा. बर्लिन, जर्मनी",
+  "profileSaved": "प्रोफ़ाइल सहेजी गई",
+
+  "publicWebsite": "सार्वजनिक वेबसाइट",
+  "publicWebsiteSubtitle": "अपना पोर्टफोलियो दुनिया के साथ साझा करें",
+  "publicWebsiteGitHubPagesHint": "आपका पोर्टफोलियो रिपॉज़िटरी के docs/index.html में है। प्रकाशित करने के लिए:",
+  "publicWebsiteGitHubPagesSteps": "1. अपना रेपो GitHub पर पुश करें\n2. Settings → Pages पर जाएं\n3. Source को \"Deploy from a branch\" → /docs सेट करें\n4. आपकी साइट https://username.github.io/artive/ पर होगी",
+  "publicWebsiteUrlHint": "Edge Function तैनात करें और यह URL साझा करें:",
+  "copyLink": "लिंक कॉपी करें",
+  "linkCopied": "लिंक कॉपी किया गया"
 }

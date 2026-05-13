@@ -182,5 +182,37 @@
       }
     }
   },
-  "selectAll": "Alles selecteren"
+  "selectAll": "Alles selecteren",
+
+  "publicWebsiteSection": "Openbare website",
+  "isPublic": "Zichtbaar op website",
+  "isPublicSubtitle": "Dit kunstwerk tonen in uw openbare portfolio",
+  "forSale": "Te koop",
+  "forSaleSubtitle": "Dit werk als beschikbaar voor aankoop markeren",
+  "price": "Prijs",
+  "currency": "Valuta",
+  "invalidPrice": "Voer een geldige prijs in",
+
+  "artistProfile": "Artiestenprofiel",
+  "artistProfileSubtitle": "Naam, biografie en contactinformatie",
+  "artistName": "Naam artiest",
+  "biography": "Biografie",
+  "biographyHint": "Schrijf een korte biografie over uzelf en uw werk…",
+  "contactInfo": "Contact",
+  "emailAddress": "E-mailadres",
+  "instagramHandle": "Instagram",
+  "websiteUrl": "Website",
+  "phoneNumber": "Telefoon",
+  "facebook": "Facebook",
+  "location": "Locatie",
+  "locationHint": "bijv. Berlijn, Duitsland",
+  "profileSaved": "Profiel opgeslagen",
+
+  "publicWebsite": "Openbare website",
+  "publicWebsiteSubtitle": "Deel uw portfolio met de wereld",
+  "publicWebsiteGitHubPagesHint": "Je portfolio staat in het bestand docs/index.html van je repository. Om het te publiceren:",
+  "publicWebsiteGitHubPagesSteps": "1. Push je repo naar GitHub\n2. Ga naar Settings → Pages\n3. Zet Source op \"Deploy from a branch\" → /docs\n4. Je site staat op https://gebruikersnaam.github.io/artive/",
+  "publicWebsiteUrlHint": "Implementeer de Edge Function en deel deze URL:",
+  "copyLink": "Link kopiëren",
+  "linkCopied": "Link gekopieerd"
 }

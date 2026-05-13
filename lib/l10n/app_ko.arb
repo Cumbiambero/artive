@@ -180,5 +180,37 @@
       }
     }
   },
-  "selectAll": "모두 선택"
+  "selectAll": "모두 선택",
+
+  "publicWebsiteSection": "공개 웹사이트",
+  "isPublic": "웹사이트에 표시",
+  "isPublicSubtitle": "이 작품을 공개 포트폴리오에 표시합니다",
+  "forSale": "판매 중",
+  "forSaleSubtitle": "이 작품을 구매 가능으로 표시",
+  "price": "가격",
+  "currency": "통화",
+  "invalidPrice": "유효한 가격을 입력하세요",
+
+  "artistProfile": "아티스트 프로필",
+  "artistProfileSubtitle": "이름, 약력 및 연락처",
+  "artistName": "아티스트 이름",
+  "biography": "약력",
+  "biographyHint": "나와 내 작품에 대한 간단한 약력을 작성하세요…",
+  "contactInfo": "연락처",
+  "emailAddress": "이메일 주소",
+  "instagramHandle": "Instagram",
+  "websiteUrl": "웹사이트",
+  "phoneNumber": "전화번호",
+  "facebook": "Facebook",
+  "location": "위치",
+  "locationHint": "예: 독일 베를린",
+  "profileSaved": "프로필이 저장되었습니다",
+
+  "publicWebsite": "공개 웹사이트",
+  "publicWebsiteSubtitle": "내 포트폴리오를 세상과 공유하세요",
+  "publicWebsiteGitHubPagesHint": "포트폴리오는 저장소의 docs/index.html 파일에 있습니다. 게시 방법:",
+  "publicWebsiteGitHubPagesSteps": "1. 저장소를 GitHub에 푸시\n2. Settings → Pages로 이동\n3. Source를 \"Deploy from a branch\" → /docs로 설정\n4. 사이트는 https://사용자명.github.io/artive/ 에 게시됩니다",
+  "publicWebsiteUrlHint": "Edge Function을 배포하고 이 URL을 공유하세요:",
+  "copyLink": "링크 복사",
+  "linkCopied": "링크가 복사되었습니다"
 }

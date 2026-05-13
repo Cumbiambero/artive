@@ -29,6 +29,10 @@ class _ArtworkFormScreenState extends State<ArtworkFormScreen> {
 
   bool _isLoading = false;
   bool _isStudy = false;
+  bool _isPublic = false;
+  bool _isForSale = false;
+  String _priceCurrency = 'EUR';
+  final _priceAmountController = TextEditingController();
   final _imagePicker = ImagePicker();
 
   bool get isEditing => widget.artwork != null;
@@ -44,6 +48,11 @@ class _ArtworkFormScreenState extends State<ArtworkFormScreen> {
       _dimensionController.text = widget.artwork!.dimension;
       _mediumController.text = widget.artwork!.medium;
       _isStudy = widget.artwork!.isStudy;
+      _isPublic = widget.artwork!.isPublic;
+      _isForSale = widget.artwork!.isForSale;
+      _priceCurrency = widget.artwork!.priceCurrency ?? 'EUR';
+      _priceAmountController.text =
+          widget.artwork!.priceAmount?.toString() ?? '';
     }
   }
 
@@ -55,6 +64,7 @@ class _ArtworkFormScreenState extends State<ArtworkFormScreen> {
     _yearController.dispose();
     _dimensionController.dispose();
     _mediumController.dispose();
+    _priceAmountController.dispose();
     super.dispose();
   }
 
@@ -177,6 +187,99 @@ class _ArtworkFormScreenState extends State<ArtworkFormScreen> {
               controlAffinity: ListTileControlAffinity.leading,
               contentPadding: EdgeInsets.zero,
             ),
+            const SizedBox(height: 8),
+            const Divider(),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              child: Text(
+                l10n.publicWebsiteSection,
+                style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+              ),
+            ),
+            SwitchListTile(
+              value: _isPublic,
+              onChanged: (value) => setState(() {
+                _isPublic = value;
+                if (!value) _isForSale = false;
+              }),
+              title: Text(l10n.isPublic),
+              subtitle: Text(l10n.isPublicSubtitle),
+              contentPadding: EdgeInsets.zero,
+            ),
+            SwitchListTile(
+              value: _isForSale,
+              onChanged: _isPublic
+                  ? (value) => setState(() => _isForSale = value)
+                  : null,
+              title: Text(l10n.forSale),
+              subtitle: Text(l10n.forSaleSubtitle),
+              contentPadding: EdgeInsets.zero,
+            ),
+            if (_isForSale) ...[
+              const SizedBox(height: 8),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  DropdownMenu<String>(
+                    initialSelection: _priceCurrency,
+                    label: Text(l10n.currency),
+                    width: 120,
+                    onSelected: (value) {
+                      if (value != null) setState(() => _priceCurrency = value);
+                    },
+                    dropdownMenuEntries: const [
+                      DropdownMenuEntry(value: 'USD', label: 'USD'),
+                      DropdownMenuEntry(value: 'EUR', label: 'EUR'),
+                      DropdownMenuEntry(value: 'GBP', label: 'GBP'),
+                      DropdownMenuEntry(value: 'CHF', label: 'CHF'),
+                      DropdownMenuEntry(value: 'JPY', label: 'JPY'),
+                      DropdownMenuEntry(value: 'CNY', label: 'CNY'),
+                      DropdownMenuEntry(value: 'CAD', label: 'CAD'),
+                      DropdownMenuEntry(value: 'AUD', label: 'AUD'),
+                      DropdownMenuEntry(value: 'BRL', label: 'BRL'),
+                      DropdownMenuEntry(value: 'INR', label: 'INR'),
+                      DropdownMenuEntry(value: 'MXN', label: 'MXN'),
+                      DropdownMenuEntry(value: 'KRW', label: 'KRW'),
+                      DropdownMenuEntry(value: 'SEK', label: 'SEK'),
+                      DropdownMenuEntry(value: 'NOK', label: 'NOK'),
+                      DropdownMenuEntry(value: 'PLN', label: 'PLN'),
+                    ],
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: TextFormField(
+                      controller: _priceAmountController,
+                      decoration: InputDecoration(
+                        labelText: l10n.price,
+                        border: const OutlineInputBorder(),
+                      ),
+                      keyboardType: const TextInputType.numberWithOptions(
+                        decimal: true,
+                      ),
+                      inputFormatters: [
+                        FilteringTextInputFormatter.allow(
+                          RegExp(r'^\d*\.?\d{0,2}'),
+                        ),
+                      ],
+                      validator: (v) {
+                        if (_isForSale && (v == null || v.isEmpty)) {
+                          return l10n.requiredField;
+                        }
+                        if (v != null &&
+                            v.isNotEmpty &&
+                            double.tryParse(v) == null) {
+                          return l10n.invalidPrice;
+                        }
+                        return null;
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ],
+            const Divider(),
             if (isEditing) ...[
               const SizedBox(height: 24),
               Row(
@@ -253,6 +356,12 @@ class _ArtworkFormScreenState extends State<ArtworkFormScreen> {
         dimension: _dimensionController.text,
         medium: _mediumController.text,
         isStudy: _isStudy,
+        isPublic: _isPublic,
+        isForSale: _isForSale,
+        priceAmount: _isForSale
+            ? double.tryParse(_priceAmountController.text)
+            : null,
+        priceCurrency: _isForSale ? _priceCurrency : null,
       );
 
       if (isEditing) {

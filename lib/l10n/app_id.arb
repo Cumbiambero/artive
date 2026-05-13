@@ -182,5 +182,37 @@
       }
     }
   },
-  "selectAll": "Pilih semua"
+  "selectAll": "Pilih semua",
+
+  "publicWebsiteSection": "Situs web publik",
+  "isPublic": "Tampilkan di situs web",
+  "isPublicSubtitle": "Tampilkan karya ini di portofolio publik Anda",
+  "forSale": "Dijual",
+  "forSaleSubtitle": "Tandai karya ini sebagai tersedia untuk dibeli",
+  "price": "Harga",
+  "currency": "Mata uang",
+  "invalidPrice": "Masukkan harga yang valid",
+
+  "artistProfile": "Profil seniman",
+  "artistProfileSubtitle": "Nama, biografi, dan info kontak",
+  "artistName": "Nama seniman",
+  "biography": "Biografi",
+  "biographyHint": "Tuliskan biografi singkat tentang diri Anda dan karya Anda…",
+  "contactInfo": "Kontak",
+  "emailAddress": "Alamat email",
+  "instagramHandle": "Instagram",
+  "websiteUrl": "Situs web",
+  "phoneNumber": "Telepon",
+  "facebook": "Facebook",
+  "location": "Lokasi",
+  "locationHint": "mis. Berlin, Jerman",
+  "profileSaved": "Profil disimpan",
+
+  "publicWebsite": "Situs web publik",
+  "publicWebsiteSubtitle": "Bagikan portofolio Anda ke seluruh dunia",
+  "publicWebsiteGitHubPagesHint": "Portofolio Anda ada di file docs/index.html repositori. Untuk mempublikasikannya:",
+  "publicWebsiteGitHubPagesSteps": "1. Push repo ke GitHub\n2. Buka Settings → Pages\n3. Atur Source ke \"Deploy from a branch\" → /docs\n4. Situs Anda akan ada di https://namapengguna.github.io/artive/",
+  "publicWebsiteUrlHint": "Deploy Edge Function dan bagikan URL ini:",
+  "copyLink": "Salin tautan",
+  "linkCopied": "Tautan disalin"
 }

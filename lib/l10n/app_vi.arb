@@ -182,5 +182,37 @@
       }
     }
   },
-  "selectAll": "Chọn tất cả"
+  "selectAll": "Chọn tất cả",
+
+  "publicWebsiteSection": "Trang web công khai",
+  "isPublic": "Hiển thị trên trang web",
+  "isPublicSubtitle": "Hiển thị tác phẩm này trên portfolio công khai của bạn",
+  "forSale": "Đang bán",
+  "forSaleSubtitle": "Đánh dấu tác phẩm này là có thể mua",
+  "price": "Giá",
+  "currency": "Tiền tệ",
+  "invalidPrice": "Vui lòng nhập giá hợp lệ",
+
+  "artistProfile": "Hồ sơ nghệ sĩ",
+  "artistProfileSubtitle": "Tên, tiểu sử và thông tin liên hệ",
+  "artistName": "Tên nghệ sĩ",
+  "biography": "Tiểu sử",
+  "biographyHint": "Viết tiểu sử ngắn về bản thân và tác phẩm của bạn…",
+  "contactInfo": "Liên hệ",
+  "emailAddress": "Địa chỉ email",
+  "instagramHandle": "Instagram",
+  "websiteUrl": "Trang web",
+  "phoneNumber": "Điện thoại",
+  "facebook": "Facebook",
+  "location": "Địa điểm",
+  "locationHint": "vd. Berlin, Đức",
+  "profileSaved": "Đã lưu hồ sơ",
+
+  "publicWebsite": "Trang web công khai",
+  "publicWebsiteSubtitle": "Chia sẻ portfolio của bạn với thế giới",
+  "publicWebsiteGitHubPagesHint": "Portfolio của bạn nằm trong file docs/index.html của kho lưu trữ. Để công bố:",
+  "publicWebsiteGitHubPagesSteps": "1. Đẩy repo lên GitHub\n2. Vào Settings → Pages\n3. Đặt Source là \"Deploy from a branch\" → /docs\n4. Trang của bạn sẽ ở https://tên-người-dùng.github.io/artive/",
+  "publicWebsiteUrlHint": "Triển khai Edge Function và chia sẻ URL này:",
+  "copyLink": "Sao chép liên kết",
+  "linkCopied": "Đã sao chép liên kết"
 }

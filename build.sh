@@ -54,8 +54,7 @@ fi
 
 # Build Android App Bundle
 print_building "Android App Bundle"
-flutter build appbundle --release
-if [ -f "build/app/outputs/bundle/release/app-release.aab" ]; then
+if flutter build appbundle --release --split-debug-info=build/debug-symbols; then
     cp "build/app/outputs/bundle/release/app-release.aab" "$DIST_DIR/artive-${VERSION}.aab"
     print_status "Android App Bundle built: artive-${VERSION}.aab"
 else
@@ -120,10 +119,9 @@ else
     echo -e "${YELLOW}Skipping Windows build (Windows required)${NC}"
 fi
 
-# Build Web
+# Build Web (only if web is configured as a Flutter platform)
 print_building "Web"
-flutter build web --release
-if [ -d "build/web" ]; then
+if flutter build web --release 2>&1; then
     cd build/web
     zip -r -q "../../$DIST_DIR/artive-${VERSION}-web.zip" *
     cd ../..

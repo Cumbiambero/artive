@@ -182,5 +182,36 @@
       }
     }
   },
-  "selectAll": "Select all"
+  "selectAll": "Select all",
+
+  "publicWebsiteSection": "Public Website",
+  "isPublic": "Visible on website",
+  "isPublicSubtitle": "Show this artwork on your public portfolio",
+  "forSale": "For sale",
+  "forSaleSubtitle": "Mark this piece as available for purchase",
+  "price": "Price",
+  "currency": "Currency",
+  "invalidPrice": "Please enter a valid price",
+
+  "artistProfile": "Artist Profile",
+  "artistProfileSubtitle": "Name, biography and contact info",
+  "artistName": "Artist name",
+  "biography": "Biography",
+  "biographyHint": "Write a short biography about yourself and your work…",
+  "contactInfo": "Contact",
+  "emailAddress": "Email address",
+  "instagramHandle": "Instagram",
+  "websiteUrl": "Website",
+  "phoneNumber": "Phone",
+  "facebook": "Facebook",
+  "location": "Location",
+  "locationHint": "e.g. Berlin, Germany",
+  "profileSaved": "Profile saved",
+
+  "publicWebsite": "Public Website",
+  "publicWebsiteSubtitle": "Share your portfolio with the world",
+  "publicWebsiteGitHubPagesHint": "Your portfolio lives in the docs/index.html file of your repository. To publish it:",
+  "publicWebsiteGitHubPagesSteps": "1. Push your repo to GitHub\n2. Go to Settings → Pages\n3. Set Source to \"Deploy from a branch\" → /docs\n4. Your site will be at https://username.github.io/artive/",
+  "copyLink": "Copy link",
+  "linkCopied": "Link copied"
 }

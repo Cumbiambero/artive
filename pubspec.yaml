@@ -2,7 +2,7 @@ name: Artive
 description: "Artwork catalogue app for visual artists. Archive your artworks with metadata and cloud storage."
 publish_to: 'none'
 
-version: 0.4.3
+version: 0.5.0
 
 environment:
   sdk: ^3.10.7
@@ -30,16 +30,16 @@ dependencies:
   shared_preferences: ^2.3.5
   url_launcher: ^6.3.2
   flutter_image_compress: ^2.4.0
-  package_info_plus: ^8.1.1
-  archive: ^3.6.1
-  file_picker: ^8.1.7
-  share_plus: ^10.1.4
+  package_info_plus: ^10.1.0
+  archive: ^4.0.9
+  file_picker: ^12.0.0-beta.1
+  share_plus: ^13.1.0
   path_provider: ^2.1.5
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
+  flutter_lints: ^6.0.0
   flutter_launcher_icons: ^0.14.3
 
 # For information on the generic Dart part of this file, see the

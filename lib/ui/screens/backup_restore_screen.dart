@@ -37,7 +37,7 @@ class _BackupRestoreScreenState extends State<BackupRestoreScreen> {
   Future<void> _createBackup() async {
     // Let user choose where to save the backup
     final fileName = BackupService.getBackupFileName();
-    final outputPath = await FilePicker.platform.saveFile(
+    final outputPath = await FilePicker.saveFile(
       dialogTitle: 'Save Backup',
       fileName: fileName,
       type: FileType.custom,
@@ -122,7 +122,7 @@ class _BackupRestoreScreenState extends State<BackupRestoreScreen> {
     if (clearExisting == null) return;
 
     // Pick backup file
-    final result = await FilePicker.platform.pickFiles(
+    final result = await FilePicker.pickFiles(
       type: FileType.custom,
       allowedExtensions: ['zip'],
     );
