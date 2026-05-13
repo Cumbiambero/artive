@@ -234,7 +234,7 @@ async function signedUrl(path) {
   });
   if (!res.ok) return null;
   const data = await res.json();
-  const url = data.signedURL ? (SUPABASE_URL + data.signedURL) : null;
+  const url = data.signedURL ? (SUPABASE_URL + '/storage/v1' + data.signedURL) : null;
   if (url) _signedCache[path] = url;
   return url;
 }
